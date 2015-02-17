@@ -6,22 +6,26 @@
 
 class CreditNet : public Graph{
 private:
-	// producer act
-	void proPayLab(ProNode* p);
-	void proPayDiv(ProNode* p);
-	void labPayCon();
 
 public:
-	CreditNet(int finNumT, int conNumT, int proNumT)
-		: Graph(finNumT, conNumT, proNumT){}
-	void init();
-	void update();
-	void genTrans();
-	void payCosts();
-	void payDividends();
-	void chargeIR();
+    CreditNet(int finNumT, int conNumT, int proNumT)
+        : Graph(finNumT, conNumT, proNumT){}
+    void init();
 
+    // Main Loop
+    void update();
+    void genTrans();
+    void genCostAndDivPay();
+    void debtCancel();
+    void chargeIR(int time);
 
+    // produer
+    void proPayLab(ProNode* p);
+
+    // labor
+    void labPayCon();
+    
+    void executeDefault(FinNode* f, int time);
 
 };
 

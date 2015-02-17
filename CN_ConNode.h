@@ -32,19 +32,7 @@ private:
     double curr_credit;
 
     int nextProOnList;
-    
-public:
-	///////////* Functions *////////////////////////////////////////
-	// sonsumption decidion for single feasible oppertunity (ProNode, price, feasible MaxQuantity)
-    double getLastPrice();
-    void setLastIncome(double);
-    double getLastIncome();
-
-    double getCurrBanlance();
-    double getCurrCredit();
-    // get current utility
     double getUtility(double quantity);
-    
     // Permanent/Current Marginal Utility per Price
     double getPermMUP();
     double getCurrMUP(double unit_price);
@@ -55,6 +43,16 @@ public:
     // temp quantity -> mup
     double getTempMUP(double temp, double price);
 
+public:
+	///////////* Functions *////////////////////////////////////////
+	// assumption decidion for single feasible oppertunity (ProNode, price, feasible MaxQuantity)
+    double getLastPrice();
+    void setLastIncome(double);
+    double getLastIncome();
+
+    double getCurrBanlance();
+    double getCurrCredit();
+    
     Status decideToBuyOpp(ProNode* p, double price, double qMax, double &quantityToBuy);
     void debtCancel(Graph *);
     ProNode* getNextPro();

@@ -1,4 +1,5 @@
 // CN_CreditNet.C 
+#define NON_DEBUG_MODE
 
 #include"Error.h"
 #include"CN_CreditNet.h"
@@ -28,29 +29,10 @@ void CreditNet::proPayLab(ProNode* p){
 	return;
 }
 
-void CreditNet::proPayDiv(ProNode* p){
-	Status status;
-	LabNode* l = this->labAgent;
-	Node* node1 = dynamic_cast<Node*>(p);
-	Node* node2 = dynamic_cast<Node*>(l);
-
-	double value = p->getCurrProfit();
-
-	double trueValue;
-	status = payCase2(node1, node2, value, trueValue);
-	if (status != GOOD){
-		Utility utility;
-		utility.print(status);
-		cout << "Producer default on service: ProNode " << p->getNodeID() << endl;
-	}
-	l->paymentIn(trueValue);
-	return;
-}
-
 void CreditNet::labPayCon(){
 	LabNode* l = this->labAgent;
 	double unit_payment = l->getCurrPayment() / (this->conNum);
-	cout << "Total Payment: " << l->getCurrPayment() << " unit: " << unit_payment << " conNum: " << this->conNum << endl;
+	cout << "Total Labor Payment: " << l->getCurrPayment() << " unit: " << unit_payment << " conNum: " << this->conNum << endl;
 	for (int i = 0; i<this->conNum; i++) {
 		double trueValue;
 		payCase2(dynamic_cast<Node*>(l), dynamic_cast<Node*>(this->conAgent[i]), unit_payment, trueValue);
@@ -61,6 +43,9 @@ void CreditNet::labPayCon(){
 }
 
 
+/////////////////////////////////////////////////////////////////////////
+/* Credit Network functions */
+/////////////////////////////////////////////////////////////////////////
 void CreditNet::init(){
 	// init all con, pro, fin, ...
 	for (int i = 0; i < this->proNum; i++) {
@@ -90,151 +75,206 @@ void CreditNet::update(){
 }
 void CreditNet::genTrans(){
 	double total_trans = 0;
-	while (1) {
-		ConNode* c = NULL;
-		ProNode* p = NULL;
-		bool flag = 0;
-		for (int i = 0; i < conNum; i++){
-			//cout<<"conAgent ID: "<<this->conAgent[i]->getNodeID()<<endl;
+    bool flag = 1;
+    while (1) {
+        ConNode* c = NULL;
+        ProNode* p = NULL;
+        flag = 1;
+        for(int i=0; i < conNum; i++){
+            //cout<<"conAgent ID: "<<this->conAgent[i]->getNodeID()<<endl;
+            Graph* temp = new Graph(*this);            
+            c = conAgent[i];
+            p = conAgent[i]->getNextPro();
+            if (p == NULL) {
+                // cout<<"end of list, do nothing"<<endl;
+                continue;
+            }
 
-			Graph* temp = new Graph(*this);
-
-			c = conAgent[i];
-			p = conAgent[i]->getNextPro();
-			if (p != NULL) {
-				flag = 1;
-			}
-			else {
-				//cout<<"end of list, do nothing"<<endl;
+            flag = 0;  // some one bought somthing, 
+            //cout<<"entering temp"<<endl;
+            int cid = c->getNodeID();
+            int pid = p->getNodeID();
+            //temp->print();
+            double cap = maxFlowMixed(
+                dynamic_cast<Node*>(temp->searchID(cid)),
+                dynamic_cast<Node*>(temp->searchID(pid))
+            );
+            delete temp;
+            //cout<<"exit temp"<<endl;
+            
+			if (cap < 0.000001){
+				i--;
 				continue;
 			}
-			//cout<<"entering temp"<<endl;
-			int cid = c->getNodeID();
-			int pid = p->getNodeID();
-			//temp->print();
-			double cap = maxFlowMixed(
-				dynamic_cast<Node*>(temp->searchID(cid)),
-				dynamic_cast<Node*>(temp->searchID(pid))
-				);
-			delete temp;
-			//cout<<"exit temp"<<endl;
-
-			//cout<<"capacity: "<<cap<<endl;
-			double quant;
-			c->decideToBuyOpp(p, p->unit_price, min(cap, p->getProductivity()), quant);
-			//cout<<"quant: "<<quant<<endl;
-			if (quant <= 0.000001) {
-				//cout<<"buy zero"<<endl;
-				continue;
-			}
+            //cout<<"capacity: "<<cap<<endl;
+            double quant;
+            c->decideToBuyOpp(p, p->unit_price, min(cap, p->getProductivity()), quant);
+            //cout<<"quant: "<<quant<<endl;
+            if (quant <= 0.000001) {
+                //cout<<"buy zero"<<endl;
+                //cout<< "buy zero from node "<< c->getNodeID()<<" to node "<<p->getNodeID()<<endl;
+                i--;
+                continue;
+            }
 			double trueValue;
-			payCase2(dynamic_cast<Node*>(c), dynamic_cast<Node*>(p), quant, trueValue);
-			//cout<<"Quantity: "<<quant<< " from node "<< c->getNodeID()<<" to node "<<p->getNodeID()<<endl;
-			total_trans += quant;
-			c->buy(quant);
-			p->last_sale += quant;
-			p->sell(quant);
-		}
-		if (!flag) {
-			break;
-		}
+            payCase2(dynamic_cast<Node*>(c), dynamic_cast<Node*>(p), quant, trueValue);
+            
+            // cout<<"Quantity: "<<quant<< " from node "<< c->getNodeID()<<" to node "<<p->getNodeID()<<endl;
+
+            total_trans += quant;
+            c->buy(quant);
+            p->last_sale+=quant;
+            p->sell(quant);
+        }
+        if (flag) {
+            break;
+        }
+    }
+    cout<<"total trans: "<<total_trans<<endl;
+    return;
+}
+
+void CreditNet::genCostAndDivPay(){
+    for (int i=0; i<this->proNum; i++) {
+        //cout<<"proAgent ID: "<<this->proAgent[i]->getNodeID()<<endl;
+        this->proPayLab(this->proAgent[i]);
+    }
+    this->labPayCon();
+    return;
+}
+
+void CreditNet::debtCancel(){
+	// Consumer
+	for (int i = 0; i < this->conNum; i++){
+		this->conAgent[i]->debtCancel(this);
 	}
-	cout << "total trans: " << total_trans << endl;
+	// Producer
+	for (int i = 0; i < this->proNum; i++){
+		this->proAgent[i]->debtCancel(this);
+	}
 	return;
 }
 
-void CreditNet::payCosts(){
-	for (int i = 0; i<this->proNum; i++) {
-		//cout<<"proAgent ID: "<<this->proAgent[i]->getNodeID()<<endl;
-		this->proPayLab(this->proAgent[i]);
-	}
-	this->labPayCon();
+void CreditNet::chargeIR(int time){
+	// if (time == 10){
+	// 	this->executeDefault(this->finAgent[0], time);
+	// }
+    Graph temp = *this;
+    Status status;
+    double amount = 0;
+    // charge the consumers
+    for (int i=0; i<temp.conNum; i++) {
+        for (int j=0; j<temp.conAgent[i]->edge_in.size(); j++) {
+            Node* node1 = dynamic_cast<Node*>(this->conAgent[i]);
+            Node* node2 = this->conAgent[i]->edge_in[j].nodeFrom;
+            
+            Node* node3 = dynamic_cast<Node*>(temp.conAgent[i]);
+            Node* node4 = temp.conAgent[i]->edge_in[j].nodeFrom;
+            double ir = node3->getDebtTo(node4, status)
+                * node3->getDebIntRateTo(node4, status);
+            amount += ir;
+			double trueValue;
+            status = this->payCase2(node1, node2, ir, trueValue);
+            if (status!=GOOD) {
+                cout<<"in suff flow con node "<< node1->getNodeID() << " to " 
+                << node2->getNodeID() <<endl;
+            }
+        }
+    }
+    // charge the producers
+    for (int i=0; i<temp.proNum; i++) {
+        for (int j=0; j<temp.proAgent[i]->edge_in.size(); j++) {
+            Node* node1 = dynamic_cast<Node*>(this->proAgent[i]);
+            Node* node2 = this->proAgent[i]->edge_in[j].nodeFrom;
+            
+            Node* node3 = dynamic_cast<Node*>(temp.proAgent[i]);
+            Node* node4 = temp.proAgent[i]->edge_in[j].nodeFrom;
+            double ir = node3->getDebtTo(node4, status)
+            * node3->getDebIntRateTo(node4, status);
+            amount += ir;
+			double trueValue;
+            status = this->payCase2(node1, node2, ir, trueValue);
+            if (status!=GOOD) {
+                cout<<"in suff flow pro node "<< node1->getNodeID() << " to " 
+                << node2->getNodeID() <<endl;
+            }
+        }
+    }
+	bool flag = 0;
+    for (int i=0; i<temp.finNum; i++) {
+        for (int j=0; j<temp.finAgent[i]->edge_in.size(); j++) {
+            Node* node1 = dynamic_cast<Node*>(this->finAgent[i]);
+            Node* node2 = this->finAgent[i]->edge_in[j].nodeFrom;
+            
+            Node* node3 = dynamic_cast<Node*>(temp.finAgent[i]);
+            Node* node4 = temp.finAgent[i]->edge_in[j].nodeFrom;
+            double ir = node3->getDebtTo(node4, status)
+            * node3->getDebIntRateTo(node4, status);
+            amount += ir;
+			if (ir <= 0){ continue; }
+
+			double trueValue;
+            this->payCase2(node1, node2, ir, trueValue);
+#ifndef NON_DEBUG_MODE
+			cout << "ir: "<< ir << " true value: " << trueValue << endl;
+			cout << "paycase2: node " << node1->getNodeID() << " node "
+				<< node2->getNodeID() << " " << node1->getDebtTo(node2, status)
+				<<" "<< node1->getDebIntRateTo(node2, status) << endl;
+#endif
+			if (trueValue < ir){
+				cout << "node " << node1->getNodeID() << " is defaulting to node "<< node2->getNodeID() <<" at time " << time << endl;
+				this->executeDefault(this->finAgent[i], time);
+				flag = 1;
+				break;
+			}	
+        }
+    }
+    // bank and labor
+    for (int j=0; j<temp.banAgent->edge_in.size(); j++) {
+        Node* node1 = dynamic_cast<Node*>(this->banAgent);
+        Node* node2 = this->banAgent->edge_in[j].nodeFrom;
+        
+        Node* node3 = dynamic_cast<Node*>(temp.banAgent);
+        Node* node4 = temp.banAgent->edge_in[j].nodeFrom;
+        double ir = node3->getDebtTo(node4, status)
+        * node3->getDebIntRateTo(node4, status);
+        amount += ir;
+		double trueValue;
+        status = this->payCase2(node1, node2, ir, trueValue);
+        if (status!=GOOD) {
+            cout<<"in suff flow node "<< node1->getNodeID() << " to " 
+            << node2->getNodeID() <<endl;
+        }
+    }
+    for (int j=0; j<temp.labAgent->edge_in.size(); j++) {
+        Node* node1 = dynamic_cast<Node*>(this->labAgent);
+        Node* node2 = this->labAgent->edge_in[j].nodeFrom;
+        
+        Node* node3 = dynamic_cast<Node*>(temp.labAgent);
+        Node* node4 = temp.labAgent->edge_in[j].nodeFrom;
+        double ir = node3->getDebtTo(node4, status)
+        * node3->getDebIntRateTo(node4, status);
+        amount += ir;
+		double trueValue;
+        status = this->payCase2(node1, node2, ir, trueValue);
+        if (status!=GOOD) {
+            cout<<"in suff flow node "<< node1->getNodeID() << " to " 
+            << node2->getNodeID() <<endl;
+        }
+    }
+    cout<<"total ir: "<<amount<<endl;
+    return;
 }
 
-void CreditNet::payDividends(){
-	for (int i = 0; i<this->proNum; i++) {
-		//cout<<"proAgent ID: "<<this->proAgent[i]->getNodeID()<<endl;
-		this->proPayDiv(this->proAgent[i]);
+void CreditNet::executeDefault(FinNode* f, int time){
+	cout <<"execute default node "<<f->getNodeID()<<endl;;
+	for (int i = 0; i < f->edge_in.size(); i++){
+		f->setInEdge(f->edge_in[i].nodeFrom, 0, 0, 0, EQ);
 	}
-	this->labPayCon();
-}
-
-void CreditNet::chargeIR(){
-	Graph temp = *this;
-	Status status;
-	double amount = 0;
-	for (int i = 0; i<temp.conNum; i++) {
-		for (int j = 0; j<temp.conAgent[i]->edge_in.size(); j++) {
-			Node* node1 = dynamic_cast<Node*>(this->conAgent[i]);
-			Node* node2 = this->conAgent[i]->edge_in[j].nodeFrom;
-
-			Node* node3 = dynamic_cast<Node*>(temp.conAgent[i]);
-			Node* node4 = temp.conAgent[i]->edge_in[j].nodeFrom;
-			double ir = node3->getDebtFrom(node4, status)
-				* node3->getDebIntRateFrom(node4, status);
-			amount += ir;
-			double trueValue;
-			status = this->payCase2(node1, node2, ir, trueValue);
-			if (status != GOOD) {
-				cout << "in suff flow" << endl;
-			}
-		}
+	for (int i = 0; i < f->edge_out.size(); i++){
+		f->setOutEdge(f->edge_out[i].nodeTo, 0, 0, 0, EQ);
 	}
-	for (int i = 0; i<temp.proNum; i++) {
-		for (int j = 0; j<temp.proAgent[i]->edge_in.size(); j++) {
-			Node* node1 = dynamic_cast<Node*>(this->proAgent[i]);
-			Node* node2 = this->proAgent[i]->edge_in[j].nodeFrom;
-
-			Node* node3 = dynamic_cast<Node*>(temp.proAgent[i]);
-			Node* node4 = temp.proAgent[i]->edge_in[j].nodeFrom;
-			double ir = node3->getDebtFrom(node4, status)
-				* node3->getDebIntRateFrom(node4, status);
-			//amount += ir;
-			double trueValue;
-			this->payCase2(node1, node2, ir, trueValue);
-		}
-	}
-	for (int i = 0; i<temp.finNum; i++) {
-		for (int j = 0; j<temp.finAgent[i]->edge_in.size(); j++) {
-			Node* node1 = dynamic_cast<Node*>(this->finAgent[i]);
-			Node* node2 = this->finAgent[i]->edge_in[j].nodeFrom;
-
-			Node* node3 = dynamic_cast<Node*>(temp.finAgent[i]);
-			Node* node4 = temp.finAgent[i]->edge_in[j].nodeFrom;
-			double ir = node3->getDebtFrom(node4, status)
-				* node3->getDebIntRateFrom(node4, status);
-			//amount += ir;
-			double trueValue;
-			this->payCase2(node1, node2, ir, trueValue);
-		}
-
-	}
-	// bank and labor
-	for (int j = 0; j<temp.banAgent->edge_in.size(); j++) {
-		Node* node1 = dynamic_cast<Node*>(this->banAgent);
-		Node* node2 = this->banAgent->edge_in[j].nodeFrom;
-
-		Node* node3 = dynamic_cast<Node*>(temp.banAgent);
-		Node* node4 = temp.banAgent->edge_in[j].nodeFrom;
-		double ir = node3->getDebtFrom(node4, status)
-			* node3->getDebIntRateFrom(node4, status);
-		//amount += ir;
-		double trueValue;
-		this->payCase2(node1, node2, ir, trueValue);
-	}
-	for (int j = 0; j<temp.labAgent->edge_in.size(); j++) {
-		Node* node1 = dynamic_cast<Node*>(this->labAgent);
-		Node* node2 = this->labAgent->edge_in[j].nodeFrom;
-
-		Node* node3 = dynamic_cast<Node*>(temp.labAgent);
-		Node* node4 = temp.labAgent->edge_in[j].nodeFrom;
-		double ir = node3->getDebtFrom(node4, status)
-			* node3->getDebIntRateFrom(node4, status);
-		//amount += ir;
-		double trueValue;
-		this->payCase2(node1, node2, ir, trueValue);
-	}
-	cout << "total ir: " << amount << endl;
+	defaultList[time]++;
 }
 
 

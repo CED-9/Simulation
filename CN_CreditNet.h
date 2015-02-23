@@ -27,6 +27,10 @@ public:
     
     void executeDefault(FinNode* f, int time);
 
+    ///////////////////////////////////////////////
+    void printTranPerCon();
+    void printProPrice();
+    void printBanlancePerCon();
 };
 
 

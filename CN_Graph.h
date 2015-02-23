@@ -54,8 +54,6 @@ public:
 	void genTestGraph();
 	void genTest2Graph();
 
-	void debtCancel();
-
 	/////////////////////////////////////////////////////////////////////////
 	/* Payment */
 	/////////////////////////////////////////////////////////////////////////
@@ -85,21 +83,6 @@ public:
     // Payment, case 2, interest rate blocking
 	Status payCase2(Node* src, Node* dest, double value, double& actualValue);
 
-
-	/////////////////////////////////////////////////////////////////////////
-	/* High level */
-	/////////////////////////////////////////////////////////////////////////
-    // Producer pay labor
-    Status proPayLab(ProNode* p);
-    Status labPayCon();
-    
-	Status init();
-	Status update(); 
-	Status genTrans();
-    Status genCostAndDivPay();
-    Status chargeIR(int);
-    
-	void executeDefault(FinNode*, int);
 
 	/////////////////////////////////////////////////////////////////////////
 	/* Debug */

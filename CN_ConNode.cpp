@@ -41,11 +41,22 @@ double ConNode::getLastPrice(){
 }
 
 double ConNode::getCurrBanlance(){
-	return this->curr_banlance;
+	double temp = 0;
+    for (unsigned int i = 0; i < this->edge_in.size(); i++){
+    	temp -= this->edge_in[i].d_out_current;
+    }
+    for (unsigned int i = 0; i < this->edge_out.size(); i++){
+    	temp += this->edge_out[i].d_in_current;
+    }
+	return temp;
 }
 
 double ConNode::getCurrCredit(){
 	return this->curr_credit;
+}
+
+double ConNode::getCurrQuantity(){
+	return this->curr_quantity;
 }
 
 ProNode* ConNode::getNextPro(){
@@ -154,7 +165,7 @@ Status ConNode::decideToBuyOpp(ProNode* p, double price, double qMax, double &qu
 	}
 
 	// No money
-	if (this->getCurrBanlance() + this->getCurrCredit() + this->lastIncome <= 0){
+	if (this->getCurrBanlance() + this->getCurrCredit()/2 + this->lastIncome <= 0){
 		quantityToBuy = 0;
 		return CON_I_DONT_WANT_TO;
 	}

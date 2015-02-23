@@ -65,7 +65,7 @@ void ProNode::debtCancel(Graph * creditNet){
 Status ProNode::init(Graph* creditNet){
     this->unit_price = 1.0;
     this->last_sale = 0;
-    this->laborCost = 0.8;
+    this->laborCost = 1;
     this->productivity = 80;
 	this->currProfit = 0;
     return GOOD;

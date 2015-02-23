@@ -28,8 +28,8 @@ private:
     double lastPrice;
     double lastIncome;
 
-    double curr_banlance;
-    double curr_credit;
+    double curr_banlance;  // no credit, d_in - d_out
+    double curr_credit;  // current available credit, in total
 
     int nextProOnList;
     double getUtility(double quantity);
@@ -53,10 +53,11 @@ public:
     double getCurrBanlance();
     double getCurrCredit();
     
+    double getCurrQuantity();
+
     Status decideToBuyOpp(ProNode* p, double price, double qMax, double &quantityToBuy);
     void debtCancel(Graph *);
     ProNode* getNextPro();
-    
     
     
 	Status init(Graph* creditNet);

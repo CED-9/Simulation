@@ -106,7 +106,7 @@ void CreditNet::genTrans(){
 				i--;
 				continue;
 			}
-            //cout<<"capacity: "<<cap<<endl;
+            // cout<<"capacity: "<<cap<<endl;
             double quant;
             c->decideToBuyOpp(p, p->unit_price, min(cap, p->getProductivity()), quant);
             //cout<<"quant: "<<quant<<endl;
@@ -278,3 +278,27 @@ void CreditNet::executeDefault(FinNode* f, int time){
 }
 
 
+
+/////////////////////////////////////////////////////////////////////////
+/* Print anything */
+/////////////////////////////////////////////////////////////////////////
+void CreditNet::printTranPerCon(){
+    for (int i = 0; i < conNum; ++i){
+        cout << "Con Node " << this->conAgent[i]->getNodeID() << " bought: "
+            << this->conAgent[i]->getCurrQuantity() << endl;
+    }
+}
+
+void CreditNet::printProPrice(){
+    for (int i = 0; i < proNum; ++i){
+        cout << "Pro Node " << this->proAgent[i]->getNodeID() << " listed price: " 
+            << this->proAgent[i]->unit_price << endl;
+    }
+}
+
+void CreditNet::printBanlancePerCon(){
+    for (int i = 0; i < conNum; ++i){
+        cout << "Con Node " << this->conAgent[i]->getNodeID() << " banlance: "
+            << this->conAgent[i]->getCurrBanlance() << endl;
+    }
+}

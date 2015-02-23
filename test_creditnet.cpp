@@ -27,17 +27,22 @@ int main(int argc, char* argv[]){
     CreditNet creditNet(finNum, conNum, proNum);
     // creditNet.print();
     creditNet.genTest2Graph();
-
+    // creditNet.print();
 	
     cout<<"/////////////////////////////////////////////////"<<endl;
     cout<<"init "<<endl;
     creditNet.init();
     for (int i=0; i<15; i++) {
         cout<<endl<<"round: "<<i<<endl;
-        //cout<<"updating..."<<endl;
+
         creditNet.update();
-        
+        cout<<"updated"<<endl;
+
         creditNet.genTrans();
+
+        // print status
+        creditNet.printTranPerCon();
+        creditNet.printProPrice();
         
         //creditNet.print();
         cout<<endl;
@@ -46,6 +51,9 @@ int main(int argc, char* argv[]){
         creditNet.debtCancel();
 
         creditNet.chargeIR(i);
+        // print status
+        creditNet.printBanlancePerCon();
+
         cout<<endl;
         // creditNet.print();
     }

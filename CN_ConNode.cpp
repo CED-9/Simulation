@@ -28,6 +28,42 @@ Status ConNode::setConNode(int id){
 	return GOOD; 
 }
 
+///////////////////////////////////////////////////////////////
+/* debt cancel
+ */
+///////////////////////////////////////////////////////////////
+void ConNode::debtCancel(Graph * creditNet){
+	double int_payed = 0;
+	double trueValue = 0;
+	double income = 0;
+	double value = 0;
+
+	for (unsigned int i = 0; i < this->edge_in.size(); ++i){
+		Status status;
+		Node* target = this->edge_in[i].nodeFrom;
+		double payTo = this->getDebtTo(target, status);
+		trueValue = 0;
+
+		for (int j = 0; j < this->edge_out.size(); ++j){
+			if (this->edge_out[j].d_in_current == 0){
+				continue;
+			}
+			Node* in = this->edge_out[j].nodeTo;
+			income = this->edge_out[j].d_in_current;
+			value = min(income, payTo);
+			creditNet->payCase2(this->edge_out[j].nodeTo, 
+				this->edge_in[i].nodeFrom, value, trueValue);
+			this->setInEdge(target, 0, trueValue, 0, SUB);
+			this->setOutEdge(in, 0, trueValue, 0, SUB);
+
+			payTo -= trueValue;
+		}
+		int_payed += trueValue;
+	}
+	// cout << "int_payed: " << int_payed << endl;
+	return;
+}
+
 void ConNode::setLastIncome(double income){
 	this->lastIncome = income;
 	return;
@@ -119,25 +155,6 @@ double ConNode::getEqualMUP(double price){
 	// cout<<"perm MUP "<<this->getPermMUP()<<" "<<endl;
 	// cout<<"temp - 1 = "<<temp - 1<<endl;
 	return temp-1;
-}
-
-void ConNode::debtCancel(Graph * creditNet){
-	for (unsigned int i = 0; i < this->edge_in.size(); i++){
-		Status status;
-		Node* target = this->edge_in[i].nodeFrom;
-		double payTo = this->getDebtTo(target, status);
-		double toPay = this->getDebtFrom(target, status);
-		double trueValue = min(toPay, payTo);
-		// creditNet->payCase2(this, this->edge_in[i].nodeFrom, value, trueValue);
-		if (this->getDebIntRateFrom(target, status) > this->getDebIntRateTo(target, status)){
-			continue;
-		}
-		this->setInEdge(target, 0, trueValue, 0, SUB);
-		this->setOutEdge(target, 0, trueValue, 0, SUB);
-		// cout<<"Node "<<this->getNodeID()<<" true value: "<<trueValue<<endl;
-
-	}
-	return;
 }
 
 // one feasible 

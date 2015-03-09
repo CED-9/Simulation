@@ -14,56 +14,56 @@ struct PriceOfPro{
 // Consumer agent
 class ConNode : public Node{
 private:
-    // c_perm = E(q_t), expectation of permanent consumption
-    // pr_perm = unit price, expected price to accept at current time
-    // proList, the list of producers a consumer can see
-    double c_perm;
-    double pr_perm;
-    vector<PriceOfPro> proList;
-    
-    // curr_quantity, current consumption of this time period
-    // lastPrice, the unit price of last transaction
-    // nextPro, next producer to bring out some opp
-    double curr_quantity;
-    double lastPrice;
-    double lastIncome;
+	// c_perm = E(q_t), expectation of permanent consumption
+	// pr_perm = unit price, expected price to accept at current time
+	// proList, the list of producers a consumer can see
+	double c_perm;
+	double pr_perm;
+	vector<PriceOfPro> proList;
+	
+	// curr_quantity, current consumption of this time period
+	// lastPrice, the unit price of last transaction
+	// nextPro, next producer to bring out some opp
+	double curr_quantity;
+	double lastPrice;
+	double lastIncome;
 
-    double curr_banlance;  // no credit, d_in - d_out
-    double curr_credit;  // current available credit, in total
+	double curr_banlance;  // no credit, d_in - d_out
+	double curr_credit;  // current available credit, in total
 
-    int nextProOnList;
-    double getUtility(double quantity);
-    // Permanent/Current Marginal Utility per Price
-    double getPermMUP();
-    double getCurrMUP(double unit_price);
-    
-    // return the quantity at current price, that currMUP == permMUP
-    double getEqualMUP(double price);
-    
-    // temp quantity -> mup
-    double getTempMUP(double temp, double price);
+	int nextProOnList;
+	double getUtility(double quantity);
+	// Permanent/Current Marginal Utility per Price
+	double getPermMUP();
+	double getCurrMUP(double unit_price);
+	
+	// return the quantity at current price, that currMUP == permMUP
+	double getEqualMUP(double price);
+	
+	// temp quantity -> mup
+	double getTempMUP(double temp, double price);
 
 public:
 	///////////* Functions *////////////////////////////////////////
 	// assumption decidion for single feasible oppertunity (ProNode, price, feasible MaxQuantity)
-    double getLastPrice();
-    void setLastIncome(double);
-    double getLastIncome();
+	double getLastPrice();
+	void setLastIncome(double);
+	double getLastIncome();
 
-    double getCurrBanlance();
-    double getCurrCredit();
-    
-    double getCurrQuantity();
+	double getCurrBanlance();
+	double getCurrCredit();
+	
+	double getCurrQuantity();
 
-    Status decideToBuyOpp(ProNode* p, double price, double qMax, double &quantityToBuy);
-    void debtCancel(Graph *);
-    ProNode* getNextPro();
-    
-    
+	Status decideToBuyOpp(ProNode* p, double price, double qMax, double &quantityToBuy);
+	void debtCancel(Graph *);
+	ProNode* getNextPro();
+	
+	
 	Status init(Graph* creditNet);
 	Status update(Graph* creditNet); 
 	
-    Status buy(double quantity);
+	Status buy(double quantity);
 	
 	
 	int laborToProvide;
@@ -77,8 +77,8 @@ public:
 	// To financial, 
 	std::vector<OutEdge> con_fin_out;
 	std::vector<InEdge> con_fin_in;
-    
-    ConNode(int id);
+	
+	ConNode(int id);
 	Status setConNode(int id); 
 
 	void print();

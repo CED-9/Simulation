@@ -1,318 +1,217 @@
 round 0 
 total trans: 5443
 Total Labor Payment: 5443 unit: 54.43 conNum: 100
-total ir: 559.627
+total ir: 475.228
 
 round 1 
-total trans: 5150.6
-Total Labor Payment: 5150.6 unit: 51.506 conNum: 100
-total ir: 693.674
+total trans: 5151.6
+Total Labor Payment: 5151.6 unit: 51.516 conNum: 100
+total ir: 517.632
 
 round 2 
-total trans: 4913.07
-Total Labor Payment: 4913.07 unit: 49.1307 conNum: 100
-total ir: 873.302
+total trans: 4917.07
+Total Labor Payment: 4917.07 unit: 49.1707 conNum: 100
+total ir: 571.376
 
 round 3 
-total trans: 5131.47
-Total Labor Payment: 5131.47 unit: 51.3147 conNum: 100
-total ir: 1087.26
+total trans: 5146.73
+Total Labor Payment: 5146.73 unit: 51.4673 conNum: 100
+total ir: 658.039
 
 round 4 
-total trans: 5300
-Total Labor Payment: 5300 unit: 53 conNum: 100
-total ir: 1368.72
+total trans: 5349
+Total Labor Payment: 5349 unit: 53.49 conNum: 100
+total ir: 786.25
 
 round 5 
-total trans: 5659.87
-Total Labor Payment: 5659.87 unit: 56.5987 conNum: 100
-total ir: 1574.58
+total trans: 5709.6
+Total Labor Payment: 5709.6 unit: 57.096 conNum: 100
+total ir: 858.447
 
 round 6 
 total trans: 5534
 Total Labor Payment: 5534 unit: 55.34 conNum: 100
-total ir: 1879.68
+total ir: 972.96
 
 round 7 
-total trans: 5431
-Total Labor Payment: 5431 unit: 54.31 conNum: 100
-total ir: 2138.02
+total trans: 5455
+Total Labor Payment: 5455 unit: 54.55 conNum: 100
+total ir: 1036.9
 
 round 8 
 total trans: 4956
 Total Labor Payment: 4956 unit: 49.56 conNum: 100
-total ir: 2450.79
+total ir: 1085.2
 
 round 9 
-total trans: 4976.4
-Total Labor Payment: 4976.4 unit: 49.764 conNum: 100
-total ir: 2695.83
+total trans: 5225.8
+Total Labor Payment: 5225.8 unit: 52.258 conNum: 100
+total ir: 1128.78
 
 round 10 
-total trans: 4946.87
-Total Labor Payment: 4946.87 unit: 49.4687 conNum: 100
-total ir: 3000.88
+total trans: 5102.07
+Total Labor Payment: 5102.07 unit: 51.0207 conNum: 100
+total ir: 1210.15
 
 round 11 
-total trans: 4764.07
-Total Labor Payment: 4764.07 unit: 47.6407 conNum: 100
-total ir: 3304.06
+total trans: 4922.93
+Total Labor Payment: 4922.93 unit: 49.2293 conNum: 100
+total ir: 1238.64
 
 round 12 
-total trans: 4688.4
-Total Labor Payment: 4688.4 unit: 46.884 conNum: 100
-total ir: 3583.63
+total trans: 5169.13
+Total Labor Payment: 5169.13 unit: 51.6913 conNum: 100
+total ir: 1228.28
 
 round 13 
-total trans: 4694.67
-Total Labor Payment: 4694.67 unit: 46.9467 conNum: 100
-total ir: 3872.5
+total trans: 5177.67
+Total Labor Payment: 5177.67 unit: 51.7767 conNum: 100
+total ir: 1296.02
 
 round 14 
-total trans: 4623.93
-Total Labor Payment: 4623.93 unit: 46.2393 conNum: 100
-total ir: 4187.1
+total trans: 5247.13
+Total Labor Payment: 5247.13 unit: 52.4713 conNum: 100
+total ir: 1343.1
 
 round 15 
-total trans: 4397
-Total Labor Payment: 4397 unit: 43.97 conNum: 100
-total ir: 4479.81
+total trans: 5128
+Total Labor Payment: 5128 unit: 51.28 conNum: 100
+total ir: 1426.65
 
 round 16 
-total trans: 3356.07
-Total Labor Payment: 3356.07 unit: 33.5607 conNum: 100
-total ir: 4737.67
+total trans: 5001.73
+Total Labor Payment: 5001.73 unit: 50.0173 conNum: 100
+total ir: 1443.13
 
 round 17 
-total trans: 2068
-Total Labor Payment: 2068 unit: 20.68 conNum: 100
-total ir: 4973.34
+total trans: 4805
+Total Labor Payment: 4805 unit: 48.05 conNum: 100
+total ir: 1480.57
 
 round 18 
-total trans: 72
-Total Labor Payment: 72 unit: 0.72 conNum: 100
-total ir: 5153.2
+total trans: 4847.73
+Total Labor Payment: 4847.73 unit: 48.4773 conNum: 100
+total ir: 1526.14
 
 round 19 
-total trans: 0
-Total Labor Payment: 4.66294e-15 unit: 4.66294e-17 conNum: 100
-total ir: 5278.91
+total trans: 4581
+Total Labor Payment: 4581 unit: 45.81 conNum: 100
+total ir: 1576.89
 
 round 20 
-total trans: 0
-Total Labor Payment: -1.12536e-29 unit: -1.12536e-31 conNum: 100
-total ir: 5351.3
+total trans: 4694.73
+Total Labor Payment: 4694.73 unit: 46.9473 conNum: 100
+total ir: 1632.31
 
 round 21 
-total trans: 0
-Total Labor Payment: -4.94834e-45 unit: -4.94834e-47 conNum: 100
-total ir: 5436.94
+total trans: 4170.53
+Total Labor Payment: 4170.53 unit: 41.7053 conNum: 100
+in suff flow con node 97 to 4
+total ir: 1676.19
 
 round 22 
-total trans: 0
-Total Labor Payment: -6.37859e-60 unit: -6.37859e-62 conNum: 100
-in suff flow con node 29 to 4
-in suff flow con node 31 to 4
-in suff flow con node 37 to 4
-in suff flow con node 43 to 4
-in suff flow con node 54 to 4
-in suff flow con node 56 to 4
-in suff flow con node 67 to 4
-in suff flow con node 72 to 4
-in suff flow con node 73 to 4
-in suff flow con node 85 to 4
-in suff flow con node 87 to 4
-in suff flow con node 91 to 4
+total trans: 3791.2
+Total Labor Payment: 3791.2 unit: 37.912 conNum: 100
 in suff flow con node 97 to 4
-in suff flow con node 101 to 4
-total ir: 5696.74
+total ir: 1734.56
 
 round 23 
-total trans: 0
-Total Labor Payment: -9.5516e-75 unit: -9.5516e-77 conNum: 100
-in suff flow con node 29 to 4
-in suff flow con node 31 to 4
-in suff flow con node 37 to 4
-in suff flow con node 43 to 4
-in suff flow con node 54 to 4
-in suff flow con node 56 to 4
-in suff flow con node 67 to 4
-in suff flow con node 72 to 4
-in suff flow con node 73 to 4
-in suff flow con node 85 to 4
-in suff flow con node 87 to 4
-in suff flow con node 91 to 4
+total trans: 4030.6
+Total Labor Payment: 4030.6 unit: 40.306 conNum: 100
 in suff flow con node 97 to 4
-in suff flow con node 101 to 4
-total ir: 5986.46
+total ir: 1782.12
 
 round 24 
-total trans: 0
-Total Labor Payment: -2.40852e-89 unit: -2.40852e-91 conNum: 100
-in suff flow con node 29 to 4
-in suff flow con node 31 to 4
-in suff flow con node 37 to 4
-in suff flow con node 43 to 4
-in suff flow con node 54 to 4
-in suff flow con node 56 to 4
-in suff flow con node 67 to 4
-in suff flow con node 72 to 4
-in suff flow con node 73 to 4
-in suff flow con node 85 to 4
-in suff flow con node 87 to 4
-in suff flow con node 91 to 4
-in suff flow con node 97 to 4
-in suff flow con node 101 to 4
-total ir: 6281.74
+total trans: 3436
+Total Labor Payment: 3436 unit: 34.36 conNum: 100
+total ir: 1802.61
 
 round 25 
-total trans: 0
-Total Labor Payment: 4.2784e-104 unit: 4.2784e-106 conNum: 100
-in suff flow con node 29 to 4
-in suff flow con node 31 to 4
-in suff flow con node 37 to 4
-in suff flow con node 43 to 4
-in suff flow con node 54 to 4
-in suff flow con node 56 to 4
-in suff flow con node 67 to 4
-in suff flow con node 72 to 4
-in suff flow con node 73 to 4
-in suff flow con node 85 to 4
-in suff flow con node 87 to 4
-in suff flow con node 91 to 4
-in suff flow con node 97 to 4
-in suff flow con node 101 to 4
-total ir: 6622.24
+total trans: 2922.8
+Total Labor Payment: 2922.8 unit: 29.228 conNum: 100
+total ir: 1848.79
 
 round 26 
-total trans: 0
-Total Labor Payment: -7.59996e-119 unit: -7.59996e-121 conNum: 100
-in suff flow con node 29 to 4
-in suff flow con node 31 to 4
-in suff flow con node 37 to 4
-in suff flow con node 43 to 4
-in suff flow con node 54 to 4
-in suff flow con node 56 to 4
-in suff flow con node 67 to 4
-in suff flow con node 72 to 4
-in suff flow con node 73 to 4
-in suff flow con node 85 to 4
-in suff flow con node 87 to 4
-in suff flow con node 91 to 4
-in suff flow con node 97 to 4
-in suff flow con node 101 to 4
-in suff flow pro node 123 to 2
-in suff flow pro node 124 to 2
-in suff flow pro node 125 to 2
-in suff flow pro node 126 to 2
-in suff flow pro node 127 to 2
-in suff flow pro node 128 to 2
-in suff flow pro node 129 to 2
-in suff flow pro node 130 to 2
-in suff flow pro node 132 to 2
-in suff flow pro node 134 to 2
-in suff flow pro node 135 to 2
-in suff flow pro node 136 to 2
-in suff flow pro node 137 to 2
-in suff flow pro node 139 to 2
-in suff flow pro node 140 to 2
-in suff flow pro node 141 to 2
-in suff flow pro node 142 to 2
-in suff flow pro node 143 to 2
-in suff flow pro node 144 to 2
-in suff flow pro node 145 to 2
-in suff flow pro node 146 to 2
-in suff flow pro node 148 to 2
-in suff flow pro node 151 to 2
-node 4 is defaulting to node 2 at time 26
-execute default node 4
-node 6 is defaulting to node 4 at time 26
-execute default node 6
-node 7 is defaulting to node 4 at time 26
-execute default node 7
-node 8 is defaulting to node 4 at time 26
-execute default node 8
-node 9 is defaulting to node 4 at time 26
-execute default node 9
-node 10 is defaulting to node 4 at time 26
-execute default node 10
-node 11 is defaulting to node 8 at time 26
-execute default node 11
-in suff flow node 1 to 4
-in suff flow node 1 to 8
-in suff flow node 1 to 10
-total ir: 6706.3
+total trans: 1842.93
+Total Labor Payment: 1842.93 unit: 18.4293 conNum: 100
+total ir: 1874.23
 
 round 27 
-total trans: 558
-Total Labor Payment: 558 unit: 5.58 conNum: 100
-in suff flow pro node 124 to 2
-in suff flow pro node 126 to 2
-in suff flow pro node 127 to 2
-in suff flow pro node 128 to 2
-in suff flow pro node 132 to 2
-in suff flow pro node 134 to 2
-in suff flow pro node 135 to 2
-in suff flow pro node 136 to 2
-in suff flow pro node 137 to 2
-in suff flow pro node 139 to 2
-in suff flow pro node 140 to 2
-in suff flow pro node 141 to 2
-in suff flow pro node 142 to 2
-in suff flow pro node 143 to 2
-in suff flow pro node 144 to 2
-in suff flow pro node 145 to 2
-in suff flow pro node 146 to 2
-in suff flow pro node 151 to 2
-node 3 is defaulting to node 2 at time 27
-execute default node 3
-node 5 is defaulting to node 3 at time 27
-execute default node 5
-in suff flow node 1 to 3
-in suff flow node 1 to 5
-total ir: 4959.53
+total trans: 392
+Total Labor Payment: 392 unit: 3.92 conNum: 100
+total ir: 1902.45
 
 round 28 
-total trans: 823
-Total Labor Payment: 823 unit: 8.23 conNum: 100
-in suff flow pro node 151 to 2
-total ir: 3043.1
+total trans: 0
+Total Labor Payment: -5.59552e-14 unit: -5.59552e-16 conNum: 100
+total ir: 1930.8
 
 round 29 
-total trans: 391
-Total Labor Payment: 391 unit: 3.91 conNum: 100
-in suff flow pro node 122 to 2
-in suff flow pro node 123 to 2
-in suff flow pro node 124 to 2
-in suff flow pro node 125 to 2
-in suff flow pro node 126 to 2
-in suff flow pro node 127 to 2
-in suff flow pro node 128 to 2
-in suff flow pro node 129 to 2
-in suff flow pro node 130 to 2
-in suff flow pro node 131 to 2
-in suff flow pro node 132 to 2
-in suff flow pro node 134 to 2
-in suff flow pro node 135 to 2
-in suff flow pro node 136 to 2
-in suff flow pro node 137 to 2
-in suff flow pro node 138 to 2
-in suff flow pro node 139 to 2
-in suff flow pro node 140 to 2
-in suff flow pro node 141 to 2
-in suff flow pro node 142 to 2
-in suff flow pro node 143 to 2
-in suff flow pro node 144 to 2
-in suff flow pro node 145 to 2
-in suff flow pro node 146 to 2
-in suff flow pro node 148 to 2
-in suff flow pro node 151 to 2
-node 12 is defaulting to node 2 at time 29
-execute default node 12
-node 15 is defaulting to node 12 at time 29
-execute default node 15
-in suff flow node 1 to 12
-total ir: 3190.14
+total trans: 0
+Total Labor Payment: 9.72271e-29 unit: 9.72271e-31 conNum: 100
+total ir: 1961.06
+
+round 30 
+total trans: 0
+Total Labor Payment: -1.16308e-43 unit: -1.16308e-45 conNum: 100
+total ir: 1991.89
+
+round 31 
+total trans: 0
+Total Labor Payment: -1.89491e-58 unit: -1.89491e-60 conNum: 100
+total ir: 2022.78
+
+round 32 
+total trans: 0
+Total Labor Payment: -1.39284e-73 unit: -1.39284e-75 conNum: 100
+total ir: 2054.4
+
+round 33 
+total trans: 0
+Total Labor Payment: 2.42018e-88 unit: 2.42018e-90 conNum: 100
+total ir: 2088.27
+
+round 34 
+total trans: 0
+Total Labor Payment: -2.89514e-103 unit: -2.89514e-105 conNum: 100
+total ir: 2124.16
+
+round 35 
+total trans: 0
+Total Labor Payment: -4.71682e-118 unit: -4.71682e-120 conNum: 100
+total ir: 2162.12
+
+round 36 
+total trans: 0
+Total Labor Payment: -3.46707e-133 unit: -3.46707e-135 conNum: 100
+total ir: 2204.74
+
+round 37 
+total trans: 0
+Total Labor Payment: 6.02433e-148 unit: 6.02433e-150 conNum: 100
+total ir: 2253.91
+
+round 38 
+total trans: 0
+Total Labor Payment: -7.2066e-163 unit: -7.2066e-165 conNum: 100
+total ir: 2311.88
+
+round 39 
+total trans: 0
+Total Labor Payment: -1.17411e-177 unit: -1.17411e-179 conNum: 100
+node 4 is defaulting to node 6 at time 39
+execute default node 4
+node 6 is defaulting to node 4 at time 39
+execute default node 6
+node 7 is defaulting to node 6 at time 39
+execute default node 7
+node 9 is defaulting to node 4 at time 39
+execute default node 9
+node 10 is defaulting to node 4 at time 39
+execute default node 10
+in suff flow node 1 to 4
+in suff flow node 1 to 10
+total ir: 2240.82
 
 Round: 0 0
 Round: 1 0
@@ -340,7 +239,7 @@ Round: 22 0
 Round: 23 0
 Round: 24 0
 Round: 25 0
-Round: 26 7
-Round: 27 2
+Round: 26 0
+Round: 27 0
 Round: 28 0
-Round: 29 2
+Round: 29 0

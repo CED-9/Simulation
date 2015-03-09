@@ -1,0 +1,20 @@
+reset
+set xrange[-1:30]
+set yrange[0:8000]
+set pointsize 1.5
+# set xtics 100,100,1000 rotate by -45
+set xlabel "Round" offset 0,0.5
+set ylabel "Currency Flow" offset 1.5,0
+set nologscale y
+set nologscale x
+#set key under nobox
+#set key box
+set key top left spacing 1 height 1
+set size 1.0, 0.8
+#set pointsize 1.5
+set terminal postscript eps enh "Times-Roman" 18 color
+set output "Simulation.eps"
+plot "data_trans" using 1:2 title "transaction" with linespoints lt 3 pt 7 lw 3 ps 2,\
+	"data_int" using 1:2 title "interest pay" with linespoints lt 2 pt 8 lw 3 ps 2.5
+
+

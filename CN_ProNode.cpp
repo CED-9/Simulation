@@ -7,6 +7,8 @@
 #include<iostream>
 using namespace std;
 
+double ProNode::msrp;
+
 ProNode::ProNode(int id){ 
 	nodeID = id; 
 	nodeType = PRODUCER; 
@@ -71,13 +73,21 @@ Status ProNode::init(Graph* creditNet){
     return GOOD;
 }
 
-// update producer
-Status ProNode::update(Graph *creditNet){
-    //cout<<"unit price: "<<unit_price<<endl;
-    //cout<<"last_sale "<<last_sale<<endl;
-    this->unit_price = 1 + (this->last_sale)/100.0;
+// update global info
+void ProNode::updateGlobal(Graph* cn){
+	double sum = 0;
+	for (int i = 0; i < cn->proNum; ++i){
+		sum += cn->proAgent[i]->unit_price;
+	}
+	sum = sum/cn->proNum;
+	ProNode::msrp = sum;
+}
+
+// update certain producer
+Status ProNode::update(Graph* creditNet){
+    this->unit_price = this->msrp - 0.5 + (rand()%100) / 100.0;
     this->last_sale = 0;
-    this->productivity = 80;
+    this->productivity = unit_price * 200;  // marginal cost = 0.01 pr
     return GOOD;
 }
 

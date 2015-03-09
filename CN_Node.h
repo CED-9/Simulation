@@ -1,13 +1,16 @@
 #ifndef CN_Node
 #define CN_Node
 
-#include"Error.h"
-#include<vector>
-#include<list>
+#include "Error.h"
+#include <vector>
+#include <list>
+#include <fstream>
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
+extern ofstream fout_trans;
+extern ofstream fout_int;
 
 enum OpMode{
 	ADD, SUB, EQ

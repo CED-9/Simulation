@@ -13,16 +13,6 @@ extern int defaultList[100];  // 20 rounds
 //#include"CN_DivNode.h"
 #include<list>
 
-struct Transaction{
-	Node* cnode;
-	Node* pnode;
-	int transValue;
-};
-
-/////////////////////////////////////////////////////////////////////////
-///* G */
-/////////////////////////////////////////////////////////////////////////
-
 class Graph{
 public:
 	vector<ConNode*> conAgent;

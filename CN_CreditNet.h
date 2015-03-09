@@ -8,8 +8,7 @@ class CreditNet : public Graph{
 private:
 
 public:
-    CreditNet(int finNumT, int conNumT, int proNumT)
-        : Graph(finNumT, conNumT, proNumT){}
+    CreditNet(int finNumT, int conNumT, int proNumT);
     void init();
 
     // Main Loop

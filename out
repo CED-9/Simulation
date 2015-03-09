@@ -1,2402 +1,318 @@
-g++ -g -c CN_Node.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++11
-g++ -g -c CN_Graph.cpp CN_BanNode.cpp CN_CreditNet.cpp -std=c++11
-g++ -o test test_creditnet.cpp *.o
-./test
-finNum 10 conNum 20 proNum 10
-/////////////////////////////////////////////////
-init 
-
-round: 0
-updated
-total trans: 800
-Con Node 12 bought: 80
-Con Node 13 bought: 80
-Con Node 14 bought: 80
-Con Node 15 bought: 80
-Con Node 16 bought: 80
-Con Node 17 bought: 80
-Con Node 18 bought: 80
-Con Node 19 bought: 80
-Con Node 20 bought: 80
-Con Node 21 bought: 80
-Con Node 22 bought: 0
-Con Node 23 bought: 0
-Con Node 24 bought: 0
-Con Node 25 bought: 0
-Con Node 26 bought: 0
-Con Node 27 bought: 0
-Con Node 28 bought: 0
-Con Node 29 bought: 0
-Con Node 30 bought: 0
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1
-Pro Node 33 listed price: 1
-Pro Node 34 listed price: 1
-Pro Node 35 listed price: 1
-Pro Node 36 listed price: 1
-Pro Node 37 listed price: 1
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 800 unit: 40 conNum: 20
-total ir: 200.9
-Con Node 12 banlance: -44.7
-Con Node 13 banlance: -44.7
-Con Node 14 banlance: -44.7
-Con Node 15 banlance: -44.7
-Con Node 16 banlance: -44.7
-Con Node 17 banlance: -44.7
-Con Node 18 banlance: -44.7
-Con Node 19 banlance: -44.7
-Con Node 20 banlance: -44.7
-Con Node 21 banlance: -44.7
-Con Node 22 banlance: 41.2
-Con Node 23 banlance: 41.2
-Con Node 24 banlance: 41.2
-Con Node 25 banlance: 41.2
-Con Node 26 banlance: 41.2
-Con Node 27 banlance: 41.2
-Con Node 28 banlance: 41.2
-Con Node 29 banlance: 41.2
-Con Node 30 banlance: 41.2
-Con Node 31 banlance: 41.2
-
-
-round: 1
-updated
-total trans: 300
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 0
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 30
-Con Node 23 bought: 30
-Con Node 24 bought: 30
-Con Node 25 bought: 30
-Con Node 26 bought: 30
-Con Node 27 bought: 30
-Con Node 28 bought: 30
-Con Node 29 bought: 30
-Con Node 30 bought: 30
-Con Node 31 bought: 30
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.8
-Pro Node 37 listed price: 1.8
-Pro Node 38 listed price: 1.8
-Pro Node 39 listed price: 1.8
-Pro Node 40 listed price: 1.8
-Pro Node 41 listed price: 1.8
-
-Total Labor Payment: 300 unit: 15 conNum: 20
-total ir: 223.765
-Con Node 12 banlance: -34.091
-Con Node 13 banlance: -34.091
-Con Node 14 banlance: -34.091
-Con Node 15 banlance: -34.091
-Con Node 16 banlance: -34.091
-Con Node 17 banlance: -34.091
-Con Node 18 banlance: -34.091
-Con Node 19 banlance: -34.091
-Con Node 20 banlance: -34.091
-Con Node 21 banlance: -34.091
-Con Node 22 banlance: 26.986
-Con Node 23 banlance: 26.986
-Con Node 24 banlance: 26.986
-Con Node 25 banlance: 26.986
-Con Node 26 banlance: 26.986
-Con Node 27 banlance: 26.896
-Con Node 28 banlance: 26.486
-Con Node 29 banlance: 26.486
-Con Node 30 banlance: 26.486
-Con Node 31 banlance: 26.486
-
-
-round: 2
-updated
-total trans: 406.486
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 0
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 39
-Con Node 23 bought: 39
-Con Node 24 bought: 39
-Con Node 25 bought: 34
-Con Node 26 bought: 30
-Con Node 27 bought: 100
-Con Node 28 bought: 30
-Con Node 29 bought: 30
-Con Node 30 bought: 26.486
-Con Node 31 bought: 39
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.6
-Pro Node 36 listed price: 1
-Pro Node 37 listed price: 1
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 406.486 unit: 20.3243 conNum: 20
-total ir: 252.196
-Con Node 12 banlance: -17.6797
-Con Node 13 banlance: -17.6797
-Con Node 14 banlance: -17.6797
-Con Node 15 banlance: -17.6797
-Con Node 16 banlance: -17.6797
-Con Node 17 banlance: -17.6797
-Con Node 18 banlance: -17.6797
-Con Node 19 banlance: -17.6797
-Con Node 20 banlance: -17.1797
-Con Node 21 banlance: -17.1797
-Con Node 22 banlance: 8.05961
-Con Node 23 banlance: 8.05961
-Con Node 24 banlance: 8.05961
-Con Node 25 banlance: 13.2096
-Con Node 26 banlance: 17.3296
-Con Node 27 banlance: -57.5183
-Con Node 28 banlance: 16.8146
-Con Node 29 banlance: 16.8146
-Con Node 30 banlance: 20.434
-Con Node 31 banlance: 7.54461
-
-
-round: 3
-updated
-total trans: 430
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 0
-Con Node 19 bought: 0
-Con Node 20 bought: 80
-Con Node 21 bought: 80
-Con Node 22 bought: 30
-Con Node 23 bought: 30
-Con Node 24 bought: 30
-Con Node 25 bought: 30
-Con Node 26 bought: 30
-Con Node 27 bought: 0
-Con Node 28 bought: 30
-Con Node 29 bought: 30
-Con Node 30 bought: 30
-Con Node 31 bought: 30
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.8
-Pro Node 37 listed price: 1.06486
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 430 unit: 21.5 conNum: 20
-total ir: 267.476
-Con Node 12 banlance: 0.434908
-Con Node 13 banlance: 0.434908
-Con Node 14 banlance: 0.434908
-Con Node 15 banlance: 0.434908
-Con Node 16 banlance: 0.434908
-Con Node 17 banlance: 0.434908
-Con Node 18 banlance: 0.434908
-Con Node 19 banlance: 0.934908
-Con Node 20 banlance: -82.3091
-Con Node 21 banlance: -82.3091
-Con Node 22 banlance: -1.05062
-Con Node 23 banlance: -1.05062
-Con Node 24 banlance: -1.05062
-Con Node 25 banlance: 4.3509
-Con Node 26 banlance: 8.5945
-Con Node 27 banlance: -40.2665
-Con Node 28 banlance: 8.06405
-Con Node 29 banlance: 8.06405
-Con Node 30 banlance: 11.792
-Con Node 31 banlance: -1.60682
-
-
-round: 4
-updated
-total trans: 673.044
-Con Node 12 bought: 21.4349
-Con Node 13 bought: 80.4349
-Con Node 14 bought: 80.4349
-Con Node 15 bought: 80.4349
-Con Node 16 bought: 80.4349
-Con Node 17 bought: 0.434908
-Con Node 18 bought: 0.434908
-Con Node 19 bought: 30
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 30
-Con Node 23 bought: 30
-Con Node 24 bought: 30
-Con Node 25 bought: 30
-Con Node 26 bought: 30
-Con Node 27 bought: 0
-Con Node 28 bought: 30
-Con Node 29 bought: 30
-Con Node 30 bought: 30
-Con Node 31 bought: 59
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.3
-Pro Node 36 listed price: 1
-Pro Node 37 listed price: 1.8
-Pro Node 38 listed price: 1.8
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 673.044 unit: 33.6522 conNum: 20
-in suff flow con node 29 to 2
-in suff flow con node 30 to 2
-in suff flow con node 31 to 2
-in suff flow pro node 32 to 2
-in suff flow pro node 33 to 2
-in suff flow pro node 34 to 2
-in suff flow pro node 35 to 2
-in suff flow pro node 36 to 2
-in suff flow pro node 37 to 2
-total ir: 277.851
-Con Node 12 banlance: 9.92158
-Con Node 13 banlance: -51.2382
-Con Node 14 banlance: -51.2382
-Con Node 15 banlance: -51.2382
-Con Node 16 banlance: -51.2382
-Con Node 17 banlance: 31.6461
-Con Node 18 banlance: 31.6461
-Con Node 19 banlance: 1.72474
-Con Node 20 banlance: -54.0043
-Con Node 21 banlance: -54.0043
-Con Node 22 banlance: 1.62711
-Con Node 23 banlance: 1.71758
-Con Node 24 banlance: 1.62711
-Con Node 25 banlance: 7.46075
-Con Node 26 banlance: 12.0438
-Con Node 27 banlance: -9.99369
-Con Node 28 banlance: 11.471
-Con Node 29 banlance: 12.271
-Con Node 30 banlance: 16.2076
-Con Node 31 banlance: -29.4936
-
-
-round: 5
-updated
-total trans: 520
-Con Node 12 bought: 30
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 31.6461
-Con Node 18 bought: 30.3539
-Con Node 19 bought: 30
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 30
-Con Node 23 bought: 30
-Con Node 24 bought: 30
-Con Node 25 bought: 56
-Con Node 26 bought: 30
-Con Node 27 bought: 80
-Con Node 28 bought: 56
-Con Node 29 bought: 56
-Con Node 30 bought: 30
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.8
-Pro Node 37 listed price: 1.33044
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1.8
-Pro Node 40 listed price: 1.8
-Pro Node 41 listed price: 1.8
-
-Total Labor Payment: 520 unit: 26 conNum: 20
-total ir: 299.826
-Con Node 12 banlance: 2.9802
-Con Node 13 banlance: -29.4954
-Con Node 14 banlance: -29.4954
-Con Node 15 banlance: -29.4954
-Con Node 16 banlance: -29.4954
-Con Node 17 banlance: 23.7631
-Con Node 18 banlance: 25.0942
-Con Node 19 banlance: -5.34352
-Con Node 20 banlance: -32.7631
-Con Node 21 banlance: -32.7631
-Con Node 22 banlance: -3.36272
-Con Node 23 banlance: -3.40763
-Con Node 24 banlance: -3.50081
-Con Node 25 banlance: -25.1424
-Con Node 26 banlance: 7.70926
-Con Node 27 banlance: -69.9132
-Con Node 28 banlance: -20.8114
-Con Node 29 banlance: -19.9474
-Con Node 30 banlance: 12.0738
-Con Node 31 banlance: -6.13116
-
-
-round: 6
-updated
-total trans: 563
-Con Node 12 bought: 30
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 30
-Con Node 18 bought: 30
-Con Node 19 bought: 80
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 96.6373
-Con Node 23 bought: 43.3627
-Con Node 24 bought: 51
-Con Node 25 bought: 30
-Con Node 26 bought: 51
-Con Node 27 bought: 0
-Con Node 28 bought: 20
-Con Node 29 bought: 30
-Con Node 30 bought: 51
-Con Node 31 bought: 20
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.4
-Pro Node 37 listed price: 1.8
-Pro Node 38 listed price: 1.8
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 563 unit: 28.15 conNum: 20
-total ir: 339.597
-Con Node 12 banlance: -1.83589
-Con Node 13 banlance: -4.88572
-Con Node 14 banlance: -4.88572
-Con Node 15 banlance: -4.88572
-Con Node 16 banlance: -4.88572
-Con Node 17 banlance: 19.5523
-Con Node 18 banlance: 20.9232
-Con Node 19 banlance: -62.1765
-Con Node 20 banlance: -8.70373
-Con Node 21 banlance: -8.70373
-Con Node 22 banlance: -78.5055
-Con Node 23 banlance: -21.0175
-Con Node 24 banlance: -29.3664
-Con Node 25 banlance: -30.0593
-Con Node 26 banlance: -17.2595
-Con Node 27 banlance: -47.0161
-Con Node 28 banlance: -14.7858
-Con Node 29 banlance: -24.4487
-Con Node 30 banlance: -12.5458
-Con Node 31 banlance: 0.0440157
-
-
-round: 7
-updated
-total trans: 500
-Con Node 12 bought: 30
-Con Node 13 bought: 80
-Con Node 14 bought: 80
-Con Node 15 bought: 80
-Con Node 16 bought: 0
-Con Node 17 bought: 30
-Con Node 18 bought: 30
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 0
-Con Node 23 bought: 30
-Con Node 24 bought: 0
-Con Node 25 bought: 0
-Con Node 26 bought: 30
-Con Node 27 bought: 0
-Con Node 28 bought: 20
-Con Node 29 bought: 30
-Con Node 30 bought: 30
-Con Node 31 bought: 30
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.78094
-Pro Node 37 listed price: 1.04906
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1.8
-Pro Node 40 listed price: 1.8
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 500 unit: 25 conNum: 20
-total ir: 352.482
-Con Node 12 banlance: -10.041
-Con Node 13 banlance: -65.4266
-Con Node 14 banlance: -65.4266
-Con Node 15 banlance: -65.4266
-Con Node 16 banlance: 17.2177
-Con Node 17 banlance: 11.9691
-Con Node 18 banlance: 13.3812
-Con Node 19 banlance: -41.5803
-Con Node 20 banlance: 12.7968
-Con Node 21 banlance: 12.7968
-Con Node 22 banlance: -59.1107
-Con Node 23 banlance: -28.3489
-Con Node 24 banlance: -6.74041
-Con Node 25 banlance: -7.48874
-Con Node 26 banlance: -24.7903
-Con Node 27 banlance: -26.6766
-Con Node 28 banlance: -11.8435
-Con Node 29 banlance: -32.5546
-Con Node 30 banlance: -19.6994
-Con Node 31 banlance: -7.14288
-
-
-round: 8
-updated
-total trans: 540
-Con Node 12 bought: 80
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 30
-Con Node 17 bought: 30
-Con Node 18 bought: 20
-Con Node 19 bought: 0
-Con Node 20 bought: 92.7968
-Con Node 21 bought: 92.7968
-Con Node 22 bought: 0
-Con Node 23 bought: 30
-Con Node 24 bought: 24.4065
-Con Node 25 bought: 30
-Con Node 26 bought: 30
-Con Node 27 bought: 0
-Con Node 28 bought: 20
-Con Node 29 bought: 0
-Con Node 30 bought: 30
-Con Node 31 bought: 30
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.2
-Pro Node 36 listed price: 1
-Pro Node 37 listed price: 1.8
-Pro Node 38 listed price: 1.8
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1.8
-
-Total Labor Payment: 540 unit: 27 conNum: 20
-total ir: 374.129
-Con Node 12 banlance: -68.9342
-Con Node 13 banlance: -43.015
-Con Node 14 banlance: -43.3432
-Con Node 15 banlance: -43.3432
-Con Node 16 banlance: 11.1442
-Con Node 17 banlance: 6.2169
-Con Node 18 banlance: 17.9927
-Con Node 19 banlance: -18.3294
-Con Node 20 banlance: -59.09
-Con Node 21 banlance: -59.09
-Con Node 22 banlance: -37.074
-Con Node 23 banlance: -34.7068
-Con Node 24 banlance: -6.53377
-Con Node 25 banlance: -13.1033
-Con Node 26 banlance: -30.8635
-Con Node 27 banlance: -3.66686
-Con Node 28 banlance: -6.77405
-Con Node 29 banlance: -7.96141
-Con Node 30 banlance: -25.3654
-Con Node 31 banlance: -12.7693
-
-
-round: 9
-updated
-total trans: 330
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 30
-Con Node 17 bought: 30
-Con Node 18 bought: 30
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 0
-Con Node 23 bought: 0
-Con Node 24 bought: 30
-Con Node 25 bought: 30
-Con Node 26 bought: 0
-Con Node 27 bought: 20
-Con Node 28 bought: 30
-Con Node 29 bought: 30
-Con Node 30 bought: 20
-Con Node 31 bought: 80
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1
-Pro Node 36 listed price: 1.8
-Pro Node 37 listed price: 1.6
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1.8
-Pro Node 40 listed price: 1.8
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 330 unit: 16.5 conNum: 20
-total ir: 392.467
-Con Node 12 banlance: -57.5095
-Con Node 13 banlance: -30.5953
-Con Node 14 banlance: -31.4334
-Con Node 15 banlance: -31.4334
-Con Node 16 banlance: -5.92644
-Con Node 17 banlance: -10.5016
-Con Node 18 banlance: 1.62744
-Con Node 19 banlance: -5.22084
-Con Node 20 banlance: -48.3677
-Con Node 21 banlance: -48.3677
-Con Node 22 banlance: -25.1912
-Con Node 23 banlance: -21.2038
-Con Node 24 banlance: -22.9183
-Con Node 25 banlance: -29.7253
-Con Node 26 banlance: -17.0531
-Con Node 27 banlance: -11.3819
-Con Node 28 banlance: -22.2116
-Con Node 29 banlance: -23.8647
-Con Node 30 banlance: -31.4996
-Con Node 31 banlance: -82.6958
-
-
-round: 10
-updated
-total trans: 505.878
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 80
-Con Node 17 bought: 80
-Con Node 18 bought: 30
-Con Node 19 bought: 80
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 0
-Con Node 23 bought: 78.7962
-Con Node 24 bought: 77.0817
-Con Node 25 bought: 0
-Con Node 26 bought: 30
-Con Node 27 bought: 0
-Con Node 28 bought: 20
-Con Node 29 bought: 30
-Con Node 30 bought: 0
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.1
-Pro Node 37 listed price: 1
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 505.878 unit: 25.2939 conNum: 20
-total ir: 438.162
-Con Node 12 banlance: -36.6844
-Con Node 13 banlance: -8.76822
-Con Node 14 banlance: -10.1315
-Con Node 15 banlance: -10.1315
-Con Node 16 banlance: -66.2478
-Con Node 17 banlance: -71.189
-Con Node 18 banlance: -6.17103
-Con Node 19 banlance: -65.4858
-Con Node 20 banlance: -27.766
-Con Node 21 banlance: -28.266
-Con Node 22 banlance: -4.06377
-Con Node 23 banlance: -81.4473
-Con Node 24 banlance: -81.4473
-Con Node 25 banlance: -6.91416
-Con Node 26 banlance: -24.6913
-Con Node 27 banlance: 10.345
-Con Node 28 banlance: -19.0358
-Con Node 29 banlance: -31.2081
-Con Node 30 banlance: -8.30163
-Con Node 31 banlance: -63.2735
-
-
-round: 11
-updated
-total trans: 340.345
-Con Node 12 bought: 0
-Con Node 13 bought: 80
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 80
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 80
-Con Node 23 bought: 0
-Con Node 24 bought: 0
-Con Node 25 bought: 30
-Con Node 26 bought: 0
-Con Node 27 bought: 10.345
-Con Node 28 bought: 30
-Con Node 29 bought: 0
-Con Node 30 bought: 30
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.3
-Pro Node 34 listed price: 1
-Pro Node 35 listed price: 1
-Pro Node 36 listed price: 1.8
-Pro Node 37 listed price: 1.8
-Pro Node 38 listed price: 1.8
-Pro Node 39 listed price: 1.8
-Pro Node 40 listed price: 1.75878
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 340.345 unit: 17.0172 conNum: 20
-total ir: 454.991
-Con Node 12 banlance: -23.7598
-Con Node 13 banlance: -77.8419
-Con Node 14 banlance: 3.26001
-Con Node 15 banlance: 3.30924
-Con Node 16 banlance: -54.0275
-Con Node 17 banlance: -59.324
-Con Node 18 banlance: -75.0369
-Con Node 19 banlance: -53.3152
-Con Node 20 banlance: -15.0712
-Con Node 21 banlance: -16.0862
-Con Node 22 banlance: -73.5579
-Con Node 23 banlance: -70.8629
-Con Node 24 banlance: -70.8629
-Con Node 25 banlance: -22.8716
-Con Node 26 banlance: -10.206
-Con Node 27 banlance: 13.8786
-Con Node 28 banlance: -34.9309
-Con Node 29 banlance: -16.4192
-Con Node 30 banlance: -23.4229
-Con Node 31 banlance: -51.4123
-
-
-round: 12
-updated
-total trans: 350
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 80
-Con Node 15 bought: 86.1809
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 0
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 0
-Con Node 23 bought: 0
-Con Node 24 bought: 0
-Con Node 25 bought: 77.1284
-Con Node 26 bought: 30
-Con Node 27 bought: 30
-Con Node 28 bought: 0
-Con Node 29 bought: 16.6908
-Con Node 30 bought: 30
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.10345
-Pro Node 34 listed price: 1.8
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1.1
-Pro Node 37 listed price: 1
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1.8
-
-Total Labor Payment: 350 unit: 17.5 conNum: 20
-total ir: 462.539
-Con Node 12 banlance: -9.45038
-Con Node 13 banlance: -66.1257
-Con Node 14 banlance: -64.8761
-Con Node 15 banlance: -71.1785
-Con Node 16 banlance: -40.969
-Con Node 17 banlance: -46.608
-Con Node 18 banlance: -62.5963
-Con Node 19 banlance: -40.3136
-Con Node 20 banlance: -1.49837
-Con Node 21 banlance: -2.54382
-Con Node 22 banlance: -61.7397
-Con Node 23 banlance: -59.0262
-Con Node 24 banlance: -59.4638
-Con Node 25 banlance: -89.475
-Con Node 26 banlance: -25.713
-Con Node 27 banlance: -2.24108
-Con Node 28 banlance: -19.9418
-Con Node 29 banlance: -17.9051
-Con Node 30 banlance: -39.1717
-Con Node 31 banlance: -38.9995
-
-
-round: 13
-updated
-total trans: 380
-Con Node 12 bought: 80
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 0
-Con Node 19 bought: 0
-Con Node 20 bought: 80
-Con Node 21 bought: 80
-Con Node 22 bought: 0
-Con Node 23 bought: 0
-Con Node 24 bought: 0
-Con Node 25 bought: 0
-Con Node 26 bought: 0
-Con Node 27 bought: 80
-Con Node 28 bought: 30
-Con Node 29 bought: 30
-Con Node 30 bought: 0
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1.8
-Pro Node 33 listed price: 1.8
-Pro Node 34 listed price: 1.3
-Pro Node 35 listed price: 1
-Pro Node 36 listed price: 1.8
-Pro Node 37 listed price: 1.8
-Pro Node 38 listed price: 1
-Pro Node 39 listed price: 1
-Pro Node 40 listed price: 1
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 380 unit: 19 conNum: 20
-total ir: 474.668
-Con Node 12 banlance: -76.5364
-Con Node 13 banlance: -52.5394
-Con Node 14 banlance: -51.1401
-Con Node 15 banlance: -57.333
-Con Node 16 banlance: -25.6291
-Con Node 17 banlance: -31.5956
-Con Node 18 banlance: -48.1802
-Con Node 19 banlance: -24.9637
-Con Node 20 banlance: -68.8733
-Con Node 21 banlance: -69.9501
-Con Node 22 banlance: -48.0218
-Con Node 23 banlance: -45.6144
-Con Node 24 banlance: -46.1777
-Con Node 25 banlance: -77.0893
-Con Node 26 banlance: -9.26634
-Con Node 27 banlance: -68.8123
-Con Node 28 banlance: -33.87
-Con Node 29 banlance: -31.846
-Con Node 30 banlance: -22.9617
-Con Node 31 banlance: -24.7878
-
-
-round: 14
-updated
-total trans: 157.038
-Con Node 12 bought: 0
-Con Node 13 bought: 0
-Con Node 14 bought: 0
-Con Node 15 bought: 0
-Con Node 16 bought: 0
-Con Node 17 bought: 0
-Con Node 18 bought: 0
-Con Node 19 bought: 0
-Con Node 20 bought: 0
-Con Node 21 bought: 0
-Con Node 22 bought: 0
-Con Node 23 bought: 0
-Con Node 24 bought: 0
-Con Node 25 bought: 0
-Con Node 26 bought: 80
-Con Node 27 bought: 0
-Con Node 28 bought: 0
-Con Node 29 bought: 0
-Con Node 30 bought: 77.0383
-Con Node 31 bought: 0
-Pro Node 32 listed price: 1
-Pro Node 33 listed price: 1.6
-Pro Node 34 listed price: 1
-Pro Node 35 listed price: 1.8
-Pro Node 36 listed price: 1
-Pro Node 37 listed price: 1
-Pro Node 38 listed price: 1.8
-Pro Node 39 listed price: 1.8
-Pro Node 40 listed price: 1.8
-Pro Node 41 listed price: 1
-
-Total Labor Payment: 157.038 unit: 7.85191 conNum: 20
-total ir: 500.473
-Con Node 12 banlance: -74.2848
-Con Node 13 banlance: -49.5281
-Con Node 14 banlance: -48.4244
-Con Node 15 banlance: -54.3842
-Con Node 16 banlance: -21.2137
-Con Node 17 banlance: -27.4901
-Con Node 18 banlance: -44.9257
-Con Node 19 banlance: -20.6767
-Con Node 20 banlance: -67.352
-Con Node 21 banlance: -68.4612
-Con Node 22 banlance: -45.5871
-Con Node 23 banlance: -43.0028
-Con Node 24 banlance: -43.583
-Con Node 25 banlance: -75.4219
-Con Node 26 banlance: -87.9276
-Con Node 27 banlance: -66.2892
-Con Node 28 banlance: -28.4061
-Con Node 29 banlance: -26.9536
-Con Node 30 banlance: -99.5199
-Con Node 31 banlance: -21.6475
-
-BanNode 0
-
-LabNode 1
-in: NodeType FIN , ID 2: 500 / 500 IR: 0.03
-in: NodeType FIN , ID 3: 500 / 500 IR: 0.03
-in: NodeType FIN , ID 4: 409.378 / 500 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 500 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 500 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 500 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 500 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 500 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 500 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 500 IR: 0.03
-out: NodeType FIN , ID 2: 500 / 500 IR: 0.03
-out: NodeType FIN , ID 3: 500 / 500 IR: 0.03
-out: NodeType FIN , ID 4: 363.659 / 500 IR: 0.03
-out: NodeType FIN , ID 5: 45.7193 / 500 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 500 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 500 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 500 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 500 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 500 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 500 IR: 0.03
-
-ConNode 12
-in: NodeType FIN , ID 2: 5.6 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 0.7884 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0.0702144 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 2.17384 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 13
-in: NodeType FIN , ID 2: 5.6 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 26.0719 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 14
-in: NodeType FIN , ID 2: 4.8 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 9.04928 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 9.04313 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 15.9792 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 18.4888 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 15
-in: NodeType FIN , ID 2: 4.8 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 9.04313 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 15.8536 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 3.60537 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 16
-in: NodeType FIN , ID 2: 4 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 8.70788 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 16.0923 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 25.4019 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 17
-in: NodeType FIN , ID 2: 4.8 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0.737001 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 12.645 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 25.4019 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 18
-in: NodeType FIN , ID 2: 5.06623 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 9.70841 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 8.39561 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 18.6325 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 9.61205 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 19
-in: NodeType FIN , ID 2: 4.68172 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 1.23227 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 16.9927 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 28.2446 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 20
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 7.2 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 29.848 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 21
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 7.2 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 28.7388 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 22
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 1.03807 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 9.94317 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 45.3941 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 23
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 6.4 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 2.31993 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 45.7172 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 24
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 6.4 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 2.31993 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 45.1369 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 25
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 6.4 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 2.31993 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 13.2981 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 26
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 7.92759 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 27
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 5.6 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 5.09349 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 4.21734 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 28
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 2.4 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 2.31993 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 6.31387 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 29
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 0.142349 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 8.23415 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 21.4229 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 30
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 9.51993 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 10 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ConNode 31
-in: NodeType FIN , ID 2: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 3: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 4: 6.4 / 10 IR: 0.08
-in: NodeType FIN , ID 5: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 6: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 7: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 8: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 9: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 10: 10 / 10 IR: 0.08
-in: NodeType FIN , ID 11: 4.39452 / 10 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 69.1471 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-100110
-ProNode 32
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 98.324 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 14.418 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 73.0442 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0.26301 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0.000166713 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0.0720934 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0.30014 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0.30014 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 9.54434 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-unit price: 1
-
-ProNode 33
-in: NodeType FIN , ID 2: 94.8034 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 14.0515 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 44.9169 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 21.2523 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0.189711 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0.220113 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0.0288651 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0.0288651 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-unit price: 1.6
-
-ProNode 34
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 61.9704 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 3.4598 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 16.0354 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 18.6047 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 43.2844 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 23.0072 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 23.0072 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 12.6875 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 10.3 / 100 IR: 0.03
-unit price: 1
-
-ProNode 35
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 13.0713 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 29.422 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 37.1463 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 29.422 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 27.2955 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 27.5202 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 18.8861 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 3.30668 / 100 IR: 0.03
-unit price: 1.8
-
-ProNode 36
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 69.1949 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 47.6064 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 38.1478 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 41.1923 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 31.0653 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 30.0964 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 10.9777 / 100 IR: 0.03
-unit price: 1
-
-ProNode 37
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 24 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 33.8502 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 46.7015 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 32.0394 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 10.818 / 100 IR: 0.03
-unit price: 1
-
-ProNode 38
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 59.1539 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 23.7639 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 33.8774 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 10.2365 / 100 IR: 0.03
-unit price: 1.8
-
-ProNode 39
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 49.8769 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 15.8833 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 27.1724 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 27.1724 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 18.5648 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 11.5927 / 100 IR: 0.03
-unit price: 1.8
-
-ProNode 40
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 63.7144 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 37.4612 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 33.1216 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 40.2201 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 40.2201 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 24.6405 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 24.6405 / 100 IR: 0.03
-unit price: 1.8
-
-ProNode 41
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.08
-in: NodeType FIN , ID 4: 7.03338 / 100 IR: 0.08
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.08
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 15.5797 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 6.18909 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-unit price: 1
-
-FinNode 2
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 15.9792 / 100 IR: 0.03
-in: NodeType CON , ID 15: 15.8536 / 100 IR: 0.03
-in: NodeType CON , ID 16: 16.0923 / 100 IR: 0.03
-in: NodeType CON , ID 17: 12.645 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 16.9927 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 14.418 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 14.0515 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 3.4598 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 25.3817 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 31.479 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 11.0417 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 500 / 500 IR: 0.03
-out: NodeType CON , ID 12: 5.6 / 10 IR: 0.08
-out: NodeType CON , ID 13: 5.6 / 10 IR: 0.08
-out: NodeType CON , ID 14: 4.8 / 10 IR: 0.08
-out: NodeType CON , ID 15: 4.8 / 10 IR: 0.08
-out: NodeType CON , ID 16: 4 / 10 IR: 0.08
-out: NodeType CON , ID 17: 4.8 / 10 IR: 0.08
-out: NodeType CON , ID 18: 5.06623 / 10 IR: 0.08
-out: NodeType CON , ID 19: 4.68172 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 10 / 10 IR: 0.08
-out: NodeType CON , ID 29: 10 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 94.8034 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 100 / 100 IR: 0.08
-out: NodeType FIN , ID 3: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 39.8532 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 500 / 500 IR: 0.03
-
-FinNode 3
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 18.6325 / 100 IR: 0.03
-in: NodeType CON , ID 19: 28.2446 / 100 IR: 0.03
-in: NodeType CON , ID 20: 29.848 / 100 IR: 0.03
-in: NodeType CON , ID 21: 28.7388 / 100 IR: 0.03
-in: NodeType CON , ID 22: 45.3941 / 100 IR: 0.03
-in: NodeType CON , ID 23: 45.7172 / 100 IR: 0.03
-in: NodeType CON , ID 24: 45.1369 / 100 IR: 0.03
-in: NodeType CON , ID 25: 13.2981 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 5.09349 / 100 IR: 0.03
-in: NodeType CON , ID 28: 6.31387 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 85.4775 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 71.5152 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 42.323 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 37.2515 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 33.9284 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 33.2834 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 21.664 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 500 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 9.04928 / 10 IR: 0.08
-out: NodeType CON , ID 15: 0 / 10 IR: 0.08
-out: NodeType CON , ID 16: 0 / 10 IR: 0.08
-out: NodeType CON , ID 17: 0 / 10 IR: 0.08
-out: NodeType CON , ID 18: 0 / 10 IR: 0.08
-out: NodeType CON , ID 19: 0 / 10 IR: 0.08
-out: NodeType CON , ID 20: 7.2 / 10 IR: 0.08
-out: NodeType CON , ID 21: 7.2 / 10 IR: 0.08
-out: NodeType CON , ID 22: 1.03807 / 10 IR: 0.08
-out: NodeType CON , ID 23: 6.4 / 10 IR: 0.08
-out: NodeType CON , ID 24: 6.4 / 10 IR: 0.08
-out: NodeType CON , ID 25: 6.4 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 5.6 / 10 IR: 0.08
-out: NodeType CON , ID 28: 2.4 / 10 IR: 0.08
-out: NodeType CON , ID 29: 10 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 98.324 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 100 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 25.3817 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 85.3315 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 500 / 500 IR: 0.03
-
-FinNode 4
-in: NodeType CON , ID 12: 2.17384 / 100 IR: 0.03
-in: NodeType CON , ID 13: 26.0719 / 100 IR: 0.03
-in: NodeType CON , ID 14: 18.4888 / 100 IR: 0.03
-in: NodeType CON , ID 15: 3.60537 / 100 IR: 0.03
-in: NodeType CON , ID 16: 25.4019 / 100 IR: 0.03
-in: NodeType CON , ID 17: 25.4019 / 100 IR: 0.03
-in: NodeType CON , ID 18: 9.61205 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 4.21734 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 21.4229 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 69.1471 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 73.0442 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 44.9169 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 15.5797 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 100 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 7.37981 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 8.61602 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 5.90055 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 5.90055 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 5.90055 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 5.1082 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0.8 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 363.659 / 500 IR: 0.03
-out: NodeType CON , ID 12: 0.7884 / 10 IR: 0.08
-out: NodeType CON , ID 13: 0 / 10 IR: 0.08
-out: NodeType CON , ID 14: 10 / 10 IR: 0.08
-out: NodeType CON , ID 15: 10 / 10 IR: 0.08
-out: NodeType CON , ID 16: 0 / 10 IR: 0.08
-out: NodeType CON , ID 17: 0 / 10 IR: 0.08
-out: NodeType CON , ID 18: 9.70841 / 10 IR: 0.08
-out: NodeType CON , ID 19: 1.23227 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 9.94317 / 10 IR: 0.08
-out: NodeType CON , ID 23: 2.31993 / 10 IR: 0.08
-out: NodeType CON , ID 24: 2.31993 / 10 IR: 0.08
-out: NodeType CON , ID 25: 2.31993 / 10 IR: 0.08
-out: NodeType CON , ID 26: 7.92759 / 10 IR: 0.08
-out: NodeType CON , ID 27: 0 / 10 IR: 0.08
-out: NodeType CON , ID 28: 2.31993 / 10 IR: 0.08
-out: NodeType CON , ID 29: 0.142349 / 10 IR: 0.08
-out: NodeType CON , ID 30: 9.51993 / 10 IR: 0.08
-out: NodeType CON , ID 31: 6.4 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 61.9704 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 59.1539 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 49.8769 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 100 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 7.03338 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 88.8141 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 409.378 / 500 IR: 0.03
-
-FinNode 5
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0.26301 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 21.2523 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 16.0354 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 29.422 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 33.8502 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 15.5797 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 39.8532 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 85.3315 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 88.8141 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 45.7193 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 10 / 10 IR: 0.08
-out: NodeType CON , ID 15: 10 / 10 IR: 0.08
-out: NodeType CON , ID 16: 10 / 10 IR: 0.08
-out: NodeType CON , ID 17: 10 / 10 IR: 0.08
-out: NodeType CON , ID 18: 10 / 10 IR: 0.08
-out: NodeType CON , ID 19: 10 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 10 / 10 IR: 0.08
-out: NodeType CON , ID 29: 10 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 13.0713 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 69.1949 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 24 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 63.7144 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 85.4775 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 7.37981 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-
-FinNode 6
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0.000166713 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0.189711 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 18.6047 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 37.1463 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 47.6064 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 46.7015 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 37.4612 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 15.5797 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 10 / 10 IR: 0.08
-out: NodeType CON , ID 15: 10 / 10 IR: 0.08
-out: NodeType CON , ID 16: 10 / 10 IR: 0.08
-out: NodeType CON , ID 17: 10 / 10 IR: 0.08
-out: NodeType CON , ID 18: 10 / 10 IR: 0.08
-out: NodeType CON , ID 19: 10 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 10 / 10 IR: 0.08
-out: NodeType CON , ID 29: 10 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 71.5152 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 8.61602 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-
-FinNode 7
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0.0720934 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0.220113 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 43.2844 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 29.422 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 38.1478 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 15.8833 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 33.1216 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 15.5797 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 10 / 10 IR: 0.08
-out: NodeType CON , ID 15: 10 / 10 IR: 0.08
-out: NodeType CON , ID 16: 10 / 10 IR: 0.08
-out: NodeType CON , ID 17: 10 / 10 IR: 0.08
-out: NodeType CON , ID 18: 10 / 10 IR: 0.08
-out: NodeType CON , ID 19: 10 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 0 / 10 IR: 0.08
-out: NodeType CON , ID 29: 8.23415 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 42.323 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 5.90055 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-
-FinNode 8
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0.30014 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0.0288651 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 23.0072 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 27.2955 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 41.1923 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 27.1724 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 40.2201 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 15.5797 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 10 / 10 IR: 0.08
-out: NodeType CON , ID 15: 10 / 10 IR: 0.08
-out: NodeType CON , ID 16: 10 / 10 IR: 0.08
-out: NodeType CON , ID 17: 10 / 10 IR: 0.08
-out: NodeType CON , ID 18: 10 / 10 IR: 0.08
-out: NodeType CON , ID 19: 10 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 0 / 10 IR: 0.08
-out: NodeType CON , ID 29: 0 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 37.2515 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 5.90055 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-
-FinNode 9
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0.30014 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0.0288651 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 23.0072 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 27.5202 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 31.0653 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 15.5797 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 23.7639 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 27.1724 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 40.2201 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 15.5797 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 10 / 10 IR: 0.08
-out: NodeType CON , ID 15: 10 / 10 IR: 0.08
-out: NodeType CON , ID 16: 10 / 10 IR: 0.08
-out: NodeType CON , ID 17: 10 / 10 IR: 0.08
-out: NodeType CON , ID 18: 10 / 10 IR: 0.08
-out: NodeType CON , ID 19: 10 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 0 / 10 IR: 0.08
-out: NodeType CON , ID 29: 0 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 100 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 33.9284 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 5.90055 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-
-FinNode 10
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 9.54434 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 12.6875 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 18.8861 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 30.0964 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 32.0394 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 33.8774 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 18.5648 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 24.6405 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 6.18909 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-out: NodeType CON , ID 12: 10 / 10 IR: 0.08
-out: NodeType CON , ID 13: 10 / 10 IR: 0.08
-out: NodeType CON , ID 14: 9.04313 / 10 IR: 0.08
-out: NodeType CON , ID 15: 9.04313 / 10 IR: 0.08
-out: NodeType CON , ID 16: 8.70788 / 10 IR: 0.08
-out: NodeType CON , ID 17: 10 / 10 IR: 0.08
-out: NodeType CON , ID 18: 8.39561 / 10 IR: 0.08
-out: NodeType CON , ID 19: 10 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 10 / 10 IR: 0.08
-out: NodeType CON , ID 27: 10 / 10 IR: 0.08
-out: NodeType CON , ID 28: 0 / 10 IR: 0.08
-out: NodeType CON , ID 29: 0 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 10 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 31.479 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 33.2834 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 5.1082 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 11: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-
-FinNode 11
-in: NodeType CON , ID 12: 0 / 100 IR: 0.03
-in: NodeType CON , ID 13: 0 / 100 IR: 0.03
-in: NodeType CON , ID 14: 0 / 100 IR: 0.03
-in: NodeType CON , ID 15: 0 / 100 IR: 0.03
-in: NodeType CON , ID 16: 0 / 100 IR: 0.03
-in: NodeType CON , ID 17: 0 / 100 IR: 0.03
-in: NodeType CON , ID 18: 0 / 100 IR: 0.03
-in: NodeType CON , ID 19: 0 / 100 IR: 0.03
-in: NodeType CON , ID 20: 0 / 100 IR: 0.03
-in: NodeType CON , ID 21: 0 / 100 IR: 0.03
-in: NodeType CON , ID 22: 0 / 100 IR: 0.03
-in: NodeType CON , ID 23: 0 / 100 IR: 0.03
-in: NodeType CON , ID 24: 0 / 100 IR: 0.03
-in: NodeType CON , ID 25: 0 / 100 IR: 0.03
-in: NodeType CON , ID 26: 0 / 100 IR: 0.03
-in: NodeType CON , ID 27: 0 / 100 IR: 0.03
-in: NodeType CON , ID 28: 0 / 100 IR: 0.03
-in: NodeType CON , ID 29: 0 / 100 IR: 0.03
-in: NodeType CON , ID 30: 0 / 100 IR: 0.03
-in: NodeType CON , ID 31: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 32: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 33: 0 / 100 IR: 0.03
-in: NodeType PRO , ID 34: 10.3 / 100 IR: 0.03
-in: NodeType PRO , ID 35: 3.30668 / 100 IR: 0.03
-in: NodeType PRO , ID 36: 10.9777 / 100 IR: 0.03
-in: NodeType PRO , ID 37: 10.818 / 100 IR: 0.03
-in: NodeType PRO , ID 38: 10.2365 / 100 IR: 0.03
-in: NodeType PRO , ID 39: 11.5927 / 100 IR: 0.03
-in: NodeType PRO , ID 40: 24.6405 / 100 IR: 0.03
-in: NodeType PRO , ID 41: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 2: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 3: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 4: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-in: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-in: NodeType LAB , ID 1: 0 / 500 IR: 0.03
-out: NodeType CON , ID 12: 0.0702144 / 10 IR: 0.08
-out: NodeType CON , ID 13: 0 / 10 IR: 0.08
-out: NodeType CON , ID 14: 0 / 10 IR: 0.08
-out: NodeType CON , ID 15: 0 / 10 IR: 0.08
-out: NodeType CON , ID 16: 0 / 10 IR: 0.08
-out: NodeType CON , ID 17: 0.737001 / 10 IR: 0.08
-out: NodeType CON , ID 18: 0 / 10 IR: 0.08
-out: NodeType CON , ID 19: 0 / 10 IR: 0.08
-out: NodeType CON , ID 20: 10 / 10 IR: 0.08
-out: NodeType CON , ID 21: 10 / 10 IR: 0.08
-out: NodeType CON , ID 22: 10 / 10 IR: 0.08
-out: NodeType CON , ID 23: 10 / 10 IR: 0.08
-out: NodeType CON , ID 24: 10 / 10 IR: 0.08
-out: NodeType CON , ID 25: 10 / 10 IR: 0.08
-out: NodeType CON , ID 26: 0 / 10 IR: 0.08
-out: NodeType CON , ID 27: 0 / 10 IR: 0.08
-out: NodeType CON , ID 28: 0 / 10 IR: 0.08
-out: NodeType CON , ID 29: 0 / 10 IR: 0.08
-out: NodeType CON , ID 30: 10 / 10 IR: 0.08
-out: NodeType CON , ID 31: 4.39452 / 10 IR: 0.08
-out: NodeType PRO , ID 32: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 33: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 34: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 35: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 36: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 37: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 38: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 39: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 40: 0 / 100 IR: 0.08
-out: NodeType PRO , ID 41: 0 / 100 IR: 0.08
-out: NodeType FIN , ID 2: 11.0417 / 100 IR: 0.03
-out: NodeType FIN , ID 3: 21.664 / 100 IR: 0.03
-out: NodeType FIN , ID 4: 0.8 / 100 IR: 0.03
-out: NodeType FIN , ID 5: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 6: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 7: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 8: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 9: 0 / 100 IR: 0.03
-out: NodeType FIN , ID 10: 0 / 100 IR: 0.03
-out: NodeType LAB , ID 1: 0 / 500 IR: 0.03
+round 0 
+total trans: 5443
+Total Labor Payment: 5443 unit: 54.43 conNum: 100
+total ir: 559.627
+
+round 1 
+total trans: 5150.6
+Total Labor Payment: 5150.6 unit: 51.506 conNum: 100
+total ir: 693.674
+
+round 2 
+total trans: 4913.07
+Total Labor Payment: 4913.07 unit: 49.1307 conNum: 100
+total ir: 873.302
+
+round 3 
+total trans: 5131.47
+Total Labor Payment: 5131.47 unit: 51.3147 conNum: 100
+total ir: 1087.26
+
+round 4 
+total trans: 5300
+Total Labor Payment: 5300 unit: 53 conNum: 100
+total ir: 1368.72
+
+round 5 
+total trans: 5659.87
+Total Labor Payment: 5659.87 unit: 56.5987 conNum: 100
+total ir: 1574.58
+
+round 6 
+total trans: 5534
+Total Labor Payment: 5534 unit: 55.34 conNum: 100
+total ir: 1879.68
+
+round 7 
+total trans: 5431
+Total Labor Payment: 5431 unit: 54.31 conNum: 100
+total ir: 2138.02
+
+round 8 
+total trans: 4956
+Total Labor Payment: 4956 unit: 49.56 conNum: 100
+total ir: 2450.79
+
+round 9 
+total trans: 4976.4
+Total Labor Payment: 4976.4 unit: 49.764 conNum: 100
+total ir: 2695.83
+
+round 10 
+total trans: 4946.87
+Total Labor Payment: 4946.87 unit: 49.4687 conNum: 100
+total ir: 3000.88
+
+round 11 
+total trans: 4764.07
+Total Labor Payment: 4764.07 unit: 47.6407 conNum: 100
+total ir: 3304.06
+
+round 12 
+total trans: 4688.4
+Total Labor Payment: 4688.4 unit: 46.884 conNum: 100
+total ir: 3583.63
+
+round 13 
+total trans: 4694.67
+Total Labor Payment: 4694.67 unit: 46.9467 conNum: 100
+total ir: 3872.5
+
+round 14 
+total trans: 4623.93
+Total Labor Payment: 4623.93 unit: 46.2393 conNum: 100
+total ir: 4187.1
+
+round 15 
+total trans: 4397
+Total Labor Payment: 4397 unit: 43.97 conNum: 100
+total ir: 4479.81
+
+round 16 
+total trans: 3356.07
+Total Labor Payment: 3356.07 unit: 33.5607 conNum: 100
+total ir: 4737.67
+
+round 17 
+total trans: 2068
+Total Labor Payment: 2068 unit: 20.68 conNum: 100
+total ir: 4973.34
+
+round 18 
+total trans: 72
+Total Labor Payment: 72 unit: 0.72 conNum: 100
+total ir: 5153.2
+
+round 19 
+total trans: 0
+Total Labor Payment: 4.66294e-15 unit: 4.66294e-17 conNum: 100
+total ir: 5278.91
+
+round 20 
+total trans: 0
+Total Labor Payment: -1.12536e-29 unit: -1.12536e-31 conNum: 100
+total ir: 5351.3
+
+round 21 
+total trans: 0
+Total Labor Payment: -4.94834e-45 unit: -4.94834e-47 conNum: 100
+total ir: 5436.94
+
+round 22 
+total trans: 0
+Total Labor Payment: -6.37859e-60 unit: -6.37859e-62 conNum: 100
+in suff flow con node 29 to 4
+in suff flow con node 31 to 4
+in suff flow con node 37 to 4
+in suff flow con node 43 to 4
+in suff flow con node 54 to 4
+in suff flow con node 56 to 4
+in suff flow con node 67 to 4
+in suff flow con node 72 to 4
+in suff flow con node 73 to 4
+in suff flow con node 85 to 4
+in suff flow con node 87 to 4
+in suff flow con node 91 to 4
+in suff flow con node 97 to 4
+in suff flow con node 101 to 4
+total ir: 5696.74
+
+round 23 
+total trans: 0
+Total Labor Payment: -9.5516e-75 unit: -9.5516e-77 conNum: 100
+in suff flow con node 29 to 4
+in suff flow con node 31 to 4
+in suff flow con node 37 to 4
+in suff flow con node 43 to 4
+in suff flow con node 54 to 4
+in suff flow con node 56 to 4
+in suff flow con node 67 to 4
+in suff flow con node 72 to 4
+in suff flow con node 73 to 4
+in suff flow con node 85 to 4
+in suff flow con node 87 to 4
+in suff flow con node 91 to 4
+in suff flow con node 97 to 4
+in suff flow con node 101 to 4
+total ir: 5986.46
+
+round 24 
+total trans: 0
+Total Labor Payment: -2.40852e-89 unit: -2.40852e-91 conNum: 100
+in suff flow con node 29 to 4
+in suff flow con node 31 to 4
+in suff flow con node 37 to 4
+in suff flow con node 43 to 4
+in suff flow con node 54 to 4
+in suff flow con node 56 to 4
+in suff flow con node 67 to 4
+in suff flow con node 72 to 4
+in suff flow con node 73 to 4
+in suff flow con node 85 to 4
+in suff flow con node 87 to 4
+in suff flow con node 91 to 4
+in suff flow con node 97 to 4
+in suff flow con node 101 to 4
+total ir: 6281.74
+
+round 25 
+total trans: 0
+Total Labor Payment: 4.2784e-104 unit: 4.2784e-106 conNum: 100
+in suff flow con node 29 to 4
+in suff flow con node 31 to 4
+in suff flow con node 37 to 4
+in suff flow con node 43 to 4
+in suff flow con node 54 to 4
+in suff flow con node 56 to 4
+in suff flow con node 67 to 4
+in suff flow con node 72 to 4
+in suff flow con node 73 to 4
+in suff flow con node 85 to 4
+in suff flow con node 87 to 4
+in suff flow con node 91 to 4
+in suff flow con node 97 to 4
+in suff flow con node 101 to 4
+total ir: 6622.24
+
+round 26 
+total trans: 0
+Total Labor Payment: -7.59996e-119 unit: -7.59996e-121 conNum: 100
+in suff flow con node 29 to 4
+in suff flow con node 31 to 4
+in suff flow con node 37 to 4
+in suff flow con node 43 to 4
+in suff flow con node 54 to 4
+in suff flow con node 56 to 4
+in suff flow con node 67 to 4
+in suff flow con node 72 to 4
+in suff flow con node 73 to 4
+in suff flow con node 85 to 4
+in suff flow con node 87 to 4
+in suff flow con node 91 to 4
+in suff flow con node 97 to 4
+in suff flow con node 101 to 4
+in suff flow pro node 123 to 2
+in suff flow pro node 124 to 2
+in suff flow pro node 125 to 2
+in suff flow pro node 126 to 2
+in suff flow pro node 127 to 2
+in suff flow pro node 128 to 2
+in suff flow pro node 129 to 2
+in suff flow pro node 130 to 2
+in suff flow pro node 132 to 2
+in suff flow pro node 134 to 2
+in suff flow pro node 135 to 2
+in suff flow pro node 136 to 2
+in suff flow pro node 137 to 2
+in suff flow pro node 139 to 2
+in suff flow pro node 140 to 2
+in suff flow pro node 141 to 2
+in suff flow pro node 142 to 2
+in suff flow pro node 143 to 2
+in suff flow pro node 144 to 2
+in suff flow pro node 145 to 2
+in suff flow pro node 146 to 2
+in suff flow pro node 148 to 2
+in suff flow pro node 151 to 2
+node 4 is defaulting to node 2 at time 26
+execute default node 4
+node 6 is defaulting to node 4 at time 26
+execute default node 6
+node 7 is defaulting to node 4 at time 26
+execute default node 7
+node 8 is defaulting to node 4 at time 26
+execute default node 8
+node 9 is defaulting to node 4 at time 26
+execute default node 9
+node 10 is defaulting to node 4 at time 26
+execute default node 10
+node 11 is defaulting to node 8 at time 26
+execute default node 11
+in suff flow node 1 to 4
+in suff flow node 1 to 8
+in suff flow node 1 to 10
+total ir: 6706.3
+
+round 27 
+total trans: 558
+Total Labor Payment: 558 unit: 5.58 conNum: 100
+in suff flow pro node 124 to 2
+in suff flow pro node 126 to 2
+in suff flow pro node 127 to 2
+in suff flow pro node 128 to 2
+in suff flow pro node 132 to 2
+in suff flow pro node 134 to 2
+in suff flow pro node 135 to 2
+in suff flow pro node 136 to 2
+in suff flow pro node 137 to 2
+in suff flow pro node 139 to 2
+in suff flow pro node 140 to 2
+in suff flow pro node 141 to 2
+in suff flow pro node 142 to 2
+in suff flow pro node 143 to 2
+in suff flow pro node 144 to 2
+in suff flow pro node 145 to 2
+in suff flow pro node 146 to 2
+in suff flow pro node 151 to 2
+node 3 is defaulting to node 2 at time 27
+execute default node 3
+node 5 is defaulting to node 3 at time 27
+execute default node 5
+in suff flow node 1 to 3
+in suff flow node 1 to 5
+total ir: 4959.53
+
+round 28 
+total trans: 823
+Total Labor Payment: 823 unit: 8.23 conNum: 100
+in suff flow pro node 151 to 2
+total ir: 3043.1
+
+round 29 
+total trans: 391
+Total Labor Payment: 391 unit: 3.91 conNum: 100
+in suff flow pro node 122 to 2
+in suff flow pro node 123 to 2
+in suff flow pro node 124 to 2
+in suff flow pro node 125 to 2
+in suff flow pro node 126 to 2
+in suff flow pro node 127 to 2
+in suff flow pro node 128 to 2
+in suff flow pro node 129 to 2
+in suff flow pro node 130 to 2
+in suff flow pro node 131 to 2
+in suff flow pro node 132 to 2
+in suff flow pro node 134 to 2
+in suff flow pro node 135 to 2
+in suff flow pro node 136 to 2
+in suff flow pro node 137 to 2
+in suff flow pro node 138 to 2
+in suff flow pro node 139 to 2
+in suff flow pro node 140 to 2
+in suff flow pro node 141 to 2
+in suff flow pro node 142 to 2
+in suff flow pro node 143 to 2
+in suff flow pro node 144 to 2
+in suff flow pro node 145 to 2
+in suff flow pro node 146 to 2
+in suff flow pro node 148 to 2
+in suff flow pro node 151 to 2
+node 12 is defaulting to node 2 at time 29
+execute default node 12
+node 15 is defaulting to node 12 at time 29
+execute default node 15
+in suff flow node 1 to 12
+total ir: 3190.14
 
 Round: 0 0
 Round: 1 0
@@ -2418,3 +334,13 @@ Round: 16 0
 Round: 17 0
 Round: 18 0
 Round: 19 0
+Round: 20 0
+Round: 21 0
+Round: 22 0
+Round: 23 0
+Round: 24 0
+Round: 25 0
+Round: 26 7
+Round: 27 2
+Round: 28 0
+Round: 29 2

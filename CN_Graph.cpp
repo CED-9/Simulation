@@ -770,39 +770,49 @@ void Graph::genTestGraph(){
 
 
 // Generate a test graph
-// finNum = 10, conNum = 20, proNum = 10
 void Graph::genTest2Graph(){
+	default_random_engine generator;
+	uniform_real_distribution<double> distribution1(0.0, 1.0);
 	// con <=> fin
 	for (int i = 0; i < conNum; i++){
 		for (int j = 0; j < finNum; j++){
-			this->addEdge(conAgent[i], finAgent[j]);
-			this->addEdge(finAgent[j], conAgent[i]);
-			conAgent[i]->setInEdge(finAgent[j], 10, 0, 0.08, EQ);
-			conAgent[i]->setOutEdge(finAgent[j], 100, 0, 0.03, EQ);
+			double num = distribution1(generator);
+			if (num > 0.1){
+				this->addEdge(conAgent[i], finAgent[j]);
+				this->addEdge(finAgent[j], conAgent[i]);
+				conAgent[i]->setInEdge(finAgent[j], 100, 0, 0.08, EQ);
+				conAgent[i]->setOutEdge(finAgent[j], 1000, 0, 0.03, EQ);
+			}
 		}
 	}
 	// pro <=> fin
 	for (int i= 0; i < proNum; i++){
 		for (int j = 0; j < finNum; j++){
-			this->addEdge(proAgent[i], finAgent[j]);
-			this->addEdge(finAgent[j], proAgent[i]);
-			proAgent[i]->setInEdge(finAgent[j], 100, 0, 0.08, EQ);
-			proAgent[i]->setOutEdge(finAgent[j], 100, 0, 0.03, EQ);
+			double num = distribution1(generator);
+			if (num > 0.1){
+				this->addEdge(proAgent[i], finAgent[j]);
+				this->addEdge(finAgent[j], proAgent[i]);
+				proAgent[i]->setInEdge(finAgent[j], 1000, 0, 0.08, EQ);
+				proAgent[i]->setOutEdge(finAgent[j], 1000, 0, 0.03, EQ);
+			}
 		}
 	}
 	for (int i = 0; i < finNum; i++){
 		for (int j = i + 1; j < finNum; j++){
-			this->addEdge(finAgent[i], finAgent[j]);
-			this->addEdge(finAgent[j], finAgent[i]);
-			finAgent[i]->setInEdge(finAgent[j], 100, 0, 0.03, EQ);
-			finAgent[i]->setOutEdge(finAgent[j], 100, 0, 0.03, EQ);
+			double num = distribution1(generator);
+			if (num > 0.1){
+				this->addEdge(finAgent[i], finAgent[j]);
+				this->addEdge(finAgent[j], finAgent[i]);
+				finAgent[i]->setInEdge(finAgent[j], 1000, 0, 0.03, EQ);
+				finAgent[i]->setOutEdge(finAgent[j], 1000, 0, 0.03, EQ);
+			}
 		}
 	}
 	for (int i = 0; i < finNum; i++){
 		this->addEdge(this->labAgent, finAgent[i]);
 		this->addEdge(finAgent[i], this->labAgent);
-		this->labAgent->setInEdge(finAgent[i], 500, 0, 0.03, EQ);
-		this->labAgent->setOutEdge(finAgent[i], 500, 0, 0.03, EQ);
+		this->labAgent->setInEdge(finAgent[i], 5000, 0, 0.03, EQ);
+		this->labAgent->setOutEdge(finAgent[i], 5000, 0, 0.03, EQ);
 	}
 
 }

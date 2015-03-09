@@ -37,17 +37,17 @@ double ConNode::getLastIncome(){
 }
 
 double ConNode::getLastPrice(){
-    return this->lastPrice;
+	return this->lastPrice;
 }
 
 double ConNode::getCurrBanlance(){
 	double temp = 0;
-    for (unsigned int i = 0; i < this->edge_in.size(); i++){
-    	temp -= this->edge_in[i].d_out_current;
-    }
-    for (unsigned int i = 0; i < this->edge_out.size(); i++){
-    	temp += this->edge_out[i].d_in_current;
-    }
+	for (unsigned int i = 0; i < this->edge_in.size(); i++){
+		temp -= this->edge_in[i].d_out_current;
+	}
+	for (unsigned int i = 0; i < this->edge_out.size(); i++){
+		temp += this->edge_out[i].d_in_current;
+	}
 	return temp;
 }
 
@@ -60,12 +60,12 @@ double ConNode::getCurrQuantity(){
 }
 
 ProNode* ConNode::getNextPro(){
-    if (nextProOnList >= proList.size()) {
-        return NULL;
-    }
-    ProNode* p = this->proList[nextProOnList].pro;
-    nextProOnList++;
-    return p;
+	if (nextProOnList >= proList.size()) {
+		return NULL;
+	}
+	ProNode* p = this->proList[nextProOnList].pro;
+	nextProOnList++;
+	return p;
 }
 
 void ConNode::print(){
@@ -85,11 +85,11 @@ void ConNode::print(){
 		cout << edge_out[i].nodeTo->getNodeID() << ": " << edge_out[i].d_in_current << " / "
 			<< edge_out[i].c_out_max << " IR: " << edge_out[i].interest_rate << endl;
 	}
-    /*for (int i = 0; i<this->proList.size(); i++) {
-        cout << "Node: " << this->proList[i].pro->getNodeID()
-        << " price: " << this->proList[i].price << endl;
-    }*/
-    cout << this->c_perm << this->pr_perm << this->nextProOnList;
+	/*for (int i = 0; i<this->proList.size(); i++) {
+		cout << "Node: " << this->proList[i].pro->getNodeID()
+		<< " price: " << this->proList[i].price << endl;
+	}*/
+	cout << this->c_perm << this->pr_perm << this->nextProOnList;
 	cout << endl;
 }
 
@@ -107,12 +107,12 @@ double ConNode::getCurrMUP(double unit_price){
 }
 
 double ConNode::getTempMUP(double temp, double price){
-    return pow(temp, -0.5)/price;
+	return pow(temp, -0.5)/price;
 }
 
 double ConNode::getEqualMUP(double price){
 	double temp = 0;
-    double permMUP = this->getPermMUP();
+	double permMUP = this->getPermMUP();
 	while (this->getTempMUP(temp, price) >= permMUP){
 		temp += 1;
 	}
@@ -143,23 +143,23 @@ void ConNode::debtCancel(Graph * creditNet){
 // one feasible 
 Status ConNode::decideToBuyOpp(ProNode* p, double price, double qMax, double &quantityToBuy){
 	//int perm_mup = this->getPermMUP();
-    // cout<<"CON node "<<this->getNodeID()<<" PRO node "<< p->getNodeID() <<"price: "<<price<<endl;
-    //cout<<"c_perm: "<<c_perm<<" pr_perm: "<<pr_perm<<endl;
+	// cout<<"CON node "<<this->getNodeID()<<" PRO node "<< p->getNodeID() <<"price: "<<price<<endl;
+	//cout<<"c_perm: "<<c_perm<<" pr_perm: "<<pr_perm<<endl;
 
-    if (qMax == 0) {
-        quantityToBuy = 0;
-        // cout<<"nothinf to buy"<<endl;
-        return GOOD;
-    }
-    
+	if (qMax == 0) {
+		quantityToBuy = 0;
+		// cout<<"nothinf to buy"<<endl;
+		return GOOD;
+	}
+	
 	double equal_q = this->getEqualMUP(price);
 
-    // cout<<"equal_q: "<<equal_q<<endl;
-    
+	// cout<<"equal_q: "<<equal_q<<endl;
+	
 	if (equal_q <= curr_quantity){
-        
-        // cout<<equal_q<<" "<<curr_quantity << " full CON" <<endl;
-        
+		
+		// cout<<equal_q<<" "<<curr_quantity << " full CON" <<endl;
+		
 		quantityToBuy = 0;
 		return CON_I_AM_FULL; 
 	}
@@ -169,27 +169,27 @@ Status ConNode::decideToBuyOpp(ProNode* p, double price, double qMax, double &qu
 		quantityToBuy = 0;
 		return CON_I_DONT_WANT_TO;
 	}
-    //cout<<"2"<<endl;
-    
-    if (equal_q > curr_quantity + qMax){
+	//cout<<"2"<<endl;
+	
+	if (equal_q > curr_quantity + qMax){
 		quantityToBuy = qMax; 
 	}
 	else if (equal_q > this->getCurrBanlance() + this->getCurrCredit() + this->lastIncome){
-    	quantityToBuy = this->getCurrBanlance() + this->lastIncome;
-    }
+		quantityToBuy = this->getCurrBanlance() + this->lastIncome;
+	}
 	else {
 		quantityToBuy = equal_q - curr_quantity; 
 	}
 
-    //cout<<"3"<<endl;
-    
+	//cout<<"3"<<endl;
+	
 	return GOOD; 
 }
 
 
 Status ConNode::buy(double quantity){
-    this->curr_quantity += quantity;
-    return GOOD;
+	this->curr_quantity += quantity;
+	return GOOD;
 }
 
 
@@ -215,12 +215,13 @@ Status ConNode::init(Graph* creditNet){
 	lastPrice = pr_perm;
 	nextProOnList = 0;
 	curr_banlance = 0;
-    return GOOD;
+	lastIncome = 50;
+	return GOOD;
 }
 
 Status ConNode::update(Graph* creditNet){
-    // maybe update prolist
-    this->nextProOnList = 0;
+	// maybe update prolist
+	this->nextProOnList = 0;
 	// update all prices
 	for(int i=0; i < proList.size() - 1; i++){
 		proList[i].price = proList[i].pro->unit_price; 
@@ -246,27 +247,30 @@ Status ConNode::update(Graph* creditNet){
 		avg += creditNet->conAgent[i]->lastPrice; 
 	}
 	avg = avg / creditNet->conNum; 
-	pr_perm = avg; 
+	pr_perm = avg;
 
-    // update curr_quantity
-    this->curr_quantity = 0;
+	// update curr_quantity
+	this->curr_quantity = 0;
 
-    // current banlance
-    double temp = 0;
-    for (unsigned int i = 0; i < this->edge_in.size(); i++){
-    	temp -= this->edge_in[i].d_out_current;
-    }
-    for (unsigned int i = 0; i < this->edge_out.size(); i++){
-    	temp += this->edge_out[i].d_in_current;
-    }
-    this->curr_banlance = temp;
+	// current banlance
+	double temp = 0;
+	for (unsigned int i = 0; i < this->edge_in.size(); i++){
+		temp -= this->edge_in[i].d_out_current;
+	}
+	for (unsigned int i = 0; i < this->edge_out.size(); i++){
+		temp += this->edge_out[i].d_in_current;
+	}
+	this->curr_banlance = temp;
 
-    temp = 0;
-    Status status;
-    for (unsigned int i = 0; i < this->edge_in.size(); i++){
-    	temp += this->getCreditFrom(dynamic_cast<Node*> (this->edge_in[i].nodeFrom), status);
-    }
-    this->curr_credit = temp;
+	temp = 0;
+	Status status;
+	for (unsigned int i = 0; i < this->edge_in.size(); i++){
+		temp += this->getCreditFrom(dynamic_cast<Node*> (this->edge_in[i].nodeFrom), status);
+	}
+	this->curr_credit = temp;
+
+	// c_perm
+	c_perm = max(this->curr_banlance + this->lastIncome, 0.0);
 
 	return GOOD; 
 }

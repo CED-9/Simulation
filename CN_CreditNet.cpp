@@ -34,11 +34,16 @@ void CreditNet::proPayLab(ProNode* p){
 
 void CreditNet::labPayCon(){
 	LabNode* l = this->labAgent;
-	double unit_payment = l->getCurrPayment() / (this->conNum);
-	cout << "Total Labor Payment: " << l->getCurrPayment() << " unit: " << unit_payment << " conNum: " << this->conNum << endl;
-	for (int i = 0; i<this->conNum; i++) {
+	vector<double> partition;
+	DisGenerator gen;
+
+	gen.normalPartition(l->getCurrPayment(), this->conNum, partition);
+
+	cout << "Total Labor Payment: " << l->getCurrPayment() << " conNum: " << this->conNum << endl;
+	
+	for (int i = 0; i < partition.size(); i++) {
 		double trueValue;
-		payCase2(dynamic_cast<Node*>(l), dynamic_cast<Node*>(this->conAgent[i]), unit_payment, trueValue);
+		payCase2(dynamic_cast<Node*>(l), dynamic_cast<Node*>(this->conAgent[i]), partition[i], trueValue);
 		l->paymentOut(trueValue);
 		this->conAgent[i]->setLastIncome(trueValue);
 	}
@@ -214,6 +219,7 @@ void CreditNet::chargeIR(int time){
 			if (trueValue < ir){
 				cout << "node " << node1->getNodeID() << " is defaulting to node "<< node2->getNodeID() <<" at time " << time << endl;
 				this->executeDefault(this->finAgent[i], time);
+				temp.setZero(temp.finAgent[i]);
 				flag = 1;
 				break;
 			}   

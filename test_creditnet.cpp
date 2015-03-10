@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
 	
 	// cout<<"/////////////////////////////////////////////////"<<endl;
 	creditNet.init();
-	for (int i=0; i<40; i++) {
+	for (int i=0; i<30; i++) {
 		cout << "round " << i << " " << endl;
 		fout_trans << i << " ";
 		fout_int << i << " ";
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]){
 	//Graph* temp = new Graph(creditNet);
 	//temp->print();
 	
-	for (int i = 0; i < 30; i++){
+	for (int i = 0; i < 100; i++){
 		cout << "Round: " << i << " " << defaultList[i] << endl;
 	}
 

@@ -1,0 +1,1472 @@
+round 0 
+total trans: 5443
+Total Labor Payment: 5443 unit: 54.43 conNum: 100
+total ir: 475.228
+
+round 1 
+total trans: 5151.6
+Total Labor Payment: 5151.6 unit: 51.516 conNum: 100
+total ir: 509.68
+
+round 2 
+total trans: 4917.07
+Total Labor Payment: 4917.07 unit: 49.1707 conNum: 100
+total ir: 569.234
+
+round 3 
+total trans: 5146.73
+Total Labor Payment: 5146.73 unit: 51.4673 conNum: 100
+total ir: 655.09
+
+round 4 
+total trans: 5349
+Total Labor Payment: 5349 unit: 53.49 conNum: 100
+total ir: 781.868
+
+round 5 
+total trans: 5709.6
+Total Labor Payment: 5709.6 unit: 57.096 conNum: 100
+total ir: 847.611
+
+round 6 
+total trans: 5534
+Total Labor Payment: 5534 unit: 55.34 conNum: 100
+total ir: 950.893
+
+round 7 
+total trans: 5455
+Total Labor Payment: 5455 unit: 54.55 conNum: 100
+total ir: 1042.84
+
+round 8 
+total trans: 4956
+Total Labor Payment: 4956 unit: 49.56 conNum: 100
+total ir: 1074.15
+
+round 9 
+total trans: 5225.8
+Total Labor Payment: 5225.8 unit: 52.258 conNum: 100
+total ir: 1118.2
+
+round 10 
+total trans: 5102.07
+Total Labor Payment: 5102.07 unit: 51.0207 conNum: 100
+total ir: 1191.56
+
+round 11 
+total trans: 4922.93
+Total Labor Payment: 4922.93 unit: 49.2293 conNum: 100
+total ir: 1217.44
+
+round 12 
+total trans: 5169.13
+Total Labor Payment: 5169.13 unit: 51.6913 conNum: 100
+total ir: 1204.1
+
+round 13 
+total trans: 5177.67
+Total Labor Payment: 5177.67 unit: 51.7767 conNum: 100
+total ir: 1267.63
+
+round 14 
+total trans: 5247.13
+Total Labor Payment: 5247.13 unit: 52.4713 conNum: 100
+total ir: 1308.68
+
+round 15 
+total trans: 5128
+Total Labor Payment: 5128 unit: 51.28 conNum: 100
+total ir: 1394.54
+
+round 16 
+total trans: 5001.73
+Total Labor Payment: 5001.73 unit: 50.0173 conNum: 100
+total ir: 1408.66
+
+round 17 
+total trans: 4805
+Total Labor Payment: 4805 unit: 48.05 conNum: 100
+total ir: 1434.47
+
+round 18 
+total trans: 4847.73
+Total Labor Payment: 4847.73 unit: 48.4773 conNum: 100
+total ir: 1468.99
+
+round 19 
+total trans: 4581
+Total Labor Payment: 4581 unit: 45.81 conNum: 100
+total ir: 1509.73
+
+round 20 
+total trans: 4694.73
+Total Labor Payment: 4694.73 unit: 46.9473 conNum: 100
+total ir: 1560.18
+
+round 21 
+total trans: 4171.53
+Total Labor Payment: 4171.53 unit: 41.7153 conNum: 100
+in suff flow con node 97 to 4
+total ir: 1598.49
+
+round 22 
+total trans: 3791.2
+Total Labor Payment: 3791.2 unit: 37.912 conNum: 100
+in suff flow con node 97 to 4
+total ir: 1649.53
+
+round 23 
+total trans: 4031.6
+Total Labor Payment: 4031.6 unit: 40.316 conNum: 100
+in suff flow con node 97 to 4
+total ir: 1690.57
+
+round 24 
+total trans: 3437
+Total Labor Payment: 3437 unit: 34.37 conNum: 100
+total ir: 1718.82
+
+round 25 
+total trans: 2940.4
+Total Labor Payment: 2940.4 unit: 29.404 conNum: 100
+total ir: 1759.59
+
+round 26 
+total trans: 1840.13
+Total Labor Payment: 1840.13 unit: 18.4013 conNum: 100
+total ir: 1783.05
+
+round 27 
+total trans: 399.133
+Total Labor Payment: 399.133 unit: 3.99133 conNum: 100
+node 2 is defaulting to node 9 at time 27
+execute default node 2
+total ir: 1280.84
+
+round 28 
+total trans: 663
+Total Labor Payment: 663 unit: 6.63 conNum: 100
+total ir: 1098.23
+
+round 29 
+total trans: 804
+Total Labor Payment: 804 unit: 8.04 conNum: 100
+total ir: 1111.66
+
+round 30 
+total trans: 733
+Total Labor Payment: 733 unit: 7.33 conNum: 100
+total ir: 1125.68
+
+round 31 
+total trans: 404
+Total Labor Payment: 404 unit: 4.04 conNum: 100
+total ir: 1137.59
+
+round 32 
+total trans: 1
+Total Labor Payment: 1 unit: 0.01 conNum: 100
+total ir: 1149.29
+
+round 33 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1161.63
+
+round 34 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1174.76
+
+round 35 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1188.79
+
+round 36 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1203.84
+
+round 37 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1219.98
+
+round 38 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1237.47
+
+round 39 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1257.32
+
+round 40 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1279.95
+
+round 41 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1304.14
+
+round 42 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1329.93
+
+round 43 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1360.21
+
+round 44 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1393.29
+
+round 45 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 1428.89
+
+round 46 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 1468.65
+
+round 47 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 5
+in suff flow con node 75 to 5
+total ir: 1510.18
+
+round 48 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 5
+in suff flow con node 75 to 5
+total ir: 1554.02
+
+round 49 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 5
+in suff flow con node 75 to 5
+node 3 is defaulting to node 13 at time 49
+execute default node 3
+total ir: 1076.83
+
+round 50 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 5
+in suff flow con node 75 to 5
+total ir: 611.09
+
+round 51 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 5
+in suff flow con node 75 to 5
+total ir: 625.799
+
+round 52 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 72 to 6
+in suff flow con node 75 to 5
+node 4 is defaulting to node 6 at time 52
+execute default node 4
+total ir: 419.02
+
+round 53 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 342.932
+
+round 54 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 355.21
+
+round 55 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 368.079
+
+round 56 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 381.761
+
+round 57 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 396.545
+
+round 58 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 409.096
+
+round 59 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 75 to 5
+total ir: 418.649
+
+round 60 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 428.894
+
+round 61 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 440.67
+
+round 62 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 6
+total ir: 453.72
+
+round 63 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 9
+total ir: 466.487
+
+round 64 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 72 to 9
+total ir: 480.728
+
+round 65 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+total ir: 495.078
+
+round 66 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 13
+total ir: 511.674
+
+round 67 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 13
+total ir: 529.717
+
+round 68 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 9
+in suff flow con node 72 to 9
+total ir: 549.037
+
+round 69 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 9
+in suff flow con node 72 to 9
+in suff flow con node 82 to 5
+node 5 is defaulting to node 6 at time 69
+execute default node 5
+total ir: 371.501
+
+round 70 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 333.006
+
+round 71 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 13
+total ir: 356.703
+
+round 72 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 13
+total ir: 382.292
+
+round 73 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+total ir: 409.388
+
+round 74 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 9
+in suff flow con node 72 to 20
+total ir: 440.308
+
+round 75 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 470.967
+
+round 76 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 491.877
+
+round 77 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 514.398
+
+round 78 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 9
+total ir: 538.831
+
+round 79 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 9
+total ir: 564.692
+
+round 80 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 585.225
+
+round 81 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 13
+total ir: 602.214
+
+round 82 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 13
+total ir: 619.274
+
+round 83 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 637.238
+
+round 84 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 9
+total ir: 657.419
+
+round 85 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 677.546
+
+round 86 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 699.437
+
+round 87 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 722.988
+
+round 88 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+total ir: 747.793
+
+round 89 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+total ir: 774.793
+
+round 90 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+total ir: 794.953
+
+round 91 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+total ir: 811.958
+
+round 92 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+total ir: 829.637
+
+round 93 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+total ir: 848.319
+
+round 94 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+in suff flow con node 82 to 9
+total ir: 866.825
+
+round 95 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+in suff flow con node 82 to 9
+total ir: 889.529
+
+round 96 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+total ir: 913.136
+
+round 97 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+in suff flow con node 82 to 13
+total ir: 938.737
+
+round 98 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+in suff flow con node 82 to 13
+total ir: 964.65
+
+round 99 
+total trans: 0
+Total Labor Payment: 0 unit: 0 conNum: 100
+in suff flow con node 71 to 6
+in suff flow con node 71 to 8
+in suff flow con node 71 to 9
+in suff flow con node 71 to 10
+in suff flow con node 71 to 11
+in suff flow con node 71 to 12
+in suff flow con node 71 to 13
+in suff flow con node 71 to 14
+in suff flow con node 71 to 15
+in suff flow con node 71 to 16
+in suff flow con node 71 to 17
+in suff flow con node 71 to 18
+in suff flow con node 71 to 19
+in suff flow con node 71 to 20
+in suff flow con node 72 to 6
+in suff flow con node 72 to 7
+in suff flow con node 72 to 8
+in suff flow con node 72 to 9
+in suff flow con node 72 to 10
+in suff flow con node 72 to 11
+in suff flow con node 72 to 13
+in suff flow con node 72 to 14
+in suff flow con node 72 to 15
+in suff flow con node 72 to 16
+in suff flow con node 72 to 17
+in suff flow con node 72 to 18
+in suff flow con node 72 to 19
+in suff flow con node 72 to 20
+in suff flow con node 72 to 21
+in suff flow con node 75 to 7
+in suff flow con node 75 to 8
+in suff flow con node 75 to 9
+in suff flow con node 75 to 10
+in suff flow con node 75 to 11
+in suff flow con node 75 to 12
+in suff flow con node 75 to 13
+in suff flow con node 75 to 14
+in suff flow con node 75 to 15
+in suff flow con node 75 to 16
+in suff flow con node 75 to 17
+in suff flow con node 75 to 18
+in suff flow con node 75 to 19
+in suff flow con node 75 to 20
+in suff flow con node 82 to 9
+total ir: 993.819
+
+Round: 0 0
+Round: 1 0
+Round: 2 0
+Round: 3 0
+Round: 4 0
+Round: 5 0
+Round: 6 0
+Round: 7 0
+Round: 8 0
+Round: 9 0
+Round: 10 0
+Round: 11 0
+Round: 12 0
+Round: 13 0
+Round: 14 0
+Round: 15 0
+Round: 16 0
+Round: 17 0
+Round: 18 0
+Round: 19 0
+Round: 20 0
+Round: 21 0
+Round: 22 0
+Round: 23 0
+Round: 24 0
+Round: 25 0
+Round: 26 0
+Round: 27 1
+Round: 28 0
+Round: 29 0
+Round: 30 0
+Round: 31 0
+Round: 32 0
+Round: 33 0
+Round: 34 0
+Round: 35 0
+Round: 36 0
+Round: 37 0
+Round: 38 0
+Round: 39 0
+Round: 40 0
+Round: 41 0
+Round: 42 0
+Round: 43 0
+Round: 44 0
+Round: 45 0
+Round: 46 0
+Round: 47 0
+Round: 48 0
+Round: 49 1
+Round: 50 0
+Round: 51 0
+Round: 52 1
+Round: 53 0
+Round: 54 0
+Round: 55 0
+Round: 56 0
+Round: 57 0
+Round: 58 0
+Round: 59 0
+Round: 60 0
+Round: 61 0
+Round: 62 0
+Round: 63 0
+Round: 64 0
+Round: 65 0
+Round: 66 0
+Round: 67 0
+Round: 68 0
+Round: 69 1
+Round: 70 0
+Round: 71 0
+Round: 72 0
+Round: 73 0
+Round: 74 0
+Round: 75 0
+Round: 76 0
+Round: 77 0
+Round: 78 0
+Round: 79 0
+Round: 80 0
+Round: 81 0
+Round: 82 0
+Round: 83 0
+Round: 84 0
+Round: 85 0
+Round: 86 0
+Round: 87 0
+Round: 88 0
+Round: 89 0
+Round: 90 0
+Round: 91 0
+Round: 92 0
+Round: 93 0
+Round: 94 0
+Round: 95 0
+Round: 96 0
+Round: 97 0
+Round: 98 0
+Round: 99 0

@@ -1,5 +1,5 @@
 reset
-set xrange[-1:40]
+set xrange[0:30]
 set yrange[0:8000]
 set pointsize 1.5
 # set xtics 100,100,1000 rotate by -45

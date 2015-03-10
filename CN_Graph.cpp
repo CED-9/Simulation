@@ -803,8 +803,8 @@ void Graph::genTest2Graph(){
 			if (num > 0.1){
 				this->addEdge(finAgent[i], finAgent[j]);
 				this->addEdge(finAgent[j], finAgent[i]);
-				finAgent[i]->setInEdge(finAgent[j], 1000, 0, 0.03, EQ);
-				finAgent[i]->setOutEdge(finAgent[j], 1000, 0, 0.03, EQ);
+				finAgent[i]->setInEdge(finAgent[j], 700, 0, 0.03, EQ);
+				finAgent[i]->setOutEdge(finAgent[j], 700, 0, 0.03, EQ);
 			}
 		}
 	}
@@ -1300,4 +1300,13 @@ void Graph::printPathIRBlocking(){
 		pathTemp.pop_front();
 	}
 	return;
+}
+
+void Graph::setZero(FinNode* f){
+	for (int i = 0; i < f->edge_in.size(); i++){
+		f->setInEdge(f->edge_in[i].nodeFrom, 0, 0, 0, EQ);
+	}
+	for (int i = 0; i < f->edge_out.size(); i++){
+		f->setOutEdge(f->edge_out[i].nodeTo, 0, 0, 0, EQ);
+	}
 }

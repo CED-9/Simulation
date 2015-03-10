@@ -1,7 +1,10 @@
 #ifndef CN_Error
 #define CN_Error
-#include<iostream>
+#include <iostream>
+#include <vector>
 // Define error status types
+
+using namespace std;
 
 enum Status{
 	GOOD,  TYPE_NOT_DEFINE, 
@@ -81,5 +84,15 @@ public:
         }
     }
 };
+
+
+class DisGenerator{
+public:
+    void normalPartition(double total, int cnt, vector<double> & result);
+};
+
+
+
+
 
 #endif

@@ -182,7 +182,7 @@ Status ConNode::decideToBuyOpp(ProNode* p, double price, double qMax, double &qu
 	}
 
 	// No money
-	if (this->getCurrBanlance() + this->getCurrCredit()/2 + this->lastIncome <= 0){
+	if (this->getCurrBanlance() + this->getCurrCredit() + this->lastIncome <= 0){
 		quantityToBuy = 0;
 		return CON_I_DONT_WANT_TO;
 	}

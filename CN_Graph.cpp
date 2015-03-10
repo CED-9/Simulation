@@ -1025,7 +1025,8 @@ Status Graph::payCase2(Node* src, Node* dest, double value, double &actualValue)
 
 	//cout<<"pay: "<<value<<endl;
 	try {
-		while (tempCap = this->bfsIRBlocking(src, dest)){
+		while (1){
+			tempCap = this->bfsIRBlocking(src, dest);
 			if (tempCap < 0.000001) {
 				break;
 			}
@@ -1058,7 +1059,8 @@ Status Graph::payCase2(Node* src, Node* dest, double value, double &actualValue)
 int Graph::maxFlowIRBlocking(Node* node1, Node* node2){
 	double currentFlow = 0;
 	double flow = 0;
-	while (currentFlow = this->bfsIRBlocking(node1, node2)){
+	while (1){
+		currentFlow = this->bfsIRBlocking(node1, node2);
 		if (currentFlow < 0.000001) {
 			break;
 		}

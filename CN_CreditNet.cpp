@@ -1,11 +1,12 @@
 // CN_CreditNet.C 
 #define NON_DEBUG_MODE
 
-#include"Error.h"
-#include"CN_CreditNet.h"
-#include<queue>
-#include<vector>
-#include<iostream>
+#include  "Error.h"
+#include "CN_DistributionGenerator.h"
+#include "CN_CreditNet.h"
+#include <queue>
+#include <vector>
+#include <iostream>
 using namespace std;
 
 CreditNet::CreditNet(int finNumT, int conNumT, int proNumT)

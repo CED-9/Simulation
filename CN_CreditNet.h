@@ -11,6 +11,9 @@ public:
     CreditNet(int finNumT, int conNumT, int proNumT);
     void init();
 
+    // Inter Bank Trans
+    int genInterBankTrans();
+
     // Main Loop
     void update();
     void genTrans();

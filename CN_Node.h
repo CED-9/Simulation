@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <fstream>
+#include <vector>
 
 #include <iostream>
 using namespace std;
@@ -25,6 +26,7 @@ struct InEdge{
 	double c_in_max;
 	double d_out_current;
 	double interest_rate;
+	// vector< pair<double, double> > temp;
 };
 
 struct OutEdge{
@@ -32,6 +34,7 @@ struct OutEdge{
 	double c_out_max;
 	double d_in_current;
 	double interest_rate;
+	// vector< pair<double, double> > temp;
 };
 
 class Node{
@@ -42,7 +45,7 @@ protected:
 public:
     std::vector<OutEdge> edge_out;
     std::vector<InEdge> edge_in;
-    
+
     Node(){}
     Node(int id);
     ~Node(){}

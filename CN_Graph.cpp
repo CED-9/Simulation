@@ -512,94 +512,21 @@ void Graph::genErdosRenyiGraph(){
 
 // Generate a test graph
 // finNum = 2, conNum = 1, proNum = 1
-void Graph::genTest0Graph(){
-	finNum = 2;
-	conNum = 1;
-	proNum = 1;
-	OutEdge e1, e2;
-	InEdge e3, e4;
-	e1.nodeTo = finAgent[1];
-	e1.interest_rate = double(LOW_INTEREST_RATE) / 100.0;
-	e1.d_in_current = 0;
-	e1.c_out_max = 100;
-
-	e2.nodeTo = finAgent[0];
-	e2.interest_rate = double(LOW_INTEREST_RATE) / 100.0;
-	e2.d_in_current = 0;
-	e2.c_out_max = 100;
-
-	e3.nodeFrom = finAgent[0];
-	e3.interest_rate = double(LOW_INTEREST_RATE) / 100.0;
-	e3.d_out_current = 0;
-	e3.c_in_max = e1.c_out_max;
-
-	e4.nodeFrom = finAgent[1];
-	e4.interest_rate = double(LOW_INTEREST_RATE) / 100.0;
-	e4.d_out_current = 0;
-	e4.c_in_max = e2.c_out_max;
-	for (int i = 0; i < 2; i++){
-		// L1, Fi
-		e1.nodeTo = finAgent[i];
-		e2.nodeTo = labAgent;
-		e3.nodeFrom = labAgent;
-		e4.nodeFrom = finAgent[i];
-		labAgent->edge_out.push_back(e1);
-		finAgent[i]->edge_out.push_back(e2);
-		finAgent[i]->edge_in.push_back(e3);
-		labAgent->edge_in.push_back(e4);
+void Graph::genTest0Graph(double threshold){
+	default_random_engine generator;
+	uniform_real_distribution<double> distribution1(0.0, 1.0);
+	for (int i = 0; i < finNum; i++){
+		for (int j = i+1; j < finNum; j++){
+			double num = distribution1(generator);
+			double ir = (rand() % 10 + 1)/100.0;
+			// double ir = 0.1;
+			if (num > 1.0 - threshold){
+				this->addEdge(finAgent[i], finAgent[j]);
+				finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);
+				//finAgent[i]->setInEdge(finAgent[j], 0.5, 0, ir, EQ);
+			}
+		}
 	}
-	// P0, F1
-	e1.nodeTo = finAgent[1];
-	e1.interest_rate = double(LOW_INTEREST_RATE) / 100.0;
-	e1.d_in_current = 0;
-	e1.c_out_max = 100;
-
-	e2.nodeTo = proAgent[0];
-	e2.interest_rate = double(HIGH_INTEREST_RATE) / 100.0;
-	e2.d_in_current = 0;
-	e2.c_out_max = 100;
-
-	e3.nodeFrom = proAgent[0];
-	e3.interest_rate = e1.interest_rate;
-	e3.d_out_current = 0;
-	e3.c_in_max = e1.c_out_max;
-
-	e4.nodeFrom = finAgent[1];
-	e4.interest_rate = e2.interest_rate;
-	e4.d_out_current = 0;
-	e4.c_in_max = e2.c_out_max;
-
-	proAgent[0]->edge_out.push_back(e1);
-	finAgent[1]->edge_out.push_back(e2);
-	finAgent[1]->edge_in.push_back(e3);
-	proAgent[0]->edge_in.push_back(e4);
-
-	// Ci, Fi
-	e1.nodeTo = finAgent[0];
-	e1.interest_rate = double(LOW_INTEREST_RATE) / 100.0;
-	e1.d_in_current = 0;
-	e1.c_out_max = 100;
-
-	e2.nodeTo = conAgent[0];
-	e2.interest_rate = double(HIGH_INTEREST_RATE) / 100.0;
-	e2.d_in_current = 0;
-	e2.c_out_max = 10;
-
-	e3.nodeFrom = conAgent[0];
-	e3.interest_rate = e1.interest_rate;
-	e3.d_out_current = 0;
-	e3.c_in_max = e1.c_out_max;
-
-	e4.nodeFrom = finAgent[0];
-	e4.interest_rate = e2.interest_rate;
-	e4.d_out_current = 0;
-	e4.c_in_max = e2.c_out_max;
-
-	conAgent[0]->edge_out.push_back(e1);
-	finAgent[0]->edge_out.push_back(e2);
-	finAgent[0]->edge_in.push_back(e3);
-	conAgent[0]->edge_in.push_back(e4);
-
 }
 
 // Generate a test graph
@@ -1147,7 +1074,7 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 		// pop out the smallest ir edge on the frontier
 		double temp_max_ir = 10;
 		int position = 0;
-		for (unsigned int i = 0; i < tempQueue.size(); i++){
+		for (int i = tempQueue.size()-1; i >= 0; i--){
 			if (temp_max_ir > tempQueue[i].ir){
 				position = i;
 				temp_max_ir = tempQueue[i].ir;
@@ -1260,6 +1187,7 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 	}
     return cap; 
 }
+
 
 //////////////////////////////////////////////////////////////////////////////
 /* Debug */

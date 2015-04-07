@@ -86,13 +86,4 @@ public:
 };
 
 
-class DisGenerator{
-public:
-    void normalPartition(double total, int cnt, vector<double> & result);
-};
-
-
-
-
-
 #endif

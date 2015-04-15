@@ -60,7 +60,7 @@ public:
     
     // case 2: bfs + max flow
     // interest rate constraint, no other discretion
-    // always choose shortest path first
+    // always choose lowest ir path first
 	struct NodeEdgeTypePair{
 		int type;  // 0 C, 1 D
 		Node* node;
@@ -69,6 +69,7 @@ public:
 	int maxFlowIRBlocking(Node* node1, Node* node2);
     double bfsIRBlocking(Node* node1, Node* node2);
     void pathFillIRBlocking(double cap);
+
 
     // Payment, case 1, no discretion, just bfs
     Status payCase1(Node* src, Node* dest, double value);

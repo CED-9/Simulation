@@ -20,6 +20,8 @@ enum OpMode{
 // forward declaration
 class Node;
 class Graph; 
+class WidgetNode;
+class GreedyNode;
 
 struct InEdge{
 	Node* nodeFrom;
@@ -39,20 +41,24 @@ struct OutEdge{
 
 class Node{
 protected:
-    NodeType nodeType;
-    int nodeID;
-    
+	NodeType nodeType;
+	int nodeID;
+	
 public:
-    std::vector<OutEdge> edge_out;
-    std::vector<InEdge> edge_in;
+	std::vector<OutEdge> edge_out;
+	std::vector<InEdge> edge_in;
+	
+	vector<WidgetNode*> widgetNodeIn;
+	vector<WidgetNode*> widgetNodeOut;
+	GreedyNode* greedyNode;
 
-    Node(){}
-    Node(int id);
-    ~Node(){}
-    
-    bool isInOutEdge(Node* nodeT);
-    
-    void setNodeType(NodeType nodeTypeT){ nodeType = nodeTypeT; }
+	Node(){}
+	Node(int id);
+	~Node(){}
+	
+	bool isInOutEdge(Node* nodeT);
+	
+	void setNodeType(NodeType nodeTypeT){ nodeType = nodeTypeT; }
 	NodeType getNodeType(){ return nodeType; }
 	void setNodeID(int id){ nodeID = id; }
 	int getNodeID(){ return nodeID; }
@@ -75,10 +81,10 @@ public:
 	double getCreditFrom(Node* nodeT, Status &status);
 	double getCreditTo(Node* nodeT, Status &status);
 	// get interest rate
-    double getDebIntRateFrom(Node* nodeT, Status status);
-    double getDebIntRateTo(Node* nodeT, Status status);
-    double getCreIntRateFrom(Node* nodeT, Status status);
-    double getCreIntRateTo(Node* nodeT, Status status);
+	double getDebIntRateFrom(Node* nodeT, Status status);
+	double getDebIntRateTo(Node* nodeT, Status status);
+	double getCreIntRateFrom(Node* nodeT, Status status);
+	double getCreIntRateTo(Node* nodeT, Status status);
 	// basic operation, no change
 	// set total credit or current debt
 	// no invalid change 
@@ -87,10 +93,10 @@ public:
 	Status setCreditFrom(Node* nodeT, double value, OpMode mode);
 	Status setCreditTo(Node* nodeT, double value, OpMode mode);
 	// set interest rate
-    Status setDebIntRateFrom(Node* nodeT, double value, OpMode mode);
-    Status setDebIntRateTo(Node* nodeT, double value, OpMode mode);
-    Status setCreIntRateFrom(Node* nodeT, double value, OpMode mode);
-    Status setCreIntRateTo(Node* nodeT, double value, OpMode mode);
+	Status setDebIntRateFrom(Node* nodeT, double value, OpMode mode);
+	Status setDebIntRateTo(Node* nodeT, double value, OpMode mode);
+	Status setCreIntRateFrom(Node* nodeT, double value, OpMode mode);
+	Status setCreIntRateTo(Node* nodeT, double value, OpMode mode);
 
 	Status print(); 
 };

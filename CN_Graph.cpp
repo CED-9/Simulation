@@ -77,51 +77,51 @@ Graph::Graph(int finNumT, int conNumT, int proNumT){
 
 // Copy constructor, new all nodes and edges
 Graph::Graph(Graph &graphT){
-    // copy all nodes
-    this->conNum = graphT.conNum;
-    this->finNum = graphT.finNum;
-    this->proNum = graphT.proNum;
-    
-    this->banAgent = new BanNode(graphT.banAgent->getNodeID());
+	// copy all nodes
+	this->conNum = graphT.conNum;
+	this->finNum = graphT.finNum;
+	this->proNum = graphT.proNum;
+	
+	this->banAgent = new BanNode(graphT.banAgent->getNodeID());
 	this->labAgent = new LabNode(graphT.labAgent->getNodeID());
 	//this->divAgent = new DivNode(graphT.divAgent->getNodeID());
-    for (int i = 0; i<finNum; i++){
-        FinNode* f = new FinNode(graphT.finAgent[i]->getNodeID());
-        finAgent.push_back(f);
-    }
-    for (int i = 0; i<conNum; i++){
-        ConNode* c = new ConNode(graphT.conAgent[i]->getNodeID());
-        conAgent.push_back(c);
-    }
-    for (int i = 0; i<proNum; i++){
-        ProNode* p = new ProNode(graphT.proAgent[i]->getNodeID());
-        proAgent.push_back(p);
-    }
-    
-    // copy all edges
-    Node* temp = NULL;
+	for (int i = 0; i<finNum; i++){
+		FinNode* f = new FinNode(graphT.finAgent[i]->getNodeID());
+		finAgent.push_back(f);
+	}
+	for (int i = 0; i<conNum; i++){
+		ConNode* c = new ConNode(graphT.conAgent[i]->getNodeID());
+		conAgent.push_back(c);
+	}
+	for (int i = 0; i<proNum; i++){
+		ProNode* p = new ProNode(graphT.proAgent[i]->getNodeID());
+		proAgent.push_back(p);
+	}
+	
+	// copy all edges
+	Node* temp = NULL;
 	InEdge e1;
 	OutEdge e2;
-    // bank node
-    // edge in
+	// bank node
+	// edge in
 	for (unsigned int i = 0; i<graphT.banAgent->edge_in.size(); i++){
-        temp = this->searchID(graphT.banAgent->edge_in[i].nodeFrom->getNodeID());
-        e1.c_in_max = graphT.banAgent->edge_in[i].c_in_max;
-        e1.d_out_current = graphT.banAgent->edge_in[i].d_out_current;
-        e1.interest_rate = graphT.banAgent->edge_in[i].interest_rate;
-        e1.nodeFrom = temp;
-        this->banAgent->edge_in.push_back(e1);
-    }
-    // edge out
+		temp = this->searchID(graphT.banAgent->edge_in[i].nodeFrom->getNodeID());
+		e1.c_in_max = graphT.banAgent->edge_in[i].c_in_max;
+		e1.d_out_current = graphT.banAgent->edge_in[i].d_out_current;
+		e1.interest_rate = graphT.banAgent->edge_in[i].interest_rate;
+		e1.nodeFrom = temp;
+		this->banAgent->edge_in.push_back(e1);
+	}
+	// edge out
 	for (unsigned int i = 0; i<graphT.banAgent->edge_out.size(); i++){
-        temp = this->searchID(graphT.banAgent->edge_out[i].nodeTo->getNodeID());
-        e2.c_out_max = graphT.banAgent->edge_out[i].c_out_max;
-        e2.d_in_current = graphT.banAgent->edge_out[i].d_in_current;
-        e2.interest_rate = graphT.banAgent->edge_out[i].interest_rate;
-        e2.nodeTo = temp;
-        this->banAgent->edge_out.push_back(e2);
-    }
-    
+		temp = this->searchID(graphT.banAgent->edge_out[i].nodeTo->getNodeID());
+		e2.c_out_max = graphT.banAgent->edge_out[i].c_out_max;
+		e2.d_in_current = graphT.banAgent->edge_out[i].d_in_current;
+		e2.interest_rate = graphT.banAgent->edge_out[i].interest_rate;
+		e2.nodeTo = temp;
+		this->banAgent->edge_out.push_back(e2);
+	}
+	
 	// Dividend node
 	/*
 	for (unsigned int i = 0; i<graphT.divAgent->edge_in.size(); i++){
@@ -141,98 +141,98 @@ Graph::Graph(Graph &graphT){
 		this->divAgent->edge_out.push_back(e2);
 	}*/
 
-    // Labor node
+	// Labor node
 	for (unsigned int i = 0; i<graphT.labAgent->edge_in.size(); i++){
-        temp = this->searchID(graphT.labAgent->edge_in[i].nodeFrom->getNodeID());
-        e1.c_in_max = graphT.labAgent->edge_in[i].c_in_max;
-        e1.d_out_current = graphT.labAgent->edge_in[i].d_out_current;
-        e1.interest_rate = graphT.labAgent->edge_in[i].interest_rate;
-        e1.nodeFrom = temp;
-        this->labAgent->edge_in.push_back(e1);
-    }
+		temp = this->searchID(graphT.labAgent->edge_in[i].nodeFrom->getNodeID());
+		e1.c_in_max = graphT.labAgent->edge_in[i].c_in_max;
+		e1.d_out_current = graphT.labAgent->edge_in[i].d_out_current;
+		e1.interest_rate = graphT.labAgent->edge_in[i].interest_rate;
+		e1.nodeFrom = temp;
+		this->labAgent->edge_in.push_back(e1);
+	}
 	for (unsigned int i = 0; i<graphT.labAgent->edge_out.size(); i++){
-        temp = this->searchID(graphT.labAgent->edge_out[i].nodeTo->getNodeID());
-        e2.c_out_max = graphT.labAgent->edge_out[i].c_out_max;
-        e2.d_in_current = graphT.labAgent->edge_out[i].d_in_current;
-        e2.interest_rate = graphT.labAgent->edge_out[i].interest_rate;
-        e2.nodeTo = temp;
-        this->labAgent->edge_out.push_back(e2);
-    }
-    
-    // FinNode
-    for(int i=0; i< finNum; i++){
+		temp = this->searchID(graphT.labAgent->edge_out[i].nodeTo->getNodeID());
+		e2.c_out_max = graphT.labAgent->edge_out[i].c_out_max;
+		e2.d_in_current = graphT.labAgent->edge_out[i].d_in_current;
+		e2.interest_rate = graphT.labAgent->edge_out[i].interest_rate;
+		e2.nodeTo = temp;
+		this->labAgent->edge_out.push_back(e2);
+	}
+	
+	// FinNode
+	for(int i=0; i< finNum; i++){
 		for (unsigned int j = 0; j<graphT.finAgent[i]->edge_in.size(); j++){
-            temp = this->searchID(graphT.finAgent[i]->edge_in[j].nodeFrom->getNodeID());
-            e1.c_in_max = graphT.finAgent[i]->edge_in[j].c_in_max;
-            e1.d_out_current = graphT.finAgent[i]->edge_in[j].d_out_current;
-            e1.interest_rate = graphT.finAgent[i]->edge_in[j].interest_rate;
-            e1.nodeFrom = temp;
-            this->finAgent[i]->edge_in.push_back(e1);
-        }
+			temp = this->searchID(graphT.finAgent[i]->edge_in[j].nodeFrom->getNodeID());
+			e1.c_in_max = graphT.finAgent[i]->edge_in[j].c_in_max;
+			e1.d_out_current = graphT.finAgent[i]->edge_in[j].d_out_current;
+			e1.interest_rate = graphT.finAgent[i]->edge_in[j].interest_rate;
+			e1.nodeFrom = temp;
+			this->finAgent[i]->edge_in.push_back(e1);
+		}
 		for (unsigned int j = 0; j<graphT.finAgent[i]->edge_out.size(); j++){
-            temp = this->searchID(graphT.finAgent[i]->edge_out[j].nodeTo->getNodeID());
-            e2.c_out_max = graphT.finAgent[i]->edge_out[j].c_out_max;
-            e2.d_in_current = graphT.finAgent[i]->edge_out[j].d_in_current;
-            e2.interest_rate = graphT.finAgent[i]->edge_out[j].interest_rate;
-            e2.nodeTo = temp;
-            this->finAgent[i]->edge_out.push_back(e2);
-        }
-    }
-    
-    // ConNode
-    for(int i=0; i< conNum; i++){
+			temp = this->searchID(graphT.finAgent[i]->edge_out[j].nodeTo->getNodeID());
+			e2.c_out_max = graphT.finAgent[i]->edge_out[j].c_out_max;
+			e2.d_in_current = graphT.finAgent[i]->edge_out[j].d_in_current;
+			e2.interest_rate = graphT.finAgent[i]->edge_out[j].interest_rate;
+			e2.nodeTo = temp;
+			this->finAgent[i]->edge_out.push_back(e2);
+		}
+	}
+	
+	// ConNode
+	for(int i=0; i< conNum; i++){
 		for (unsigned int j = 0; j<graphT.conAgent[i]->edge_in.size(); j++){
-            temp = this->searchID(graphT.conAgent[i]->edge_in[j].nodeFrom->getNodeID());
-            e1.c_in_max = graphT.conAgent[i]->edge_in[j].c_in_max;
-            e1.d_out_current = graphT.conAgent[i]->edge_in[j].d_out_current;
-            e1.interest_rate = graphT.conAgent[i]->edge_in[j].interest_rate;
-            e1.nodeFrom = temp;
-            this->conAgent[i]->edge_in.push_back(e1);
-        }
+			temp = this->searchID(graphT.conAgent[i]->edge_in[j].nodeFrom->getNodeID());
+			e1.c_in_max = graphT.conAgent[i]->edge_in[j].c_in_max;
+			e1.d_out_current = graphT.conAgent[i]->edge_in[j].d_out_current;
+			e1.interest_rate = graphT.conAgent[i]->edge_in[j].interest_rate;
+			e1.nodeFrom = temp;
+			this->conAgent[i]->edge_in.push_back(e1);
+		}
 		for (unsigned int j = 0; j<graphT.conAgent[i]->edge_out.size(); j++){
-            temp = this->searchID(graphT.conAgent[i]->edge_out[j].nodeTo->getNodeID());
-            e2.c_out_max = graphT.conAgent[i]->edge_out[j].c_out_max;
-            e2.d_in_current = graphT.conAgent[i]->edge_out[j].d_in_current;
-            e2.interest_rate = graphT.conAgent[i]->edge_out[j].interest_rate;
-            e2.nodeTo = temp;
-            this->conAgent[i]->edge_out.push_back(e2);
-        }
-    }
-    
-    // ProNode
-    for(int i=0; i< proNum; i++){
+			temp = this->searchID(graphT.conAgent[i]->edge_out[j].nodeTo->getNodeID());
+			e2.c_out_max = graphT.conAgent[i]->edge_out[j].c_out_max;
+			e2.d_in_current = graphT.conAgent[i]->edge_out[j].d_in_current;
+			e2.interest_rate = graphT.conAgent[i]->edge_out[j].interest_rate;
+			e2.nodeTo = temp;
+			this->conAgent[i]->edge_out.push_back(e2);
+		}
+	}
+	
+	// ProNode
+	for(int i=0; i< proNum; i++){
 		for (unsigned int j = 0; j<graphT.proAgent[i]->edge_in.size(); j++){
-            temp = this->searchID(graphT.proAgent[i]->edge_in[j].nodeFrom->getNodeID());
-            e1.c_in_max = graphT.proAgent[i]->edge_in[j].c_in_max;
-            e1.d_out_current = graphT.proAgent[i]->edge_in[j].d_out_current;
-            e1.interest_rate = graphT.proAgent[i]->edge_in[j].interest_rate; 
-            e1.nodeFrom = temp; 
-            this->proAgent[i]->edge_in.push_back(e1); 
-        }
+			temp = this->searchID(graphT.proAgent[i]->edge_in[j].nodeFrom->getNodeID());
+			e1.c_in_max = graphT.proAgent[i]->edge_in[j].c_in_max;
+			e1.d_out_current = graphT.proAgent[i]->edge_in[j].d_out_current;
+			e1.interest_rate = graphT.proAgent[i]->edge_in[j].interest_rate; 
+			e1.nodeFrom = temp; 
+			this->proAgent[i]->edge_in.push_back(e1); 
+		}
 		for (unsigned int j = 0; j<graphT.proAgent[i]->edge_out.size(); j++){
-            temp = this->searchID(graphT.proAgent[i]->edge_out[j].nodeTo->getNodeID()); 
-            e2.c_out_max = graphT.proAgent[i]->edge_out[j].c_out_max; 
-            e2.d_in_current = graphT.proAgent[i]->edge_out[j].d_in_current; 
-            e2.interest_rate = graphT.proAgent[i]->edge_out[j].interest_rate; 
-            e2.nodeTo = temp; 
-            this->proAgent[i]->edge_out.push_back(e2); 
-        }
-    }
+			temp = this->searchID(graphT.proAgent[i]->edge_out[j].nodeTo->getNodeID()); 
+			e2.c_out_max = graphT.proAgent[i]->edge_out[j].c_out_max; 
+			e2.d_in_current = graphT.proAgent[i]->edge_out[j].d_in_current; 
+			e2.interest_rate = graphT.proAgent[i]->edge_out[j].interest_rate; 
+			e2.nodeTo = temp; 
+			this->proAgent[i]->edge_out.push_back(e2); 
+		}
+	}
 }
 
 // Destructor
 Graph::~Graph(){
-    for (int i = 0; i<finNum; i++){
-        delete finAgent[i];
-    }
-    for (int i = 0; i<conNum; i++){
-        delete conAgent[i];
-    }
-    for (int i = 0; i<proNum; i++){
-        delete proAgent[i];
-    }
-    delete banAgent;
-    delete labAgent;
+	for (int i = 0; i<finNum; i++){
+		delete finAgent[i];
+	}
+	for (int i = 0; i<conNum; i++){
+		delete conAgent[i];
+	}
+	for (int i = 0; i<proNum; i++){
+		delete proAgent[i];
+	}
+	delete banAgent;
+	delete labAgent;
 	//delete divAgent;
 }
 
@@ -518,8 +518,8 @@ void Graph::genTest0Graph(double threshold){
 	for (int i = 0; i < finNum; i++){
 		for (int j = i+1; j < finNum; j++){
 			double num = distribution1(generator);
-			double ir = (rand() % 10 + 1)/100.0;
-			// double ir = 0.1;
+			// double ir = (rand() % 10 + 1)/100.0;
+			double ir = 0.1;
 			if (num > 1.0 - threshold){
 				this->addEdge(finAgent[i], finAgent[j]);
 				finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);
@@ -537,9 +537,9 @@ void Graph::genTestGraph(){
 	// e2:	j->i, j_i_out
 	// e3:	i->j, j_i_in 
 	// e4:	j->i, i_j_in
-    finNum = 4;
-    conNum = 3;
-    proNum = 3;
+	finNum = 4;
+	conNum = 3;
+	proNum = 3;
 	OutEdge e1, e2;
 	InEdge e3, e4;
 
@@ -608,17 +608,17 @@ void Graph::genTestGraph(){
 		labAgent->edge_in.push_back(e4);
 	}
 /*
-    for (int i = 0; i < 4; i++){
-        // L1, Fi
-        e1.nodeTo = divAgent[i];
-        e2.nodeTo = divAgent;
-        e3.nodeFrom  = divAgent;
-        e4.nodeFrom = divAgent[i];
-        labAgent->edge_out.push_back(e1);
-        finAgent[i]->edge_out.push_back(e2);
-        finAgent[i]->edge_in.push_back(e3);
-        labAgent->edge_in.push_back(e4);
-    }
+	for (int i = 0; i < 4; i++){
+		// L1, Fi
+		e1.nodeTo = divAgent[i];
+		e2.nodeTo = divAgent;
+		e3.nodeFrom  = divAgent;
+		e4.nodeFrom = divAgent[i];
+		labAgent->edge_out.push_back(e1);
+		finAgent[i]->edge_out.push_back(e2);
+		finAgent[i]->edge_in.push_back(e3);
+		labAgent->edge_in.push_back(e4);
+	}
 */    
 	// P0, F0
 	e1.nodeTo = finAgent[0];
@@ -794,10 +794,10 @@ double Graph::maxFlowMixed(Node* node1, Node* node2){
 	double flow = 0;
 	while (bfsMixed(node1, node2)){
 		currentFlow = pathCapacityMixed();
-        //cout<<"curr flow: "<<currentFlow<<endl;
-        if (currentFlow < 0.0001) {
-            break;
-        }
+		//cout<<"curr flow: "<<currentFlow<<endl;
+		if (currentFlow < 0.0001) {
+			break;
+		}
 		flow += currentFlow;
 		pathFillMixed(currentFlow);
 	}
@@ -808,7 +808,7 @@ double Graph::maxFlowMixed(Node* node1, Node* node2){
 // no discretion (eg. no interest rate constraints)
 // first use credit, then debt
 Status Graph::pathFillMixed(double currentFlow){
-    //cout<<"pathfill: "<<currentFlow<<endl;
+	//cout<<"pathfill: "<<currentFlow<<endl;
 	Node* node1 = pathMixed.front();
 	pathMixed.pop_front();
 	Node* node2;
@@ -820,7 +820,7 @@ Status Graph::pathFillMixed(double currentFlow){
 			pathMixed.pop_front();
 
 			credit = node1->getCreditFrom(node2, status);
-            //cout<<"credit: "<<node2->getNodeID()<<" "<<credit<<endl;
+			//cout<<"credit: "<<node2->getNodeID()<<" "<<credit<<endl;
 			// Use credit first, then debt
 			if (currentFlow <= credit){
 				status = node1->setDebtTo(node2, currentFlow, ADD);
@@ -833,13 +833,13 @@ Status Graph::pathFillMixed(double currentFlow){
 				if (status != GOOD){ throw status; }
 				status = node2->setDebtFrom(node1, credit, ADD);
 				if (status != GOOD){ throw status; }
-                
-                //cout<<"curr - cre: "<<currentFlow <<" "<< credit<<endl;
+				
+				//cout<<"curr - cre: "<<currentFlow <<" "<< credit<<endl;
 				status = node1->setDebtFrom(node2, currentFlow - credit, SUB);
 				if (status != GOOD){
-                    //cout<<"ccccc"<<endl;
-                    throw status;
-                }
+					//cout<<"ccccc"<<endl;
+					throw status;
+				}
 				status = node2->setDebtTo(node1, currentFlow - credit, SUB);
 				if (status != GOOD){ throw status; }
 			}
@@ -869,7 +869,7 @@ double Graph::pathCapacityMixed(){
 		pathMixed.pop_front();
 		cap = min(cap,
 			node1->getDebtFrom(node2, status)
-            + node1->getCreditFrom(node2, status));
+			+ node1->getCreditFrom(node2, status));
 		node1 = node2;
 	}
 
@@ -943,8 +943,6 @@ bool Graph::bfsMixed(Node* node1, Node* node2){
 /* pay case 2, IR blocking */
 ///////////////////////////////////////////////////////////////
 
-// This greedy algorithm can at least find a local max
-// I am not sure if it is the opt global max
 Status Graph::payCase2(Node* src, Node* dest, double value, double &actualValue){
 	Status status;
 	double current = 0;
@@ -1041,28 +1039,28 @@ void Graph::pathFillIRBlocking(double cap){
 // do not fill the path
 double Graph::bfsIRBlocking(Node* node1, Node* node2){
 	this->pathIRBlocking.clear();
-    Status status;
+	Status status;
 
-    vector <IRPair> tempQueue;
-    set <Node*> tempVisited;
-    IRPair front;
-    Node* prev[NODE_MAX_TOTAL][2];  // 0 Prev->C->Front ; 1 Prev->D->Front
+	vector <IRPair> tempQueue;
+	set <Node*> tempVisited;
+	IRPair front;
+	Node* prev[NODE_MAX_TOTAL][2];  // 0 Prev->C->Front ; 1 Prev->D->Front
 	for (int i = 0; i<NODE_MAX_TOTAL; i++){
 		prev[i][0] = NULL;
 		prev[i][1] = NULL;
 	}
 
-    tempVisited.insert(node1);
+	tempVisited.insert(node1);
 	IRPair tempPair;
 	tempPair.curr = node1;
 	tempPair.ir = 9;  // > any ir
 	tempPair.cap = CREDIT_MAX_FIN_FIN + 1.0;
 	tempPair.type = 0;  // credit
-    tempQueue.push_back(tempPair);
+	tempQueue.push_back(tempPair);
 	tempPair.type = 1;  // debt
 	tempQueue.push_back(tempPair);
 
-    
+	
 	while (tempQueue.size() != 0){
 
 #ifndef NON_DEBUG_MODE
@@ -1147,13 +1145,13 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 		}
 	}  
 
-    if(front.curr != node2){
+	if(front.curr != node2){
 #ifndef NON_DEBUG_MODE
 		cout << "No path exists! " << endl;
 #endif
-        this->pathMixed.clear(); 
-        return 0; 
-    }
+		this->pathMixed.clear(); 
+		return 0; 
+	}
 	double cap = front.cap;
 	Node* tempFront = front.curr;
 
@@ -1187,7 +1185,7 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 		}
 		tempFront = tempPrev;
 	}
-    return cap; 
+	return cap; 
 }
 
 
@@ -1240,3 +1238,4 @@ void Graph::setZero(FinNode* f){
 		f->setOutEdge(f->edge_out[i].nodeTo, 0, 0, 0, EQ);
 	}
 }
+

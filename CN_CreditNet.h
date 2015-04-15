@@ -1,8 +1,9 @@
 #ifndef CN_CreditNet
 #define CN_CreditNet
 
-#include"CN_Graph.h"
-#include<list>
+#include <unordered_map>
+#include <list>
+#include "CN_Graph.h"
 
 class CreditNet : public Graph{
 private:

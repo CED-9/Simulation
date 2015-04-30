@@ -41,12 +41,17 @@ class WidgetGraph{
 private:
 	Graph* originGraph;
 public:
+	Node* src;
+	Node* dest;
+	double payment;
 	vector<WidgetNode*> nodeList;
 	void constructWidget(Graph* graphT);
 	void copyBack();
 	WidgetGraph();
 	~WidgetGraph();
 	void print();
+	void setUpSrcAndDest(Node*, Node*, double);
+	int lpSolver();
 
 };
 

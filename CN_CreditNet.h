@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <list>
 #include "CN_Graph.h"
+#include "CN_WidgetGraph.h"
 
 class CreditNet : public Graph{
 private:
@@ -13,6 +14,7 @@ public:
     void init();
 
     // Inter Bank Trans
+    // liquidity test
     int genInterBankTrans();
 
     // Main Loop

@@ -2,7 +2,7 @@
 #define NON_DEBUG_MODE
 
 #include  "Error.h"
-#include "CN_DistributionGenerator.h"
+// #include "CN_DistributionGenerator.h"
 #include "CN_CreditNet.h"
 #include <queue>
 #include <vector>
@@ -85,6 +85,7 @@ void CreditNet::update(){
 	}
 }
 
+// for liquid stuff
 int CreditNet::genInterBankTrans(){
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;
@@ -98,16 +99,26 @@ int CreditNet::genInterBankTrans(){
 	f2 = finAgent[fid2];
 
 	double trueValue = 0;
-	CreditNet* tempNet = new CreditNet(*this);
-	FinNode* f3 = tempNet->finAgent[fid1];
-	FinNode* f4 = tempNet->finAgent[fid2];
-	payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 2.0, trueValue);
-	delete tempNet;
-	// fail
-	if (trueValue < 2.0){
-		return 1;
-	}
-	payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 2.0, trueValue);
+
+	cout << "hehe" << endl;
+	// this->print();
+	WidgetGraph* widgetNet = new WidgetGraph;
+	widgetNet->constructWidget(this);
+	widgetNet->print();
+	widgetNet->copyBack();
+
+	// CreditNet* tempNet = new CreditNet(*this);
+	// FinNode* f3 = tempNet->finAgent[fid1];
+	// FinNode* f4 = tempNet->finAgent[fid2];
+
+	// payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 2.0, trueValue);
+	// delete tempNet;
+	// // fail
+	// if (trueValue < 2.0){
+	// 	return 1;
+	// }
+	// payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 2.0, trueValue);
+
 	return 0;
 }
 

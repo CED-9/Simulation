@@ -1,6 +1,5 @@
 #include "CN_CreditNet.h"
 #include "CN_WidgetGraph.h"
-#include "CN_GreedyGraph.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -25,27 +24,32 @@ void checkStatus(Status& status){
 }
 
 int main(int argc, char* argv[]){
-	int finNum = 5;
+	int finNum = 3;
 	int conNum = 0;
 	int proNum = 0;
 	CreditNet creditNet(finNum, conNum, proNum);
 	creditNet.genTest0Graph(1);
 	creditNet.print();
-	// cout << "////////////////////////////////////////////////////////////////" << endl;
-	// WidgetGraph widget;
+	cout << "////////////////////////////////////////////////////////////////" << endl;
+	WidgetGraph widget;
 	
-	// widget.constructWidget(&creditNet);
+	widget.constructWidget(&creditNet);
+	widget.print();
+	widget.lpSolver();
 
-	// widget.print();
-	// widget.copyBack();
+
+	widget.copyBack();
+
+
 	// cout << "////////////////////////////////////////////////////////////////" << endl;
 	// creditNet.print();
-	GreedyGraph greedy;
-	greedy.constructGreedy(&creditNet);
-	cout << "////////////////////////////////////////////////////////////////" << endl;
-	greedy.print();
-	greedy.copyBack();
-	creditNet.print();
+	// GreedyGraph greedy;
+	// greedy.constructGreedy(&creditNet);
+	// cout << "////////////////////////////////////////////////////////////////" << endl;
+	// greedy.print();
+	// greedy.copyBack();
+	// int temp = creditNet.genInterBankTrans();
+	// creditNet.print();
 
 	return 0;
 }

@@ -24,7 +24,7 @@ void checkStatus(Status& status){
 }
 
 int main(int argc, char* argv[]){
-	int finNum = 5;
+	int finNum = 3;
 	int conNum = 0;
 	int proNum = 0;
 	CreditNet creditNet(finNum, conNum, proNum);
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
 	WidgetGraph widget;
 	
 	widget.constructWidget(&creditNet);
-	widget.setUpSrcAndDest(creditNet.finAgent[0], creditNet.finAgent[1], 1.0);
+	widget.setUpSrcAndDest(creditNet.finAgent[0], creditNet.finAgent[2], 1.0);
 	widget.print();
 	cout << endl;
 

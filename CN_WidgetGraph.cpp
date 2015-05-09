@@ -2,18 +2,19 @@
 
 
 void WidgetNode::print(){
+	cout << "/////////////////////////////////////////////" << endl;
 	cout << "WidgetNode, type " << type << " of " << originNode->getNodeID() 
 	<< " local ID: " << localID << "global ID: " << nodeID << endl;
 	cout << "in size: " << edge_in.size() << endl;
 	cout << "out size: " << edge_out.size() << endl;
 	for (int i = 0; i < edge_in.size(); ++i){
-		cout << " From: " << edge_in[i].nodeFrom->originNode->getNodeID() 
+		cout << " From: " << edge_in[i].nodeFrom->nodeID 
 		<< " type " << edge_in[i].nodeFrom->type 
 		<< " port: " << edge_in[i].nodeFrom->localID 
 		<< " cap: " << edge_in[i].c_in_max << endl;
 	}
 	for (int i = 0; i < edge_out.size(); ++i){
-		cout << " To: " << edge_out[i].nodeTo->originNode->getNodeID() 
+		cout << " To: " << edge_out[i].nodeTo->nodeID
 		<< " type " << edge_out[i].nodeTo->type 
 		<< " port: " << edge_out[i].nodeTo->localID 
 		<< " cap: " << edge_out[i].c_out_max << endl;
@@ -45,10 +46,10 @@ void WidgetGraph::constructWidget(Graph* graphT){
 	this->originGraph = graphT;
 	// cout << "constructWidget..." << endl;
 	// cout << "num of fin agents " << graphT->finAgent.size() << endl;
-	WidgetNode* superSrc = new WidgetNode(0, temp, i);
-	WidgetNode* superDest = new WidgetNode(0, temp, i);
-	this->nodeList.push_back(superSrc);	
-	this->nodeList.push_back(superDest);
+	// WidgetNode* superSrc = new WidgetNode(1, nullptr, -1);
+	// WidgetNode* superDest = new WidgetNode(0, nullptr, -1);
+	// this->nodeList.push_back(superSrc);	
+	// this->nodeList.push_back(superDest);
 
 	for (int k = 0; k < graphT->finAgent.size(); ++k){
 		Node* temp = graphT->finAgent[k];
@@ -263,6 +264,7 @@ int WidgetGraph::lpSolver()
 	}
 
 	status = CPXNETsolution (env, net, &solstat, &objval, x, pi, slack, dj);
+	cout << "status: " << status << endl;
 	if ( status ) {
 	  fprintf (stderr, "Failed to obtain solution.\n");
 	  goto TERMINATE;
@@ -361,15 +363,18 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 	double * ub = (double *) malloc (narcs  * sizeof (double));
 	double * lb = (double *) malloc (narcs  * sizeof (double));
 
+	// initialize supply and demand
 	for (int i = 0; i < nnodes; i++){
 		if (widgetNet->nodeList[i]->originNode == widgetNet->src){
-			supply[i] = widgetNet->payment;
-		} else if (widgetNet->nodeList[i]->originNode == widgetNet->dest){
 			supply[i] = -1 * widgetNet->payment;
+		} else if (widgetNet->nodeList[i]->originNode == widgetNet->dest){
+			supply[i] = 1 * widgetNet->payment;
 		} else {
 			supply[i] = 0;
 		}
 	}
+
+	// initialize LP with widget net
 	int cnt = 0;
 	for (int k = 0; k < nnodes; ++k){
 		if (widgetNet->nodeList[k]->originNode == widgetNet->src){
@@ -409,6 +414,7 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 			cnt++;
 		}
 	}
+	obj[0] = 1;
 
 	cout << "node ids: "; 
 	for (int i = 0; i < widgetNet->nodeList.size(); ++i){

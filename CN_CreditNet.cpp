@@ -11,6 +11,35 @@ using namespace std;
 
 CreditNet::CreditNet(int finNumT, int conNumT, int proNumT)
         : Graph(finNumT, conNumT, proNumT){}
+CreditNet::~CreditNet(){
+	if (banAgent != NULL){
+        delete banAgent;
+        banAgent = NULL;
+    }
+    if (labAgent != NULL){
+        delete labAgent;
+        labAgent = NULL;
+    }
+    for (int i = 0; i < finNum; ++i){
+        if (finAgent[i] != NULL){
+            delete finAgent[i];
+            finAgent[i] = NULL;
+        }
+    }
+    for (int i = 0; i < conNum; ++i){
+        if (conAgent[i] != NULL){
+            delete conAgent[i];
+            conAgent[i] = NULL;
+        }
+    }
+    for (int i = 0; i < proNum; ++i){
+        if (proAgent[i] != NULL){
+            delete proAgent[i];
+            proAgent[i] = NULL;
+        }
+    }
+    finAgent.clear();
+}
 
 void CreditNet::proPayLab(ProNode* p){
 	Status status; 
@@ -86,7 +115,7 @@ void CreditNet::update(){
 }
 
 // for liquid stuff
-int CreditNet::genInterBankTrans(){
+int CreditNet::genInterBankTrans(WidgetGraph* widgetNet1){
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;
 
@@ -109,13 +138,13 @@ int CreditNet::genInterBankTrans(){
 	// widgetNet->print();
 	int status = widgetNet->lpSolver();
 	if (status != 0){
-		// cout << "no solution!" << endl;
+		// cout << "no solution!" << status << endl;
 		delete widgetNet;
 		return 1;
 	}
 	widgetNet->copyBack();
-
 	delete widgetNet;
+
 	// CreditNet* tempNet = new CreditNet(*this);
 	// FinNode* f3 = tempNet->finAgent[fid1];
 	// FinNode* f4 = tempNet->finAgent[fid2];

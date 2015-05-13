@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
 	double threshold = 0.16;
 
 	// creditNet.print();
-	for (int i = 0; i < 12; ++i){
+	for (int i = 0; i < 1; ++i){
 		threshold += 0.02;
 		double fail = 0;
 		int count = 0;
@@ -38,7 +38,10 @@ int main(int argc, char* argv[]){
 		for (int i = 0; i < 1; ++i){
 			CreditNet creditNet(finNum, conNum, proNum);
 			creditNet.genTest0Graph(threshold);
-			
+			WidgetGraph* widgetNet = NULL;
+			// WidgetGraph* widgetNet = new WidgetGraph;
+			// widgetNet->constructWidget(&creditNet);
+
 			// main loop
 			// first 2000 runs
 			int failRate1 = 0;
@@ -46,14 +49,14 @@ int main(int argc, char* argv[]){
 			int failRateTotal = 0;
 			vector<int> array;
 			for (int i = 0; i < 1000; ++i){
-				int temp = creditNet.genInterBankTrans();
+				int temp = creditNet.genInterBankTrans(widgetNet);
 				array.push_back(temp);
 				failRate1 += temp;
 				failRateTotal += temp;
 			}
 
 			for (int i = 0; i < 1000; ++i){
-				int temp = creditNet.genInterBankTrans();
+				int temp = creditNet.genInterBankTrans(widgetNet);
 				array.push_back(temp);
 				failRate2 += temp;
 				failRateTotal += temp;
@@ -66,7 +69,7 @@ int main(int argc, char* argv[]){
 					break;
 				}
 				// move on
-				int result = creditNet.genInterBankTrans();
+				int result = creditNet.genInterBankTrans(widgetNet);
 				failRate1 = failRate1 - array[0] + array[1000];
 				failRate2 = failRate2 - array[1000] + result;
 				failRateTotal += result;
@@ -76,14 +79,16 @@ int main(int argc, char* argv[]){
 			}
 			fail += failRateTotal;
 			count += cnt;
+			// widgetNet->copyBack();
+			// delete widgetNet;
 		}
 		fail = fail/1.0;
 		count /= 1;
-		// cout << "//////////////////////" << endl;
-		// cout << "fail rate total: " << failRateTotal << endl;
+		cout << "//////////////////////" << endl;
+		cout << "fail : " << fail << endl;
 		// cout << "fail rate 1: " << failRate1 << endl;
 		// cout << "fail rate 2: " << failRate2 << endl;
-		// cout << "rounds: " << cnt << endl;
+		cout << "count: " << count << endl;
 		
 		cout << (int)(threshold*99) << " " << 1 - fail/(double)(count + 2001) << endl;
 	}

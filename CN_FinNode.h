@@ -15,6 +15,7 @@ public:
         this->setNodeID(id);
         this->setNodeType(FINANCIAL);
     }
+    // ~FinNode();
     
     
     

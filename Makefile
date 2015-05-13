@@ -1072,4 +1072,14 @@ test1:
 	g++ -g -c CN_CreditNet.cpp -std=c++11
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
 	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test.cpp *.o $(CCLNFLAGS) -std=c++11
+	valgrind --tool=memcheck --leak-check=full ./test
+#	time ./test > out
+test2:
+	g++ -g -c Error.cpp -std=c++11
+	g++ -g -c CN_DistributionGenerator.cpp -std=c++11
+	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++11
+	g++ -g -c CN_Graph.cpp -std=c++11
+	g++ -g -c CN_CreditNet.cpp -std=c++11
+	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
+	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test.cpp *.o $(CCLNFLAGS) -std=c++11
 	time ./test > out

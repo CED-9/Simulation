@@ -39,9 +39,21 @@ int main(int argc, char* argv[]){
 	// cout << "////////////////////////////////////////////////////////////////" << endl;
 	// greedy.print();
 	// greedy.copyBack();
-	int temp = creditNet.genInterBankTrans();
-	cout << "temp: " << temp << endl;
+	WidgetGraph* widgetNet = new WidgetGraph;
+	widgetNet->constructWidget(&creditNet);
+	// widgetNet->print();
+	for (int i = 0; i < 10; ++i){
+		int temp = creditNet.genInterBankTrans(widgetNet);
+		cout << "temp: " << temp << endl;
+	}
+	// delete widgetNet;
+	// widgetNet->setUpSrcAndDest(
+	// 	creditNet.finAgent[2], creditNet.finAgent[0], 1.0);
+	// // widgetNet->print();
+	// int status = widgetNet->lpSolver();
+	// widgetNet->copyBack();
 	// creditNet.print();
+	// widgetNet->print();
 
 	return 0;
 }

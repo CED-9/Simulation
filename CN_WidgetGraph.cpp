@@ -47,8 +47,11 @@ WidgetGraph::~WidgetGraph(){
 		temp->widgetNode_Out_Out.clear();
 	}
 	for (int i = 0; i < nodeList.size(); ++i){
+		nodeList[i]->edge_out.clear();
+		nodeList[i]->edge_in.clear();
 		delete nodeList[i];
 	}
+	nodeList.clear();
 }
 
 void WidgetGraph::setUpSrcAndDest(Node* srcT, Node* destT, double pay){
@@ -369,13 +372,31 @@ void WidgetGraph::copyBack(){
 		}
 	}
 
-	// for (int k = 0; k < nodeList.size(); ++k){
-	// 	WidgetNode* temp = nodeList[k];
-	// 	if (temp->type == 1)
-	// 		temp->originNode->setOutEdge(temp->edge_out[0].nodeTo->originNode, 
-	// 		temp->edge_out[0].c_out_max, temp->edge_out[0].d_in_current, 
-	// 		temp->edge_out[0].interest_rate, EQ);
+	// cout << "before" << endl;
+	// for (int i = 0; i < originGraph->finNum; ++i){
+	// 	Node* temp = originGraph->finAgent[i];
+	// 	for (int j = 0; j < temp->edge_in.size(); ++j){
+	// 		double curr1 = temp->widgetNode_In_In[j]->edge_in[0].curr;
+	// 		double curr2 = temp->widgetNode_In_Out[j]->edge_out[0].curr;
+	// 		temp->widgetNode_In_In[j]->edge_in[0].curr = 0;
+	// 		temp->widgetNode_In_Out[j]->edge_out[0].curr = 0;
+	// 		temp->widgetNode_In_In[j]->edge_in[0].cap 
+	// 			= temp->widgetNode_In_In[j]->edge_in[0].cap - curr1 + curr2;
+	// 		temp->widgetNode_In_Out[j]->edge_out[0].cap 
+	// 			= temp->widgetNode_In_Out[j]->edge_out[0].cap - curr2 + curr1;
+	// 	}
+	// 	for (int j = 0; j < temp->edge_out.size(); ++j){
+	// 		double curr1 = temp->widgetNode_Out_In[j]->edge_in[0].curr;
+	// 		double curr2 = temp->widgetNode_Out_Out[j]->edge_out[0].curr;
+	// 		temp->widgetNode_Out_In[j]->edge_in[0].curr = 0;
+	// 		temp->widgetNode_Out_Out[j]->edge_out[0].curr = 0;
+	// 		temp->widgetNode_Out_In[j]->edge_in[0].cap
+	// 			= temp->widgetNode_Out_In[j]->edge_in[0].cap - curr1 + curr2;
+	// 		temp->widgetNode_Out_Out[j]->edge_out[0].cap
+	// 			= temp->widgetNode_Out_Out[j]->edge_out[0].cap - curr2 + curr1;
+	// 	}
 	// }
+	// cout << "after" << endl;
 	// clear info in the original graph
 	// for (int k = 0; k < originGraph->finNum; ++k){
 	// 	Node* temp = originGraph->finAgent[k];
@@ -394,7 +415,8 @@ void WidgetGraph::copyBack(){
 /* Forward declaration for function at end of program */
 
 static int
-	buildNetwork  (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet);
+	buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
+	double *supply, int* head, int* tail, double* obj, double* ub, double* lb);
 
 static void
 	free_and_null (char **ptr);
@@ -417,6 +439,7 @@ int WidgetGraph::lpSolver()
 	CPXENVptr env = NULL;
 	CPXNETptr net = NULL;
 	int       status;
+	int status1;
 	int       i, j;
 	int cnt = 0;
 
@@ -468,7 +491,13 @@ int WidgetGraph::lpSolver()
 	  the data already exists in local variables, we pass the arrays
 	  directly to the routine to fill in the data structures.  */
 
-	status = buildNetwork (env, net, this);
+	double *supply;
+	int* head;
+	int* tail;
+	double* obj;
+	double* ub;
+	double* lb;
+	status = buildNetwork (env, net, this, supply, head, tail, obj, ub, lb);
 
 	if ( status ) {
 	  fprintf (stderr, "Failed to build network problem.\n");
@@ -491,18 +520,16 @@ int WidgetGraph::lpSolver()
 
 	/* allocate memory for solution data */
 
-	x     = (double *) malloc (narcs  * sizeof (double));
-	dj    = (double *) malloc (narcs  * sizeof (double));
-	pi    = (double *) malloc (nnodes * sizeof (double));
-	slack = (double *) malloc (nnodes * sizeof (double));
+	// x     = (double *) malloc (narcs  * sizeof (double));
+	// dj    = (double *) malloc (narcs  * sizeof (double));
+	// pi    = (double *) malloc (nnodes * sizeof (double));
+	// slack = (double *) malloc (nnodes * sizeof (double));
 
-	if ( x     == NULL ||
-		dj    == NULL ||
-		pi    == NULL ||
-		slack == NULL   ) {
-	  fprintf (stderr, "Failed to allocate arrays.\n");
-	  goto TERMINATE;
-	}
+	x     = new double[narcs];
+	dj    = new double[narcs];
+	pi    = new double[nnodes];
+	slack = new double[nnodes];
+
 
 	status = CPXNETsolution (env, net, &solstat, &objval, x, pi, slack, dj);
 	// cout << "status: " << status << endl;
@@ -520,7 +547,8 @@ int WidgetGraph::lpSolver()
 
 	// printf ("\nSolution status = %d\n", solstat);
 	if (solstat != 1 && solstat != 6 && solstat != 14){
-		status = -1;
+		// cout << "status" << solstat << endl; 
+		status1 = -1;
 		goto TERMINATE;
 	}
 	// printf ("Solution value  = %f\n\n", objval);
@@ -537,7 +565,7 @@ int WidgetGraph::lpSolver()
 			cnt++;
 		}
 	}
-	status = 0;
+	status1 = 0;
 
 	// for (i = 0; i < nnodes; i++) {
 	//   printf ("Node %2d:  Slack = %10f  Pi = %10f\n", i, slack[i], pi[i]);
@@ -559,48 +587,65 @@ int WidgetGraph::lpSolver()
 	
 TERMINATE:
 
+	// delete supply;
+	// delete head;
+	// delete tail;
+	// delete obj;
+	// delete ub;
+	// delete lb;
+
 	/* Free memory for solution data */
 
-	free_and_null ((char **) &x);
-	free_and_null ((char **) &dj);
-	free_and_null ((char **) &pi);
-	free_and_null ((char **) &slack);
+	delete [] x;
+	delete [] dj;
+	delete [] pi;
+	delete [] slack;
+
+	// free_and_null ((char **) &x);
+	// free_and_null ((char **) &dj);
+	// free_and_null ((char **) &pi);
+	// free_and_null ((char **) &slack);
 
 	/* Free up the problem as allocated by CPXNETcreateprob, if necessary */
 
-	// if ( net != NULL ) {
-	//   status = CPXNETfreeprob (env, &net);
-	//   if ( status ) {
-	// 	 fprintf (stderr, "CPXNETfreeprob failed, error code %d.\n", status);
-	//   }
-	// }
+	if ( net != NULL ) {
+		cout << "clearing net..." << endl;
+	  status = CPXNETfreeprob (env, &net);
+	  if (net != NULL){
+	  	cout << "fail to clear net" << endl;
+	  }
+	  if ( status ) {
+		 fprintf (stderr, "CPXNETfreeprob failed, error code %d.\n", status);
+	  }
+	}
 
-	// /* Free up the CPLEX environment, if necessary */
+	/* Free up the CPLEX environment, if necessary */
 
-	// if ( env != NULL ) {
-	//   status = CPXcloseCPLEX (&env);
+	if ( env != NULL ) {
+	  status = CPXcloseCPLEX (&env);
 
 	//    Note that CPXcloseCPLEX produces no output,
 	// 	 so the only way to see the cause of the error is to use
 	// 	 CPXgeterrorstring.  For other CPLEX routines, the errors will
 	// 	 be seen if the CPXPARAM_ScreenOutput indicator is set to CPX_ON. 
 
-	//   if ( status ) {
-	//   char  errmsg[CPXMESSAGEBUFSIZE];
-	// 	 fprintf (stderr, "Could not close CPLEX environment.\n");
-	// 	 CPXgeterrorstring (env, status, errmsg);
-	// 	 fprintf (stderr, "%s", errmsg);
-	//   }
-	// }
+	  if ( status ) {
+	  char  errmsg[CPXMESSAGEBUFSIZE];
+		 fprintf (stderr, "Could not close CPLEX environment.\n");
+		 CPXgeterrorstring (env, status, errmsg);
+		 fprintf (stderr, "%s", errmsg);
+	  }
+	}
 
-	return (status);
+	return (status1);
 
 }  /* END main */
 
 
 
 static int
-buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
+buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
+	double *supply, int* head, int* tail, double* obj, double* ub, double* lb)
 {
 	int status = 0;
 
@@ -615,12 +660,12 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 	}
 
 	// cout << "num of nodes and arcs; " << nnodes << " " << narcs << endl;
-	double * supply = (double *) malloc (nnodes  * sizeof (double));
-	int * tail = (int *) malloc (narcs  * sizeof (int));
-	int * head = (int *) malloc (narcs  * sizeof (int));
-	double * obj = (double *) malloc (narcs  * sizeof (double));
-	double * ub = (double *) malloc (narcs  * sizeof (double));
-	double * lb = (double *) malloc (narcs  * sizeof (double));
+	supply = (double *) malloc (nnodes  * sizeof (double));
+	tail = (int *) malloc (narcs  * sizeof (int));
+	head = (int *) malloc (narcs  * sizeof (int));
+	obj = (double *) malloc (narcs  * sizeof (double));
+	ub = (double *) malloc (narcs  * sizeof (double));
+	lb = (double *) malloc (narcs  * sizeof (double));
 
 	// initialize supply and demand
 	for (int i = 0; i < nnodes; i++){
@@ -644,12 +689,13 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 			head[cnt] = widgetNet->nodeList[k]->nodeID;
 			tail[cnt] = temp.nodeTo->nodeID;
 			
-			if (widgetNet->nodeList[k]->originNode == widgetNet->src 
-				&& temp.nodeTo->type == 2){
-				obj[cnt] = temp.interest_diff;
-			} else {
-				obj[cnt] = 0;
-			}
+			obj[cnt] = temp.interest_diff;
+			// if (widgetNet->nodeList[k]->originNode == widgetNet->src 
+			// 	&& temp.nodeTo->type == 2){
+			// 	obj[cnt] = temp.interest_diff;
+			// } else {
+			// 	obj[cnt] = 0;
+			// }
 
 			// obj[cnt] = temp.interest_diff;
 

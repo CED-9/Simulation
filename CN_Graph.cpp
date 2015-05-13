@@ -518,17 +518,22 @@ void Graph::genTest0Graph(double threshold){
 	for (int i = 0; i < finNum; i++){
 		for (int j = i+1; j < finNum; j++){
 			double num = distribution1(generator);
-			// double ir = (rand() % 10 + 1)/100.0;
-			double ir = 0.1;
+			double ir = (rand() % 2 + 1)/100.0;
+			// double ir = 0.1;
 			if (num > 1.0 - threshold){
-				this->addEdge(finAgent[i], finAgent[j]);
-				finAgent[i]->setOutEdge(finAgent[j], 1, 0.5, ir, EQ);
-				//finAgent[i]->setInEdge(finAgent[j], 0.5, 0, ir, EQ);
+				if (rand()%2 == 1){
+					this->addEdge(finAgent[i], finAgent[j]);
+					finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);	
+				} else {
+					this->addEdge(finAgent[j], finAgent[i]);
+					finAgent[j]->setOutEdge(finAgent[i], 1, 0, ir, EQ);
+				}
+				// finAgent[i]->setInEdge(finAgent[j], 0.5, 0, ir, EQ);
 			}
 		}
 	}
 	// temp
-	finAgent[1]->setOutEdge(finAgent[2], 1, 0, 0.2, EQ);
+	// finAgent[1]->setOutEdge(finAgent[2], 1, 0, 0.2, EQ);
 }
 
 // Generate a test graph

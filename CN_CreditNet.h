@@ -11,11 +11,12 @@ private:
 
 public:
     CreditNet(int finNumT, int conNumT, int proNumT);
+    ~CreditNet();
     void init();
 
     // Inter Bank Trans
     // liquidity test
-    int genInterBankTrans();
+    int genInterBankTrans(WidgetGraph*);
 
     // Main Loop
     void update();

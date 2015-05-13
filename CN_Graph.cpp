@@ -522,11 +522,13 @@ void Graph::genTest0Graph(double threshold){
 			double ir = 0.1;
 			if (num > 1.0 - threshold){
 				this->addEdge(finAgent[i], finAgent[j]);
-				finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);
+				finAgent[i]->setOutEdge(finAgent[j], 1, 0.5, ir, EQ);
 				//finAgent[i]->setInEdge(finAgent[j], 0.5, 0, ir, EQ);
 			}
 		}
 	}
+	// temp
+	finAgent[1]->setOutEdge(finAgent[2], 1, 0, 0.2, EQ);
 }
 
 // Generate a test graph

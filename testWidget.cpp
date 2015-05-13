@@ -24,25 +24,13 @@ void checkStatus(Status& status){
 }
 
 int main(int argc, char* argv[]){
-	int finNum = 3;
+	int finNum = 100;
 	int conNum = 0;
 	int proNum = 0;
 	CreditNet creditNet(finNum, conNum, proNum);
 	creditNet.genTest0Graph(1);
-	creditNet.print();
+	// creditNet.print();
 	cout << "////////////////////////////////////////////////////////////////" << endl;
-	WidgetGraph widget;
-	
-	widget.constructWidget(&creditNet);
-	widget.setUpSrcAndDest(creditNet.finAgent[0], creditNet.finAgent[2], 1.0);
-	widget.print();
-	cout << endl;
-
-	widget.lpSolver();
-
-
-	widget.copyBack();
-
 
 	// cout << "////////////////////////////////////////////////////////////////" << endl;
 	// creditNet.print();
@@ -51,7 +39,8 @@ int main(int argc, char* argv[]){
 	// cout << "////////////////////////////////////////////////////////////////" << endl;
 	// greedy.print();
 	// greedy.copyBack();
-	// int temp = creditNet.genInterBankTrans();
+	int temp = creditNet.genInterBankTrans();
+	cout << "temp: " << temp << endl;
 	// creditNet.print();
 
 	return 0;

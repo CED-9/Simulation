@@ -11,16 +11,22 @@ class WidgetNode;
 
 struct WidgetInEdge{
 	WidgetNode* nodeFrom;
-	double c_in_max;
-	double d_out_current;
+	double cap;
+	double curr;
 	double interest_rate;
+	double interest_diff;
+	int type;  // 0-5
+	WidgetInEdge() : curr(0), type(-1), interest_diff(0) {}
 };
 
 struct WidgetOutEdge{
 	WidgetNode* nodeTo;
-	double c_out_max;
-	double d_in_current;
+	double cap;
+	double curr;
 	double interest_rate;
+	double interest_diff;
+	int type;  // 0-5
+	WidgetOutEdge() : curr(0), type(-1), interest_diff(0) {}
 };
 
 class WidgetNode{
@@ -29,9 +35,10 @@ public:
 	int getNodeID(){ return nodeID; }
 
 	int localID;
-	int type;
+	int type;  // 0 in, 1 out, 2 src, 3 dest
 	vector<WidgetOutEdge> edge_out;
 	vector<WidgetInEdge> edge_in;
+
 	Node* originNode;
 	WidgetNode(int type, Node* o, int l) : type(type), originNode(o), localID(l) {}
 	void print();

@@ -100,13 +100,22 @@ int CreditNet::genInterBankTrans(){
 
 	double trueValue = 0;
 
-	cout << "hehe" << endl;
 	// this->print();
+	// cout << "fid1: " << fid1 << " fid2: " << fid2 << endl;
 	WidgetGraph* widgetNet = new WidgetGraph;
 	widgetNet->constructWidget(this);
-	widgetNet->print();
+	widgetNet->setUpSrcAndDest(
+		this->finAgent[fid1], this->finAgent[fid2], 1.0);
+	// widgetNet->print();
+	int status = widgetNet->lpSolver();
+	if (status != 0){
+		// cout << "no solution!" << endl;
+		delete widgetNet;
+		return 1;
+	}
 	widgetNet->copyBack();
 
+	delete widgetNet;
 	// CreditNet* tempNet = new CreditNet(*this);
 	// FinNode* f3 = tempNet->finAgent[fid1];
 	// FinNode* f4 = tempNet->finAgent[fid2];

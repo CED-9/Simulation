@@ -1,29 +1,36 @@
 #include "CN_WidgetGraph.h"
-
+#define CREDIT_MAX 100;
 
 void WidgetNode::print(){
 	cout << "/////////////////////////////////////////////" << endl;
 	cout << "WidgetNode, type " << type << " of " << originNode->getNodeID() 
-	<< " local ID: " << localID << "global ID: " << nodeID << endl;
+	<< " local ID: " << localID << " global ID: " << nodeID << endl;
 	cout << "in size: " << edge_in.size() << endl;
 	cout << "out size: " << edge_out.size() << endl;
 	for (int i = 0; i < edge_in.size(); ++i){
 		cout << " From: " << edge_in[i].nodeFrom->nodeID 
 		<< " type " << edge_in[i].nodeFrom->type 
 		<< " port: " << edge_in[i].nodeFrom->localID 
-		<< " cap: " << edge_in[i].c_in_max << endl;
+		<< " cap: " << edge_in[i].cap 
+		<< " curr: " << edge_in[i].curr << endl;
 	}
 	for (int i = 0; i < edge_out.size(); ++i){
 		cout << " To: " << edge_out[i].nodeTo->nodeID
 		<< " type " << edge_out[i].nodeTo->type 
 		<< " port: " << edge_out[i].nodeTo->localID 
-		<< " cap: " << edge_out[i].c_out_max << endl;
+		<< " cap: " << edge_out[i].cap 
+		<< " curr: " << edge_out[i].curr << endl;
 	}
 }
 
 void WidgetGraph::print(){
 	cout << "////////////////////////// Widget Net //////////////////////////" << endl;
 	cout << "num of nodes in widget net: " << nodeList.size() << endl;
+	int cnt = 0;
+	for (int i = 0; i < nodeList.size(); ++i){
+		cnt += nodeList[i]->edge_out.size();
+	}
+	cout << "num of edges: " << cnt << endl;
 	for (int i = 0; i < nodeList.size(); ++i){
 		nodeList[i]->print();
 	}
@@ -31,6 +38,14 @@ void WidgetGraph::print(){
 
 WidgetGraph::WidgetGraph(){}
 WidgetGraph::~WidgetGraph(){
+	// clear info in the original graph
+	for (int k = 0; k < originGraph->finNum; ++k){
+		Node* temp = originGraph->finAgent[k];
+		temp->widgetNode_In_In.clear();
+		temp->widgetNode_In_Out.clear();
+		temp->widgetNode_Out_In.clear();
+		temp->widgetNode_Out_Out.clear();
+	}
 	for (int i = 0; i < nodeList.size(); ++i){
 		delete nodeList[i];
 	}
@@ -51,74 +66,286 @@ void WidgetGraph::constructWidget(Graph* graphT){
 	// this->nodeList.push_back(superSrc);	
 	// this->nodeList.push_back(superDest);
 
+	// Okay letsconstruct Widget nodes
 	for (int k = 0; k < graphT->finAgent.size(); ++k){
 		Node* temp = graphT->finAgent[k];
 		// cout << "fin agent: " << k << " " << temp->edge_in.size() << " " 
 			// << temp->edge_out.size() << endl;
 		// cout << "construct node " << temp->getNodeID() << endl;
+
+		WidgetNode* superWidgetNodeSrc = new WidgetNode(2, temp, -1);
+		WidgetNode* superWidgetNodeDest = new WidgetNode(3, temp, -1);
+		this->nodeList.push_back(superWidgetNodeSrc);
+		this->nodeList.push_back(superWidgetNodeDest);
+
 		for (int i = 0; i < temp->edge_in.size(); ++i){
 			// cout << "construct widget node at port in " << i << endl;
-			WidgetNode* wNode = new WidgetNode(0, temp, i);
-			temp->widgetNodeIn.push_back(wNode);
 
-			this->nodeList.push_back(wNode);
-
+			WidgetNode* wNode1 = new WidgetNode(0, temp, i);  // In_In
+			WidgetNode* wNode2 = new WidgetNode(1, temp, i);  // In_Out
+			temp->widgetNode_In_In.push_back(wNode1);
+			temp->widgetNode_In_Out.push_back(wNode2);
+			this->nodeList.push_back(wNode1);
+			this->nodeList.push_back(wNode2);
 		}
 		for (int i = 0; i < temp->edge_out.size(); ++i){
 			// cout << "construct widget node at port out " << i << endl;
-			WidgetNode* wNode = new WidgetNode(1, temp, i);
-			temp->widgetNodeOut.push_back(wNode);
-			this->nodeList.push_back(wNode);
+			WidgetNode* wNode1 = new WidgetNode(0, temp, i);  // In_In
+			WidgetNode* wNode2 = new WidgetNode(1, temp, i);  // In_Out
+			temp->widgetNode_Out_In.push_back(wNode1);
+			temp->widgetNode_Out_Out.push_back(wNode2);
+			this->nodeList.push_back(wNode1);
+			this->nodeList.push_back(wNode2);
+		}
+
+		// cout << "begin super nodes" << endl;
+		// superSrc <- _In, superDest -> _Out
+		for (int i = 0; i < temp->widgetNode_In_In.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = superWidgetNodeSrc;
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = -temp->edge_in[i].interest_rate;
+			temp->widgetNode_In_In[i]->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = temp->widgetNode_In_In[i];
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = -temp->edge_in[i].interest_rate;
+			superWidgetNodeSrc->edge_in.push_back(wEdgeIn);
+		}
+		for (int i = 0; i < temp->widgetNode_Out_In.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = superWidgetNodeSrc;
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = -temp->edge_out[i].interest_rate;
+			temp->widgetNode_Out_In[i]->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = temp->widgetNode_Out_In[i];
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = -temp->edge_out[i].interest_rate;
+			superWidgetNodeSrc->edge_in.push_back(wEdgeIn);
+		}
+		// superDest -> _Out
+		for (int i = 0; i < temp->widgetNode_In_Out.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = temp->widgetNode_In_Out[i];
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = temp->edge_in[i].interest_rate;
+			superWidgetNodeDest->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = superWidgetNodeDest;
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = temp->edge_in[i].interest_rate;
+			temp->widgetNode_In_Out[i]->edge_in.push_back(wEdgeIn);
+		}
+		for (int i = 0; i < temp->widgetNode_Out_Out.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = temp->widgetNode_Out_Out[i];
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = temp->edge_out[i].interest_rate;
+			superWidgetNodeDest->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = superWidgetNodeDest;
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = temp->edge_out[i].interest_rate;
+			temp->widgetNode_Out_Out[i]->edge_in.push_back(wEdgeIn);
+		}
+
+
+		// cout << "begin in_in to out_out" << endl;
+		// In_In -> Out_Out, Out_In -> In_Out
+		for (int i = 0; i < temp->edge_out.size(); ++i){
 			for (int j = 0; j < temp->edge_in.size(); ++j){
-				if (temp->edge_in[j].interest_rate <= temp->edge_out[i].interest_rate){
+				if (temp->edge_out[i].interest_rate >= temp->edge_in[j].interest_rate){
 					// cout << "pushing port " << j << " to port " << i << endl;
-					WidgetOutEdge wEdge;
-					wEdge.nodeTo = temp->widgetNodeOut[i];
-					wEdge.c_out_max = temp->edge_in[j].c_in_max;
-					wEdge.d_in_current = 0;
-					wEdge.interest_rate = temp->edge_in[j].interest_rate;
-					temp->widgetNodeIn[j]->edge_out.push_back(wEdge);
+					// In_In -> Out_Out, [j]->[i]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_Out_Out[i];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						temp->edge_out[i].interest_rate - temp->edge_in[j].interest_rate;
+					temp->widgetNode_In_In[j]->edge_out.push_back(wEdgeOut);
+
 					WidgetInEdge wEdgeIn;
-					wEdgeIn.nodeFrom = temp->widgetNodeIn[j];
-					wEdgeIn.c_in_max = wEdge.c_out_max;
-					wEdgeIn.d_out_current = 0;
-					wEdgeIn.interest_rate = wEdge.interest_rate;
-					temp->widgetNodeOut[i]->edge_in.push_back(wEdgeIn);
+					wEdgeIn.nodeFrom = temp->widgetNode_In_In[j];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_Out_Out[i]->edge_in.push_back(wEdgeIn);
+				}
+				if (temp->edge_out[i].interest_rate <= temp->edge_in[j].interest_rate){
+					// Out_In -> In_Out, [i]->[j]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_In_Out[j];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						- temp->edge_out[i].interest_rate + temp->edge_in[j].interest_rate;
+					temp->widgetNode_Out_In[i]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_Out_In[i];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_In_Out[j]->edge_in.push_back(wEdgeIn);
 				}
 			}
 		}
+		// cout << "begin in_in to in_out" << endl;
+		// In_In -> In_Out
+		for (int i = 0; i < temp->edge_in.size(); ++i){
+			for (int j = i+1; j < temp->edge_in.size(); ++j){
+				// if (i == j){
+				// 	continue;
+				// }
+				if (temp->edge_in[i].interest_rate >= temp->edge_in[j].interest_rate){
+					// [i].ir >= [j].ir, [j]->[i]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_In_Out[i];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						temp->edge_in[i].interest_rate - temp->edge_in[j].interest_rate;
+					temp->widgetNode_In_In[j]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_In_In[j];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_In_Out[i]->edge_in.push_back(wEdgeIn);
+				}
+				if (temp->edge_in[i].interest_rate <= temp->edge_in[j].interest_rate){
+					// [i].ir <= [j].ir, [i]->[j]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_In_Out[j];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						- temp->edge_in[i].interest_rate + temp->edge_in[j].interest_rate;
+					temp->widgetNode_In_In[i]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_In_In[i];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_In_Out[j]->edge_in.push_back(wEdgeIn);
+				}
+			}
+		}
+		// cout << "begin out_in to out_out" << endl;
+		// Out_In -> Out_Out 
+		for (int i = 0; i < temp->edge_out.size(); ++i){
+			for (int j = i+1; j < temp->edge_out.size(); ++j){
+				// if (i == j){
+				// 	continue;
+				// }
+				if (temp->edge_out[i].interest_rate >= temp->edge_out[j].interest_rate){
+					// [i].ir >= [j].ir, [j]->[i]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_Out_Out[i];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						temp->edge_out[i].interest_rate - temp->edge_out[j].interest_rate;
+					temp->widgetNode_Out_In[j]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_Out_In[j];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_Out_Out[i]->edge_in.push_back(wEdgeIn);
+				}
+				if (temp->edge_out[i].interest_rate <= temp->edge_out[j].interest_rate){
+					// [i].ir <= [j].ir, [i]->[j]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_Out_Out[j];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						- temp->edge_out[i].interest_rate + temp->edge_out[j].interest_rate;
+					temp->widgetNode_Out_In[i]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_Out_In[i];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_Out_Out[j]->edge_in.push_back(wEdgeIn);
+				}
+			}
+		}
+		// cout << "end" << endl;
 	}
+
 	// cout << "finishing inside widget edges" << endl;
+
 	for (int k = 0; k < graphT->finAgent.size(); ++k){
 		Node* temp = graphT->finAgent[k];
 		// cout << "from node: " << temp->getNodeID() << endl;
 		for (int i = 0; i < temp->edge_out.size(); ++i){
 			// find sender's port and receiver's port
-			WidgetInEdge wInEdge;
-			WidgetOutEdge wOutEdge;
+			WidgetInEdge wInEdge1;
+			WidgetInEdge wInEdge2;
+			WidgetOutEdge wOutEdge1;
+			WidgetOutEdge wOutEdge2;
+
+			wOutEdge1.type = 1;
 
 			// cout << "from port out: " << i << endl;
-			int targetIndex = 0;
 			Node* tempTarget = temp->edge_out[i].nodeTo;
-			for (int j = 0; j < tempTarget->edge_in.size(); ++j){
+			int j;
+			for (j = 0; j < tempTarget->edge_in.size(); ++j){
 				if (temp == tempTarget->edge_in[j].nodeFrom){
-					targetIndex = j;
+					break;
 				}
 			}
 
-			// cout << "target node: " << tempTarget->getNodeID() << " port in: " << targetIndex << endl;
+			// cout << "target node: " << tempTarget->getNodeID() << " port in: " << j << endl;
 			
-			wInEdge.nodeFrom = temp->widgetNodeOut[i];
-			wInEdge.c_in_max = temp->edge_out[i].c_out_max;
-			wInEdge.d_out_current = temp->edge_out[i].d_in_current;
-			wInEdge.interest_rate = temp->edge_out[i].interest_rate;
-			wOutEdge.nodeTo = tempTarget->widgetNodeIn[targetIndex];
-			wOutEdge.c_out_max = wInEdge.c_in_max;
-			wOutEdge.d_in_current = wInEdge.d_out_current;
-			wOutEdge.interest_rate = wInEdge.interest_rate;
+			wInEdge1.nodeFrom = temp->widgetNode_Out_Out[i];
+			wInEdge1.cap = temp->edge_out[i].c_out_max - temp->edge_out[i].d_in_current;
+			wInEdge1.interest_rate = temp->edge_out[i].interest_rate;
 
-			temp->widgetNodeOut[i]->edge_out.push_back(wOutEdge);
-			tempTarget->widgetNodeIn[targetIndex]->edge_in.push_back(wInEdge);
+			// cout << "1" << endl;
+
+			wInEdge2.nodeFrom = tempTarget->widgetNode_In_Out[j];
+			wInEdge2.cap = temp->edge_out[i].d_in_current;
+			wInEdge2.interest_rate = wInEdge1.interest_rate;
+
+			// cout << "2" << endl;
+
+			wOutEdge1.nodeTo = tempTarget->widgetNode_In_In[j];
+			wOutEdge1.cap = wInEdge1.cap;
+			wOutEdge1.interest_rate = wInEdge1.interest_rate;
+
+			// cout << "3" << endl;
+
+			wOutEdge2.nodeTo = temp->widgetNode_Out_In[i];
+			wOutEdge2.cap = wInEdge2.cap;
+			wOutEdge2.interest_rate = wInEdge2.interest_rate;
+
+			// cout << "4" << endl;
+
+			temp->widgetNode_Out_Out[i]->edge_out.push_back(wOutEdge1);
+			tempTarget->widgetNode_In_Out[j]->edge_out.push_back(wOutEdge2);
+			tempTarget->widgetNode_In_In[j]->edge_in.push_back(wInEdge1);
+			temp->widgetNode_Out_In[i]->edge_in.push_back(wInEdge2);
 		}
 	}
 	// cout << "finishing outside widget edges" << endl;
@@ -129,19 +356,32 @@ void WidgetGraph::constructWidget(Graph* graphT){
 }
 
 void WidgetGraph::copyBack(){
-	for (int k = 0; k < nodeList.size(); ++k){
-		WidgetNode* temp = nodeList[k];
-		if (temp->type == 1)
-			temp->originNode->setOutEdge(temp->edge_out[0].nodeTo->originNode, 
-			temp->edge_out[0].c_out_max, temp->edge_out[0].d_in_current, 
-			temp->edge_out[0].interest_rate, EQ);
+
+	for (int i = 0; i < originGraph->finNum; ++i){
+		Node* temp = originGraph->finAgent[i];
+
+		for (int j = 0; j < temp->widgetNode_Out_Out.size(); ++j){
+			// cout << "curr: " << temp->widgetNode_Out_Out[j]->edge_out[0].curr 
+			// << " " << temp->widgetNode_Out_In[j]->edge_in[0].curr << endl;
+			temp->setOutEdge(temp->widgetNode_Out_Out[j]->edge_out[0].nodeTo->originNode, 
+				0, temp->widgetNode_Out_Out[j]->edge_out[0].curr - 
+				temp->widgetNode_Out_In[j]->edge_in[0].curr, 0, ADD);
+		}
 	}
+
+	// for (int k = 0; k < nodeList.size(); ++k){
+	// 	WidgetNode* temp = nodeList[k];
+	// 	if (temp->type == 1)
+	// 		temp->originNode->setOutEdge(temp->edge_out[0].nodeTo->originNode, 
+	// 		temp->edge_out[0].c_out_max, temp->edge_out[0].d_in_current, 
+	// 		temp->edge_out[0].interest_rate, EQ);
+	// }
 	// clear info in the original graph
-	for (int k = 0; k < originGraph->finNum; ++k){
-		Node* temp = originGraph->finAgent[k];
-		temp->widgetNodeIn.clear();
-		temp->widgetNodeOut.clear();
-	}
+	// for (int k = 0; k < originGraph->finNum; ++k){
+	// 	Node* temp = originGraph->finAgent[k];
+	// 	temp->widgetNodeIn.clear();
+	// 	temp->widgetNodeOut.clear();
+	// }
 }
 
 /////////////////////////////////////////////////////////////////
@@ -163,7 +403,7 @@ int WidgetGraph::lpSolver()
 {
 	/* Declare variables and arrays for retrieving problem data and
 	  solution information later on. */
-	cout << "lp solver" << endl;
+	// cout << "lp solver" << endl;
 
 	int      narcs;
 	int      nnodes;
@@ -178,6 +418,7 @@ int WidgetGraph::lpSolver()
 	CPXNETptr net = NULL;
 	int       status;
 	int       i, j;
+	int cnt = 0;
 
 	/* Initialize the CPLEX environment */
 
@@ -200,7 +441,7 @@ int WidgetGraph::lpSolver()
 
 	/* Turn on output to the screen */
 
-	status = CPXsetintparam (env, CPXPARAM_ScreenOutput, CPX_ON);
+	status = CPXsetintparam (env, CPXPARAM_ScreenOutput, CPX_OFF);
 	if ( status ) {
 	  fprintf (stderr, 
 				"Failure to turn on screen indicator, error %d.\n", status);
@@ -264,38 +505,56 @@ int WidgetGraph::lpSolver()
 	}
 
 	status = CPXNETsolution (env, net, &solstat, &objval, x, pi, slack, dj);
-	cout << "status: " << status << endl;
+	// cout << "status: " << status << endl;
 	if ( status ) {
-	  fprintf (stderr, "Failed to obtain solution.\n");
+	  // fprintf (stderr, "Failed to obtain solution.\n");
 	  goto TERMINATE;
 	}
 
-	cout << "results: " << endl;
-	for (int i = 0; i < narcs; ++i){
-		cout << x[i] << endl;
-	}
+	// cout << "results: " << endl;
+	// for (int i = 0; i < narcs; ++i){
+	// 	cout << x[i] << endl;
+	// }
 
 	/* Write the output to the screen. */
 
-	printf ("\nSolution status = %d\n", solstat);
-	printf ("Solution value  = %f\n\n", objval);
-
-	for (i = 0; i < nnodes; i++) {
-	  printf ("Node %2d:  Slack = %10f  Pi = %10f\n", i, slack[i], pi[i]);
+	// printf ("\nSolution status = %d\n", solstat);
+	if (solstat != 1 && solstat != 6 && solstat != 14){
+		status = -1;
+		goto TERMINATE;
 	}
+	// printf ("Solution value  = %f\n\n", objval);
 
-	for (j = 0; j < narcs; j++) {
-	  printf ("Arc  %2d:  Value = %10f  Reduced cost = %10f\n",
-			  j, x[j], dj[j]);
+	for (int k = 0; k < nnodes; ++k){
+		for (int i = 0; i < this->nodeList[k]->edge_out.size(); ++i){
+			this->nodeList[k]->edge_out[i].curr = x[cnt];
+			WidgetNode* temp = this->nodeList[k]->edge_out[i].nodeTo;
+			for (int j = 0; j < temp->edge_in.size(); ++j){
+				if (temp->edge_in[j].nodeFrom == this->nodeList[k]){
+					temp->edge_in[j].curr = x[cnt];
+				}
+			}
+			cnt++;
+		}
 	}
+	status = 0;
+
+	// for (i = 0; i < nnodes; i++) {
+	//   printf ("Node %2d:  Slack = %10f  Pi = %10f\n", i, slack[i], pi[i]);
+	// }
+
+	// for (j = 0; j < narcs; j++) {
+	//   printf ("Arc  %2d:  Value = %10f  Reduced cost = %10f\n",
+	// 		  j, x[j], dj[j]);
+	// }
 
 	/* Finally, write a copy of the problem to a file. */
 
-	status = CPXNETwriteprob (env, net, "netex1.net", NULL);
-	if ( status ) {
-	  fprintf (stderr, "Failed to write network to disk.\n");
-	  goto TERMINATE;
-	}
+	// status = CPXNETwriteprob (env, net, "netex1.net", NULL);
+	// if ( status ) {
+	//   fprintf (stderr, "Failed to write network to disk.\n");
+	//   goto TERMINATE;
+	// }
 	
 	
 TERMINATE:
@@ -309,30 +568,30 @@ TERMINATE:
 
 	/* Free up the problem as allocated by CPXNETcreateprob, if necessary */
 
-	if ( net != NULL ) {
-	  status = CPXNETfreeprob (env, &net);
-	  if ( status ) {
-		 fprintf (stderr, "CPXNETfreeprob failed, error code %d.\n", status);
-	  }
-	}
+	// if ( net != NULL ) {
+	//   status = CPXNETfreeprob (env, &net);
+	//   if ( status ) {
+	// 	 fprintf (stderr, "CPXNETfreeprob failed, error code %d.\n", status);
+	//   }
+	// }
 
-	/* Free up the CPLEX environment, if necessary */
+	// /* Free up the CPLEX environment, if necessary */
 
-	if ( env != NULL ) {
-	  status = CPXcloseCPLEX (&env);
+	// if ( env != NULL ) {
+	//   status = CPXcloseCPLEX (&env);
 
-	  /* Note that CPXcloseCPLEX produces no output,
-		 so the only way to see the cause of the error is to use
-		 CPXgeterrorstring.  For other CPLEX routines, the errors will
-		 be seen if the CPXPARAM_ScreenOutput indicator is set to CPX_ON. */
+	//    Note that CPXcloseCPLEX produces no output,
+	// 	 so the only way to see the cause of the error is to use
+	// 	 CPXgeterrorstring.  For other CPLEX routines, the errors will
+	// 	 be seen if the CPXPARAM_ScreenOutput indicator is set to CPX_ON. 
 
-	  if ( status ) {
-	  char  errmsg[CPXMESSAGEBUFSIZE];
-		 fprintf (stderr, "Could not close CPLEX environment.\n");
-		 CPXgeterrorstring (env, status, errmsg);
-		 fprintf (stderr, "%s", errmsg);
-	  }
-	}
+	//   if ( status ) {
+	//   char  errmsg[CPXMESSAGEBUFSIZE];
+	// 	 fprintf (stderr, "Could not close CPLEX environment.\n");
+	// 	 CPXgeterrorstring (env, status, errmsg);
+	// 	 fprintf (stderr, "%s", errmsg);
+	//   }
+	// }
 
 	return (status);
 
@@ -355,7 +614,7 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 		narcs += widgetNet->nodeList[i]->edge_out.size();
 	}
 
-	cout << "num of nodes and arcs; " << nnodes << " " << narcs << endl;
+	// cout << "num of nodes and arcs; " << nnodes << " " << narcs << endl;
 	double * supply = (double *) malloc (nnodes  * sizeof (double));
 	int * tail = (int *) malloc (narcs  * sizeof (int));
 	int * head = (int *) malloc (narcs  * sizeof (int));
@@ -365,10 +624,12 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 
 	// initialize supply and demand
 	for (int i = 0; i < nnodes; i++){
-		if (widgetNet->nodeList[i]->originNode == widgetNet->src){
-			supply[i] = -1 * widgetNet->payment;
-		} else if (widgetNet->nodeList[i]->originNode == widgetNet->dest){
+		if (widgetNet->nodeList[i]->originNode == widgetNet->src 
+			&& widgetNet->nodeList[i]->type == 2){
 			supply[i] = 1 * widgetNet->payment;
+		} else if (widgetNet->nodeList[i]->originNode == widgetNet->dest
+			&& widgetNet->nodeList[i]->type == 3){
+			supply[i] = -1 * widgetNet->payment;
 		} else {
 			supply[i] = 0;
 		}
@@ -376,98 +637,44 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 
 	// initialize LP with widget net
 	int cnt = 0;
+
 	for (int k = 0; k < nnodes; ++k){
-		if (widgetNet->nodeList[k]->originNode == widgetNet->src){
-			for (int i = 0; i < widgetNet->nodeList[k]->edge_out.size(); ++i){
-				WidgetOutEdge temp = widgetNet->nodeList[k]->edge_out[i];
-				tail[cnt] = widgetNet->nodeList[k]->nodeID;
-				head[cnt] = temp.nodeTo->nodeID;
-				obj[cnt] = 1;
-				ub[cnt] = temp.c_out_max;
-				lb[cnt] = 0;
-				cout << "cnt: " << cnt << endl;
-				cnt++;
-			}
-			continue;
-		}
-		if (widgetNet->nodeList[k]->originNode == widgetNet->dest){
-			for (int i = 0; i < widgetNet->nodeList[k]->edge_out.size(); ++i){
-				WidgetOutEdge temp = widgetNet->nodeList[k]->edge_out[i];
-				tail[cnt] = widgetNet->nodeList[k]->nodeID;
-				head[cnt] = temp.nodeTo->nodeID;
-				obj[cnt] = 0;
-				ub[cnt] = temp.c_out_max;
-				lb[cnt] = 0;
-				cout << "cnt: " << cnt << endl;
-				cnt++;
-			}
-			continue;
-		}
 		for (int i = 0; i < widgetNet->nodeList[k]->edge_out.size(); ++i){
 			WidgetOutEdge temp = widgetNet->nodeList[k]->edge_out[i];
-			tail[cnt] = widgetNet->nodeList[k]->nodeID;
-			head[cnt] = temp.nodeTo->nodeID;
-			obj[cnt] = 0;
-			ub[cnt] = temp.c_out_max;
+			head[cnt] = widgetNet->nodeList[k]->nodeID;
+			tail[cnt] = temp.nodeTo->nodeID;
+			
+			if (widgetNet->nodeList[k]->originNode == widgetNet->src 
+				&& temp.nodeTo->type == 2){
+				obj[cnt] = temp.interest_diff;
+			} else {
+				obj[cnt] = 0;
+			}
+
+			// obj[cnt] = temp.interest_diff;
+
+			ub[cnt] = temp.cap;
 			lb[cnt] = 0;
-			cout << "cnt: " << cnt << endl;
+			// cout << "cnt: " << cnt << endl;
 			cnt++;
 		}
 	}
-	obj[0] = 1;
 
-	cout << "node ids: "; 
-	for (int i = 0; i < widgetNet->nodeList.size(); ++i){
-		cout << widgetNet->nodeList[i]->nodeID << " ";
-	}
-	cout << endl;
-	cout << "supply: ";
-	for (int i = 0; i < nnodes; ++i){
-		cout << supply[i] << " ";
-	}
-	cout << endl;
-	cout << "arc: " << endl;
-	for (int i = 0; i < narcs; ++i){
-		cout << head[i] << " " << tail[i] << ", " 
-			<< obj[i] << " " << ub[i] << " " << lb[i] << endl;
-	}
-
-	// for (int i = 0; i < narcs; i++){
-	// 	tail[i] = 1;
-	// 	head[i] = 0;
-	// 	obj[i] = 0;
-	// 	ub[i] = 0;
-	// 	lb[i] = 0;
+	// cout << "node ids: "; 
+	// for (int i = 0; i < widgetNet->nodeList.size(); ++i){
+	// 	cout << widgetNet->nodeList[i]->nodeID << " ";
 	// }
-
-	/* Define list of supply values for the nodes */
-
-	// double supply[NNODES] = {20.0, 0.0, 0.0, -15.0, 5.0, 0.0, 0.0, -10.0};
-
-	/* Define list of tail or from-node indices as well as head or
-	  to-node indices for the arcs.  Notice that according to C
-	  standard the first node has index 0. */
-
-	// int    tail[NARCS] = {   0,    1,    2,    3,    6,    5,    4,
-	// 						4,    2,    3,    3,    5,    5,    1};
-	// int    head[NARCS] = {   1,    2,    3,    6,    5,    7,    7,
-	// 						1,    1,    4,    5,    3,    4,    5};
-
-	/* Define list of objective values and lower and upper bound values
-	  for the arcs */
-
-	// double obj [NARCS] = { 3.0,  3.0,  4.0,  3.0,  5.0,  6.0,  7.0,
-	// 					  4.0,  2.0,  6.0,  5.0,  4.0,  3.0,  6.0};
-	// double ub  [NARCS] = {24.0, 25.0, 12.0, 10.0,  9.0,  inf, 20.0,
-	// 					 10.0,  5.0, 15.0, 10.0, 11.0,  6.0,  inf};
-	// double lb  [NARCS] = {18.0,  0.0, 12.0,  0.0,  0.0, -inf,  0.0,
-						  // 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0};
-
-	/* Delete existing network.  This is not necessary in this
-	  context since we know we have an empty network object.
-	  Notice that CPXNETdelnodes deletes all arcs incident to
-	  the deleted nodes as well.  Therefore this one function
-	  call effectively deletes an existing network problem. */
+	// cout << endl;
+	// cout << "supply: ";
+	// for (int i = 0; i < nnodes; ++i){
+	// 	cout << supply[i] << " ";
+	// }
+	// cout << endl;
+	// cout << "arc: " << endl;
+	// for (int i = 0; i < narcs; ++i){
+	// 	cout << head[i] << " " << tail[i] << ", " 
+	// 		<< obj[i] << " " << ub[i] << " " << lb[i] << endl;
+	// }
 
 	if ( CPXNETgetnumnodes (env, net) > 0 ) {
 	  status = CPXNETdelnodes (env, net, 0,
@@ -477,7 +684,7 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet)
 
 	/* Set optimization sense */
 
-	status = CPXNETchgobjsen (env, net, CPX_MIN);
+	status = CPXNETchgobjsen (env, net, CPX_MAX);
 	if ( status ) goto TERMINATE;
 
 	/* Add nodes to network along with their supply values,

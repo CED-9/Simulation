@@ -48,8 +48,13 @@ public:
 	std::vector<OutEdge> edge_out;
 	std::vector<InEdge> edge_in;
 	
-	vector<WidgetNode*> widgetNodeIn;
-	vector<WidgetNode*> widgetNodeOut;
+	vector<WidgetNode*> widgetNode_In_In;
+	vector<WidgetNode*> widgetNode_In_Out;
+	vector<WidgetNode*> widgetNode_Out_In;
+	vector<WidgetNode*> widgetNode_Out_Out;
+	WidgetNode* superWidgetNodeSrc;
+	WidgetNode* superWidgetNodeDest;
+
 	GreedyNode* greedyNode;
 
 	Node(){}

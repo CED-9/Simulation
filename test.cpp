@@ -77,8 +77,8 @@ int main(int argc, char* argv[]){
 			fail += failRateTotal;
 			count += cnt;
 		}
-		fail = fail/10.0;
-		count /= 10;
+		fail = fail/1.0;
+		count /= 1;
 		// cout << "//////////////////////" << endl;
 		// cout << "fail rate total: " << failRateTotal << endl;
 		// cout << "fail rate 1: " << failRate1 << endl;

@@ -28,6 +28,7 @@ int main(int argc, char* argv[]){
 	int proNum = 0;
 
 	double threshold = 0.08;
+	int numIR = atoi(argv[2]);
 
 	// creditNet.print();
 	for (int i = 0; i < 12; ++i){
@@ -36,7 +37,7 @@ int main(int argc, char* argv[]){
 
 		for (int i = 0; i < 10; ++i){
 			CreditNet creditNet(finNum, conNum, proNum);
-			creditNet.genTest0Graph(threshold);
+			creditNet.genTest0Graph(threshold, numIR);
 			WidgetGraph* widgetNet = NULL;
 			// WidgetGraph* widgetNet = new WidgetGraph;
 			// widgetNet->constructWidget(&creditNet);

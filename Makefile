@@ -1083,9 +1083,17 @@ test2:
 	g++ -g -c CN_CreditNet.cpp -std=c++11
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
 	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test.cpp *.o $(CCLNFLAGS) -std=c++11
-	time ./test 1 > outGreedy
-	time ./test 0 > outWidget
-	gnuplot simulation
+	time ./test 1 1 > outGreedy_1IR
+	time ./test 0 1 > outWidget_1IR
+	time ./test 1 2 > outGreedy_2IR
+	time ./test 0 2 > outWidget_2IR
+	time ./test 1 3 > outGreedy_3IR
+	time ./test 0 3 > outWidget_3IR
+	time ./test 1 4 > outGreedy_4IR
+	time ./test 0 4 > outWidget_4IR
+	gnuplot simulation1
+	gnuplot simulation2
+	gnuplot simulation3
 testFrank:
 	g++ -g -c Error.cpp -std=c++11
 	g++ -g -c CN_DistributionGenerator.cpp -std=c++11

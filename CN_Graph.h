@@ -42,7 +42,7 @@ public:
 	/////////////////////////////////////////////////////////////////////////
 	Status addEdge(Node* node1, Node* node2);
 	void genErdosRenyiGraph();
-	void genTest0Graph(double );
+	void genTest0Graph(double, int);
 	void genTestGraph();
 	void genTest2Graph();
 

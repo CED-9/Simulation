@@ -512,14 +512,15 @@ void Graph::genErdosRenyiGraph(){
 
 // Generate a test graph
 // finNum = 2, conNum = 1, proNum = 1
-void Graph::genTest0Graph(double threshold){
+void Graph::genTest0Graph(double threshold, int numIR){
 	default_random_engine generator;
 	uniform_real_distribution<double> distribution1(0.0, 1.0);
 	for (int i = 0; i < finNum; i++){
 		for (int j = i+1; j < finNum; j++){
 			double num = distribution1(generator);
-			// double ir = (rand() % 2 + 1)/100.0;
-			double ir = 0.1;
+			double ir = (rand() % numIR + 1)/100.0;
+			// cout << ir << endl;
+			// double ir = 0.1;
 			if (num > 1.0 - threshold){
 
 				this->addEdge(finAgent[j], finAgent[i]);

@@ -66,7 +66,7 @@ void WidgetGraph::constructWidget(Graph* graphT){
 	// cout << "num of fin agents " << graphT->finAgent.size() << endl;
 	// WidgetNode* superSrc = new WidgetNode(1, nullptr, -1);
 	// WidgetNode* superDest = new WidgetNode(0, nullptr, -1);
-	// this->nodeList.push_back(superSrc);	
+	// this->nodeList.push_back(superSrc);  
 	// this->nodeList.push_back(superDest);
 
 	// Okay letsconstruct Widget nodes
@@ -212,7 +212,7 @@ void WidgetGraph::constructWidget(Graph* graphT){
 		for (int i = 0; i < temp->edge_in.size(); ++i){
 			for (int j = i+1; j < temp->edge_in.size(); ++j){
 				// if (i == j){
-				// 	continue;
+				//  continue;
 				// }
 				if (temp->edge_in[i].interest_rate >= temp->edge_in[j].interest_rate){
 					// [i].ir >= [j].ir, [j]->[i]
@@ -255,7 +255,7 @@ void WidgetGraph::constructWidget(Graph* graphT){
 		for (int i = 0; i < temp->edge_out.size(); ++i){
 			for (int j = i+1; j < temp->edge_out.size(); ++j){
 				// if (i == j){
-				// 	continue;
+				//  continue;
 				// }
 				if (temp->edge_out[i].interest_rate >= temp->edge_out[j].interest_rate){
 					// [i].ir >= [j].ir, [j]->[i]
@@ -374,34 +374,34 @@ void WidgetGraph::copyBack(){
 
 	// cout << "before" << endl;
 	// for (int i = 0; i < originGraph->finNum; ++i){
-	// 	Node* temp = originGraph->finAgent[i];
-	// 	for (int j = 0; j < temp->edge_in.size(); ++j){
-	// 		double curr1 = temp->widgetNode_In_In[j]->edge_in[0].curr;
-	// 		double curr2 = temp->widgetNode_In_Out[j]->edge_out[0].curr;
-	// 		temp->widgetNode_In_In[j]->edge_in[0].curr = 0;
-	// 		temp->widgetNode_In_Out[j]->edge_out[0].curr = 0;
-	// 		temp->widgetNode_In_In[j]->edge_in[0].cap 
-	// 			= temp->widgetNode_In_In[j]->edge_in[0].cap - curr1 + curr2;
-	// 		temp->widgetNode_In_Out[j]->edge_out[0].cap 
-	// 			= temp->widgetNode_In_Out[j]->edge_out[0].cap - curr2 + curr1;
-	// 	}
-	// 	for (int j = 0; j < temp->edge_out.size(); ++j){
-	// 		double curr1 = temp->widgetNode_Out_In[j]->edge_in[0].curr;
-	// 		double curr2 = temp->widgetNode_Out_Out[j]->edge_out[0].curr;
-	// 		temp->widgetNode_Out_In[j]->edge_in[0].curr = 0;
-	// 		temp->widgetNode_Out_Out[j]->edge_out[0].curr = 0;
-	// 		temp->widgetNode_Out_In[j]->edge_in[0].cap
-	// 			= temp->widgetNode_Out_In[j]->edge_in[0].cap - curr1 + curr2;
-	// 		temp->widgetNode_Out_Out[j]->edge_out[0].cap
-	// 			= temp->widgetNode_Out_Out[j]->edge_out[0].cap - curr2 + curr1;
-	// 	}
+	//  Node* temp = originGraph->finAgent[i];
+	//  for (int j = 0; j < temp->edge_in.size(); ++j){
+	//      double curr1 = temp->widgetNode_In_In[j]->edge_in[0].curr;
+	//      double curr2 = temp->widgetNode_In_Out[j]->edge_out[0].curr;
+	//      temp->widgetNode_In_In[j]->edge_in[0].curr = 0;
+	//      temp->widgetNode_In_Out[j]->edge_out[0].curr = 0;
+	//      temp->widgetNode_In_In[j]->edge_in[0].cap 
+	//          = temp->widgetNode_In_In[j]->edge_in[0].cap - curr1 + curr2;
+	//      temp->widgetNode_In_Out[j]->edge_out[0].cap 
+	//          = temp->widgetNode_In_Out[j]->edge_out[0].cap - curr2 + curr1;
+	//  }
+	//  for (int j = 0; j < temp->edge_out.size(); ++j){
+	//      double curr1 = temp->widgetNode_Out_In[j]->edge_in[0].curr;
+	//      double curr2 = temp->widgetNode_Out_Out[j]->edge_out[0].curr;
+	//      temp->widgetNode_Out_In[j]->edge_in[0].curr = 0;
+	//      temp->widgetNode_Out_Out[j]->edge_out[0].curr = 0;
+	//      temp->widgetNode_Out_In[j]->edge_in[0].cap
+	//          = temp->widgetNode_Out_In[j]->edge_in[0].cap - curr1 + curr2;
+	//      temp->widgetNode_Out_Out[j]->edge_out[0].cap
+	//          = temp->widgetNode_Out_Out[j]->edge_out[0].cap - curr2 + curr1;
+	//  }
 	// }
 	// cout << "after" << endl;
 	// clear info in the original graph
 	// for (int k = 0; k < originGraph->finNum; ++k){
-	// 	Node* temp = originGraph->finAgent[k];
-	// 	temp->widgetNodeIn.clear();
-	// 	temp->widgetNodeOut.clear();
+	//  Node* temp = originGraph->finAgent[k];
+	//  temp->widgetNodeIn.clear();
+	//  temp->widgetNodeOut.clear();
 	// }
 }
 
@@ -416,7 +416,7 @@ void WidgetGraph::copyBack(){
 
 static int
 	buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
-	double *supply, int* head, int* tail, double* obj, double* ub, double* lb);
+	double* &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb);
 
 static void
 	free_and_null (char **ptr);
@@ -499,6 +499,10 @@ int WidgetGraph::lpSolver()
 	double* lb;
 	status = buildNetwork (env, net, this, supply, head, tail, obj, ub, lb);
 
+	// if(supply != NULL){
+	// 	cout << "before not clear" << endl;
+	// }
+
 	if ( status ) {
 	  fprintf (stderr, "Failed to build network problem.\n");
 	  goto TERMINATE;
@@ -540,7 +544,7 @@ int WidgetGraph::lpSolver()
 
 	// cout << "results: " << endl;
 	// for (int i = 0; i < narcs; ++i){
-	// 	cout << x[i] << endl;
+	//  cout << x[i] << endl;
 	// }
 
 	/* Write the output to the screen. */
@@ -573,7 +577,7 @@ int WidgetGraph::lpSolver()
 
 	// for (j = 0; j < narcs; j++) {
 	//   printf ("Arc  %2d:  Value = %10f  Reduced cost = %10f\n",
-	// 		  j, x[j], dj[j]);
+	//        j, x[j], dj[j]);
 	// }
 
 	/* Finally, write a copy of the problem to a file. */
@@ -587,12 +591,12 @@ int WidgetGraph::lpSolver()
 	
 TERMINATE:
 
-	// delete supply;
-	// delete head;
-	// delete tail;
-	// delete obj;
-	// delete ub;
-	// delete lb;
+	delete [] supply;
+	delete [] head;
+	delete [] tail;
+	delete [] obj;
+	delete [] ub;
+	delete [] lb;
 
 	/* Free memory for solution data */
 
@@ -609,11 +613,11 @@ TERMINATE:
 	/* Free up the problem as allocated by CPXNETcreateprob, if necessary */
 
 	if ( net != NULL ) {
-		cout << "clearing net..." << endl;
+		// cout << "clearing net..." << endl;
 	  status = CPXNETfreeprob (env, &net);
-	  if (net != NULL){
-	  	cout << "fail to clear net" << endl;
-	  }
+	 //  if (net != NULL){
+		// cout << "fail to clear net" << endl;
+	 //  }
 	  if ( status ) {
 		 fprintf (stderr, "CPXNETfreeprob failed, error code %d.\n", status);
 	  }
@@ -623,11 +627,18 @@ TERMINATE:
 
 	if ( env != NULL ) {
 	  status = CPXcloseCPLEX (&env);
-
+	 //  cout << "clearing env..." << endl;
+	 //  if (env != NULL){
+		// cout << "fail to clear env" << endl;
+	 //  }
 	//    Note that CPXcloseCPLEX produces no output,
-	// 	 so the only way to see the cause of the error is to use
-	// 	 CPXgeterrorstring.  For other CPLEX routines, the errors will
-	// 	 be seen if the CPXPARAM_ScreenOutput indicator is set to CPX_ON. 
+	//   so the only way to see the cause of the error is to use
+	//   CPXgeterrorstring.  For other CPLEX routines, the errors will
+	//   be seen if the CPXPARAM_ScreenOutput indicator is set to CPX_ON. 
+
+	// if(supply != NULL){
+	// 	cout << "after not clear" << endl;
+	// }
 
 	  if ( status ) {
 	  char  errmsg[CPXMESSAGEBUFSIZE];
@@ -645,7 +656,7 @@ TERMINATE:
 
 static int
 buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
-	double *supply, int* head, int* tail, double* obj, double* ub, double* lb)
+	double * &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb)
 {
 	int status = 0;
 
@@ -660,12 +671,19 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 	}
 
 	// cout << "num of nodes and arcs; " << nnodes << " " << narcs << endl;
-	supply = (double *) malloc (nnodes  * sizeof (double));
-	tail = (int *) malloc (narcs  * sizeof (int));
-	head = (int *) malloc (narcs  * sizeof (int));
-	obj = (double *) malloc (narcs  * sizeof (double));
-	ub = (double *) malloc (narcs  * sizeof (double));
-	lb = (double *) malloc (narcs  * sizeof (double));
+	// supply = (double *) malloc (nnodes  * sizeof (double));
+	// tail = (int *) malloc (narcs  * sizeof (int));
+	// head = (int *) malloc (narcs  * sizeof (int));
+	// obj = (double *) malloc (narcs  * sizeof (double));
+	// ub = (double *) malloc (narcs  * sizeof (double));
+	// lb = (double *) malloc (narcs  * sizeof (double));
+
+	supply = new double [nnodes];
+	tail = new int [narcs];
+	head = new int [narcs];
+	obj = new double [narcs];
+	ub = new double [narcs];
+	lb = new double [narcs];
 
 	// initialize supply and demand
 	for (int i = 0; i < nnodes; i++){
@@ -689,13 +707,13 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 			head[cnt] = widgetNet->nodeList[k]->nodeID;
 			tail[cnt] = temp.nodeTo->nodeID;
 			
-			obj[cnt] = temp.interest_diff;
-			// if (widgetNet->nodeList[k]->originNode == widgetNet->src 
-			// 	&& temp.nodeTo->type == 2){
-			// 	obj[cnt] = temp.interest_diff;
-			// } else {
-			// 	obj[cnt] = 0;
-			// }
+			// obj[cnt] = temp.interest_diff;
+			if (widgetNet->nodeList[k]->originNode == widgetNet->src 
+			 && temp.nodeTo->type == 2){
+			 obj[cnt] = temp.interest_diff;
+			} else {
+			 obj[cnt] = 0;
+			}
 
 			// obj[cnt] = temp.interest_diff;
 
@@ -708,18 +726,18 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 
 	// cout << "node ids: "; 
 	// for (int i = 0; i < widgetNet->nodeList.size(); ++i){
-	// 	cout << widgetNet->nodeList[i]->nodeID << " ";
+	//  cout << widgetNet->nodeList[i]->nodeID << " ";
 	// }
 	// cout << endl;
 	// cout << "supply: ";
 	// for (int i = 0; i < nnodes; ++i){
-	// 	cout << supply[i] << " ";
+	//  cout << supply[i] << " ";
 	// }
 	// cout << endl;
 	// cout << "arc: " << endl;
 	// for (int i = 0; i < narcs; ++i){
-	// 	cout << head[i] << " " << tail[i] << ", " 
-	// 		<< obj[i] << " " << ub[i] << " " << lb[i] << endl;
+	//  cout << head[i] << " " << tail[i] << ", " 
+	//      << obj[i] << " " << ub[i] << " " << lb[i] << endl;
 	// }
 
 	if ( CPXNETgetnumnodes (env, net) > 0 ) {
@@ -744,6 +762,10 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 
 	status = CPXNETaddarcs (env, net, narcs, tail, head, lb, ub, obj, NULL);
 	if ( status ) goto TERMINATE;
+
+	// if (supply != NULL){
+	// 	cout << "before exit build, supply not empty" << endl;
+	// }
 
 TERMINATE:
 

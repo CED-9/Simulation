@@ -115,7 +115,7 @@ void CreditNet::update(){
 }
 
 // for liquid stuff
-int CreditNet::genInterBankTrans(WidgetGraph* widgetNet1){
+int CreditNet::genInterBankTransGreedy(WidgetGraph* widgetNet1){
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;
 
@@ -131,6 +131,40 @@ int CreditNet::genInterBankTrans(WidgetGraph* widgetNet1){
 
 	// this->print();
 	// cout << "fid1: " << fid1 << " fid2: " << fid2 << endl;
+
+	// greedy
+	CreditNet* tempNet = new CreditNet(*this);
+	FinNode* f3 = tempNet->finAgent[fid1];
+	FinNode* f4 = tempNet->finAgent[fid2];
+
+	payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 1.0, trueValue);
+	delete tempNet;
+	// fail
+	if (trueValue < 1.0){
+		return 1;
+	}
+	payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
+
+	return 0;
+}
+
+int CreditNet::genInterBankTransWidget(WidgetGraph* widgetNet1){
+	FinNode* f1 = NULL;
+	FinNode* f2 = NULL;
+
+	int fid1 = rand()%finNum;
+	f1 = finAgent[fid1];
+	int fid2 = rand()%finNum;
+	while (fid1 == fid2){
+		fid2 = rand()%finNum;
+	}
+	f2 = finAgent[fid2];
+
+	double trueValue = 0;
+
+	// this->print();
+	// cout << "fid1: " << fid1 << " fid2: " << fid2 << endl;
+
 	WidgetGraph* widgetNet = new WidgetGraph;
 	widgetNet->constructWidget(this);
 	widgetNet->setUpSrcAndDest(
@@ -145,17 +179,18 @@ int CreditNet::genInterBankTrans(WidgetGraph* widgetNet1){
 	widgetNet->copyBack();
 	delete widgetNet;
 
+	// greedy
 	// CreditNet* tempNet = new CreditNet(*this);
 	// FinNode* f3 = tempNet->finAgent[fid1];
 	// FinNode* f4 = tempNet->finAgent[fid2];
 
-	// payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 2.0, trueValue);
+	// payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 1.0, trueValue);
 	// delete tempNet;
 	// // fail
-	// if (trueValue < 2.0){
+	// if (trueValue < 1.0){
 	// 	return 1;
 	// }
-	// payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 2.0, trueValue);
+	// payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
 
 	return 0;
 }

@@ -24,12 +24,19 @@ void checkStatus(Status& status){
 }
 
 int main(int argc, char* argv[]){
-	int finNum = 100;
+	int finNum = 2;
 	int conNum = 0;
 	int proNum = 0;
 	CreditNet creditNet(finNum, conNum, proNum);
+	// creditNet.addEdge(creditNet.finAgent[0],creditNet.finAgent[1]);
+	// creditNet.addEdge(creditNet.finAgent[0],creditNet.finAgent[2]);
+	// creditNet.addEdge(creditNet.finAgent[1],creditNet.finAgent[2]);
+	// creditNet.finAgent[0]->setOutEdge(creditNet.finAgent[1],1,0,1,EQ);
+	// creditNet.finAgent[1]->setOutEdge(creditNet.finAgent[2],1,0,1,EQ);
+	// creditNet.finAgent[0]->setOutEdge(creditNet.finAgent[2],1,0,1,EQ);
+
 	creditNet.genTest0Graph(1);
-	// creditNet.print();
+	creditNet.print();
 	cout << "////////////////////////////////////////////////////////////////" << endl;
 
 	// cout << "////////////////////////////////////////////////////////////////" << endl;
@@ -41,20 +48,62 @@ int main(int argc, char* argv[]){
 	// greedy.copyBack();
 	WidgetGraph* widgetNet = new WidgetGraph;
 	widgetNet->constructWidget(&creditNet);
+
 	// widgetNet->print();
-	for (int i = 0; i < 10; ++i){
-		int temp = creditNet.genInterBankTrans(widgetNet);
-		cout << "temp: " << temp << endl;
-	}
+	// for (int i = 0; i < 10; ++i){
+	// 	int temp = creditNet.genInterBankTrans(widgetNet);
+	// 	cout << "temp: " << temp << endl;
+	// }
 	// delete widgetNet;
-	// widgetNet->setUpSrcAndDest(
-	// 	creditNet.finAgent[2], creditNet.finAgent[0], 1.0);
+	widgetNet->setUpSrcAndDest(
+		creditNet.finAgent[1], creditNet.finAgent[0], 1.0);
 	// // widgetNet->print();
-	// int status = widgetNet->lpSolver();
-	// widgetNet->copyBack();
+	int status = widgetNet->lpSolver();
+	if (status == 0){
+		widgetNet->copyBack();
+	}
 	// creditNet.print();
+	delete widgetNet;
+	cout << "status: " << status << endl;
 	// widgetNet->print();
+
+	// 2nd
+	widgetNet = new WidgetGraph;
+	widgetNet->constructWidget(&creditNet);
+	widgetNet->setUpSrcAndDest(
+		creditNet.finAgent[1], creditNet.finAgent[0], 1.0);
+	status = widgetNet->lpSolver();
+	if (status == 0){
+		widgetNet->copyBack();
+	}
+	delete widgetNet;
+	cout << "status: " << status << endl;
+
+	// 3rd
+	widgetNet = new WidgetGraph;
+	widgetNet->constructWidget(&creditNet);
+	widgetNet->setUpSrcAndDest(
+		creditNet.finAgent[0], creditNet.finAgent[1], 1.0);
+	status = widgetNet->lpSolver();
+	if (status == 0){
+		widgetNet->copyBack();
+	}
+	delete widgetNet;
+	cout << "status: " << status << endl;
+
+	// 4th
+	widgetNet = new WidgetGraph;
+	widgetNet->constructWidget(&creditNet);
+	widgetNet->setUpSrcAndDest(
+		creditNet.finAgent[0], creditNet.finAgent[1], 1.0);
+	status = widgetNet->lpSolver();
+	if (status == 0){
+		widgetNet->copyBack();
+	}
+	delete widgetNet;
+	cout << "status: " << status << endl;
 
 	return 0;
 }
+
 

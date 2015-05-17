@@ -16,7 +16,8 @@ public:
 
     // Inter Bank Trans
     // liquidity test
-    int genInterBankTrans(WidgetGraph*);
+    int genInterBankTransGreedy(WidgetGraph*);
+    int genInterBankTransWidget(WidgetGraph*);
 
     // Main Loop
     void update();

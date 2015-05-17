@@ -2,15 +2,15 @@
 
 #define NON_DEBUG_MODE
 
-#include"Error.h"
-#include"CN_Graph.h"
-#include<random>
-#include<vector>
-#include<list>
-#include<queue>
-#include<set>
-#include<iostream>
-#include<algorithm>
+#include "Error.h"
+#include "CN_Graph.h"
+#include <random>
+#include <vector>
+#include <list>
+#include <queue>
+#include <set>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
  
@@ -518,16 +518,20 @@ void Graph::genTest0Graph(double threshold){
 	for (int i = 0; i < finNum; i++){
 		for (int j = i+1; j < finNum; j++){
 			double num = distribution1(generator);
-			double ir = (rand() % 2 + 1)/100.0;
-			// double ir = 0.1;
+			// double ir = (rand() % 2 + 1)/100.0;
+			double ir = 0.1;
 			if (num > 1.0 - threshold){
-				if (rand()%2 == 1){
-					this->addEdge(finAgent[i], finAgent[j]);
-					finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);	
-				} else {
-					this->addEdge(finAgent[j], finAgent[i]);
-					finAgent[j]->setOutEdge(finAgent[i], 1, 0, ir, EQ);
-				}
+
+				this->addEdge(finAgent[j], finAgent[i]);
+				finAgent[j]->setOutEdge(finAgent[i], 1, rand()%2, ir, EQ);
+				
+				// if (rand()%2 == 1){
+				// 	this->addEdge(finAgent[i], finAgent[j]);
+				// 	finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);	
+				// } else {
+				// 	this->addEdge(finAgent[j], finAgent[i]);
+				// 	finAgent[j]->setOutEdge(finAgent[i], 1, 0, ir, EQ);
+				// }
 				// finAgent[i]->setInEdge(finAgent[j], 0.5, 0, ir, EQ);
 			}
 		}

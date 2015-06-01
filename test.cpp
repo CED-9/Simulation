@@ -23,19 +23,22 @@ void checkStatus(Status& status){
 }
 
 int main(int argc, char* argv[]){
-	int finNum = 100;
+	int finNum = 200;
 	int conNum = 0;
 	int proNum = 0;
-
-	double threshold = 0.08;
+	double threshold;
 	int numIR = atoi(argv[2]);
+	int iter = 10;
+	double degrees [10] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};
+
 
 	// creditNet.print();
-	for (int i = 0; i < 12; ++i){
-		threshold += 0.04;
-		double rate = 0;
-
-		for (int i = 0; i < 10; ++i){
+	for (int i = 0; i < 10; ++i){
+		threshold = degrees[i];
+		double rate;
+		double fails = 0;
+		double total = 0;
+		for (int i = 0; i < iter; ++i){
 			CreditNet creditNet(finNum, conNum, proNum);
 			creditNet.genTest0Graph(threshold, numIR);
 			WidgetGraph* widgetNet = NULL;
@@ -48,7 +51,7 @@ int main(int argc, char* argv[]){
 			int failRate2 = 0;
 			int failRateTotal = 0;
 			vector<int> array;
-			for (int i = 0; i < 1000; ++i){
+			for (int i = 0; i < 4500; ++i){
 				int temp;
 				if (atoi(argv[1]) == 1){
 					temp = creditNet.genInterBankTransGreedy(widgetNet);
@@ -60,7 +63,7 @@ int main(int argc, char* argv[]){
 				failRateTotal += temp;
 			}
 
-			for (int i = 0; i < 1000; ++i){
+			for (int i = 0; i < 4500; ++i){
 				int temp;
 				if (atoi(argv[1]) == 1){
 					temp = creditNet.genInterBankTransGreedy(widgetNet);
@@ -72,10 +75,9 @@ int main(int argc, char* argv[]){
 				failRateTotal += temp;
 			}
 
-			int rounds = 10000;
 			int cnt = 0;
 			while (1){
-				if (abs(failRate1 - failRate2) <= 2){
+				if (abs(failRate1 - failRate2) <= 4500.0*2.0/1000.0){
 					break;
 				}
 				// move on
@@ -85,8 +87,8 @@ int main(int argc, char* argv[]){
 				} else {
 					temp = creditNet.genInterBankTransWidget(widgetNet);
 				}
-				failRate1 = failRate1 - array[0] + array[1000];
-				failRate2 = failRate2 - array[1000] + temp;
+				failRate1 = failRate1 - array[0] + array[4500];
+				failRate2 = failRate2 - array[4500] + temp;
 				failRateTotal += temp;
 				array.erase(array.begin());
 				array.push_back(temp);
@@ -94,19 +96,20 @@ int main(int argc, char* argv[]){
 			}
 			// cout << "failRateTotal: " << failRateTotal 
 			// 	<< " cnt: " << cnt << endl;
-			rate += (double)failRateTotal / ((double)cnt + 2001.0);
+			fails += (double)failRateTotal;
+			total += (double)cnt + 9001.0;
+
 			// widgetNet->copyBack();
 			// delete widgetNet;
 			// cout << (double)failRateTotal / ((double)cnt + 2001.0) << endl;
 		}
-		rate /= 10.0;
+		rate = fails/total;
 		// cout << "//////////////////////"s << endl;
 		// cout << "fail : " << fail << endl;
 		// cout << "fail rate 1: " << failRate1 << endl;
 		// cout << "fail rate 2: " << failRate2 << endl;
 		// cout << "count: " << count << endl;
-		
-		cout << (int)(threshold*99) << " " << 1 - rate << endl;
+		cout << (double)(threshold*199) << " " << 1 - rate << " " << total/(double)iter << endl;
 	}
 }
 

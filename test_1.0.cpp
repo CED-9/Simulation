@@ -106,9 +106,9 @@ int main(int argc, char* argv[]){
             rateFinal += rates[j];
         }
         delete [] rates;
-		rate /= iter;
+		rateFinal /= iter;
         
-		cout << (double)(threshold*199) << " " << 1 - rate << " " << total/(double)iter << endl;
+		cout << (double)(threshold*199) << " " << 1 - rateFinal << " " << total/(double)iter << endl;
 	}
 }
 

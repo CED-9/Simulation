@@ -1075,7 +1075,15 @@ test1:
 	valgrind --tool=memcheck --leak-check=full -v ./test
 	# ./test
 #	time ./test > out
-test2:
+compile:
+	g++ -g -c Error.cpp -std=c++11
+	g++ -g -c CN_DistributionGenerator.cpp -std=c++11
+	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++11
+	g++ -g -c CN_Graph.cpp -std=c++11
+	g++ -g -c CN_CreditNet.cpp -std=c++11
+	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
+	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test_1.0.cpp *.o $(CCLNFLAGS) -std=c++11
+test_1.0:
 	g++ -g -c Error.cpp -std=c++11
 	g++ -g -c CN_DistributionGenerator.cpp -std=c++11
 	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++11
@@ -1091,9 +1099,6 @@ test2:
 	time ./test 0 3 > outWidget_3IR
 	time ./test 1 4 > outGreedy_4IR
 	time ./test 0 4 > outWidget_4IR
-	gnuplot simulation1
-	gnuplot simulation2
-	gnuplot simulation3
 testFrank:
 	g++ -g -c Error.cpp -std=c++11
 	g++ -g -c CN_DistributionGenerator.cpp -std=c++11

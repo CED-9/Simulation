@@ -17,6 +17,10 @@ enum OpMode{
 	ADD, SUB, EQ
 };
 
+enum RouteMechanism{
+    FF, LP_SOURCE, LP_OVERALL
+};
+
 // forward declaration
 class Node;
 class Graph; 
@@ -45,9 +49,11 @@ protected:
 	int nodeID;
 	
 public:
+    // edges
 	std::vector<OutEdge> edge_out;
 	std::vector<InEdge> edge_in;
 	
+    // widget info
 	vector<WidgetNode*> widgetNode_In_In;
 	vector<WidgetNode*> widgetNode_In_Out;
 	vector<WidgetNode*> widgetNode_Out_In;
@@ -57,10 +63,16 @@ public:
 
 	GreedyNode* greedyNode;
 
+    // Preference
+    RouteMechanism routePreference;
+    
 	Node(){}
 	Node(int id);
 	~Node(){}
 	
+    
+    //////////////////////////////////////////////////////////////
+    void setRoutePreference(RouteMechanism routeM);
 	bool isInOutEdge(Node* nodeT);
 	
 	void setNodeType(NodeType nodeTypeT){ nodeType = nodeTypeT; }

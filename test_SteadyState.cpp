@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
     for (int i = 0; i < iter; ++i){
         CreditNet creditNet(finNum, conNum, proNum);
         creditNet.genTest0Graph(threshold, numIR);
-        WidgetGraph* widgetNet = NULL; // no use
+        // WidgetGraph* widgetNet = NULL; // no use
         // WidgetGraph* widgetNet = new WidgetGraph;
         // widgetNet->constructWidget(&creditNet);
         
@@ -55,9 +55,9 @@ int main(int argc, char* argv[]){
         for (int i = 0; i < testLimit; ++i){
             int temp;
             if (algoMode == 1){
-                temp = creditNet.genInterBankTransGreedy(widgetNet);
+                temp = creditNet.genInterBankTransGreedy();
             } else {
-                temp = creditNet.genInterBankTransWidget(widgetNet);
+                temp = creditNet.genInterBankTransWidget();
             }
             nssRate[i] += temp;
         }

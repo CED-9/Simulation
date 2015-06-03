@@ -8,21 +8,13 @@
 using namespace std;
 
 
-int defaultList[100];  // 20 rounds
-
+int defaultList[100];
 ofstream fout_trans;
 ofstream fout_int;
 
-/**
- *  check status
- *  if not GOOD, print it;
- */
-void checkStatus(Status& status){
-	if (status != GOOD) {
-		Utility utility;
-		utility.print(status);
-	}
-}
+////////////////////////////////////////////////////////////////////
+
+
 
 int main(int argc, char* argv[]){
 	int finNum = 200;
@@ -55,24 +47,20 @@ int main(int argc, char* argv[]){
 			vector<int> array;
 			for (int i = 0; i < 4500; ++i){
 				int temp;
-				if (atoi(argv[1]) == 1){
-					temp = creditNet.genInterBankTransGreedy(widgetNet);
-				} else {
-					temp = creditNet.genInterBankTransWidget(widgetNet);
-				}
-				array.push_back(temp);
+                
+                temp = creditNet.genInterBankTrans();
+				
+                array.push_back(temp);
 				failRate1 += temp;
 				failRateTotal += temp;
 			}
 
 			for (int i = 0; i < 4500; ++i){
 				int temp;
-				if (atoi(argv[1]) == 1){
-					temp = creditNet.genInterBankTransGreedy(widgetNet);
-				} else {
-					temp = creditNet.genInterBankTransWidget(widgetNet);
-				}
-				array.push_back(temp);
+                
+				temp = creditNet.genInterBankTrans();
+				
+                array.push_back(temp);
 				failRate2 += temp;
 				failRateTotal += temp;
 			}
@@ -84,11 +72,9 @@ int main(int argc, char* argv[]){
 				}
 				// move on
 				int temp;
-				if (atoi(argv[1]) == 1){
-					temp = creditNet.genInterBankTransGreedy(widgetNet);
-				} else {
-					temp = creditNet.genInterBankTransWidget(widgetNet);
-				}
+                
+				temp = creditNet.genInterBankTrans();
+                
 				failRate1 = failRate1 - array[0] + array[4500];
 				failRate2 = failRate2 - array[4500] + temp;
 				failRateTotal += temp;

@@ -222,7 +222,7 @@ int CreditNet::genInterBankTransWidget(){
 	widgetNet->setUpSrcAndDest(
 		this->finAgent[fid1], this->finAgent[fid2], 1.0);
 	// widgetNet->print();
-	int status = widgetNet->lpSolver();
+	int status = widgetNet->lpSolver(1);
 	if (status != 0){
 		// cout << "no solution!" << status << endl;
 		delete widgetNet;

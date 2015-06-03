@@ -15,7 +15,8 @@ ofstream fout_int;
 ////////////////////////////////////////////////////////////////////
 
 
-
+// argv[1]: initialize mode
+// argv[2]: number of interest rates
 int main(int argc, char* argv[]){
 	int finNum = 200;
 	int conNum = 0;
@@ -36,6 +37,7 @@ int main(int argc, char* argv[]){
 			CreditNet creditNet(finNum, conNum, proNum);
 			creditNet.genTest0Graph(threshold, numIR);
 			WidgetGraph* widgetNet = NULL;
+            creditNet.setRoutePreference(argv[1]);
 			// WidgetGraph* widgetNet = new WidgetGraph;
 			// widgetNet->constructWidget(&creditNet);
 

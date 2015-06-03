@@ -1220,7 +1220,7 @@ void Graph::setRoutePreference(int opMode){
             break;
         case 4:
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = rand()%3;
+                finAgent[i]->routePreference = (RouteMechanism)(rand()%3);
             }
             break;
         default:

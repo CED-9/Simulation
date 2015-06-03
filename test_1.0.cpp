@@ -24,9 +24,6 @@ void singleSimulation(
     int window_size,
     double* resultRate)
 {
-    lock_cout.lock();
-    cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << endl;
-    lock_cout.unlock();
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
@@ -78,6 +75,9 @@ void singleSimulation(
     lock_rates.lock();
     *resultRate = failRateTotal / (2.0 * window_size + 1.0);
     lock_rates.unlock();
+    lock_cout.lock();
+    cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << *resultRate << endl;
+    lock_cout.unlock();
 }
 
 
@@ -117,13 +117,14 @@ int main(int argc, char* argv[]){
         }
         
         for (int j = 0; j < iter; j++) {
+            cout << rates[j] << " ";
             rateFinal += rates[j];
         }
         
         delete [] rates;
 		rateFinal /= iter;
         
-		cout << (double)(threshold*199) << " " << 1 - rateFinal << endl;
+        cout << endl << (double)(threshold*199) << " " << 1 - rateFinal << endl;
 	}
 }
 

@@ -1090,15 +1090,26 @@ test_1.0:
 	g++ -g -c CN_Graph.cpp -std=c++11
 	g++ -g -c CN_CreditNet.cpp -std=c++11
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test.cpp *.o $(CCLNFLAGS) -std=c++11
+	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test1.0.cpp *.o $(CCLNFLAGS) -std=c++11
 	time ./test 1 1 > outGreedy_1IR
-	time ./test 0 1 > outWidget_1IR
+	time ./test 2 1 > outWidgetSource_1IR
+	time ./test 3 1 > outWidgetOverall_1IR
+	time ./test 4 1 > outRandom_1IR
+#
 	time ./test 1 2 > outGreedy_2IR
-	time ./test 0 2 > outWidget_2IR
+	time ./test 2 2 > outWidgetSource_2IR
+	time ./test 3 2 > outWidgetOverall_2IR
+	time ./test 4 2 > outRandom_2IR
+#
 	time ./test 1 3 > outGreedy_3IR
-	time ./test 0 3 > outWidget_3IR
+	time ./test 2 3 > outWidgetSource_3IR
+	time ./test 3 3 > outWidgetOverall_3IR
+	time ./test 4 3 > outRandom_3IR
+#
 	time ./test 1 4 > outGreedy_4IR
-	time ./test 0 4 > outWidget_4IR
+	time ./test 2 4 > outWidgetSource_4IR
+	time ./test 3 4 > outWidgetOverall_4IR
+	time ./test 4 4 > outRandom_4IR
 testFrank:
 	g++ -g -c Error.cpp -std=c++11
 	g++ -g -c CN_DistributionGenerator.cpp -std=c++11

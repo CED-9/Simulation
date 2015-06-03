@@ -108,6 +108,7 @@ int main(int argc, char* argv[]){
                               finNum, conNum, proNum,
                               threshold, numIR, mechanismGenMode,
                               window_size, rates + j);
+            threadPool.push_back(singleRoundThread);
 		}
         
         // wait for all threads to finish
@@ -118,6 +119,7 @@ int main(int argc, char* argv[]){
         for (int j = 0; j < iter; j++) {
             rateFinal += rates[j];
         }
+        
         delete [] rates;
 		rateFinal /= iter;
         

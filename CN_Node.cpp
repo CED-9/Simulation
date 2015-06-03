@@ -29,7 +29,7 @@ Status Node::print(){
 
 
 void Node::setRoutePreference(RouteMechanism routeM){
-    this->RoutePreference = routeM;
+    this->routePreference = routeM;
 }
 
 bool Node::isInOutEdge(Node* nodeT){

@@ -94,7 +94,11 @@ int main(int argc, char* argv[]){
         
         // smooth the result
         for (int j = 0; j < iter; ++j){
-            std::thread* singleRoundThread = new std::thread(singleSimulation);
+            std::thread* singleRoundThread
+            = new std::thread(singleSimulation,
+                              finNum, conNum, proNum,
+                              threshold, numIR, mechanismGenMode,
+                              window_size, resultRate);
 		}
         
         // wait for all threads to finish

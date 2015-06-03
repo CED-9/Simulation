@@ -416,7 +416,7 @@ void WidgetGraph::copyBack(){
 
 static int
 	buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
-	double* &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb);
+	double* &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb, int opMode);
 
 static void
 	free_and_null (char **ptr);

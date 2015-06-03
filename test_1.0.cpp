@@ -73,7 +73,7 @@ void singleSimulation(
         cnt++;
     }
     lock_rates.lock();
-    *resultRate = failRateTotal / (2.0 * window_size + 1.0);
+    *resultRate = failRateTotal / (cnt + 2.0 * window_size + 1.0);
     lock_rates.unlock();
     lock_cout.lock();
     cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << *resultRate << endl;

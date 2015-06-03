@@ -114,6 +114,7 @@ int main(int argc, char* argv[]){
         // wait for all threads to finish
         for (int j = 0; j < iter; ++j){
             threadPool[j]->join();
+            delete threadPool[j];
         }
         
         for (int j = 0; j < iter; j++) {

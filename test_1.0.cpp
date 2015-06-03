@@ -5,6 +5,7 @@
 #include <thread>
 #include <algorithm>
 #include <thread>
+#include <mutex>
 
 using namespace std;
 
@@ -13,13 +14,19 @@ int defaultList[100];
 ofstream fout_trans;
 ofstream fout_int;
 
+mutex lock_rates;
+mutex lock_cout;
+
 ////////////////////////////////////////////////////////////////////
 void singleSimulation(
     int finNum, int conNum, int proNum,
     double threshold, int numIR, int mechanismGenMode,
     int window_size,
-    double& resultRate)
+    double* resultRate)
 {
+    lock_cout.lock();
+    cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << endl;
+    lock_cout.unlock();
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
@@ -68,7 +75,9 @@ void singleSimulation(
         array.push_back(temp);
         cnt++;
     }
-    resultRate = failRateTotal / (2.0 * window_size + 1.0);
+    lock_rates.lock();
+    *resultRate = failRateTotal / (2.0 * window_size + 1.0);
+    lock_rates.unlock();
 }
 
 
@@ -98,7 +107,7 @@ int main(int argc, char* argv[]){
             = new std::thread(singleSimulation,
                               finNum, conNum, proNum,
                               threshold, numIR, mechanismGenMode,
-                              window_size, rateFinal);
+                              window_size, rates + j);
 		}
         
         // wait for all threads to finish

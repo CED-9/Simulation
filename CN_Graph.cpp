@@ -1205,22 +1205,22 @@ void Graph::setRoutePreference(int opMode){
     switch (opMode) {
         case 1:
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->setRoutePreference(FF);
+                finAgent[i]->routePreference = FF;
             }
             break;
         case 2:
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->setRoutePreference(LP_SOURCE);
+                finAgent[i]->routePreference = LP_SOURCE;
             }
             break;
         case 3:
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->setRoutePreference(LP_OVERALL);
+                finAgent[i]->routePreference = LP_OVERALL;
             }
             break;
         case 4:
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->setRoutePreference(rand()%3);
+                finAgent[i]->routePreference = rand()%3;
             }
             break;
         default:

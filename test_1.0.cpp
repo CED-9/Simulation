@@ -23,9 +23,11 @@ int main(int argc, char* argv[]){
 	int proNum = 0;
 	double threshold;
 	int numIR = atoi(argv[2]);
-	int iter = 10;
+    int mechanismGenMode = atoi(argv[1]);
+    int iter = 10;
 	double degrees [10] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};
 
+    
 
 	// creditNet.print();
 	for (int i = 0; i < 10; ++i){
@@ -37,7 +39,7 @@ int main(int argc, char* argv[]){
 			CreditNet creditNet(finNum, conNum, proNum);
 			creditNet.genTest0Graph(threshold, numIR);
 			WidgetGraph* widgetNet = NULL;
-            creditNet.setRoutePreference(argv[1]);
+            creditNet.setRoutePreference(mechanismGenMode);
 			// WidgetGraph* widgetNet = new WidgetGraph;
 			// widgetNet->constructWidget(&creditNet);
 

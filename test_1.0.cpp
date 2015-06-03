@@ -98,7 +98,7 @@ int main(int argc, char* argv[]){
             = new std::thread(singleSimulation,
                               finNum, conNum, proNum,
                               threshold, numIR, mechanismGenMode,
-                              window_size, resultRate);
+                              window_size, rateFinal);
 		}
         
         // wait for all threads to finish

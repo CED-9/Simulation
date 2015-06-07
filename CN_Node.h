@@ -45,6 +45,7 @@ protected:
 	int nodeID;
 	
 public:
+	int transNum;
 	std::vector<OutEdge> edge_out;
 	std::vector<InEdge> edge_in;
 	
@@ -62,6 +63,8 @@ public:
 	~Node(){}
 	
 	bool isInOutEdge(Node* nodeT);
+
+	void visualize();
 	
 	void setNodeType(NodeType nodeTypeT){ nodeType = nodeTypeT; }
 	NodeType getNodeType(){ return nodeType; }

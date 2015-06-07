@@ -1,14 +1,21 @@
 // Node.C
 
-#include"Error.h"
-#include"CN_Node.h"
-#include<queue>
-#include<vector>
-
+#include "Error.h"
+#include "CN_Node.h"
+#include <queue>
+#include <vector>
+#include <fstream>
 
 Node::Node(int id){
     this->nodeID = id;
     this->nodeType = NodeType(0);
+    this->transNum = 0;
+}
+
+void Node::visualize(){
+	for (int i = 0; i<edge_out.size(); i++){
+		cout << this->getNodeID() << ", " << edge_out[i].nodeTo->getNodeID();
+    }
 }
 
 Status Node::print(){

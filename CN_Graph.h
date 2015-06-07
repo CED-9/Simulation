@@ -5,13 +5,14 @@
 
 extern int defaultList[100];  // 20 rounds
 
-#include"CN_ConNode.h"
-#include"CN_ProNode.h"
-#include"CN_FinNode.h"
-#include"CN_BanNode.h"
-#include"CN_LabNode.h"
+#include "CN_ConNode.h"
+#include "CN_ProNode.h"
+#include "CN_FinNode.h"
+#include "CN_BanNode.h"
+#include "CN_LabNode.h"
 //#include"CN_DivNode.h"
-#include<list>
+#include <list>
+#include <fstream>
 
 class Graph{
 public:
@@ -36,6 +37,8 @@ public:
 	Graph& operator=(Graph &graphT);
 
 	void setZero(FinNode* f);
+
+	void visualize();
 
 	/////////////////////////////////////////////////////////////////////////
 	/* Generate Initial Network */

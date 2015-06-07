@@ -1,8 +1,10 @@
-#include"CN_CreditNet.h"
+#include "CN_CreditNet.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <thread>
+
 using namespace std;
 
 

@@ -58,7 +58,7 @@ public:
 	~WidgetGraph();
 	void print();
 	void setUpSrcAndDest(Node*, Node*, double);
-	int lpSolver();
+	int lpSolver(int opMode);
 
 };
 

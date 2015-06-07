@@ -416,12 +416,12 @@ void WidgetGraph::copyBack(){
 
 static int
 	buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
-	double* &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb);
+	double* &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb, int opMode);
 
 static void
 	free_and_null (char **ptr);
 
-int WidgetGraph::lpSolver()
+int WidgetGraph::lpSolver(int opMode)
 {
 	/* Declare variables and arrays for retrieving problem data and
 	  solution information later on. */
@@ -497,7 +497,7 @@ int WidgetGraph::lpSolver()
 	double* obj;
 	double* ub;
 	double* lb;
-	status = buildNetwork (env, net, this, supply, head, tail, obj, ub, lb);
+	status = buildNetwork (env, net, this, supply, head, tail, obj, ub, lb, opMode);
 
 	// if(supply != NULL){
 	// 	cout << "before not clear" << endl;
@@ -656,7 +656,7 @@ TERMINATE:
 
 static int
 buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet, 
-	double * &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb)
+	double * &supply, int* &head, int* &tail, double* &obj, double* &ub, double* &lb, int opMode)
 {
 	int status = 0;
 
@@ -708,14 +708,17 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 			tail[cnt] = temp.nodeTo->nodeID;
 			
 			// obj[cnt] = temp.interest_diff;
-			if (widgetNet->nodeList[k]->originNode == widgetNet->src 
-			 && temp.nodeTo->type == 2){
-			 obj[cnt] = temp.interest_diff;
-			} else {
-			 obj[cnt] = 0;
-			}
-
-			// obj[cnt] = temp.interest_diff;
+            if (opMode == 1) {
+                if (widgetNet->nodeList[k]->originNode == widgetNet->src
+                    && temp.nodeTo->type == 2){
+                    obj[cnt] = temp.interest_diff;
+                } else {
+                    obj[cnt] = 0;
+                }
+            } else {
+                obj[cnt] = temp.interest_diff;
+            }
+            
 
 			ub[cnt] = temp.cap;
 			lb[cnt] = 0;

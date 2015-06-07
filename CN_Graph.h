@@ -14,6 +14,7 @@ extern int defaultList[100];  // 20 rounds
 #include <list>
 #include <fstream>
 
+
 class Graph{
 public:
 	vector<ConNode*> conAgent;
@@ -35,6 +36,12 @@ public:
 	void print();
 	Node* searchID(int id);
 	Graph& operator=(Graph &graphT);
+    
+    /////////////////////////////////////////////////////////////////////////
+    /* Set all route mechanism preference */
+    /////////////////////////////////////////////////////////////////////////
+    void setRoutePreference(int opMode);
+    
 
 	void setZero(FinNode* f);
 

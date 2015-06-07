@@ -35,6 +35,10 @@ Status Node::print(){
 }
 
 
+void Node::setRoutePreference(RouteMechanism routeM){
+    this->routePreference = routeM;
+}
+
 bool Node::isInOutEdge(Node* nodeT){
     for (int i=0; i<this->edge_out.size(); i++) {
         if (nodeT == this->edge_out[i].nodeTo) {

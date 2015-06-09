@@ -12,9 +12,6 @@ int defaultList[100];
 ofstream fout_trans;
 ofstream fout_int;
 
-mutex lock_rates;
-mutex lock_cout;
-
 ////////////////////////////////////////////////////////////////////
 void singleSimulation(
                       int finNum, int conNum, int proNum,

@@ -39,6 +39,8 @@ public:
     void printTranPerCon();
     void printProPrice();
     void printBanlancePerCon();
+    
+    void printPayoff();
 };
 
 

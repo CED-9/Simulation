@@ -9,6 +9,15 @@
 #include <iostream>
 using namespace std;
 
+
+void CreditNet::printPayoff(){
+    for (int i = 0; i < this->finNum; ++i) {
+        cout << this->finAgent[i]->getNodeID() << ": "
+            << "Transactions " << this->finAgent[i]->transactionNum << ", Current Banlance "
+            << this->finAgent[i]->getCurrBanlance() << endl;
+    }
+}
+
 CreditNet::CreditNet(int finNumT, int conNumT, int proNumT)
         : Graph(finNumT, conNumT, proNumT){}
 CreditNet::~CreditNet(){
@@ -145,6 +154,7 @@ int CreditNet::genInterBankTrans(){
             return 1;
         }
         payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
+        f1->transactionNum++;
         return 0;
     } else {
         WidgetGraph* widgetNet = new WidgetGraph;
@@ -158,6 +168,7 @@ int CreditNet::genInterBankTrans(){
             return 1;
         }
         widgetNet->copyBack();
+        f1->transactionNum++;
         delete widgetNet;
         return 0;
     }

@@ -66,10 +66,14 @@ public:
     // Preference
     RouteMechanism routePreference;
     
+    // Transaction
+    int transactionNum;
+    
 	Node(){}
 	Node(int id);
 	~Node(){}
 	
+    double getCurrBanlance();
     
     //////////////////////////////////////////////////////////////
     void setRoutePreference(RouteMechanism routeM);

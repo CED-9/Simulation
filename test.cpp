@@ -4,13 +4,6 @@
 #include <cmath>
 #include <thread>
 #include <algorithm>
-#include <thread>
-<<<<<<< HEAD
-#include <mutex>
-=======
-
-using namespace std;
->>>>>>> origin/master
 
 using namespace std;
 

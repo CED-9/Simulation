@@ -49,6 +49,8 @@ protected:
 	int nodeID;
 	
 public:
+	int transNum;
+	
     // edges
 	std::vector<OutEdge> edge_out;
 	std::vector<InEdge> edge_in;
@@ -78,6 +80,8 @@ public:
     //////////////////////////////////////////////////////////////
     void setRoutePreference(RouteMechanism routeM);
 	bool isInOutEdge(Node* nodeT);
+
+	void visualize();
 	
 	void setNodeType(NodeType nodeTypeT){ nodeType = nodeTypeT; }
 	NodeType getNodeType(){ return nodeType; }

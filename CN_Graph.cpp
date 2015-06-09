@@ -32,6 +32,12 @@ const int FIN_CON_OUT_INTEREST = HIGH_INTEREST_RATE;
 ///* Graph Basics */
 /////////////////////////////////////////////////////////////////////////
 
+void Graph::visualize(){
+	for (int i = 0; i<finNum; i++){
+		finAgent[i]->visualize();
+	}
+}
+
 // print the current state of the graph
 void Graph::print(){
 	this->banAgent->print();

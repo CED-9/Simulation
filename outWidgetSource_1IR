@@ -1,0 +1,120 @@
+new thread: threshold 0.01 mechanism 20.96156
+new thread: threshold 0.01 mechanism 20.959073
+new thread: threshold 0.01 mechanism 20.963239
+new thread: threshold 0.01 mechanism 20.965328
+new thread: threshold 0.01 mechanism 20.958499
+new thread: threshold 0.01 mechanism 20.963943
+new thread: threshold 0.01 mechanism 20.959129
+new thread: threshold 0.01 mechanism 20.96261
+new thread: threshold 0.01 mechanism 20.958835
+new thread: threshold 0.01 mechanism 20.961101
+0.959073 0.961101 0.959129 0.96261 0.958835 0.963239 0.965328 0.96156 0.963943 0.958499 
+1.99 0.0386684
+new thread: threshold 0.02 mechanism 20.623761
+new thread: threshold 0.02 mechanism 20.61398
+new thread: threshold 0.02 mechanism 20.622046
+new thread: threshold 0.02 mechanism 20.615063
+new thread: threshold 0.02 mechanism 20.625153
+new thread: threshold 0.02 mechanism 20.611679
+new thread: threshold 0.02 mechanism 20.612811
+new thread: threshold 0.02 mechanism 20.611525
+new thread: threshold 0.02 mechanism 20.618183
+new thread: threshold 0.02 mechanism 20.616372
+0.623761 0.611525 0.615063 0.612811 0.61398 0.618183 0.611679 0.622046 0.625153 0.616372 
+3.98 0.382943
+new thread: threshold 0.04 mechanism 20.290523
+new thread: threshold 0.04 mechanism 20.276554
+new thread: threshold 0.04 mechanism 20.282275
+new thread: threshold 0.04 mechanism 20.289778
+new thread: threshold 0.04 mechanism 20.293917
+new thread: threshold 0.04 mechanism 20.296717
+new thread: threshold 0.04 mechanism 20.277318
+new thread: threshold 0.04 mechanism 20.292746
+new thread: threshold 0.04 mechanism 20.304368
+new thread: threshold 0.04 mechanism 20.306305
+0.282275 0.293917 0.296717 0.276554 0.304368 0.306305 0.277318 0.290523 0.292746 0.289778 
+7.96 0.70895
+new thread: threshold 0.06 mechanism 20.172372
+new thread: threshold 0.06 mechanism 20.174871
+new thread: threshold 0.06 mechanism 20.172066
+new thread: threshold 0.06 mechanism 20.169083
+new thread: threshold 0.06 mechanism 20.185994
+new thread: threshold 0.06 mechanism 20.166338
+new thread: threshold 0.06 mechanism 20.173808
+new thread: threshold 0.06 mechanism 20.173333
+new thread: threshold 0.06 mechanism 20.185326
+new thread: threshold 0.06 mechanism 20.176797
+0.173333 0.176797 0.185994 0.166338 0.174871 0.185326 0.172372 0.169083 0.173808 0.172066 
+11.94 0.825001
+new thread: threshold 0.09 mechanism 20.102248
+new thread: threshold 0.09 mechanism 20.103426
+new thread: threshold 0.09 mechanism 20.0998869
+new thread: threshold 0.09 mechanism 20.101249
+new thread: threshold 0.09 mechanism 20.10796
+new thread: threshold 0.09 mechanism 20.115746
+new thread: threshold 0.09 mechanism 20.117198
+new thread: threshold 0.09 mechanism 20.104856
+new thread: threshold 0.09 mechanism 20.112701
+new thread: threshold 0.09 mechanism 20.112262
+0.102248 0.101249 0.103426 0.0998869 0.112701 0.104856 0.115746 0.10796 0.112262 0.117198 
+17.91 0.892247
+new thread: threshold 0.12 mechanism 20.0662481
+new thread: threshold 0.12 mechanism 20.0582584
+new thread: threshold 0.12 mechanism 20.0648606
+new thread: threshold 0.12 mechanism 20.0590357
+new thread: threshold 0.12 mechanism 20.0656798
+new thread: threshold 0.12 mechanism 20.0577719
+new thread: threshold 0.12 mechanism 20.0581271
+new thread: threshold 0.12 mechanism 20.0669946
+new thread: threshold 0.12 mechanism 20.0700377
+new thread: threshold 0.12 mechanism 20.0746231
+0.0746231 0.0662481 0.0656798 0.0577719 0.0669946 0.0590357 0.0582584 0.0648606 0.0700377 0.0581271 
+23.88 0.935836
+new thread: threshold 0.15 mechanism 20.0314465
+new thread: threshold 0.15 mechanism 20.043142
+new thread: threshold 0.15 mechanism 20.0418735
+new thread: threshold 0.15 mechanism 20.0385195
+new thread: threshold 0.15 mechanism 20.0528062
+new thread: threshold 0.15 mechanism 20.0445923
+new thread: threshold 0.15 mechanism 20.0547523
+new thread: threshold 0.15 mechanism 20.0462326
+new thread: threshold 0.15 mechanism 20.0494588
+new thread: threshold 0.15 mechanism 20.0547523
+0.0462326 0.0528062 0.0547523 0.043142 0.0418735 0.0385195 0.0445923 0.0547523 0.0494588 0.0314465 
+29.85 0.954242
+new thread: threshold 0.2 mechanism 20.0172267
+new thread: threshold 0.2 mechanism 20.0224585
+new thread: threshold 0.2 mechanism 20.0235301
+new thread: threshold 0.2 mechanism 20.0231427
+new thread: threshold 0.2 mechanism 20.0256424
+new thread: threshold 0.2 mechanism 20.0227664
+new thread: threshold 0.2 mechanism 20.0252836
+new thread: threshold 0.2 mechanism 20.0306975
+new thread: threshold 0.2 mechanism 20.0268535
+new thread: threshold 0.2 mechanism 20.0247999
+0.0256424 0.0247999 0.0235301 0.0172267 0.0224585 0.0268535 0.0231427 0.0252836 0.0227664 0.0306975 
+39.8 0.97576
+new thread: threshold 0.25 mechanism 20.00088879
+new thread: threshold 0.25 mechanism 20.00122181
+new thread: threshold 0.25 mechanism 20.0035599
+new thread: threshold 0.25 mechanism 20.00470367
+new thread: threshold 0.25 mechanism 20.00879407
+new thread: threshold 0.25 mechanism 20.00719808
+new thread: threshold 0.25 mechanism 20.00786948
+new thread: threshold 0.25 mechanism 20.00614651
+new thread: threshold 0.25 mechanism 20.0117702
+new thread: threshold 0.25 mechanism 20.0129757
+0.0117702 0.00122181 0.00786948 0.00879407 0.00088879 0.00470367 0.0129757 0.00614651 0.00719808 0.0035599 
+49.75 0.993487
+new thread: threshold 0.35 mechanism 20
+new thread: threshold 0.35 mechanism 20.000666593
+new thread: threshold 0.35 mechanism 20.000222198
+new thread: threshold 0.35 mechanism 20
+new thread: threshold 0.35 mechanism 20.000666593
+new thread: threshold 0.35 mechanism 20
+new thread: threshold 0.35 mechanism 20
+new thread: threshold 0.35 mechanism 20
+new thread: threshold 0.35 mechanism 20
+new thread: threshold 0.35 mechanism 20
+0.000666593 0.000222198 0 0 0 0.000666593 0 0 0 0 
+69.65 0.999844

@@ -1117,8 +1117,12 @@ testFrank:
 	g++ -g -c CN_Graph.cpp -std=c++11
 	g++ -g -c CN_CreditNet.cpp -std=c++11
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test testWidget.cpp *.o $(CCLNFLAGS) -std=c++11
-	time ./test > out
+	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test_payoff.cpp *.o $(CCLNFLAGS) -std=c++11
+	time ./test 1 4 > outGreedyPayoff_4IR
+	time ./test 2 4 > outWidgetSourcePayoff_4IR
+	time ./test 3 4 > outWidgetOverallPayoff_4IR
+	time ./test 4 4 > outRandomPayoff_4IR
+
 testSingle:
 	g++ -g -c Error.cpp -std=c++11
 	g++ -g -c CN_DistributionGenerator.cpp -std=c++11

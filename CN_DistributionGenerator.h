@@ -3,9 +3,9 @@
 #include <iostream>
 #include <vector>
 
-class DisGenerator{
+/*class DisGenerator{
 public:
     void normalPartition(double total, int cnt, std::vector<double> & result);
-};
+};*/
 
 #endif

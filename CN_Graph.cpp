@@ -530,7 +530,7 @@ void Graph::genTest0Graph(double threshold, int numIR){
 			if (num > 1.0 - threshold){
 
 				this->addEdge(finAgent[j], finAgent[i]);
-				finAgent[j]->setOutEdge(finAgent[i], 1, rand()%2, ir, EQ);
+				finAgent[j]->setOutEdge(finAgent[i], 1, 0, ir, EQ);
 				
 				// if (rand()%2 == 1){
 				// 	this->addEdge(finAgent[i], finAgent[j]);

@@ -529,16 +529,16 @@ void Graph::genTest0Graph(double threshold, int numIR){
 			// double ir = 0.1;
 			if (num > 1.0 - threshold){
 
-				this->addEdge(finAgent[j], finAgent[i]);
-				finAgent[j]->setOutEdge(finAgent[i], 1, rand()%2, ir, EQ);
+//				this->addEdge(finAgent[j], finAgent[i]);
+//				finAgent[j]->setOutEdge(finAgent[i], 1, rand()%2, ir, EQ);
 				
-				// if (rand()%2 == 1){
-				// 	this->addEdge(finAgent[i], finAgent[j]);
-				// 	finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);	
-				// } else {
-				// 	this->addEdge(finAgent[j], finAgent[i]);
-				// 	finAgent[j]->setOutEdge(finAgent[i], 1, 0, ir, EQ);
-				// }
+				 if (rand()%2 == 1){
+				 	this->addEdge(finAgent[i], finAgent[j]);
+				 	finAgent[i]->setOutEdge(finAgent[j], 1, 0, ir, EQ);	
+				 } else {
+				 	this->addEdge(finAgent[j], finAgent[i]);
+				 	finAgent[j]->setOutEdge(finAgent[i], 1, 0, ir, EQ);
+				 }
 				// finAgent[i]->setInEdge(finAgent[j], 0.5, 0, ir, EQ);
 			}
 		}

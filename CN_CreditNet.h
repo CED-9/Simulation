@@ -5,7 +5,7 @@
 #include <list>
 #include "CN_Graph.h"
 #include "CN_WidgetGraph.h"
-#include "CN_DistributionGenerator.h"
+// #include "CN_DistributionGenerator.h"
 
 class CreditNet : public Graph{
 private:

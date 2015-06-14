@@ -2,7 +2,6 @@
 #define NON_DEBUG_MODE
 
 #include  "Error.h"
-#include "CN_DistributionGenerator.h"
 #include "CN_CreditNet.h"
 #include <queue>
 #include <vector>

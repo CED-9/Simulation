@@ -41,8 +41,7 @@ struct PlayerInfo {
     double payoff;
     int strategy;
     string roll;
-    int[10] features;
-    
+    int features[10];
 };
 
 void writePayoff (CreditNet* creditNet, double unitTransactionPayoff) {

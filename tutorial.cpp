@@ -71,7 +71,10 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
     }
     
     result.AddMember("players", playerArray, allocator);
-    result.AddMember("features", "", allocator);
+    
+    rapidjson::Value object(rapidjson::kObjectType);
+    object.SetObject();
+    result.AddMember("features", object, allocator);
     printf("\nModified JSON with reformatting:\n");
     StringBuffer sb;
     PrettyWriter<StringBuffer> writer(sb);

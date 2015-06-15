@@ -41,7 +41,7 @@ struct PlayerInfo {
     double payoff;
     int strategy;
     string roll;
-    int [] features;
+    int[10] features;
     
 };
 

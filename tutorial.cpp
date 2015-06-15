@@ -153,7 +153,7 @@ int main(int, char*[]) {
         Value& a = document["a"];   // This time we uses non-const reference.
         Document::AllocatorType& allocator = document.GetAllocator();
 
-        a.PushBack(sb.GetString(), allocator);   // May look a bit strange, allocator is needed for potentially realloc. We normally uses the document's.
+        a.PushBack(sb1.GetString(), allocator);   // May look a bit strange, allocator is needed for potentially realloc. We normally uses the document's.
     }
     
     

@@ -53,7 +53,7 @@ struct PlayerInfo {
     int features[10];
 };
 
-void writePayoff (std::vector<PlayerInfo> &players) {
+void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
     
     rapidjson::Document result;
     result.SetObject();
@@ -65,7 +65,7 @@ void writePayoff (std::vector<PlayerInfo> &players) {
         rapidjson::Value object(rapidjson::kObjectType);
         object.SetObject();
         object.AddMember("roll", "All", allocator);
-        object.AddMember("strategy", "LP_OVERALL", allocator);
+        object.AddMember("strategy", players[i].strategy.c_str(), allocator);
         object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
     }
@@ -78,47 +78,13 @@ void writePayoff (std::vector<PlayerInfo> &players) {
     result.Accept(writer);    // Accept() traverses the DOM and generates Handler events.
     puts(sb.GetString());
     
-//    // ---- create from scratch ----
-//    
-//    // document is the root of a json message
-//    rapidjson::Document fromScratch;
-//    
-//    // define the document as an object rather than an array
-//    fromScratch.SetObject();
-//    
-//    // create a rapidjson array type with similar syntax to std::vector
-//    rapidjson::Value array(rapidjson::kArrayType);
-//    
-//    // must pass an allocator when the object may need to allocate memory
-//    rapidjson::Document::AllocatorType& allocator = fromScratch.GetAllocator();
-//    
-//    // chain methods as rapidjson provides a fluent interface when modifying its objects
-//    array.PushBack("hello", allocator).PushBack("world", allocator);
-//    
-//    fromScratch.AddMember("hello", "world", allocator);
-//    fromScratch.AddMember("number", 2, allocator);
-//    fromScratch.AddMember("array", array, allocator);
-//    
-//    // create a rapidjson object type
-//    rapidjson::Value object(rapidjson::kObjectType);
-//    object.AddMember("hello", "world", allocator);
-//    fromScratch.AddMember("object", object, allocator);
-//    fromScratch["object"]["hello"] = "world";
-//    
-//    output(fromScratch);
-//    
-//    // ---- parse from string ----
-//    
-//    // Convert JSON document to string
-//    rapidjson::StringBuffer strbuf;
-//    rapidjson::Writer<rapidjson::StringBuffer> writer(strbuf);
-//    fromScratch.Accept(writer);
-//    
-//    // parse json string
-//    rapidjson::Document parsedFromString;
-//    parsedFromString.Parse<0>(strbuf.GetString());
-//    
-//    output(parsedFromString);
+    FILE* fp = fopen(outPath.c_str(), "w"); // non-Windows use "w"
+    char writeBuffer[65536];
+    FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
+    Writer<FileWriteStream> writer1(os);
+    document.Accept(writer1);
+    fclose(fp);
+
 }
 
 

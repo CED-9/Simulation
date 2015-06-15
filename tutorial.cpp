@@ -53,7 +53,7 @@ struct PlayerInfo {
     int features[10];
 };
 
-void writePayoff (PlayerInfo [] players, int playerNum, double unitTransactionPayoff) {
+void writePayoff (Vector<PlayerInfo> &players, int playerNum, double unitTransactionPayoff) {
     
     
 //    rapidjson::Document result;

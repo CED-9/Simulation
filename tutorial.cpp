@@ -82,7 +82,7 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
     char writeBuffer[65536];
     FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
     Writer<FileWriteStream> writer1(os);
-    document.Accept(writer1);
+    result.Accept(writer1);
     fclose(fp);
 
 }

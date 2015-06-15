@@ -4,6 +4,7 @@
 #include "include/rapidjson/document.h"     // rapidjson's DOM-style API
 #include "include/rapidjson/prettywriter.h" // for stringify JSON
 #include "include/rapidjson/filewritestream.h"
+#include "include/rapidjson/filereadstream.h"
 #include <iostream>
 #include <string>
 #include "CN_CreditNet.h"

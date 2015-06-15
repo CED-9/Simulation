@@ -65,7 +65,7 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
         rapidjson::Value object(rapidjson::kObjectType);
         object.SetObject();
         object.AddMember("roll", "All", allocator);
-        object.AddMember("strategy", players[i].strategy.c_str(), allocator);
+        object.AddMember("strategy", "LP_OVERALL", allocator);
         object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
     }

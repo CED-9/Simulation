@@ -139,18 +139,21 @@ int main(int, char*[]) {
     // chain methods as rapidjson provides a fluent interface when modifying its objects
     array.PushBack("hello", allocator).PushBack("world", allocator);
     
+    fromScratch.AddMember("hello", "world", allocator);
+    fromScratch.AddMember("number", 2, allocator);
     
-    // create a rapidjson object type
-    rapidjson::Value object(rapidjson::kObjectType);
-    object.SetObject();
-    object.AddMember("hello", "world", allocator);
-    // fromScratch.AddMember("object", object, allocator);
-    // fromScratch["object"]["hello"] = NULL;
-    
-    //array.PushBack(object, allocator);
+    rapidjson::Value objValue;
+    objValue.SetObject();
+    objValue.AddMember("playername", "ri le gou", allocator);
+    array.PushBack(objValue, allocator);
     
     fromScratch.AddMember("array", array, allocator);
     
+    // create a rapidjson object type
+    rapidjson::Value object(rapidjson::kObjectType);
+    object.AddMember("hello", "world", allocator);
+    fromScratch.AddMember("object", object, allocator);
+    fromScratch["object"]["hello"] = "world";
     
     output(fromScratch);
     

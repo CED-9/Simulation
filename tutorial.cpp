@@ -117,7 +117,8 @@ int main(int, char*[]) {
         // Faster version:
         // document["hello"].SetString("rapidjson", 9);
     }
-
+    
+    
     // This version of SetString() needs an allocator, which means it will allocate a new buffer and copy the the string into the buffer.
     Value author;
     {
@@ -142,10 +143,27 @@ int main(int, char*[]) {
     // 4. Stringify JSON
 
     printf("\nModified JSON with reformatting:\n");
+    StringBuffer sb1;
+    PrettyWriter<StringBuffer> writer1(sb1);
+    document.Accept(writer1);    // Accept() traverses the DOM and generates Handler events.
+    
+    
+    // Adding values to array.
+    {
+        Value& a = document["a"];   // This time we uses non-const reference.
+        Document::AllocatorType& allocator = document.GetAllocator();
+
+        a.PushBack(sb.GetString(), allocator);   // May look a bit strange, allocator is needed for potentially realloc. We normally uses the document's.
+    }
+    
+    
+    printf("\nModified JSON with reformatting:\n");
     StringBuffer sb;
     PrettyWriter<StringBuffer> writer(sb);
     document.Accept(writer);    // Accept() traverses the DOM and generates Handler events.
     puts(sb.GetString());
 
+
+    
     return 0;
 }

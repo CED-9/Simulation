@@ -7,7 +7,6 @@
 #include "include/rapidjson/filereadstream.h"
 #include <iostream>
 #include <string>
-#include "CN_CreditNet.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -15,6 +14,8 @@
 #include <algorithm>
 #include <thread>
 #include <mutex>
+
+
 
 using namespace rapidjson;
 using namespace std;
@@ -108,79 +109,81 @@ ofstream fout_int;
 mutex lock_rates;
 mutex lock_cout;
 
+#include "CN_CreditNet.h"
+
 ////////////////////////////////////////////////////////////////////
-void singleSimulation(
-                      int finNum, int conNum, int proNum,
-                      double threshold, int numIR, int mechanismGenMode,
-                      int window_size,
-                      double* resultRate)
-{
-    // config the network
-    CreditNet creditNet(finNum, conNum, proNum);
-    creditNet.genTest0Graph(threshold, numIR);
-    creditNet.setRoutePreference(mechanismGenMode);
-    
-    // main loop
-    // first window_size runs
-    int failRate1 = 0;
-    int failRate2 = 0;
-    int failRateTotal = 0;
-    vector<int> array;
-    for (int i = 0; i < window_size; ++i){
-        int temp;
-        
-        temp = creditNet.genInterBankTrans();
-        
-        array.push_back(temp);
-        failRate1 += temp;
-        failRateTotal += temp;
-    }
-    
-    for (int i = 0; i < window_size; ++i){
-        int temp;
-        
-        temp = creditNet.genInterBankTrans();
-        
-        array.push_back(temp);
-        failRate2 += temp;
-        failRateTotal += temp;
-    }
-    
-    int cnt = 0;
-    while (1){
-        if (abs(failRate1 - failRate2) <= window_size * 2.0 / 1000.0){
-            break;
-        }
-        // move on
-        int temp;
-        
-        temp = creditNet.genInterBankTrans();
-        
-        failRate1 = failRate1 - array[0] + array[window_size];
-        failRate2 = failRate2 - array[window_size] + temp;
-        failRateTotal += temp;
-        array.erase(array.begin());
-        array.push_back(temp);
-        cnt++;
-    }
-    lock_rates.lock();
-    *resultRate = failRateTotal / (cnt + 2.0 * window_size + 1.0);
-    lock_rates.unlock();
-    lock_cout.lock();
-    cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << *resultRate << endl;
-    lock_cout.unlock();
-    
-    vector<PlayerInfo> myList;
-    for (int i = 0; i < 10; ++i) {
-        PlayerInfo p;
-        p.payoff = 10.0;
-        p.strategy = "LP_SOURCE";
-        p.payoff = 10.0;
-        p.role = "All";
-        myList.push_back(p);
-    }
-    writePayoff(myList, "output.json");
-}
+//void singleSimulation(
+//                      int finNum, int conNum, int proNum,
+//                      double threshold, int numIR, int mechanismGenMode,
+//                      int window_size,
+//                      double* resultRate)
+//{
+//    // config the network
+//    CreditNet creditNet(finNum, conNum, proNum);
+//    creditNet.genTest0Graph(threshold, numIR);
+//    creditNet.setRoutePreference(mechanismGenMode);
+//    
+//    // main loop
+//    // first window_size runs
+//    int failRate1 = 0;
+//    int failRate2 = 0;
+//    int failRateTotal = 0;
+//    vector<int> array;
+//    for (int i = 0; i < window_size; ++i){
+//        int temp;
+//        
+//        temp = creditNet.genInterBankTrans();
+//        
+//        array.push_back(temp);
+//        failRate1 += temp;
+//        failRateTotal += temp;
+//    }
+//    
+//    for (int i = 0; i < window_size; ++i){
+//        int temp;
+//        
+//        temp = creditNet.genInterBankTrans();
+//        
+//        array.push_back(temp);
+//        failRate2 += temp;
+//        failRateTotal += temp;
+//    }
+//    
+//    int cnt = 0;
+//    while (1){
+//        if (abs(failRate1 - failRate2) <= window_size * 2.0 / 1000.0){
+//            break;
+//        }
+//        // move on
+//        int temp;
+//        
+//        temp = creditNet.genInterBankTrans();
+//        
+//        failRate1 = failRate1 - array[0] + array[window_size];
+//        failRate2 = failRate2 - array[window_size] + temp;
+//        failRateTotal += temp;
+//        array.erase(array.begin());
+//        array.push_back(temp);
+//        cnt++;
+//    }
+//    lock_rates.lock();
+//    *resultRate = failRateTotal / (cnt + 2.0 * window_size + 1.0);
+//    lock_rates.unlock();
+//    lock_cout.lock();
+//    cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << *resultRate << endl;
+//    lock_cout.unlock();
+//    
+//    vector<PlayerInfo> myList;
+//    for (int i = 0; i < 10; ++i) {
+//        PlayerInfo p;
+//        p.payoff = 10.0;
+//        p.strategy = "LP_SOURCE";
+//        p.payoff = 10.0;
+//        p.role = "All";
+//        myList.push_back(p);
+//    }
+//    writePayoff(myList, "output.json");
+//}
 
 
 // argv[1]: initialize mode

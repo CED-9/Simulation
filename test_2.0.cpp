@@ -43,6 +43,13 @@ void readConfig (Config &config, string inPath) {
     doc.ParseStream(is);
     fclose(fp);
     
+    printf("\nModified JSON with reformatting:\n");
+    StringBuffer sb;
+    PrettyWriter<StringBuffer> writer(sb);
+    doc.Accept(writer);    // Accept() traverses the DOM and generates Handler events.
+    puts(sb.GetString());
+    
+    
     const Value& configObj = doc["configuration"];
     config.numNodes = configObj["numNodes"].GetInt();
     config.edgeProb = configObj["edgeProb"].GetDouble();

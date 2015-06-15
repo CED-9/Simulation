@@ -7,9 +7,9 @@
 #include <iostream>
 #include "CN_CreditNet.h"
 #include <iostream>
+#include <string>
 #include <vector>
 #include <cmath>
-#include <thread>
 #include <algorithm>
 #include <thread>
 #include <mutex>
@@ -48,34 +48,35 @@ void output(const rapidjson::Document & document)
 
 struct PlayerInfo {
     double payoff;
-    int strategy;
-    string roll;
+    string strategy;
+    string role;
     int features[10];
 };
 
-void writePayoff (std::vector<PlayerInfo> &players, int playerNum, double unitTransactionPayoff) {
+void writePayoff (std::vector<PlayerInfo> &players) {
     
+    rapidjson::Document result;
+    result.SetObject();
+    rapidjson::Value playerArray(rapidjson::kArrayType);
+    rapidjson::Document::AllocatorType& allocator = result.GetAllocator();
     
-//    rapidjson::Document result;
-//    result.SetObject();
-//    rapidjson::Value playerArray(rapidjson::kArrayType);
-//    rapidjson::Document::AllocatorType& allocator = result.GetAllocator();
-//    for (int i = 0; i < playerNum; ++i) {
-//        array.PushBack("hello", allocator).PushBack("world", allocator);
-//        
-//        // create a rapidjson object type
-//        rapidjson::Value object(rapidjson::kObjectType);
-//        object.AddMember("roll", "All", allocator);
-//        object.AddMember("strategy", players[i].strategy, allocator);
-//        object.AddMember("payoff", players.payoff, allocator);
-//        
-//        
-//        fromScratch.AddMember("object", object, allocator);
-//        fromScratch["object"]["hello"] = "world";
-//        
-//    }
- 
+    for (int i = 0; i < players.size(); ++i) {
+        // create a rapidjson object type
+        rapidjson::Value object(rapidjson::kObjectType);
+        object.SetObject();
+        object.AddMember("roll", "All", allocator);
+        object.AddMember("strategy", players[i].strategy, allocator);
+        object.AddMember("payoff", players.payoff, allocator);
+        playerArray.PushBack(object, allocator);
+    }
     
+    result.AddMember("players", playerArray, allocator);
+    result.AddMember("features", "", allocator);
+    printf("\nModified JSON with reformatting:\n");
+    StringBuffer sb;
+    PrettyWriter<StringBuffer> writer(sb);
+    result.Accept(writer);    // Accept() traverses the DOM and generates Handler events.
+    puts(sb.GetString());
     
 //    // ---- create from scratch ----
 //    
@@ -169,5 +170,17 @@ int main(int, char*[]) {
     parsedFromString.Parse<0>(strbuf.GetString());
     
     output(parsedFromString);
+    
+    vector<PlayerInfo> myList;
+    for (int i = 0; i < 10; ++i) {
+        PlayerInfo p;
+        p.payoff = 10.0;
+        p.strategy = "LP_SOURCE";
+        p.payoff = 10.0;
+        p.role = "All";
+        myList.push_back(p);
+    }
+    writePayoff(myList);
+    
     return 0;
 }

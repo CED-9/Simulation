@@ -146,7 +146,7 @@ int main(int, char*[]) {
         p.role = "All";
         myList.push_back(p);
     }
-    writePayoff(myList);
+    writePayoff(myList, "output.json");
     
     return 0;
 }

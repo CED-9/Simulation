@@ -41,7 +41,7 @@ void output(const rapidjson::Document & document)
     char writeBuffer[65536];
     FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
     Writer<FileWriteStream> writer(os);
-    d.Accept(writer);
+    document.Accept(writer);
     fclose(fp);
 }
 

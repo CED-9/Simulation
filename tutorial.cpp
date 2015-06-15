@@ -35,6 +35,14 @@ void output(const rapidjson::Document & document)
     PrettyWriter<StringBuffer> writer(sb);
     document.Accept(writer);    // Accept() traverses the DOM and generates Handler events.
     puts(sb.GetString());
+    
+    // ...
+    FILE* fp = fopen("output.json", "w"); // non-Windows use "w"
+    char writeBuffer[65536];
+    FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
+    Writer<FileWriteStream> writer(os);
+    d.Accept(writer);
+    fclose(fp);
 }
 
 struct PlayerInfo {

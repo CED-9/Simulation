@@ -47,10 +47,10 @@ struct PlayerInfo {
 
 void writePayoff (CreditNet* creditNet, double unitTransactionPayoff) {
     
-    for (int i = 0; i < this->finNum; ++i) {
-        cout << this->finAgent[i]->getNodeID() << ": "
-        << "Transactions " << this->finAgent[i]->transactionNum << ", Current Banlance "
-        << this->finAgent[i]->getCurrBanlance() << endl;
+    for (int i = 0; i < creditNet->finNum; ++i) {
+//        cout << this->finAgent[i]->getNodeID() << ": "
+//        << "Transactions " << this->finAgent[i]->transactionNum << ", Current Banlance "
+//        << this->finAgent[i]->getCurrBanlance() << endl;
         
         
         

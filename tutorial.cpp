@@ -147,7 +147,7 @@ int main(int, char*[]) {
     // fromScratch.AddMember("object", object, allocator);
     // fromScratch["object"]["hello"] = NULL;
     
-    array.PushBack(object, allocator);
+    //array.PushBack(object, allocator);
     
     fromScratch.AddMember("array", array, allocator);
     

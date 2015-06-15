@@ -147,7 +147,7 @@ int main(int, char*[]) {
     rapidjson::Value object(rapidjson::kObjectType);
     object.AddMember("hello", NULL, allocator);
     fromScratch.AddMember("object", object, allocator);
-    fromScratch["object"]["hello"] = NULL;
+    // fromScratch["object"]["hello"] = NULL;
     
     output(fromScratch);
     

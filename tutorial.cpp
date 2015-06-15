@@ -3,7 +3,7 @@
 
 #include "include/rapidjson/document.h"     // rapidjson's DOM-style API
 #include "include/rapidjson/prettywriter.h" // for stringify JSON
-#include <cstdio>
+#include <iostream>
 
 using namespace rapidjson;
 using namespace std;

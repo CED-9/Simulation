@@ -137,7 +137,7 @@ int main(int, char*[]) {
     rapidjson::Document::AllocatorType& allocator = fromScratch.GetAllocator();
     
     // chain methods as rapidjson provides a fluent interface when modifying its objects
-//    array.PushBack("hello", allocator).PushBack("world", allocator);
+    array.PushBack("hello", allocator).PushBack("world", allocator);
     
     
     // create a rapidjson object type

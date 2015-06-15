@@ -7,7 +7,7 @@
 #include "include/rapidjson/filereadstream.h"
 #include <iostream>
 #include <string>
-#include <iostream>
+#include <fstream>
 #include <vector>
 #include <cmath>
 #include <thread>

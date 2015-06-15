@@ -143,7 +143,7 @@ int main(int, char*[]) {
     // create a rapidjson object type
     rapidjson::Value object(rapidjson::kObjectType);
     object.AddMember("hello", "world", allocator);
-    fromScratch.AddMember("object", object, allocator);
+    // fromScratch.AddMember("object", object, allocator);
     // fromScratch["object"]["hello"] = NULL;
     
     array.PushBack(object, allocator);

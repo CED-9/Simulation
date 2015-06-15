@@ -66,7 +66,7 @@ void writePayoff (std::vector<PlayerInfo> &players) {
         object.SetObject();
         object.AddMember("roll", "All", allocator);
         object.AddMember("strategy", players[i].strategy, allocator);
-        object.AddMember("payoff", players.payoff, allocator);
+        object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
     }
     

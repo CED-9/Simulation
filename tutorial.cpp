@@ -41,8 +41,8 @@ void output(const rapidjson::Document & document)
     FILE* fp = fopen("output.json", "w"); // non-Windows use "w"
     char writeBuffer[65536];
     FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
-    Writer<FileWriteStream> writer(os);
-    document.Accept(writer);
+    Writer<FileWriteStream> writer1(os);
+    document.Accept(writer1);
     fclose(fp);
 }
 

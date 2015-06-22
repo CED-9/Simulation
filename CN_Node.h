@@ -6,7 +6,7 @@
 #include <list>
 #include <fstream>
 #include <vector>
-
+#include <boost>
 #include <iostream>
 using namespace std;
 
@@ -17,11 +17,12 @@ enum OpMode{
 	ADD, SUB, EQ
 };
 
-
-
 enum RouteMechanism{
     FF, LP_SOURCE, LP_OVERALL
 };
+
+std::map<std::string, RouteMechanism> xmap = boost::map_list_of("FF", FF)("LP_SOURCE", LP_SOURCE)("LP_OVERALL",LP_OVERALL);
+
 
 // forward declaration
 class Node;

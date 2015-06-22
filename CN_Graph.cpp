@@ -1207,7 +1207,7 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 }
 
 // TO DO set preference for all
-void Graph::setRoutePreference(int opMode){
+void Graph::setRoutePreference(int opMode, const vector<string>& v){
     switch (opMode) {
         case 1:
             for (int i = 0; i < finNum; i++) {
@@ -1229,6 +1229,10 @@ void Graph::setRoutePreference(int opMode){
                 finAgent[i]->routePreference = (RouteMechanism)(rand()%3);
             }
             break;
+        case 5:
+        	for (int i=0; i < finNum; i++) {
+        		finagent[i]->routePreference = v[i]
+        	}
         default:
             break;
     }

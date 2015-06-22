@@ -40,7 +40,7 @@ public:
     /////////////////////////////////////////////////////////////////////////
     /* Set all route mechanism preference */
     /////////////////////////////////////////////////////////////////////////
-    void setRoutePreference(int opMode);
+    void setRoutePreference(int opMode, const vector<string>& v);
     
 
 	void setZero(FinNode* f);

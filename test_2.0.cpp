@@ -122,40 +122,36 @@ int main(int argc, char* argv[]){
     readConfig(config, "simulation_spec.json");
     
     
-//    int finNum = config.numNodes;
-//    int conNum = 0;
-//    int proNum = 0;
-//    
-//    double threshold = config.edgeProb;
-//    int numIR = config.numIR;
-//    int window_size = config.window;
-//    int iter = config.smoothing;
-//    
-//    int mechanismGenMode = 1;
-//    double degrees [10] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};
-//    
-//    
-//    // config the network
-//    CreditNet creditNet(finNum, conNum, proNum);
-//    creditNet.genTest0Graph(threshold, numIR);
-//    
-//    creditNet.setRoutePreference(config.assignedStrategy);
-//    
-//    // main loop
-//    int failRateTotal = 0;
-//    for (int i = 0; i < window_size; ++i){
-//        int temp;
-//        temp = creditNet.genInterBankTrans();
-//        failRateTotal += temp;
-//    }
+   int finNum = config.numNodes;
+   int conNum = 0;
+   int proNum = 0;
+   
+   double threshold = config.edgeProb;
+   int numIR = config.numIR;
+   int window_size = config.window;
+   int iter = config.smoothing;
+   
+   // config the network
+   CreditNet creditNet(finNum, conNum, proNum);
+   creditNet.genTest0Graph(threshold, numIR);
+   
+   creditNet.setRoutePreference(5, config.assignedStrategy);
+   
+   // main loop
+   int failRateTotal = 0;
+   for (int i = 0; i < window_size; ++i){
+       int temp;
+       temp = creditNet.genInterBankTrans();
+       failRateTotal += temp;
+   }
 
     
     
     vector<PlayerInfo> myList;
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < finNum; ++i) {
         PlayerInfo p;
-        p.strategy = "LP_SOURCE";
-        p.payoff = 10.0;
+        p.strategy = creditNet->finAgent[i]->routePreference;
+        p.payoff = creditNet->finAgent[i]->transactionNum*0.01 + creditNet->finAgent[i]->getCurrBanlance();
         p.role = "All";
         myList.push_back(p);
     }
@@ -163,3 +159,92 @@ int main(int argc, char* argv[]){
     
     return 0;
 }
+
+int defaultList[100];
+ofstream fout_trans;
+ofstream fout_int;
+
+mutex lock_rates;
+mutex lock_cout;
+
+////////////////////////////////////////////////////////////////////
+void singleSimulation(
+    int finNum, int conNum, int proNum,
+    double threshold, int numIR, int mechanismGenMode,
+    int window_size,
+    double* resultRate)
+{
+    // config the network
+    CreditNet creditNet(finNum, conNum, proNum);
+    creditNet.genTest0Graph(threshold, numIR);
+    creditNet.setRoutePreference(mechanismGenMode);
+    // main loop
+    // first window_size runs
+
+    int failRateTotal = 0;
+    vector<int> array;
+    for (int i = 0; i < window_size; ++i){
+        int temp;
+        
+        temp = creditNet.genInterBankTrans();
+        
+        array.push_back(temp);
+        failRateTotal += temp;
+    }
+    
+  
+    /*std::string reps = std::to_string(cnt + 2.0 * window_size + 1.0);*/
+    lock_cout.lock();
+    cout << threshold << endl;
+    creditNet.printPayoff();
+/*    ofstream myfile;
+    myfile.open(std::to_string(mechanismGenMode) + "_" + std::to_string(threshold) ".txt",ios::app);
+    myfile << creditNet.printPayoff() << "," << failRateTotal << "\n";
+    myfile.close();
+    /*cout << "new thread: threshold " << threshold << " mechanism " << mechanismGenMode << " "<< *resultRate << " " << (cnt + 2.0 * window_size + 1.0) << endl;*/
+    lock_cout.unlock();
+}
+
+
+// argv[1]: initialize mode
+// argv[2]: number of interest rates
+int main(int argc, char* argv[]){
+    int finNum = 10;
+    int conNum = 0;
+    int proNum = 0;
+    double threshold;
+    int numIR = atoi(argv[2]);
+    int mechanismGenMode = atoi(argv[1]);
+    int window_size = 3;
+    int iter = 1;
+    int numThresh = 3;
+    double degrees [3] = {1,1,1};
+        /*,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};*/
+
+    // 10 rounds
+    for (int i = 0; i < 3; ++i){
+        threshold = degrees[i];
+        double* rates = new double [iter];
+        vector<std::thread*> threadPool;
+        
+        // smooth the result
+        for (int j = 0; j < iter; ++j){
+            std::thread* singleRoundThread
+            = new std::thread(singleSimulation,
+                              finNum, conNum, proNum,
+                              threshold, numIR, mechanismGenMode,
+                              window_size, rates + j);
+            threadPool.push_back(singleRoundThread);
+        }
+        
+        // wait for all threads to finish
+        for (int j = 0; j < iter; ++j){
+            threadPool[j]->join();
+            delete threadPool[j];
+        }
+        
+       
+        /*cout << endl << (double)(threshold*199) << " " << 1 - rateFinal << endl;*/
+    }
+}
+

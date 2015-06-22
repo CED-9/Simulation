@@ -1060,6 +1060,7 @@ testFrank:
 	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++11
 	g++ -g -c CN_Graph.cpp -std=c++11
 	g++ -g -c CN_CreditNet.cpp -std=c++11
+	g++ -I/opt/software/boost/1.45_ubuntu12.4lts_gcc4.5.3/include/
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
 	$(CCC) $(CCFLAGS) -o test test_2.0.cpp *.o $(CCLNFLAGS) -std=c++11
 	time ./test

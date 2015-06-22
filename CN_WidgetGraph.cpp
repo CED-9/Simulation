@@ -464,7 +464,7 @@ int WidgetGraph::lpSolver(int opMode)
 
 	/* Turn on output to the screen */
 
-	status = CPXsetintparam (env, CPXPARAM_ScreenOutput, CPX_OFF);
+	status = CPXsetintparam (env, CPX_PARAM_SCRIND, CPX_OFF);
 	if ( status ) {
 	  fprintf (stderr, 
 				"Failure to turn on screen indicator, error %d.\n", status);

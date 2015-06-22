@@ -1,4 +1,4 @@
-SYSTEM     = x86-64_linux
+SYSTEM     = x86-64_sles10_4.1
 LIBFORMAT  = static_pic
 
 #------------------------------------------------------------
@@ -9,8 +9,8 @@ LIBFORMAT  = static_pic
 #
 #------------------------------------------------------------
 
-CPLEXDIR      = /usr/caen/cplex-12.6/cplex
-CONCERTDIR    = /usr/caen/cplex-12.6/concert
+CPLEXDIR      = /usr/caen/cplex-12.4/cplex
+CONCERTDIR    = /usr/caen/cplex-12.4/concert
 # ---------------------------------------------------------------------
 # Compiler selection 
 # ---------------------------------------------------------------------
@@ -24,7 +24,7 @@ JAVAC = javac
 # ---------------------------------------------------------------------
 
 CCOPT = -m64 -O -fPIC -fno-strict-aliasing -fexceptions -DNDEBUG -DIL_STD
-COPT  = -m64 -fPIC -fno-strict-aliasing
+COPT  = -m64 -fPIC -fno-strict-aliasing 
 JOPT  = -classpath $(CPLEXDIR)/lib/cplex.jar -O
 
 # ---------------------------------------------------------------------
@@ -36,11 +36,9 @@ CPLEXJARDIR   = $(CPLEXDIR)/lib/cplex.jar
 CPLEXLIBDIR   = $(CPLEXDIR)/lib/$(SYSTEM)/$(LIBFORMAT)
 CONCERTLIBDIR = $(CONCERTDIR)/lib/$(SYSTEM)/$(LIBFORMAT)
 
-CCLNDIRS  = -L$(CPLEXLIBDIR) -L$(CONCERTLIBDIR)
-CLNDIRS   = -L$(CPLEXLIBDIR)
-CCLNFLAGS = -lconcert -lilocplex -lcplex -lm -lpthread
-CLNFLAGS  = -lcplex -lm -lpthread
-JAVA      = java  -d64 -Djava.library.path=$(CPLEXDIR)/bin/x86-64_linux -classpath $(CPLEXJARDIR):
+CCLNFLAGS = -L$(CPLEXLIBDIR) -lilocplex -lcplex -L$(CONCERTLIBDIR) -lconcert -lm -pthread
+CLNFLAGS  = -L$(CPLEXLIBDIR) -lcplex -lm -pthread
+JAVA      = java -d64 -Djava.library.path=$(CPLEXDIR)/bin/x86-64_sles10_4.1 -classpath $(CPLEXJARDIR):
 
 
 all:
@@ -76,40 +74,40 @@ JCFLAGS = $(JOPT)
 
 C_EX = lpex1 lpex2 lpex3 lpex4 lpex5 lpex6 lpex7 lpex8 \
        mipex1 mipex2 mipex3 mipex4 miqpex1 netex1 netex2 \
-       qcpex1 qpex1 qpex2 indefqpex1 globalqpex1 globalmiqpex1 \
+       qcpex1 qpex1 qpex2 indefqpex1 \
        steel diet fixnet foodmanu adpreex1 \
        admipex1 admipex2 admipex3 admipex4 admipex5 admipex6 admipex7 \
-       populate tuneset bendersatsp socpex1 qcpdual
+       populate tuneset bendersatsp socpex1
 
 CX_EX = xlpex1 xlpex2 xlpex3 xlpex4 xlpex5 xlpex6 xlpex7 xlpex8 \
        xmipex1 xmipex2 xmipex3 xmipex4 xmiqpex1 xnetex1 xnetex2 \
-       xqcpex1 xqpex1 xqpex2 xindefqpex1 xglobalqpex1 xglobalmiqpex1 \
+       xqcpex1 xqpex1 xqpex2 xindefqpex1 \
        xsteel xdiet xfixnet xfoodmanu xadpreex1 \
        xadmipex1 xadmipex2 xadmipex3 xadmipex4 xadmipex5 xadmipex6 xadmipex7 \
-       xpopulate xtuneset xbendersatsp xsocpex1 xqcpdual
+       xpopulate xtuneset xbendersatsp xsocpex1
 
 CPP_EX = blend cutstock etsp facility fixcost1 foodmanufact \
          iloadmipex1 iloadmipex2 iloadmipex3 iloadmipex4 \
-         iloadmipex5 iloadmipex6 iloindefqpex1 iloglobalqpex1 ilodiet \
+         iloadmipex5 iloadmipex6 iloindefqpex1 ilodiet \
          ilolpex1 ilolpex2 ilolpex3 ilolpex4 ilolpex6 ilolpex7 \
          ilomipex1 ilomipex2 ilomipex3 ilomipex4 ilomiqpex1 \
          ilogoalex1 ilogoalex2 ilogoalex3 iloqcpex1 iloqpex1 iloqpex2 \
          iloqpex3 inout1 inout3 mixblend rates transport ilosteel \
-         warehouse ilopopulate ilotuneset ilobendersatsp ilosocpex1 iloqcpdual
+         warehouse ilopopulate ilotuneset ilobendersatsp ilosocpex1
 
 JAVA_EX = Blend.class MixBlend.class CutStock.class Diet.class \
           Etsp.class Facility.class FixCost1.class \
           FoodManufact.class InOut1.class InOut3.class \
           Rates.class Steel.class Transport.class \
           LPex1.class LPex2.class LPex3.class LPex4.class \
-          LPex6.class LPex7.class IndefQPex1.class GlobalQPex1.class \
+          LPex6.class LPex7.class IndefQPex1.class \
           MIPex1.class MIPex2.class MIPex3.class MIPex4.class MIQPex1.class \
           AdMIPex1.class AdMIPex2.class AdMIPex3.class \
           AdMIPex4.class AdMIPex5.class AdMIPex6.class QCPex1.class \
           QPex1.class QPex2.class QPex3.class Goalex1.class Goalex2.class \
           TuneSet.class BendersATSP.class \
           Goalex3.class Populate.class Warehouse.class CplexServer.class \
-          SocpEx1.class QCPDual.class
+          SocpEx1.class
 
 all_c: $(C_EX) $(CX_EX)
 
@@ -119,8 +117,6 @@ all_java: $(JAVA_EX)
 
 execute_c: $(C_EX) $(CX_EX)
 	 ./indefqpex1
-	 ./globalqpex1 $(EXDATA)/nonconvexqp.lp g
-	 ./globalmiqpex1 $(EXDATA)/nonconvexmiqp.lp
 	 ./lpex1 -r
 	 ./lpex2 $(EXDATA)/example.mps p
 	 ./lpex3
@@ -146,9 +142,8 @@ execute_c: $(C_EX) $(CX_EX)
 	 ./foodmanu
 	 ./populate $(EXDATA)/location.lp
 	 ./tuneset $(EXDATA)/p0033.mps
-	 ./bendersatsp 1 $(EXDATA)/atsp.dat
+	 ./bendersatsp 2 $(EXDATA)/atsp.dat
 	 ./socpex1
-	 ./qcpdual
 	 ./adpreex1
 	 ./admipex1 $(EXDATA)/mexample.mps
 	 ./admipex2 $(EXDATA)/p0033.mps
@@ -158,8 +153,6 @@ execute_c: $(C_EX) $(CX_EX)
 	 ./admipex6 $(EXDATA)/mexample.mps
 	 ./admipex7 $(EXDATA)/mexample.mps
 	 ./xindefqpex1
-	 ./xglobalqpex1 $(EXDATA)/nonconvexqp.lp g
-	 ./xglobalmiqpex1 $(EXDATA)/nonconvexmiqp.lp
 	 ./xlpex1 -r
 	 ./xlpex2 $(EXDATA)/example.mps p
 	 ./xlpex3
@@ -187,7 +180,6 @@ execute_c: $(C_EX) $(CX_EX)
 	 ./xtuneset $(EXDATA)/p0033.mps
 	 ./xbendersatsp 1 $(EXDATA)/atsp.dat
 	 ./xsocpex1
-	 ./xqcpdual
 	 ./xadpreex1
 	 ./xadmipex1 $(EXDATA)/mexample.mps
 	 ./xadmipex2 $(EXDATA)/p0033.mps
@@ -215,8 +207,6 @@ execute_cpp: $(CPP_EX)
 	 ./ilogoalex2
 	 ./ilogoalex3 $(EXDATA)/mexample.mps
 	 ./iloindefqpex1
-	 ./iloglobalqpex1 $(EXDATA)/nonconvexqp.lp g
-	 ./iloglobalqpex1 $(EXDATA)/nonconvexmiqp.lp g
 	 ./ilolpex1 -r
 	 ./ilolpex2 $(EXDATA)/example.mps p
 	 ./ilolpex3
@@ -236,7 +226,6 @@ execute_cpp: $(CPP_EX)
 	 ./ilotuneset $(EXDATA)/p0033.mps
 	 ./ilobendersatsp 1 $(EXDATA)/atsp.dat
 	 ./ilosocpex1
-	 ./iloqcpdual
 	 ./inout1
 	 ./inout3
 	 ./mixblend
@@ -250,8 +239,6 @@ execute_java: $(JAVA_EX)
 	 $(JAVA) Goalex2
 	 $(JAVA) Goalex3 $(EXDATA)/mexample.mps
 	 $(JAVA) IndefQPex1
-	 $(JAVA) GlobalQPex1 $(EXDATA)/nonconvexqp.lp g
-	 $(JAVA) GlobalQPex1 $(EXDATA)/nonconvexmiqp.lp g
 	 $(JAVA) LPex1 -r
 	 $(JAVA) LPex2 $(EXDATA)/example.mps p
 	 $(JAVA) LPex3
@@ -285,7 +272,6 @@ execute_java: $(JAVA_EX)
 	 $(JAVA) TuneSet $(EXDATA)/p0033.mps
 	 $(JAVA) BendersATSP 1 $(EXDATA)/atsp.dat
 	 $(JAVA) SocpEx1
-	 $(JAVA) QCPDual
 	 $(JAVA) Warehouse
 	 $(JAVA) AdMIPex1 $(EXDATA)/mexample.mps
 	 $(JAVA) AdMIPex2 $(EXDATA)/p0033.mps
@@ -306,615 +292,572 @@ clean :
 # The examples
 #
 indefqpex1: indefqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o indefqpex1 indefqpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) indefqpex1.o -o indefqpex1 $(CLNFLAGS)
 indefqpex1.o: $(EXSRCC)/indefqpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/indefqpex1.c -o indefqpex1.o
 
-globalqpex1: globalqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o globalqpex1 globalqpex1.o $(CLNFLAGS)
-globalqpex1.o: $(EXSRCC)/globalqpex1.c
-	$(CC) -c $(CFLAGS) $(EXSRCC)/globalqpex1.c -o globalqpex1.o
-
-globalmiqpex1: globalmiqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o globalmiqpex1 globalmiqpex1.o $(CLNFLAGS)
-globalmiqpex1.o: $(EXSRCC)/globalmiqpex1.c
-	$(CC) -c $(CFLAGS) $(EXSRCC)/globalmiqpex1.c -o globalmiqpex1.o
-
 lpex1: lpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex1 lpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex1.o -o lpex1 $(CLNFLAGS)
 lpex1.o: $(EXSRCC)/lpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex1.c -o lpex1.o
 
 lpex2: lpex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex2 lpex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex2.o -o lpex2 $(CLNFLAGS)
 lpex2.o: $(EXSRCC)/lpex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex2.c -o lpex2.o
 
 lpex3: lpex3.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex3 lpex3.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex3.o -o lpex3 $(CLNFLAGS)
 lpex3.o: $(EXSRCC)/lpex3.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex3.c -o lpex3.o
 
 lpex4: lpex4.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex4 lpex4.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex4.o -o lpex4 $(CLNFLAGS)
 lpex4.o: $(EXSRCC)/lpex4.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex4.c -o lpex4.o
 
 lpex5: lpex5.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex5 lpex5.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex5.o -o lpex5 $(CLNFLAGS)
 lpex5.o: $(EXSRCC)/lpex5.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex5.c -o lpex5.o
 
 lpex6: lpex6.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex6 lpex6.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex6.o -o lpex6 $(CLNFLAGS)
 lpex6.o: $(EXSRCC)/lpex6.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex6.c -o lpex6.o
 
 lpex7: lpex7.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex7 lpex7.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex7.o -o lpex7 $(CLNFLAGS)
 lpex7.o: $(EXSRCC)/lpex7.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex7.c -o lpex7.o
 
 lpex8: lpex8.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o lpex8 lpex8.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) lpex8.o -o lpex8 $(CLNFLAGS)
 lpex8.o: $(EXSRCC)/lpex8.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/lpex8.c -o lpex8.o
 
 mipex1: mipex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o mipex1 mipex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) mipex1.o -o mipex1 $(CLNFLAGS)
 mipex1.o: $(EXSRCC)/mipex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/mipex1.c -o mipex1.o
 
 mipex2: mipex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o mipex2 mipex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) mipex2.o -o mipex2 $(CLNFLAGS)
 mipex2.o: $(EXSRCC)/mipex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/mipex2.c -o mipex2.o
 
 mipex3: mipex3.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o mipex3 mipex3.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) mipex3.o -o mipex3 $(CLNFLAGS)
 mipex3.o: $(EXSRCC)/mipex3.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/mipex3.c -o mipex3.o
 
 mipex4: mipex4.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o mipex4 mipex4.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) mipex4.o -o mipex4 $(CLNFLAGS)
 mipex4.o: $(EXSRCC)/mipex4.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/mipex4.c -o mipex4.o
 
 miqpex1: miqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o miqpex1 miqpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) miqpex1.o -o miqpex1 $(CLNFLAGS)
 miqpex1.o: $(EXSRCC)/miqpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/miqpex1.c -o miqpex1.o
 
 netex1: netex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o netex1 netex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) netex1.o -o netex1 $(CLNFLAGS)
 netex1.o: $(EXSRCC)/netex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/netex1.c -o netex1.o
 
 netex2: netex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o netex2 netex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) netex2.o -o netex2 $(CLNFLAGS)
 netex2.o: $(EXSRCC)/netex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/netex2.c -o netex2.o
 
 qcpex1: qcpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o qcpex1 qcpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) qcpex1.o -o qcpex1 $(CLNFLAGS)
 qcpex1.o: $(EXSRCC)/qcpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/qcpex1.c -o qcpex1.o
 
 qpex1: qpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o qpex1 qpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) qpex1.o -o qpex1 $(CLNFLAGS)
 qpex1.o: $(EXSRCC)/qpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/qpex1.c -o qpex1.o
 
 qpex2: qpex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o qpex2 qpex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) qpex2.o -o qpex2 $(CLNFLAGS)
 qpex2.o: $(EXSRCC)/qpex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/qpex2.c -o qpex2.o
 
 steel: steel.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o steel steel.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) steel.o -o steel $(CLNFLAGS)
 steel.o: $(EXSRCC)/steel.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/steel.c -o steel.o
 
 diet: diet.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o diet diet.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) diet.o -o diet $(CLNFLAGS)
 diet.o: $(EXSRCC)/diet.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/diet.c -o diet.o
 
 fixnet: fixnet.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o fixnet fixnet.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) fixnet.o -o fixnet $(CLNFLAGS)
 fixnet.o: $(EXSRCC)/fixnet.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/fixnet.c -o fixnet.o
 
 foodmanu: foodmanu.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o foodmanu foodmanu.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) foodmanu.o -o foodmanu $(CLNFLAGS)
 foodmanu.o: $(EXSRCC)/foodmanu.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/foodmanu.c -o foodmanu.o
 
 adpreex1: adpreex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o adpreex1 adpreex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) adpreex1.o -o adpreex1 $(CLNFLAGS)
 adpreex1.o: $(EXSRCC)/adpreex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/adpreex1.c -o adpreex1.o
 
 admipex1: admipex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex1 admipex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex1.o -o admipex1 $(CLNFLAGS)
 admipex1.o: $(EXSRCC)/admipex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex1.c -o admipex1.o
 
 admipex2: admipex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex2 admipex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex2.o -o admipex2 $(CLNFLAGS)
 admipex2.o: $(EXSRCC)/admipex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex2.c -o admipex2.o
 
 admipex3: admipex3.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex3 admipex3.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex3.o -o admipex3 $(CLNFLAGS)
 admipex3.o: $(EXSRCC)/admipex3.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex3.c -o admipex3.o
 
 admipex4: admipex4.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex4 admipex4.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex4.o -o admipex4 $(CLNFLAGS)
 admipex4.o: $(EXSRCC)/admipex4.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex4.c -o admipex4.o
 
 admipex5: admipex5.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex5 admipex5.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex5.o -o admipex5 $(CLNFLAGS)
 admipex5.o: $(EXSRCC)/admipex5.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex5.c -o admipex5.o
 
 admipex6: admipex6.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex6 admipex6.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex6.o -o admipex6 $(CLNFLAGS)
 admipex6.o: $(EXSRCC)/admipex6.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex6.c -o admipex6.o
 
 admipex7: admipex7.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o admipex7 admipex7.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) admipex7.o -o admipex7 $(CLNFLAGS)
 admipex7.o: $(EXSRCC)/admipex7.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/admipex7.c -o admipex7.o
 
 populate: populate.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o populate populate.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) populate.o -o populate $(CLNFLAGS)
 populate.o: $(EXSRCC)/populate.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/populate.c -o populate.o
 
 tuneset: tuneset.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o tuneset tuneset.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) tuneset.o -o tuneset $(CLNFLAGS)
 tuneset.o: $(EXSRCC)/tuneset.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/tuneset.c -o tuneset.o
 
 bendersatsp: bendersatsp.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o bendersatsp bendersatsp.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) bendersatsp.o -o bendersatsp $(CLNFLAGS)
 bendersatsp.o: $(EXSRCC)/bendersatsp.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/bendersatsp.c -o bendersatsp.o
 
 socpex1: socpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o socpex1 socpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) socpex1.o -o socpex1 $(CLNFLAGS)
 socpex1.o: $(EXSRCC)/socpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCC)/socpex1.c -o socpex1.o
 
-qcpdual: qcpdual.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o qcpdual qcpdual.o $(CLNFLAGS)
-qcpdual.o: $(EXSRCC)/qcpdual.c
-	$(CC) -c $(CFLAGS) $(EXSRCC)/qcpdual.c -o qcpdual.o
-
 xindefqpex1: xindefqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xindefqpex1 xindefqpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xindefqpex1.o -o xindefqpex1 $(CLNFLAGS)
 xindefqpex1.o: $(EXSRCCX)/xindefqpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xindefqpex1.c -o xindefqpex1.o
 
-xglobalqpex1: xglobalqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xglobalqpex1 xglobalqpex1.o $(CLNFLAGS)
-xglobalqpex1.o: $(EXSRCCX)/xglobalqpex1.c
-	$(CC) -c $(CFLAGS) $(EXSRCCX)/xglobalqpex1.c -o xglobalqpex1.o
-
-xglobalmiqpex1: xglobalmiqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xglobalmiqpex1 xglobalmiqpex1.o $(CLNFLAGS)
-xglobalmiqpex1.o: $(EXSRCCX)/xglobalmiqpex1.c
-	$(CC) -c $(CFLAGS) $(EXSRCCX)/xglobalmiqpex1.c -o xglobalmiqpex1.o
-
 xlpex1: xlpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex1 xlpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex1.o -o xlpex1 $(CLNFLAGS)
 xlpex1.o: $(EXSRCCX)/xlpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex1.c -o xlpex1.o
 
 xlpex2: xlpex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex2 xlpex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex2.o -o xlpex2 $(CLNFLAGS)
 xlpex2.o: $(EXSRCCX)/xlpex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex2.c -o xlpex2.o
 
 xlpex3: xlpex3.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex3 xlpex3.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex3.o -o xlpex3 $(CLNFLAGS)
 xlpex3.o: $(EXSRCCX)/xlpex3.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex3.c -o xlpex3.o
 
 xlpex4: xlpex4.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex4 xlpex4.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex4.o -o xlpex4 $(CLNFLAGS)
 xlpex4.o: $(EXSRCCX)/xlpex4.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex4.c -o xlpex4.o
 
 xlpex5: xlpex5.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex5 xlpex5.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex5.o -o xlpex5 $(CLNFLAGS)
 xlpex5.o: $(EXSRCCX)/xlpex5.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex5.c -o xlpex5.o
 
 xlpex6: xlpex6.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex6 xlpex6.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex6.o -o xlpex6 $(CLNFLAGS)
 xlpex6.o: $(EXSRCCX)/xlpex6.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex6.c -o xlpex6.o
 
 xlpex7: xlpex7.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex7 xlpex7.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex7.o -o xlpex7 $(CLNFLAGS)
 xlpex7.o: $(EXSRCCX)/xlpex7.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex7.c -o xlpex7.o
 
 xlpex8: xlpex8.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xlpex8 xlpex8.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xlpex8.o -o xlpex8 $(CLNFLAGS)
 xlpex8.o: $(EXSRCCX)/xlpex8.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xlpex8.c -o xlpex8.o
 
 xmipex1: xmipex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xmipex1 xmipex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xmipex1.o -o xmipex1 $(CLNFLAGS)
 xmipex1.o: $(EXSRCCX)/xmipex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xmipex1.c -o xmipex1.o
 
 xmipex2: xmipex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xmipex2 xmipex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xmipex2.o -o xmipex2 $(CLNFLAGS)
 xmipex2.o: $(EXSRCCX)/xmipex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xmipex2.c -o xmipex2.o
 
 xmipex3: xmipex3.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xmipex3 xmipex3.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xmipex3.o -o xmipex3 $(CLNFLAGS)
 xmipex3.o: $(EXSRCCX)/xmipex3.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xmipex3.c -o xmipex3.o
 
 xmipex4: xmipex4.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xmipex4 xmipex4.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xmipex4.o -o xmipex4 $(CLNFLAGS)
 xmipex4.o: $(EXSRCCX)/xmipex4.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xmipex4.c -o xmipex4.o
 
 xmiqpex1: xmiqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xmiqpex1 xmiqpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xmiqpex1.o -o xmiqpex1 $(CLNFLAGS)
 xmiqpex1.o: $(EXSRCCX)/xmiqpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xmiqpex1.c -o xmiqpex1.o
 
 xnetex1: xnetex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xnetex1 xnetex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xnetex1.o -o xnetex1 $(CLNFLAGS)
 xnetex1.o: $(EXSRCCX)/xnetex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xnetex1.c -o xnetex1.o
 
 xnetex2: xnetex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xnetex2 xnetex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xnetex2.o -o xnetex2 $(CLNFLAGS)
 xnetex2.o: $(EXSRCCX)/xnetex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xnetex2.c -o xnetex2.o
 
 xqcpex1: xqcpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xqcpex1 xqcpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xqcpex1.o -o xqcpex1 $(CLNFLAGS)
 xqcpex1.o: $(EXSRCCX)/xqcpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xqcpex1.c -o xqcpex1.o
 
 xqpex1: xqpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xqpex1 xqpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xqpex1.o -o xqpex1 $(CLNFLAGS)
 xqpex1.o: $(EXSRCCX)/xqpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xqpex1.c -o xqpex1.o
 
 xqpex2: xqpex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xqpex2 xqpex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xqpex2.o -o xqpex2 $(CLNFLAGS)
 xqpex2.o: $(EXSRCCX)/xqpex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xqpex2.c -o xqpex2.o
 
 xsteel: xsteel.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xsteel xsteel.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xsteel.o -o xsteel $(CLNFLAGS)
 xsteel.o: $(EXSRCCX)/xsteel.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xsteel.c -o xsteel.o
 
 xdiet: xdiet.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xdiet xdiet.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xdiet.o -o xdiet $(CLNFLAGS)
 xdiet.o: $(EXSRCCX)/xdiet.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xdiet.c -o xdiet.o
 
 xfixnet: xfixnet.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xfixnet xfixnet.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xfixnet.o -o xfixnet $(CLNFLAGS)
 xfixnet.o: $(EXSRCCX)/xfixnet.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xfixnet.c -o xfixnet.o
 
 xfoodmanu: xfoodmanu.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xfoodmanu xfoodmanu.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xfoodmanu.o -o xfoodmanu $(CLNFLAGS)
 xfoodmanu.o: $(EXSRCCX)/xfoodmanu.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xfoodmanu.c -o xfoodmanu.o
 
 xadpreex1: xadpreex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadpreex1 xadpreex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadpreex1.o -o xadpreex1 $(CLNFLAGS)
 xadpreex1.o: $(EXSRCCX)/xadpreex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadpreex1.c -o xadpreex1.o
 
 xadmipex1: xadmipex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex1 xadmipex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex1.o -o xadmipex1 $(CLNFLAGS)
 xadmipex1.o: $(EXSRCCX)/xadmipex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex1.c -o xadmipex1.o
 
 xadmipex2: xadmipex2.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex2 xadmipex2.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex2.o -o xadmipex2 $(CLNFLAGS)
 xadmipex2.o: $(EXSRCCX)/xadmipex2.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex2.c -o xadmipex2.o
 
 xadmipex3: xadmipex3.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex3 xadmipex3.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex3.o -o xadmipex3 $(CLNFLAGS)
 xadmipex3.o: $(EXSRCCX)/xadmipex3.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex3.c -o xadmipex3.o
 
 xadmipex4: xadmipex4.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex4 xadmipex4.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex4.o -o xadmipex4 $(CLNFLAGS)
 xadmipex4.o: $(EXSRCCX)/xadmipex4.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex4.c -o xadmipex4.o
 
 xadmipex5: xadmipex5.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex5 xadmipex5.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex5.o -o xadmipex5 $(CLNFLAGS)
 xadmipex5.o: $(EXSRCCX)/xadmipex5.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex5.c -o xadmipex5.o
 
 xadmipex6: xadmipex6.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex6 xadmipex6.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex6.o -o xadmipex6 $(CLNFLAGS)
 xadmipex6.o: $(EXSRCCX)/xadmipex6.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex6.c -o xadmipex6.o
 
 xadmipex7: xadmipex7.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xadmipex7 xadmipex7.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xadmipex7.o -o xadmipex7 $(CLNFLAGS)
 xadmipex7.o: $(EXSRCCX)/xadmipex7.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xadmipex7.c -o xadmipex7.o
 
 xpopulate: xpopulate.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xpopulate xpopulate.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xpopulate.o -o xpopulate $(CLNFLAGS)
 xpopulate.o: $(EXSRCCX)/xpopulate.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xpopulate.c -o xpopulate.o
 
 xtuneset: xtuneset.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xtuneset xtuneset.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xtuneset.o -o xtuneset $(CLNFLAGS)
 xtuneset.o: $(EXSRCCX)/xtuneset.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xtuneset.c -o xtuneset.o
 
 xbendersatsp: xbendersatsp.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xbendersatsp xbendersatsp.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xbendersatsp.o -o xbendersatsp $(CLNFLAGS)
 xbendersatsp.o: $(EXSRCCX)/xbendersatsp.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xbendersatsp.c -o xbendersatsp.o
 
 xsocpex1: xsocpex1.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xsocpex1 xsocpex1.o $(CLNFLAGS)
+	$(CC) $(CFLAGS) xsocpex1.o -o xsocpex1 $(CLNFLAGS)
 xsocpex1.o: $(EXSRCCX)/xsocpex1.c
 	$(CC) -c $(CFLAGS) $(EXSRCCX)/xsocpex1.c -o xsocpex1.o
 
-xqcpdual: xqcpdual.o
-	$(CC) $(CFLAGS) $(CLNDIRS) -o xqcpdual xqcpdual.o $(CLNFLAGS)
-xqcpdual.o: $(EXSRCCX)/xqcpdual.c
-	$(CC) -c $(CFLAGS) $(EXSRCCX)/xqcpdual.c -o xqcpdual.o
-
 blend: blend.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o blend blend.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) blend.o -o blend $(CCLNFLAGS)
 blend.o: $(EXSRCCPP)/blend.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/blend.cpp -o blend.o
 
 cutstock: cutstock.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o cutstock cutstock.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) cutstock.o -o cutstock $(CCLNFLAGS)
 cutstock.o: $(EXSRCCPP)/cutstock.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/cutstock.cpp -o cutstock.o
 
 etsp: etsp.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o etsp etsp.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) etsp.o -o etsp $(CCLNFLAGS)
 etsp.o: $(EXSRCCPP)/etsp.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/etsp.cpp -o etsp.o
 
 facility: facility.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o facility facility.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) facility.o -o facility $(CCLNFLAGS)
 facility.o: $(EXSRCCPP)/facility.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/facility.cpp -o facility.o
 
 fixcost1: fixcost1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o fixcost1 fixcost1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) fixcost1.o -o fixcost1 $(CCLNFLAGS)
 fixcost1.o: $(EXSRCCPP)/fixcost1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/fixcost1.cpp -o fixcost1.o
 
 foodmanufact: foodmanufact.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o foodmanufact foodmanufact.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) foodmanufact.o -o foodmanufact $(CCLNFLAGS)
 foodmanufact.o: $(EXSRCCPP)/foodmanufact.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/foodmanufact.cpp -o foodmanufact.o
 
 iloadmipex1: iloadmipex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloadmipex1 iloadmipex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloadmipex1.o -o iloadmipex1 $(CCLNFLAGS)
 iloadmipex1.o: $(EXSRCCPP)/iloadmipex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloadmipex1.cpp -o iloadmipex1.o
 
 iloadmipex2: iloadmipex2.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloadmipex2 iloadmipex2.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloadmipex2.o -o iloadmipex2 $(CCLNFLAGS)
 iloadmipex2.o: $(EXSRCCPP)/iloadmipex2.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloadmipex2.cpp -o iloadmipex2.o
 
 iloadmipex3: iloadmipex3.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloadmipex3 iloadmipex3.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloadmipex3.o -o iloadmipex3 $(CCLNFLAGS)
 iloadmipex3.o: $(EXSRCCPP)/iloadmipex3.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloadmipex3.cpp -o iloadmipex3.o
 
 iloadmipex4: iloadmipex4.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloadmipex4 iloadmipex4.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloadmipex4.o -o iloadmipex4 $(CCLNFLAGS)
 iloadmipex4.o: $(EXSRCCPP)/iloadmipex4.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloadmipex4.cpp -o iloadmipex4.o
 
 iloadmipex5: iloadmipex5.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloadmipex5 iloadmipex5.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloadmipex5.o -o iloadmipex5 $(CCLNFLAGS)
 iloadmipex5.o: $(EXSRCCPP)/iloadmipex5.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloadmipex5.cpp -o iloadmipex5.o
 
 iloadmipex6: iloadmipex6.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloadmipex6 iloadmipex6.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloadmipex6.o -o iloadmipex6 $(CCLNFLAGS)
 iloadmipex6.o: $(EXSRCCPP)/iloadmipex6.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloadmipex6.cpp -o iloadmipex6.o
 
 ilodiet: ilodiet.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilodiet ilodiet.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilodiet.o -o ilodiet $(CCLNFLAGS)
 ilodiet.o: $(EXSRCCPP)/ilodiet.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilodiet.cpp -o ilodiet.o
 
 iloindefqpex1: iloindefqpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloindefqpex1 iloindefqpex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloindefqpex1.o -o iloindefqpex1 $(CCLNFLAGS)
 iloindefqpex1.o: $(EXSRCCPP)/iloindefqpex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloindefqpex1.cpp -o iloindefqpex1.o
 
-iloglobalqpex1: iloglobalqpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloglobalqpex1 iloglobalqpex1.o $(CCLNFLAGS)
-iloglobalqpex1.o: $(EXSRCCPP)/iloglobalqpex1.cpp
-	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloglobalqpex1.cpp -o iloglobalqpex1.o
-
 ilolpex1: ilolpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilolpex1 ilolpex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilolpex1.o -o ilolpex1 $(CCLNFLAGS)
 ilolpex1.o: $(EXSRCCPP)/ilolpex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilolpex1.cpp -o ilolpex1.o
 
 ilolpex2: ilolpex2.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilolpex2 ilolpex2.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilolpex2.o -o ilolpex2 $(CCLNFLAGS)
 ilolpex2.o: $(EXSRCCPP)/ilolpex2.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilolpex2.cpp -o ilolpex2.o
 
 ilolpex3: ilolpex3.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilolpex3 ilolpex3.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilolpex3.o -o ilolpex3 $(CCLNFLAGS)
 ilolpex3.o: $(EXSRCCPP)/ilolpex3.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilolpex3.cpp -o ilolpex3.o
 
 ilolpex4: ilolpex4.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilolpex4 ilolpex4.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilolpex4.o -o ilolpex4 $(CCLNFLAGS)
 ilolpex4.o: $(EXSRCCPP)/ilolpex4.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilolpex4.cpp -o ilolpex4.o
 
 ilolpex6: ilolpex6.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilolpex6 ilolpex6.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilolpex6.o -o ilolpex6 $(CCLNFLAGS)
 ilolpex6.o: $(EXSRCCPP)/ilolpex6.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilolpex6.cpp -o ilolpex6.o
 
 ilolpex7: ilolpex7.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilolpex7 ilolpex7.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilolpex7.o -o ilolpex7 $(CCLNFLAGS)
 ilolpex7.o: $(EXSRCCPP)/ilolpex7.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilolpex7.cpp -o ilolpex7.o
 
 ilomipex1: ilomipex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilomipex1 ilomipex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilomipex1.o -o ilomipex1 $(CCLNFLAGS)
 ilomipex1.o: $(EXSRCCPP)/ilomipex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilomipex1.cpp -o ilomipex1.o
 
 ilomipex2: ilomipex2.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilomipex2 ilomipex2.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilomipex2.o -o ilomipex2 $(CCLNFLAGS)
 ilomipex2.o: $(EXSRCCPP)/ilomipex2.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilomipex2.cpp -o ilomipex2.o
 
 ilomipex3: ilomipex3.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilomipex3 ilomipex3.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilomipex3.o -o ilomipex3 $(CCLNFLAGS)
 ilomipex3.o: $(EXSRCCPP)/ilomipex3.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilomipex3.cpp -o ilomipex3.o
 
 ilomipex4: ilomipex4.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilomipex4 ilomipex4.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilomipex4.o -o ilomipex4 $(CCLNFLAGS)
 ilomipex4.o: $(EXSRCCPP)/ilomipex4.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilomipex4.cpp -o ilomipex4.o
 
 inout1: inout1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o inout1 inout1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) inout1.o -o inout1 $(CCLNFLAGS)
 inout1.o: $(EXSRCCPP)/inout1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/inout1.cpp -o inout1.o
 
 inout3: inout3.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o inout3 inout3.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) inout3.o -o inout3 $(CCLNFLAGS)
 inout3.o: $(EXSRCCPP)/inout3.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/inout3.cpp -o inout3.o
 
 ilomiqpex1: ilomiqpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilomiqpex1 ilomiqpex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilomiqpex1.o -o ilomiqpex1 $(CCLNFLAGS)
 ilomiqpex1.o: $(EXSRCCPP)/ilomiqpex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilomiqpex1.cpp -o ilomiqpex1.o
 
 ilogoalex1: ilogoalex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilogoalex1 ilogoalex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilogoalex1.o -o ilogoalex1 $(CCLNFLAGS)
 ilogoalex1.o: $(EXSRCCPP)/ilogoalex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilogoalex1.cpp -o ilogoalex1.o
 
 ilogoalex2: ilogoalex2.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilogoalex2 ilogoalex2.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilogoalex2.o -o ilogoalex2 $(CCLNFLAGS)
 ilogoalex2.o: $(EXSRCCPP)/ilogoalex2.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilogoalex2.cpp -o ilogoalex2.o
 
 ilogoalex3: ilogoalex3.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilogoalex3 ilogoalex3.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilogoalex3.o -o ilogoalex3 $(CCLNFLAGS)
 ilogoalex3.o: $(EXSRCCPP)/ilogoalex3.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilogoalex3.cpp -o ilogoalex3.o
 
 iloqcpex1: iloqcpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloqcpex1 iloqcpex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloqcpex1.o -o iloqcpex1 $(CCLNFLAGS)
 iloqcpex1.o: $(EXSRCCPP)/iloqcpex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloqcpex1.cpp -o iloqcpex1.o
 
 iloqpex1: iloqpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloqpex1 iloqpex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloqpex1.o -o iloqpex1 $(CCLNFLAGS)
 iloqpex1.o: $(EXSRCCPP)/iloqpex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloqpex1.cpp -o iloqpex1.o
 
 iloqpex2: iloqpex2.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloqpex2 iloqpex2.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloqpex2.o -o iloqpex2 $(CCLNFLAGS)
 iloqpex2.o: $(EXSRCCPP)/iloqpex2.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloqpex2.cpp -o iloqpex2.o
 
 iloqpex3: iloqpex3.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloqpex3 iloqpex3.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) iloqpex3.o -o iloqpex3 $(CCLNFLAGS)
 iloqpex3.o: $(EXSRCCPP)/iloqpex3.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloqpex3.cpp -o iloqpex3.o
 
 mixblend: mixblend.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o mixblend mixblend.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) mixblend.o -o mixblend $(CCLNFLAGS)
 mixblend.o: $(EXSRCCPP)/mixblend.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/mixblend.cpp -o mixblend.o
 
 rates: rates.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o rates rates.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) rates.o -o rates $(CCLNFLAGS)
 rates.o: $(EXSRCCPP)/rates.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/rates.cpp -o rates.o
 
 transport: transport.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o transport transport.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) transport.o -o transport $(CCLNFLAGS)
 transport.o: $(EXSRCCPP)/transport.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/transport.cpp -o transport.o
 
 warehouse: warehouse.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o warehouse warehouse.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) warehouse.o -o warehouse $(CCLNFLAGS)
 warehouse.o: $(EXSRCCPP)/warehouse.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/warehouse.cpp -o warehouse.o
 
 ilopopulate: ilopopulate.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilopopulate ilopopulate.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilopopulate.o -o ilopopulate $(CCLNFLAGS)
 ilopopulate.o: $(EXSRCCPP)/ilopopulate.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilopopulate.cpp -o ilopopulate.o
 
 ilotuneset: ilotuneset.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilotuneset ilotuneset.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilotuneset.o -o ilotuneset $(CCLNFLAGS)
 ilotuneset.o: $(EXSRCCPP)/ilotuneset.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilotuneset.cpp -o ilotuneset.o
 
 ilobendersatsp: ilobendersatsp.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilobendersatsp ilobendersatsp.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilobendersatsp.o -o ilobendersatsp $(CCLNFLAGS)
 ilobendersatsp.o: $(EXSRCCPP)/ilobendersatsp.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilobendersatsp.cpp -o ilobendersatsp.o
 
 ilosocpex1: ilosocpex1.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilosocpex1 ilosocpex1.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilosocpex1.o -o ilosocpex1 $(CCLNFLAGS)
 ilosocpex1.o: $(EXSRCCPP)/ilosocpex1.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilosocpex1.cpp -o ilosocpex1.o
 
-iloqcpdual: iloqcpdual.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o iloqcpdual iloqcpdual.o $(CCLNFLAGS)
-iloqcpdual.o: $(EXSRCCPP)/iloqcpdual.cpp
-	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/iloqcpdual.cpp -o iloqcpdual.o
-
 ilosteel: ilosteel.o
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o ilosteel ilosteel.o $(CCLNFLAGS)
+	$(CCC) $(CCFLAGS) ilosteel.o -o ilosteel $(CCLNFLAGS)
 ilosteel.o: $(EXSRCCPP)/ilosteel.cpp
 	$(CCC) -c $(CCFLAGS) $(EXSRCCPP)/ilosteel.cpp -o ilosteel.o
 
 IndefQPex1.class: $(EXSRCJAVA)/IndefQPex1.java
 	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/IndefQPex1.java 
-
-GlobalQPex1.class: $(EXSRCJAVA)/GlobalQPex1.java
-	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/GlobalQPex1.java 
 
 LPex1.class: $(EXSRCJAVA)/LPex1.java
 	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/LPex1.java 
@@ -1038,9 +981,6 @@ BendersATSP.class: $(EXSRCJAVA)/BendersATSP.java $(EXSRCJAVA)/InputDataReader.ja
 SocpEx1.class: $(EXSRCJAVA)/SocpEx1.java
 	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/SocpEx1.java
 
-QCPDual.class: $(EXSRCJAVA)/QCPDual.java
-	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/QCPDual.java
-
 Rates.class: $(EXSRCJAVA)/Rates.java $(EXSRCJAVA)/InputDataReader.java
 	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/InputDataReader.java \
                                  $(EXSRCJAVA)/Rates.java
@@ -1054,6 +994,10 @@ Transport.class: $(EXSRCJAVA)/Transport.java
 
 Warehouse.class: $(EXSRCJAVA)/Warehouse.java
 	$(JAVAC) $(JCFLAGS) -d . $(EXSRCJAVA)/Warehouse.java
+
+# Local Variables:
+# mode: makefile
+# End:
 
 # Local Variables:
 # mode: makefile
@@ -1117,8 +1061,12 @@ testFrank:
 	g++ -g -c CN_Graph.cpp -std=c++11
 	g++ -g -c CN_CreditNet.cpp -std=c++11
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test testWidget.cpp *.o $(CCLNFLAGS) -std=c++11
-	time ./test > out
+	$(CCC) $(CCFLAGS) -o test test_payoff.cpp *.o $(CCLNFLAGS) -std=c++11
+	time ./test 2 4  
+	# > outGreedyPayoff_4IR
+	# time ./test 2 4 > outWidgetSourcePayoff_4IR
+	# time ./test 3 4 > outWidgetOverallPayoff_4IR
+	# time ./test 4 4 > outRandomPayoff_4IR
 testSingle:
 	g++ -g -c Error.cpp -std=c++11
 	g++ -g -c CN_DistributionGenerator.cpp -std=c++11

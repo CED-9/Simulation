@@ -153,7 +153,7 @@ int CreditNet::genInterBankTrans(){
             return 1;
         }
         payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
-        f1->transactionNum++;
+        f1->transactionNum += 1;
         return 0;
     } else {
         WidgetGraph* widgetNet = new WidgetGraph;
@@ -167,7 +167,7 @@ int CreditNet::genInterBankTrans(){
             return 1;
         }
         widgetNet->copyBack();
-        f1->transactionNum++;
+        f1->transactionNum += 1;
         delete widgetNet;
         return 0;
     }

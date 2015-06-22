@@ -69,7 +69,7 @@ public:
     RouteMechanism routePreference;
     
     // Transaction
-    int transactionNum;
+    double transactionNum;
     
 	Node(){}
 	Node(int id);

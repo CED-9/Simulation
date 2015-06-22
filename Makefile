@@ -1061,8 +1061,9 @@ testFrank:
 	g++ -g -c CN_Graph.cpp -std=c++11
 	g++ -g -c CN_CreditNet.cpp -std=c++11
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
-	$(CCC) $(CCFLAGS) -o test test_payoff.cpp *.o $(CCLNFLAGS) -std=c++11
-	time ./test 2 4  
+	$(CCC) $(CCFLAGS) -o test test_2.0.cpp *.o $(CCLNFLAGS) -std=c++11
+	time ./test
+	# time ./test 2 4  
 	# > outGreedyPayoff_4IR
 	# time ./test 2 4 > outWidgetSourcePayoff_4IR
 	# time ./test 3 4 > outWidgetOverallPayoff_4IR

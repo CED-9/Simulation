@@ -1230,8 +1230,10 @@ void Graph::setRoutePreference(int opMode, vector<string> &v){
             }
             break;
         case 5:
+            std::map<std::string, X> xmap = boost::map_list_of("FF", FF)("LP_SOURCE", LP_SOURCE)("LP_OVERALL",LP_OVERALL);
+
         	for (int i = 0; i < finNum; i++) {
-        		finAgent[i]->routePreference = v[i];
+        		finAgent[i]->routePreference = xmap[v[i]];
         	}
         default:
             break;

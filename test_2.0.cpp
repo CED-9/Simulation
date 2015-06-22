@@ -145,8 +145,6 @@ int main(int argc, char* argv[]){
        failRateTotal += temp;
    }
 
-    
-    
     vector<PlayerInfo> myList;
     for (int i = 0; i < finNum; ++i) {
         PlayerInfo p;

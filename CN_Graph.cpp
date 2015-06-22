@@ -1207,7 +1207,7 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 }
 
 // TO DO set preference for all
-void Graph::setRoutePreference(int opMode, vector<string>& v){
+void Graph::setRoutePreference(int opMode, vector<string> &v){
     switch (opMode) {
         case 1:
             for (int i = 0; i < finNum; i++) {

@@ -1231,9 +1231,8 @@ void Graph::setRoutePreference(int opMode, const vector<string>& v){
             break;
         case 5:
         	for (int i = 0; i < finNum; i++) {
-        		finagent[i]->routePreference = v[i];
+        		finAgent[i]->routePreference = v[i];
         	}
-        	break;
         default:
             break;
     }

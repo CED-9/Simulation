@@ -1231,7 +1231,15 @@ void Graph::setRoutePreference(int opMode, vector<string> &v){
             break;
         case 5:
         	for (int i = 0; i < finNum; i++) {
-        		finAgent[i]->routePreference = finAgent[i]->xmap[v[i]];
+				if (v[i] == "FF"){
+					finAgent[i]->routePreference = FF;
+				}
+        		if (v[i] == "LP_SOURCE"){
+					finAgent[i]->routePreference = LP_SOURCE;
+				}
+				if (v[i] == "LP_OVERALL"){
+					finAgent[i]->routePreference = LP_OVERALL;
+				}
         	}
         default:
             break;

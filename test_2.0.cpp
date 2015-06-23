@@ -122,7 +122,7 @@ int main(int argc, char* argv[]){
     readConfig(config, "simulation_spec.json");
     
     
-   int finNum = config.numNodes;
+   const int finNum = config.numNodes;
    int conNum = 0;
    int proNum = 0;
    

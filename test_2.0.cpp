@@ -124,7 +124,7 @@ int main(int argc, char* argv[]){
     int num_obs = atoi(argv[2]);
 //	cout << argv[1] << "   " << argv[2] << endl;
     Config config;
-    readConfig(config, "simulation_spec.json");
+    readConfig(config, json_folder+"/simulation_spec.json");
     
     for (int i = 0; i < num_obs; ++i){
         int finNum = config.numNodes;
@@ -171,7 +171,7 @@ int main(int argc, char* argv[]){
             p.role = "All";
             myList.push_back(p);
         }
-       writePayoff(myList, "/" + json_folder + "/observation" + std::to_string(i) + ".json");
+       writePayoff(myList, json_folder + "/observation" + std::to_string(i) + ".json");
         
     }
         return 0;

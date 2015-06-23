@@ -80,7 +80,7 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
         // create a rapidjson object type
         rapidjson::Value object(rapidjson::kObjectType);
         object.SetObject();
-        object.AddMember("roll", "All", allocator);
+        object.AddMember("role", "All", allocator);
         object.AddMember("strategy", "LP_OVERALL", allocator);
         object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
@@ -139,21 +139,28 @@ int main(int argc, char* argv[]){
    
    // main loop
    int failRateTotal = 0;
-   for (int i = 0; i < window_size; ++i){
-       int temp;
-       temp = creditNet.genInterBankTrans();
-       failRateTotal += temp;
-   }
+   double payoffs [finNum] = {0};
 
+   for (int j = 0; i < iter; ++j){
+        for (int i = 0; i < window_size; ++i){
+           int temp;
+           temp = creditNet.genInterBankTrans();
+           failRateTotal += temp;
+       }
+        for (int k = 0; i < finNum){
+           payoffs[k] += creditNet.finAgent[i]->transactionNum * 0.01 + creditNet.finAgent[i]->getCurrBanlance();
+       }
+   }
+       
     vector<PlayerInfo> myList;
     for (int i = 0; i < finNum; ++i) {
         PlayerInfo p;
         p.strategy = creditNet.finAgent[i]->routePreference;
-        p.payoff = creditNet.finAgent[i]->transactionNum*0.01 + creditNet.finAgent[i]->getCurrBanlance();
+        p.payoff = payoffs[i]/(double) iter;
         p.role = "All";
         myList.push_back(p);
     }
-    writePayoff(myList, "output.json");
+    writePayoff(myList, "observation.json");
     
     return 0;
 }

@@ -22,6 +22,7 @@ using namespace std;
 struct Config {
     int numNodes;
     double edgeProb;
+    double transVal;
     int window;
     int smoothing;
     int numIR;
@@ -150,8 +151,8 @@ int main(int argc, char* argv[]){
            temp = creditNet.genInterBankTrans();
            failRateTotal += temp;
        }
-        for (int k = 0; k < finNum){
-           payoffs[k] += creditNet.finAgent[i]->transactionNum * transVal + creditNet.finAgent[i]->getCurrBanlance();
+        for (int k = 0; k < finNum; ++k){
+           payoffs[k] += creditNet.finAgent[k]->transactionNum * transVal + creditNet.finAgent[k]->getCurrBanlance();
        }
    }
        

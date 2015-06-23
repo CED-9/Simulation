@@ -42,10 +42,10 @@ void Node::setRoutePreference(RouteMechanism routeM){
 double Node::getCurrBanlance(){
     double temp = 0;
     for (unsigned int i = 0; i < this->edge_in.size(); i++){
-        temp -= this->edge_in[i].d_out_current;
+        temp -= this->edge_in[i].d_out_current * this->edge_in[i].interest_rate;
     }
     for (unsigned int i = 0; i < this->edge_out.size(); i++){
-        temp += this->edge_out[i].d_in_current;
+        temp += this->edge_out[i].d_in_current * this->edge_out[i].interest_rate;
     }
     return temp;
 }

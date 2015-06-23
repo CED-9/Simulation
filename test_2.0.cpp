@@ -121,7 +121,7 @@ mutex lock_cout;
 int main(int argc, char* argv[]){
     
     std::string json_folder = argv[0];
-    int num_obs = argv[1] - '0';
+    int num_obs = atoi(argv[1]);
 
     Config config;
     readConfig(config, "simulation_spec.json");
@@ -169,7 +169,7 @@ int main(int argc, char* argv[]){
             p.role = "All";
             myList.push_back(p);
         }
-        writePayoff(myList, "observation" + std::to_string(i) + ".json");
+        writePayoff(myList, "/" + json_folder + "/observation" + std::to_string(i) + ".json");
         
         return 0;
     }

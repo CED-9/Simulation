@@ -153,6 +153,7 @@ int main(int argc, char* argv[]){
        }
        cout << failRateTotal/(double) window_size << endl;
         for (int k = 0; k < finNum; ++k){
+           cout << creditNet.finAgent[k]->transactionNum << "  " << creditNet.finAgent[k]->getCurrBanlance() << endl;
            payoffs[k] += creditNet.finAgent[k]->transactionNum * transVal + creditNet.finAgent[k]->getCurrBanlance();
        }
    }

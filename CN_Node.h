@@ -6,10 +6,8 @@
 #include <list>
 #include <fstream>
 #include <vector>
-#include <boost>
 #include <iostream>
 using namespace std;
-using namespace boost;
 
 extern ofstream fout_trans;
 extern ofstream fout_int;

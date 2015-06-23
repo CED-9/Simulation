@@ -148,8 +148,8 @@ int main(int argc, char* argv[]){
     vector<PlayerInfo> myList;
     for (int i = 0; i < finNum; ++i) {
         PlayerInfo p;
-        p.strategy = creditNet->finAgent[i]->routePreference;
-        p.payoff = creditNet->finAgent[i]->transactionNum*0.01 + creditNet->finAgent[i]->getCurrBanlance();
+        p.strategy = creditNet.finAgent[i]->routePreference;
+        p.payoff = creditNet.finAgent[i]->transactionNum*0.01 + creditNet.finAgent[i]->getCurrBanlance();
         p.role = "All";
         myList.push_back(p);
     }

@@ -151,6 +151,7 @@ int main(int argc, char* argv[]){
            temp = creditNet.genInterBankTrans();
            failRateTotal += temp;
        }
+       cout << failRateTotal/(double) window_size << endl;
         for (int k = 0; k < finNum; ++k){
            payoffs[k] += creditNet.finAgent[k]->transactionNum * transVal + creditNet.finAgent[k]->getCurrBanlance();
        }

@@ -53,6 +53,7 @@ void readConfig (Config &config, string inPath) {
     const Value& configObj = doc["configuration"];
     config.numNodes = configObj["numNodes"].GetInt();
     config.edgeProb = configObj["edgeProb"].GetDouble();
+    config.transVal = configObj["transVal"].GetDouble();
     config.window = configObj["window"].GetInt();
     config.smoothing = configObj["smoothing"].GetInt();
     config.numIR = configObj["numIR"].GetInt();
@@ -122,7 +123,9 @@ int main(int argc, char* argv[]){
     readConfig(config, "simulation_spec.json");
     
     
-   const int finNum = config.numNodes;
+   int finNum = config.numNodes;
+
+   double transVal = config.transVal;
    int conNum = 0;
    int proNum = 0;
    
@@ -139,16 +142,16 @@ int main(int argc, char* argv[]){
    
    // main loop
    int failRateTotal = 0;
-   double payoffs [finNum] = {0};
+   std::vector<double> payoffs(finNum,0.0);
 
-   for (int j = 0; i < iter; ++j){
+   for (int j = 0; j < iter; ++j){
         for (int i = 0; i < window_size; ++i){
            int temp;
            temp = creditNet.genInterBankTrans();
            failRateTotal += temp;
        }
-        for (int k = 0; i < finNum){
-           payoffs[k] += creditNet.finAgent[i]->transactionNum * 0.01 + creditNet.finAgent[i]->getCurrBanlance();
+        for (int k = 0; k < finNum){
+           payoffs[k] += creditNet.finAgent[i]->transactionNum * transVal + creditNet.finAgent[i]->getCurrBanlance();
        }
    }
        

@@ -48,7 +48,7 @@ protected:
 	int nodeID;
 	
 public:
-	int transNum;
+	double transNum;
 	
     // edges
 	std::vector<OutEdge> edge_out;

@@ -124,6 +124,7 @@ void CreditNet::update(){
 
 // for liquid stuff
 int CreditNet::genInterBankTrans(){
+
     FinNode* f1 = NULL;
     FinNode* f2 = NULL;
     
@@ -153,7 +154,7 @@ int CreditNet::genInterBankTrans(){
             return 1;
         }
         payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
-        f1->transactionNum += 1;
+        f1->transactionNum += 1.0;
         return 0;
     } else {
         WidgetGraph* widgetNet = new WidgetGraph;
@@ -166,10 +167,15 @@ int CreditNet::genInterBankTrans(){
             delete widgetNet;
             return 1;
         }
+		else{
+			// if(f1->transactionNum + 1.0 > 2000){
+		// cout<<fid1<<endl;
+			// }
         widgetNet->copyBack();
-        f1->transactionNum += 1;
+		f1->transactionNum += 1.0;
         delete widgetNet;
         return 0;
+		}
     }
     
     // error

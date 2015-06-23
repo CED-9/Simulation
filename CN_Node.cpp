@@ -9,7 +9,7 @@
 Node::Node(int id){
     this->nodeID = id;
     this->nodeType = NodeType(0);
-    this->transactionNum = 0;
+    this->transactionNum = 0.0;
 }
 
 void Node::visualize(){

@@ -120,9 +120,9 @@ mutex lock_cout;
 
 int main(int argc, char* argv[]){
     
-    std::string json_folder = argv[0];
-    int num_obs = atoi(argv[1]);
-
+    std::string json_folder = argv[1];
+    int num_obs = atoi(argv[2]);
+//	cout << argv[1] << "   " << argv[2] << endl;
     Config config;
     readConfig(config, "simulation_spec.json");
     
@@ -140,6 +140,9 @@ int main(int argc, char* argv[]){
        
        // config the network
        CreditNet creditNet(finNum, conNum, proNum);
+	   for (int i = 0; i<finNum; ++i){
+		   creditNet.finAgent[i]->transactionNum = 0;
+	   }
        creditNet.genTest0Graph(threshold, numIR);
        
        creditNet.setRoutePreference(5, config.assignedStrategy);
@@ -157,22 +160,21 @@ int main(int argc, char* argv[]){
            // cout << failRateTotal/(double) window_size << endl;
             for (int k = 0; k < finNum; ++k){
                // cout << creditNet.finAgent[k]->transactionNum << "  " << creditNet.finAgent[k]->getCurrBanlance() << endl;
-               payoffs[k] += creditNet.finAgent[k]->transactionNum * transVal + creditNet.finAgent[k]->getCurrBanlance();
-           }
-       }
-           
+               payoffs[k] += (double) creditNet.finAgent[k]->transactionNum * (double)transVal + (double)creditNet.finAgent[k]->getCurrBanlance();
+			}
+	   }
         vector<PlayerInfo> myList;
         for (int i = 0; i < finNum; ++i) {
             PlayerInfo p;
             p.strategy = creditNet.finAgent[i]->routePreference;
-            p.payoff = payoffs[i]/(double) iter;
+            p.payoff = (double)payoffs[i]/(double)iter;
             p.role = "All";
             myList.push_back(p);
         }
-        writePayoff(myList, "/" + json_folder + "/observation" + std::to_string(i) + ".json");
+       writePayoff(myList, "/" + json_folder + "/observation" + std::to_string(i) + ".json");
         
-        return 0;
     }
+        return 0;
 
 }   
    

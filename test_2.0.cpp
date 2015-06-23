@@ -122,7 +122,7 @@ int main(int argc, char* argv[]){
     
     std::string json_folder = argv[1];
     int num_obs = atoi(argv[2]);
-//	cout << argv[1] << "   " << argv[2] << endl;
+	cout << json_folder << "   " << num_obs << endl;
     Config config;
     readConfig(config, json_folder+"/simulation_spec.json");
     

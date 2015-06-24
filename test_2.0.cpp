@@ -37,7 +37,7 @@ struct PlayerInfo {
 };
 
 void readConfig (Config &config, string inPath) {
-    FILE* fp = fopen(inPath, "r"); // non-Windows use "r"
+    FILE* fp = fopen(inPath.c_str(), "r"); // non-Windows use "r"
     char readBuffer[65536];
     FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     Document doc;

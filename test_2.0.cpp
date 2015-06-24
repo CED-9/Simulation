@@ -127,9 +127,9 @@ int main(int argc, char* argv[]){
     readConfig(config, json_folder+"/simulation_spec.json");
 
     for (int i = 0; i < num_obs; ++i){
-     std::vector<double> payoffs(finNum,0.0);
       
         int finNum = config.numNodes;
+     std::vector<double> payoffs(finNum,0.0);
 
        double transVal = config.transVal;
        int conNum = 0;

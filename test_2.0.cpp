@@ -37,7 +37,7 @@ struct PlayerInfo {
 };
 
 void readConfig (Config &config, string inPath) {
-    FILE* fp = fopen("simulation_spec.json", "r"); // non-Windows use "r"
+    FILE* fp = fopen(inPath, "r"); // non-Windows use "r"
     char readBuffer[65536];
     FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     Document doc;
@@ -127,7 +127,7 @@ int main(int argc, char* argv[]){
     readConfig(config, json_folder+"/simulation_spec.json");
 
     for (int i = 0; i < num_obs; ++i){
-      
+
         int finNum = config.numNodes;
      std::vector<double> payoffs(finNum,0.0);
 

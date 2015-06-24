@@ -122,7 +122,7 @@ int main(int argc, char* argv[]){
     
     std::string json_folder = argv[1];
     int num_obs = atoi(argv[2]);
-	cout << json_folder << "   " << num_obs << endl;
+	// cout << json_folder << "   " << num_obs << endl;
     Config config;
     readConfig(config, json_folder+"/simulation_spec.json");
     
@@ -139,19 +139,19 @@ int main(int argc, char* argv[]){
        int iter = config.smoothing;
        
        // config the network
-       CreditNet creditNet(finNum, conNum, proNum);
-	   for (int i = 0; i<finNum; ++i){
-		   creditNet.finAgent[i]->transactionNum = 0;
-	   }
-       creditNet.genTest0Graph(threshold, numIR);
-       
-       creditNet.setRoutePreference(5, config.assignedStrategy);
-       
-       // main loop
-       int failRateTotal = 0;
-       std::vector<double> payoffs(finNum,0.0);
-
        for (int j = 0; j < iter; ++j){
+         CreditNet creditNet(finNum, conNum, proNum);
+          for (int i = 0; i<finNum; ++i){
+         creditNet.finAgent[i]->transactionNum = 0;
+       }
+         creditNet.genTest0Graph(threshold, numIR);
+         
+         creditNet.setRoutePreference(5, config.assignedStrategy);
+         
+         // main loop
+         int failRateTotal = 0;
+         std::vector<double> payoffs(finNum,0.0);
+
             for (int i = 0; i < window_size; ++i){
                int temp;
                temp = creditNet.genInterBankTrans();

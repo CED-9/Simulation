@@ -125,8 +125,10 @@ int main(int argc, char* argv[]){
 	// cout << json_folder << "   " << num_obs << endl;
     Config config;
     readConfig(config, json_folder+"/simulation_spec.json");
-    
+
     for (int i = 0; i < num_obs; ++i){
+     std::vector<double> payoffs(finNum,0.0);
+      
         int finNum = config.numNodes;
 
        double transVal = config.transVal;
@@ -150,7 +152,6 @@ int main(int argc, char* argv[]){
          
          // main loop
          int failRateTotal = 0;
-         std::vector<double> payoffs(finNum,0.0);
 
             for (int i = 0; i < window_size; ++i){
                int temp;
@@ -166,7 +167,7 @@ int main(int argc, char* argv[]){
         vector<PlayerInfo> myList;
         for (int i = 0; i < finNum; ++i) {
             PlayerInfo p;
-            p.strategy = creditNet.finAgent[i]->routePreference;
+            p.strategy = config.assignedStrategy[i];
             p.payoff = (double)payoffs[i]/(double)iter;
             p.role = "All";
             myList.push_back(p);

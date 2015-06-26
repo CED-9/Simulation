@@ -20,12 +20,12 @@ using namespace rapidjson;
 using namespace std;
 
 struct Config {
-    const char* numNodes;
-    const char* edgeProb;
-    const char* transVal;
-    const char* window;
-    const char* smoothing;
-    const char* numIR;
+    int numNodes;
+    double edgeProb;
+    double transVal;
+    int window;
+    int smoothing;
+    int numIR;
     vector<string> assignedStrategy;
 };
 
@@ -52,12 +52,12 @@ void readConfig (Config &config, string inPath) {
     
     
     const Value& configObj = doc["configuration"];
-    config.numNodes = configObj["numNodes"].GetString();
-    config.edgeProb = configObj["edgeProb"].GetString();
-    config.transVal = configObj["transVal"].GetString();
-    config.window = configObj["window"].GetString();
-    config.smoothing = configObj["smoothing"].GetString();
-    config.numIR = configObj["numIR"].GetString();
+    config.numNodes = configObj["numNodes"].GetInt();
+    config.edgeProb = configObj["edgeProb"].GetDouble();
+    config.transVal = configObj["transVal"].GetDouble();
+    config.window = configObj["window"].GetInt();
+    config.smoothing = configObj["smoothing"].GetInt();
+    config.numIR = configObj["numIR"].GetInt();
     
     
     const Value& a = doc["assignment"];
@@ -128,48 +128,32 @@ int main(int argc, char* argv[]){
 
     for (int i = 0; i < num_obs; ++i){
 
-        int finNum = atoi(config.numNodes);
-		// cout<<finNum<<endl;
+        int finNum = config.numNodes;
      std::vector<double> payoffs(finNum,0.0);
 
-       double transVal = atof(config.transVal);
+       double transVal = config.transVal;
        int conNum = 0;
        int proNum = 0;
        
-	   // cout<<config.edgeProb<<endl;
-	   // cout<<config.numIR<<endl;
-       double threshold = atof(config.edgeProb);
-       int numIR = atoi(config.numIR);
-       int window_size = atoi(config.window);
-       int iter = atoi(config.smoothing);
+       double threshold = config.edgeProb;
+       int numIR = config.numIR;
+       int window_size = config.window;
+       int iter = config.smoothing;
        
        // config the network
        for (int j = 0; j < iter; ++j){
-		   // cout<<j<<endl;
          CreditNet creditNet(finNum, conNum, proNum);
-		 		   // cout<<"net done"<<endl;
-
           for (int i = 0; i<finNum; ++i){
          creditNet.finAgent[i]->transactionNum = 0;
        }
-	   		 		   // cout<<"0 done"<<endl;
-         		 		   // cout<<threshold<<endl;
-         		 		   // cout<<numIR<<endl;
-
-
          creditNet.genTest0Graph(threshold, numIR);
-         		 		   // cout<<"graph done"<<endl;
-
+         
          creditNet.setRoutePreference(5, config.assignedStrategy);
          
          // main loop
          int failRateTotal = 0;
-		   
-		   // cout<<"prefs done"<<endl;
 
             for (int i = 0; i < window_size; ++i){
-						   // cout<<i<<endl;
-
                int temp;
                temp = creditNet.genInterBankTrans();
                failRateTotal += temp;

@@ -27,7 +27,7 @@ void singleSimulation(
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
-    creditNet.setRoutePreference(1, std::vector<string>());
+    creditNet.setRoutePreference(1, std::vector<string> &v;
     
     // main loop
     // first window_size runs
@@ -93,7 +93,7 @@ void singleSimulation(
     }
     lock_rates.lock();
     *resultRate = failRateTotal / (cnt + 2.0 * window_size + 1.0);
-    double transRate = (double) test/((double) numTest * (double) finNum * ((double) finNum-1))
+    double transRate = (double) test/((double) numTest * (double) finNum * ((double) finNum-1));
     lock_rates.unlock();
     lock_cout.lock();
     cout << "threshold   " << threshold << "   SSrate" << *resultRate << "    Transrate" << transRate<<endl;

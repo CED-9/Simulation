@@ -19,6 +19,7 @@ public:
     // liquidity test
     int genInterBankTransGreedy();
     int genInterBankTransWidget();
+    int testInterBankTransWidget(int fid1, int fid2);
     int genInterBankTrans();
 
     // Main Loop

@@ -27,7 +27,7 @@ void singleSimulation(
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
-    creditNet.setRoutePreference(1);
+    creditNet.setRoutePreference(1,const vector<string> &v);
     
     // main loop
     // first window_size runs
@@ -65,7 +65,7 @@ void singleSimulation(
             int temp;
             for (int k = 0; k<numTest;++k){
                 for (int h = 0; h<burn;++h){
-                    temp = creditNet.genInterBankTrans;
+                    temp = creditNet.genInterBankTrans();
                 }
                 for (int i = 0; i<finNum; ++i){
                     for (int j=0; j<finNum;++j){
@@ -77,7 +77,7 @@ void singleSimulation(
             }    
         }
     }    
-}  
+  
                 
         // move on
         int temp;

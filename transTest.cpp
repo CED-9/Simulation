@@ -27,7 +27,7 @@ void singleSimulation(
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
-    creditNet.setRoutePreference(1, std::vector<string> &v;
+    creditNet.setRoutePreference(1, std::vector<string> &v);
     
     // main loop
     // first window_size runs

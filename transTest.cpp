@@ -63,19 +63,7 @@ void singleSimulation(
             break;
         }
         else{
-            int temp;
-            for (int k = 0; k<numTest;++k){
-                for (int h = 0; h<burn;++h){
-                    temp = creditNet.genInterBankTrans();
-                }
-                for (int i = 0; i<finNum; ++i){
-                    for (int j=0; j<finNum;++j){
-                        if(i != j){
-                            test += creditNet.testInterBankTransWidget(i,j);
-                        }                        
-                    }             
-                }
-            }    
+
         }
         
   
@@ -92,12 +80,26 @@ void singleSimulation(
         array.push_back(temp);
         cnt++;
     }
+    
+    int temp;
+    for (int k = 0; k<numTest;++k){
+        for (int h = 0; h<burn;++h){
+            temp = creditNet.genInterBankTrans();
+        }
+        for (int i = 0; i<finNum; ++i){
+            for (int j=0; j<finNum;++j){
+                if(i != j){
+                    test += creditNet.testInterBankTransWidget(i,j);
+                }                        
+            }             
+        }
+    }    
     lock_rates.lock();
     *resultRate = failRateTotal / (cnt + 2.0 * window_size + 1.0);
     double transRate = (double) test/((double) numTest * (double) finNum * ((double) finNum-1));
     lock_rates.unlock();
     lock_cout.lock();
-    cout << "threshold   " << threshold << "   SSrate" << *resultRate << "    Transrate" << transRate<<endl;
+    cout << "threshold   " << threshold << "   SSrate   " << *resultRate << "    Transrate   " << transRate<<endl;
 
     lock_cout.unlock();
 }
@@ -142,10 +144,10 @@ int main(int argc, char* argv[]){
             delete threadPool[j];
         }
         
-        for (int j = 0; j < iter; j++) {
-            cout << rates[j] << " ";
-            rateFinal += rates[j];
-        }
+        // for (int j = 0; j < iter; j++) {
+        //     cout << rates[j] << " ";
+        //     rateFinal += rates[j];
+        // }
         
         delete [] rates;
         rateFinal /= iter;

@@ -38,12 +38,14 @@ struct PlayerInfo {
 
 void readConfig (Config &config, string inPath) {
     FILE* fp = fopen(inPath.c_str(), "r"); // non-Windows use "r"
+	cout<<"fopened"<<endl;
     char readBuffer[65536];
     FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     Document doc;
     doc.ParseStream(is);
     fclose(fp);
-    
+	cout<<"fclosed"<<endl;
+
     printf("\nModified JSON with reformatting:\n");
     StringBuffer sb;
     PrettyWriter<StringBuffer> writer(sb);
@@ -83,7 +85,7 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
         rapidjson::Value object(rapidjson::kObjectType);
         object.SetObject();
         object.AddMember("role", "All", allocator);
-        object.AddMember("strategy", "LP_OVERALL", allocator);
+        object.AddMember("strategy", players[i].strategy, allocator);
         object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
     }
@@ -121,11 +123,14 @@ mutex lock_cout;
 int main(int argc, char* argv[]){
     
     std::string json_folder = argv[1];
+	cout<<json_folder<<endl;
     int num_obs = atoi(argv[2]);
-	// cout << json_folder << "   " << num_obs << endl;
+	cout <<  num_obs << endl;
     Config config;
+	cout << "configed" << endl;
     readConfig(config, json_folder+"/simulation_spec.json");
-
+	cout << "spec read" << endl;
+	
     for (int i = 0; i < num_obs; ++i){
 
         int finNum = config.numNodes;

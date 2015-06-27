@@ -1078,11 +1078,11 @@ testSingle:
 	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test test_1.0.cpp *.o $(CCLNFLAGS) -std=c++11
 
 testTrans:
-	g++ -g -c Error.cpp -std=c++11
-	g++ -g -c CN_DistributionGenerator.cpp -std=c++11
-	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++11
-	g++ -g -c CN_Graph.cpp -std=c++11
-	g++ -g -c CN_CreditNet.cpp -std=c++11
-	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++11
-	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test transTest.cpp *.o $(CCLNFLAGS) -std=c++11
-	time ./test 1 1 > outGreedy_1IR_trans
+	g++ -g -c Error.cpp -std=c++0x
+	g++ -g -c CN_DistributionGenerator.cpp -std=c++0x
+	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++0x
+	g++ -g -c CN_Graph.cpp -std=c++0x
+	g++ -g -c CN_CreditNet.cpp -std=c++0x
+	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++0x
+	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test transTest.cpp *.o $(CCLNFLAGS) -std=c++0x
+	./test 1 1 > outGreedy_trans

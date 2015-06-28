@@ -2,9 +2,9 @@
     "configuration": {
         "numNodes": "100",
 		"edgeProb": "0.18",
-		"transVal": "0.01",
+		"transVal": "0.025",
         "window": "5000",
-        "smoothing": "1",
+        "smoothing": "5",
 		"numIR": "4"
     }
 }

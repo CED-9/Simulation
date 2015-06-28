@@ -35,7 +35,6 @@ void singleSimulation(
     int failRate1 = 0;
     int failRate2 = 0;
     int failRateTotal = 0;
-    int test= 0;
     vector<int> array;
     for (int i = 0; i < window_size; ++i){
         int temp;
@@ -80,6 +79,8 @@ void singleSimulation(
     }
     
     int thing;
+	int test= 0;
+	int count = 0;
     for (int k = 0; k<numTest;++k){
         for (int h = 0; h<burn;++h){
             thing = creditNet.genInterBankTrans();
@@ -87,17 +88,22 @@ void singleSimulation(
         for (int i = 0; i<finNum; ++i){
             for (int j=0; j<finNum;++j){
                 if(i != j){
-                    test += creditNet.testInterBankTransWidget(i,j);
+					thing = creditNet.testInterBankTransWidget(i,j);
+					// if (thing>0){
+						// cout<<"Fail!"<<endl;
+					// }
+                    test += thing;
+					count += 1;
                 }                        
             }             
         }
     }    
     lock_rates.lock();
     *resultRate = failRateTotal / (cnt + 2.0 * window_size + 1.0);
-    double transRate = (double) test/((double) numTest * (double) finNum * ((double) finNum-1));
+    double transRate = (double) test/((double) numTest * (double) finNum * ((double) finNum-1.0));
     lock_rates.unlock();
     lock_cout.lock();
-    cout << "threshold   " << threshold << "   SSrate   " << *resultRate << "    Transrate   " << transRate<<endl;
+    cout << "threshold   " << threshold << "   SSrate   " << *resultRate << "    Transrate   " <<transRate<< "   test   "<<(double)test<< "   numTest   " << count<< endl;
 
     lock_cout.unlock();
 }
@@ -106,21 +112,22 @@ void singleSimulation(
 // argv[1]: initialize mode
 // argv[2]: number of interest rates
 int main(int argc, char* argv[]){
-    int finNum = 20;
+    int finNum = 10;
     int conNum = 0;
     int proNum = 0;
     double threshold;
     int numIR = atoi(argv[2]);
     int mechanismGenMode = atoi(argv[1]);
-    int window_size = 2000;
+    int window_size = 1000;
     int iter = 10;
-    int numTest = 10;
-    int burn = 150;
-	const int numDeg = 5;
+    int numTest = 50;
+    int burn = 10;
+	const int numDeg = 1;
     // double degrees [numDeg] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,
 	// double degrees [numDeg] = {0.20,0.25,0.35, 0.45, 0.6};
-    double degrees[numDeg] = {0.1,0.2,0.25,0.35,0.45};
-
+    // double degrees[numDeg] = {0.2,0.25,0.35,0.45};
+	// ,0.25,0.35,0.45};
+	double degrees[numDeg] = {0.7};
     // 10 rounds
     for (int i = 0; i < numDeg; ++i){
         threshold = degrees[i];

@@ -1085,4 +1085,6 @@ testTrans:
 	g++ -g -c CN_CreditNet.cpp -std=c++0x
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++0x
 	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test transTest.cpp *.o $(CCLNFLAGS) -std=c++0x
-	./test 1 1 > outGreedy_trans
+	./test 1 4 
+	# > outGreedy_4IR_trans_0.2 
+	# > outGreedy_trans

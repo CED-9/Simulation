@@ -9,7 +9,7 @@
 #PBS -q flux
 
 #PBS -l nodes=4:ppn=2,pmem=2gb
-#PBS -l walltime=2:15:00
+#PBS -l walltime=4:15:00
 #PBS -j oe
 #PBS -V
 

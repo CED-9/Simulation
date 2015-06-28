@@ -20,12 +20,12 @@ using namespace rapidjson;
 using namespace std;
 
 struct Config {
-    int numNodes;
-    double edgeProb;
-    double transVal;
-    int window;
-    int smoothing;
-    int numIR;
+    string numNodes;
+    string edgeProb;
+    string transVal;
+    string window;
+    string smoothing;
+    string numIR;
     vector<string> assignedStrategy;
 };
 
@@ -37,6 +37,7 @@ struct PlayerInfo {
 };
 
 void readConfig (Config &config, string inPath) {
+	cout<<"trying to read"<<endl;
     FILE* fp = fopen(inPath.c_str(), "r"); // non-Windows use "r"
 	cout<<"fopened"<<endl;
     char readBuffer[65536];
@@ -54,12 +55,12 @@ void readConfig (Config &config, string inPath) {
     
     
     const Value& configObj = doc["configuration"];
-    config.numNodes = configObj["numNodes"].GetInt();
-    config.edgeProb = configObj["edgeProb"].GetDouble();
-    config.transVal = configObj["transVal"].GetDouble();
-    config.window = configObj["window"].GetInt();
-    config.smoothing = configObj["smoothing"].GetInt();
-    config.numIR = configObj["numIR"].GetInt();
+    config.numNodes = configObj["numNodes"].GetString();
+    config.edgeProb = configObj["edgeProb"].GetString();
+    config.transVal = configObj["transVal"].GetString();
+    config.window = configObj["window"].GetString();
+    config.smoothing = configObj["smoothing"].GetString();
+    config.numIR = configObj["numIR"].GetString();
     
     
     const Value& a = doc["assignment"];
@@ -82,10 +83,14 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
     
     for (int i = 0; i < players.size(); ++i) {
         // create a rapidjson object type
+		rapidjson::Value s;
+		s = rapidjson::StringRef(players[i].strategy.c_str());
         rapidjson::Value object(rapidjson::kObjectType);
         object.SetObject();
         object.AddMember("role", "All", allocator);
-        object.AddMember("strategy", players[i].strategy, allocator);
+		cout<<players[i].strategy<<endl;
+		cout<<players[i].strategy.c_str()<<endl;
+        object.AddMember("strategy", s, allocator);
         object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
     }
@@ -133,17 +138,17 @@ int main(int argc, char* argv[]){
 	
     for (int i = 0; i < num_obs; ++i){
 
-        int finNum = config.numNodes;
-     std::vector<double> payoffs(finNum,0.0);
+        int finNum = stoi(config.numNodes);
+		std::vector<double> payoffs(finNum,0.0);
 
-       double transVal = config.transVal;
+       double transVal = stod(config.transVal);
        int conNum = 0;
        int proNum = 0;
        
-       double threshold = config.edgeProb;
-       int numIR = config.numIR;
-       int window_size = config.window;
-       int iter = config.smoothing;
+       double threshold = stod(config.edgeProb);
+       int numIR = stoi(config.numIR);
+       int window_size = stoi(config.window);
+       int iter = stoi(config.smoothing);
        
        // config the network
        for (int j = 0; j < iter; ++j){

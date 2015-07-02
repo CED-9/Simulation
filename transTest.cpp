@@ -18,7 +18,7 @@ mutex lock_rates;
 mutex lock_cout;
 
 ////////////////////////////////////////////////////////////////////
-void singleSimulation(
+void singleSimulation(int mechanismGenMode,
     int finNum, int conNum, int proNum,
     double threshold, int numIR, 
     int window_size, const int numTest, int burn,
@@ -28,7 +28,7 @@ void singleSimulation(
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
-    creditNet.setRoutePreference(1, v);
+    creditNet.setRoutePreference(mechanismGenMode, v);
     
     // main loop
     // first window_size runs
@@ -103,7 +103,7 @@ void singleSimulation(
     double transRate = (double) test/((double) numTest * (double) finNum * ((double) finNum-1.0));
     lock_rates.unlock();
     lock_cout.lock();
-    cout << "threshold   " << threshold << "   SSrate   " << *resultRate << "    Transrate   " <<transRate<< "   test   "<<(double)test<< "   numTest   " << count<< endl;
+    cout << "threshold   " << threshold << "   SSfails   "<<failRateTotal<<"   window   "<<cnt + 2.0 * window_size + 1.0<<"   SSrate   " << *resultRate << "    Transrate   " <<transRate<< "   test   "<<(double)test<< "   numTest   " << ((double) numTest * (double) finNum * ((double) finNum-1.0))<< "   count   "   <<count<<endl;
 
     lock_cout.unlock();
 }
@@ -112,35 +112,34 @@ void singleSimulation(
 // argv[1]: initialize mode
 // argv[2]: number of interest rates
 int main(int argc, char* argv[]){
-    int finNum = 10;
+    int finNum = 40;
     int conNum = 0;
     int proNum = 0;
     double threshold;
     int numIR = atoi(argv[2]);
     int mechanismGenMode = atoi(argv[1]);
-    int window_size = 1000;
+    int window_size = 4000;
     int iter = 10;
-    int numTest = 50;
-    int burn = 10;
-	const int numDeg = 1;
+    int numTest = 20;
+    int burn = 100;
+	const int numDeg = 7;
     // double degrees [numDeg] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,
-	// double degrees [numDeg] = {0.20,0.25,0.35, 0.45, 0.6};
-    // double degrees[numDeg] = {0.2,0.25,0.35,0.45};
+	double degrees [numDeg] = {0.15,0.20,0.25,0.35, 0.45,0.6,0.75};
 	// ,0.25,0.35,0.45};
-	double degrees[numDeg] = {0.7};
+	// double degrees[numDeg] = {0.75};
     // 10 rounds
     for (int i = 0; i < numDeg; ++i){
         threshold = degrees[i];
         double* rates = new double [iter];
         vector<std::thread*> threadPool;
         // double rateFinal = 0;
-        
+		
         // smooth the result
         for (int j = 0; j < iter; ++j){
             std::thread* singleRoundThread
-            = new std::thread(singleSimulation,finNum, conNum, proNum,
-                              threshold, numIR, numTest, burn,
-                              window_size, rates + j);
+            = new std::thread(singleSimulation,mechanismGenMode,finNum, conNum, proNum,
+                              threshold, numIR, window_size, numTest, burn,
+                               rates + j);
             threadPool.push_back(singleRoundThread);
         }
         

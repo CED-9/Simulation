@@ -17,7 +17,7 @@ void CreditNet::printPayoff(){
     }
 }
 
-CreditNet(CreditNet &creditNet) : Graph((Graph*) creditNet) {}
+CreditNet::CreditNet(CreditNet &creditNet) : Graph(creditNet) {}
 
 CreditNet::CreditNet(int finNumT, int conNumT, int proNumT)
         : Graph(finNumT, conNumT, proNumT){}

@@ -17,6 +17,8 @@ void CreditNet::printPayoff(){
     }
 }
 
+CreditNet(CreditNet &creditNet) : Graph((Graph*) creditNet) {}
+
 CreditNet::CreditNet(int finNumT, int conNumT, int proNumT)
         : Graph(finNumT, conNumT, proNumT){}
 CreditNet::~CreditNet(){
@@ -227,6 +229,53 @@ int CreditNet::genInterBankTransWidget(){
 	// this->print();
 	// cout << "fid1: " << fid1 << " fid2: " << fid2 << endl;
 
+	WidgetGraph* widgetNet = new WidgetGraph;
+	widgetNet->constructWidget(this);
+	widgetNet->setUpSrcAndDest(
+		this->finAgent[fid1], this->finAgent[fid2], 1.0);
+	// widgetNet->print();
+	int status = widgetNet->lpSolver(1);
+	if (status != 0){
+		// cout << "no solution!" << status << endl;
+		delete widgetNet;
+		return 1;
+	}
+	widgetNet->copyBack();
+	delete widgetNet;
+
+	// greedy
+	// CreditNet* tempNet = new CreditNet(*this);
+	// FinNode* f3 = tempNet->finAgent[fid1];
+	// FinNode* f4 = tempNet->finAgent[fid2];
+
+	// payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 1.0, trueValue);
+	// delete tempNet;
+	// // fail
+	// if (trueValue < 1.0){
+	// 	return 1;
+	// }
+	// payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
+
+	return 0;
+}
+
+int CreditNet::genInterBankTransFrank(){
+	FinNode* f1 = NULL;
+	FinNode* f2 = NULL;
+
+	int fid1 = rand()%finNum;
+	f1 = finAgent[fid1];
+	int fid2 = rand()%finNum;
+	while (fid1 == fid2){
+		fid2 = rand()%finNum;
+	}
+	f2 = finAgent[fid2];
+
+	double trueValue = 0;
+
+
+
+	CreditNet* newCreditNet = new CreditNet(this);
 	WidgetGraph* widgetNet = new WidgetGraph;
 	widgetNet->constructWidget(this);
 	widgetNet->setUpSrcAndDest(

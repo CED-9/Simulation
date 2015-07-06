@@ -12,6 +12,7 @@ private:
 
 public:
     CreditNet(int finNumT, int conNumT, int proNumT);
+    CreditNet(CreditNet &creditNet);
     ~CreditNet();
     void init();
 

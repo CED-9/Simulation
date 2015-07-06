@@ -87,7 +87,7 @@ int main(int argc, char* argv[]){
 	int finNum = 200;
 	int conNum = 0;
 	int proNum = 0;
-	double threshold;
+	double threshold = 0.18;
 	int numIR = 1;
     int mechanismGenMode = 1;
     int window_size = 4500;

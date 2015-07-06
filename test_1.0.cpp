@@ -96,9 +96,11 @@ int main(int argc, char* argv[]){
 
 
     // config the network
+    cout << "prepare to generate new credit network" << endl;
     CreditNet creditNet(finNum, conNum, proNum);
     creditNet.genTest0Graph(threshold, numIR);
     creditNet.setRoutePreference(mechanismGenMode);
+
 
 
 

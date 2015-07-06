@@ -88,8 +88,8 @@ int main(int argc, char* argv[]){
 	int conNum = 0;
 	int proNum = 0;
 	double threshold;
-	int numIR = atoi(argv[2]);
-    int mechanismGenMode = atoi(argv[1]);
+	int numIR = 1;
+    int mechanismGenMode = 1;
     int window_size = 4500;
     int iter = 10;
 	double degrees [10] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]){
     creditNet.genTest0Graph(threshold, numIR);
     creditNet.setRoutePreference(mechanismGenMode);
 
-    
+
 
 
 	// // 10 rounds

@@ -1085,6 +1085,25 @@ testTrans:
 	g++ -g -c CN_CreditNet.cpp -std=c++0x
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++0x
 	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test transTest.cpp *.o $(CCLNFLAGS) -std=c++0x
-	./test 1 4 
+	./test 1 4 > 
 	# > outGreedy_4IR_trans_0.2 
 	# > outGreedy_trans
+	
+
+testSim:
+	g++ -g -c Error.cpp -std=c++0x
+	g++ -g -c CN_DistributionGenerator.cpp -std=c++0x
+	g++ -g -c CN_Node.cpp CN_BanNode.cpp CN_ConNode.cpp CN_ProNode.cpp CN_FinNode.cpp CN_LabNode.cpp -std=c++0x
+	g++ -g -c CN_Graph.cpp -std=c++0x
+	g++ -g -c CN_CreditNet.cpp -std=c++0x
+	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++0x
+	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test simTest.cpp *.o $(CCLNFLAGS) -std=c++0x
+	# ./test 2 1 > outSource_paperSim_1IR	
+	./test 2 4 > outSource_paperSim_4IR_9
+	./test 2 7 > outSource_paperSim_7IR_9
+	./test 3 1 > outOverall_paperSim_1IR_9
+	./test 3 4 > outOverall_paperSim_4IR_9
+	./test 3 7 > outOverall_paperSim_7IR_9	
+
+	# > outGreedy_4IR_trans_0.2 
+	# > outGreedy_trans	

@@ -1,6 +1,6 @@
 ####  PBS preamble
 
-#PBS -N 5IR_path_transTest
+#PBS -N 4IR_greedy_transTest
 #PBS -M frcheng@umich.edu
 #PBS -m abe
 
@@ -9,7 +9,7 @@
 #PBS -q flux
 
 #PBS -l nodes=4:ppn=2,pmem=2gb
-#PBS -l walltime=5:15:00
+#PBS -l walltime=10:15:00
 #PBS -j oe
 #PBS -V
 
@@ -26,4 +26,4 @@ if [ -d "$PBS_O_WORKDIR" ] ; then
 fi
 
 #  Put your job commands after this line
-make testTrans
+make testSim

@@ -157,11 +157,27 @@ int CreditNet::genInterBankTrans(){
         f1->transactionNum += 1.0;
         return 0;
     } else {
-        WidgetGraph* widgetNet = new WidgetGraph;
+		WidgetGraph* widgetNet = new WidgetGraph;
         widgetNet->constructWidget(this);
         widgetNet->setUpSrcAndDest(this->finAgent[fid1], this->finAgent[fid2], 1.0);
         // widgetNet->print();
-        int status = widgetNet->lpSolver(f1->routePreference == LP_SOURCE ? 1 : 2);
+		int status;
+		if (f1->routePreference == LP_SOURCE){
+			status = widgetNet->lpSolver(1);
+		}
+		else if (f1->routePreference == LP_MIN){
+			status = widgetNet->lpSolver(2);
+		}
+		else if (f1->routePreference == LP_MAX){
+			status = widgetNet->lpSolver(3);
+		}
+		else if (f1->routePreference == LP_SHORT){
+			status = widgetNet->lpSolver(4);
+		}		
+		else {
+			status = widgetNet->lpSolver(5);
+		}
+        // int status = widgetNet->lpSolver(f1->routePreference == LP_SOURCE ? 1 : 2);
         if (status != 0){
             // cout << "no solution!" << status << endl;
             delete widgetNet;

@@ -425,8 +425,7 @@ int WidgetGraph::lpSolver(int opMode)
 {
 	/* Declare variables and arrays for retrieving problem data and
 	  solution information later on. */
-	// cout << "lp solver" << endl;
-
+	// cout << "lp solver" << endl;	
 	int      narcs;
 	int      nnodes;
 	int      solstat;
@@ -706,7 +705,6 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 			WidgetOutEdge temp = widgetNet->nodeList[k]->edge_out[i];
 			head[cnt] = widgetNet->nodeList[k]->nodeID;
 			tail[cnt] = temp.nodeTo->nodeID;
-			
 			// obj[cnt] = temp.interest_diff;
             if (opMode == 1) {
                 if (widgetNet->nodeList[k]->originNode == widgetNet->src
@@ -715,7 +713,37 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
                 } else {
                     obj[cnt] = 0;
                 }
-            } else {
+            }
+			else if(opMode==2) {
+				if (widgetNet->nodeList[k]->originNode == widgetNet->src
+                    && temp.nodeTo->type == 2){
+                    obj[cnt] = temp.interest_diff;
+                }
+				else if (widgetNet->nodeList[k]->originNode == widgetNet->dest
+                    && widgetNet->nodeList[k]->type == 3) {
+					obj[cnt] = -temp.interest_diff;
+				}
+				else {
+                    obj[cnt] = 0;
+                }
+			}
+			else if(opMode==3) {
+				if (widgetNet->nodeList[k]->originNode == widgetNet->src
+                    && temp.nodeTo->type == 2){
+                    obj[cnt] = -temp.interest_diff;
+                }
+				else if (widgetNet->nodeList[k]->originNode == widgetNet->dest
+                    && widgetNet->nodeList[k]->type == 3) {
+					obj[cnt] = temp.interest_diff;
+				}
+				else {
+                    obj[cnt] = 0;
+                }
+			}			
+			else if(opMode==4) {
+				obj[cnt] = -1;
+			}
+			else {
                 obj[cnt] = temp.interest_diff;
             }
             

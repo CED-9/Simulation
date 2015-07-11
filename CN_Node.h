@@ -17,7 +17,7 @@ enum OpMode{
 };
 
 enum RouteMechanism{
-    FF, LP_SOURCE, LP_OVERALL
+    FF, LP_SOURCE, LP_OVERALL, LP_MIN, LP_MAX, LP_SHORT
 };
 
 // forward declaration

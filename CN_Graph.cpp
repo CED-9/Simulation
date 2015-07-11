@@ -1226,7 +1226,7 @@ void Graph::setRoutePreference(int opMode, vector<string> &v){
             break;
         case 4:
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = (RouteMechanism)(rand()%3);
+                finAgent[i]->routePreference = (RouteMechanism)(rand()%6);
             }
             break;
         case 5:
@@ -1240,7 +1240,30 @@ void Graph::setRoutePreference(int opMode, vector<string> &v){
 				if (v[i] == "LP_OVERALL"){
 					finAgent[i]->routePreference = LP_OVERALL;
 				}
+				if (v[i] == "LP_MIN"){
+					finAgent[i]->routePreference = LP_MIN;
+				}
+				if (v[i] == "LP_MAX"){
+					finAgent[i]->routePreference = LP_MAX;
+				}
+				if (v[i] == "LP_SHORT"){
+					finAgent[i]->routePreference = LP_SHORT;
+				}				
         	}
+        case 6:
+            for (int i = 0; i < finNum; i++) {
+                finAgent[i]->routePreference = LP_MIN;
+            }
+            break;
+        case 7:
+            for (int i = 0; i < finNum; i++) {
+                finAgent[i]->routePreference = LP_MAX;
+            }
+            break;
+        case 8:
+            for (int i = 0; i < finNum; i++) {
+                finAgent[i]->routePreference = LP_SHORT;
+            }			
         default:
             break;
     }

@@ -313,7 +313,7 @@ int CreditNet::genInterBankTransFrank(Node*& nextHop){
 	widgetNet->copyBack();
 	delete widgetNet;
 
-    Node* nextHop = traceLpPath(&prevState, this, fid1);
+    nextHop = traceLpPath(&prevState, this, fid1);
     cout << nextHop->getNodeID << endl;
 
 	return 0;

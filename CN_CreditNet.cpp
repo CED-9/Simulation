@@ -263,6 +263,8 @@ int CreditNet::genInterBankTransWidget(){
 // find next hop
 void traceLpPath(Graph* prevState, Graph* currState, int sourceId, Node*& nextHop) {
 
+    cout << "trace" << endl;
+    
     for (int i = 0; i < prevState->finAgent[sourceId]->edge_in.size(); ++i) {
         if (prevState->finAgent[sourceId]->edge_in[i].d_out_current !=
             currState->finAgent[sourceId]->edge_in[i].d_out_current) {
@@ -285,6 +287,7 @@ void traceLpPath(Graph* prevState, Graph* currState, int sourceId, Node*& nextHo
 int CreditNet::genInterBankTransFrank(Node*& nextHop){
     
     Graph prevState = *((Graph*) this);
+    prevState.print();
     
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;
@@ -312,6 +315,9 @@ int CreditNet::genInterBankTransFrank(Node*& nextHop){
 	}
 	widgetNet->copyBack();
 	delete widgetNet;
+    
+    
+    cout << "before trace" << endl;
 
     traceLpPath(&prevState, this, fid1, nextHop);
     //cout << nextHop->getNodeID << endl;

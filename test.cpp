@@ -85,8 +85,8 @@ int main(int argc, char* argv[]){
     
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);
-    creditNet.genTest0Graph(threshold, numIR);
-    creditNet.setRoutePreference(mechanismGenMode);
+    creditNet.genTest0Graph(0.18, 1);
+    creditNet.setRoutePreference(1); // 1,2,3,4
     
     Node* next;
     creditNet.genInterBankTransFrank(next);

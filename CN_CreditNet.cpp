@@ -299,9 +299,6 @@ int CreditNet::genInterBankTransFrank(){
 
 	double trueValue = 0;
 
-
-
-	CreditNet* newCreditNet = new CreditNet(this);
 	WidgetGraph* widgetNet = new WidgetGraph;
 	widgetNet->constructWidget(this);
 	widgetNet->setUpSrcAndDest(

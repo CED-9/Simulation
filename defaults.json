@@ -4,7 +4,7 @@
 		"edgeProb": "0.18",
 		"transVal": "0.025",
         "window": "5000",
-        "smoothing": "5",
-		"numIR": "4"
+        "smoothing": "10",
+		"numIR": "5"
     }
 }

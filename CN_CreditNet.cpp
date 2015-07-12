@@ -259,7 +259,33 @@ int CreditNet::genInterBankTransWidget(){
 	return 0;
 }
 
+
+// find next hop
+Node* traceLpPath(Graph* prevState, Graph* currState, int sourceId) {
+
+    for (int i = 0; i < prevState.finAgent[sourceId]->edge_in.size(); ++i) {
+        if (prevState.finAgent[sourceId]->edge_in[i].d_out_current !=
+            currState.finAgent[sourceId]->edge_in[i].d_out_current) {
+            return currState.finAgent[sourceId]->edge_in[i].nodeFrom;
+        }
+    }
+
+    for (int i = 0; i < prevState.finAgent[sourceId]->edge_out.size(); ++i) {
+        if (prevState.finAgent[sourceId]->edge_out[i].d_in_current !=
+            currState.finAgent[sourceId]->edge_out[i].d_in_current) {
+            return currState.finAgent[sourceId]->edge_out[i].nodeTo;
+        }
+    }
+    
+    cerr << "error" << endl;
+    return nullptr;
+}
+
+
 int CreditNet::genInterBankTransFrank(){
+    
+    Graph prevState = new Graph(*this);
+    
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;
 
@@ -290,18 +316,7 @@ int CreditNet::genInterBankTransFrank(){
 	widgetNet->copyBack();
 	delete widgetNet;
 
-	// greedy
-	// CreditNet* tempNet = new CreditNet(*this);
-	// FinNode* f3 = tempNet->finAgent[fid1];
-	// FinNode* f4 = tempNet->finAgent[fid2];
-
-	// payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 1.0, trueValue);
-	// delete tempNet;
-	// // fail
-	// if (trueValue < 1.0){
-	// 	return 1;
-	// }
-	// payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
+    Node* nextHop = traceLpPath(&prevState, this, fid1);
 
 	return 0;
 }

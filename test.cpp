@@ -89,29 +89,13 @@ int main(int argc, char* argv[]){
     int iter = 1;
     double degrees [10] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};
     
-    // 10 rounds
-    for (int i = 0; i < 1; ++i){
-        threshold = 0.09;
-        double* rates = new double [iter];
-        vector<std::thread*> threadPool;
-        double rateFinal = 0;
-        
-        // smooth the result
-        for (int j = 0; j < iter; ++j){
-            singleSimulation(finNum, conNum, proNum,
-                              threshold, numIR, mechanismGenMode,
-                              window_size, rates + j);
-        }
-        
-        for (int j = 0; j < iter; j++) {
-            cout << rates[j] << " ";
-            rateFinal += rates[j];
-        }
-        
-        delete [] rates;
-        rateFinal /= iter;
-        
-        cout << endl << (double)(threshold*199) << " " << 1 - rateFinal << endl;
-    }
+    // config the network
+    CreditNet creditNet(finNum, conNum, proNum);
+    creditNet.genTest0Graph(threshold, numIR);
+    creditNet.setRoutePreference(mechanismGenMode);
+    
+    Node* next;
+    creditNet.genInterBankTransFrank(next);
+    
 }
 

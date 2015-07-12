@@ -282,7 +282,7 @@ Node* traceLpPath(Graph* prevState, Graph* currState, int sourceId) {
 }
 
 
-int CreditNet::genInterBankTransFrank(){
+int CreditNet::genInterBankTransFrank(Node*& nextHop){
     
     Graph prevState = *((Graph*) this);
     
@@ -314,6 +314,7 @@ int CreditNet::genInterBankTransFrank(){
 	delete widgetNet;
 
     Node* nextHop = traceLpPath(&prevState, this, fid1);
+    cout << nextHop->getNodeID << endl;
 
 	return 0;
 }

@@ -20,7 +20,7 @@ public:
     // liquidity test
     int genInterBankTransGreedy();
     int genInterBankTransWidget();
-    int genInterBankTransFrank();
+    int genInterBankTransFrank(Node*&);
     int genInterBankTrans();
 
     // Main Loop

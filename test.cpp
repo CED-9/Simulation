@@ -82,12 +82,6 @@ int main(int argc, char* argv[]){
     int finNum = 200;
     int conNum = 0;
     int proNum = 0;
-    double threshold;
-    int numIR = atoi(argv[2]);
-    int mechanismGenMode = atoi(argv[1]);
-    int window_size = 1000;
-    int iter = 1;
-    double degrees [10] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,0.20,0.25,0.35};
     
     // config the network
     CreditNet creditNet(finNum, conNum, proNum);

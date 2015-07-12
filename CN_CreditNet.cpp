@@ -266,14 +266,14 @@ Node* traceLpPath(Graph* prevState, Graph* currState, int sourceId) {
     for (int i = 0; i < prevState->finAgent[sourceId]->edge_in.size(); ++i) {
         if (prevState->finAgent[sourceId]->edge_in[i].d_out_current !=
             currState->finAgent[sourceId]->edge_in[i].d_out_current) {
-            return currState.finAgent[sourceId]->edge_in[i].nodeFrom;
+            return currState->finAgent[sourceId]->edge_in[i].nodeFrom;
         }
     }
 
     for (int i = 0; i < prevState->finAgent[sourceId]->edge_out.size(); ++i) {
         if (prevState->finAgent[sourceId]->edge_out[i].d_in_current !=
             currState->finAgent[sourceId]->edge_out[i].d_in_current) {
-            return currState.finAgent[sourceId]->edge_out[i].nodeTo;
+            return currState->finAgent[sourceId]->edge_out[i].nodeTo;
         }
     }
     
@@ -284,7 +284,7 @@ Node* traceLpPath(Graph* prevState, Graph* currState, int sourceId) {
 
 int CreditNet::genInterBankTransFrank(){
     
-    Graph prevState = new Graph(*((Graph*) this));
+    Graph prevState = *((Graph*) this);
     
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;

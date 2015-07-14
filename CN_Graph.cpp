@@ -1208,64 +1208,79 @@ double Graph::bfsIRBlocking(Node* node1, Node* node2){
 
 // TO DO set preference for all
 void Graph::setRoutePreference(int opMode, vector<string> &v){
-    switch (opMode) {
-        case 1:
+	// cout<<opMode<<endl;
+	if (opMode == 1){		
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = FF;
+                finAgent[i]->routePreference = "FF";
             }
-            break;
-        case 2:
+	}
+else if (opMode == 2){			
+       
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = LP_SOURCE;
+                finAgent[i]->routePreference = "LP_SOURCE";
             }
-            break;
-        case 3:
+}
+else if (opMode == 3){
+        
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = LP_OVERALL;
+                finAgent[i]->routePreference = "LP_OVERALL";
             }
-            break;
-        case 4:
+}
+else if (opMode == 4){
+        
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = (RouteMechanism)(rand()%6);
+                finAgent[i]->routePreference = "1";
+				// not done 
             }
-            break;
-        case 5:
+}
+else if (opMode == 5){        
         	for (int i = 0; i < finNum; i++) {
-				if (v[i] == "FF"){
-					finAgent[i]->routePreference = FF;
-				}
-        		if (v[i] == "LP_SOURCE"){
-					finAgent[i]->routePreference = LP_SOURCE;
-				}
-				if (v[i] == "LP_OVERALL"){
-					finAgent[i]->routePreference = LP_OVERALL;
-				}
-				if (v[i] == "LP_MIN"){
-					finAgent[i]->routePreference = LP_MIN;
-				}
-				if (v[i] == "LP_MAX"){
-					finAgent[i]->routePreference = LP_MAX;
-				}
-				if (v[i] == "LP_SHORT"){
-					finAgent[i]->routePreference = LP_SHORT;
-				}				
-        	}
-        case 6:
+			// cout<<v[i]<<endl;
+				
+				
+					finAgent[i]->routePreference = v[i];
+							// cout<<v[i]<<endl;
+
+        	
+        	}		
+        	// for (int i = 0; i < finNum; i++) {
+				
+				// if (v[i] == "FF"){
+					// finAgent[i]->routePreference = FF;
+				// }
+        		// if (v[i] == "LP_SOURCE"){
+					// finAgent[i]->routePreference = LP_SOURCE;
+				// }
+				// if (v[i] == "LP_OVERALL"){
+					// finAgent[i]->routePreference = LP_OVERALL;
+				// }
+				// if (v[i] == "LP_MIN"){
+					// finAgent[i]->routePreference = LP_MIN;
+				// }
+				// if (v[i] == "LP_MAX"){
+					// finAgent[i]->routePreference = LP_MAX;
+				// }
+				// if (v[i] == "LP_SHORT"){
+					// finAgent[i]->routePreference = LP_SHORT;
+				// }				
+        	// }
+}
+else if (opMode == 6){
+
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = LP_MIN;
+                finAgent[i]->routePreference = "LP_MIN";
             }
-            break;
-        case 7:
+}
+else if (opMode == 7){
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = LP_MAX;
+                finAgent[i]->routePreference = "LP_MAX";
             }
-            break;
-        case 8:
+}
+else if (opMode == 8){
+
             for (int i = 0; i < finNum; i++) {
-                finAgent[i]->routePreference = LP_SHORT;
+                finAgent[i]->routePreference = "LP_SHORT";
             }			
-        default:
-            break;
     }
     return;
 }

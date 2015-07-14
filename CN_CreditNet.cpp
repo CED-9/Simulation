@@ -140,8 +140,8 @@ int CreditNet::genInterBankTrans(){
     
     // this->print();
     // cout << "fid1: " << fid1 << " fid2: " << fid2 << endl;
-    
-    if (f1->routePreference == FF) {
+    // cout << f1->routePreference<<endl;
+    if (f1->routePreference == "FF") {
         // greedy
         CreditNet* tempNet = new CreditNet(*this);
         FinNode* f3 = tempNet->finAgent[fid1];
@@ -162,16 +162,17 @@ int CreditNet::genInterBankTrans(){
         widgetNet->setUpSrcAndDest(this->finAgent[fid1], this->finAgent[fid2], 1.0);
         // widgetNet->print();
 		int status;
-		if (f1->routePreference == LP_SOURCE){
+		// cout<<f1->routePreference<<endl;
+		if (f1->routePreference == "LP_SOURCE"){
 			status = widgetNet->lpSolver(1);
 		}
-		else if (f1->routePreference == LP_MIN){
+		else if (f1->routePreference == "LP_MIN"){
 			status = widgetNet->lpSolver(2);
 		}
-		else if (f1->routePreference == LP_MAX){
+		else if (f1->routePreference == "LP_MAX"){
 			status = widgetNet->lpSolver(3);
 		}
-		else if (f1->routePreference == LP_SHORT){
+		else if (f1->routePreference == "LP_SHORT"){
 			status = widgetNet->lpSolver(4);
 		}		
 		else {

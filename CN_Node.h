@@ -65,7 +65,7 @@ public:
 	GreedyNode* greedyNode;
 
     // Preference
-    RouteMechanism routePreference;
+    std::string routePreference;
     
     // Transaction
     double transactionNum;

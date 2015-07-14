@@ -706,6 +706,7 @@ buildNetwork (CPXENVptr env, CPXNETptr net, WidgetGraph* widgetNet,
 			head[cnt] = widgetNet->nodeList[k]->nodeID;
 			tail[cnt] = temp.nodeTo->nodeID;
 			// obj[cnt] = temp.interest_diff;
+			// cout <<opMode<<endl;
             if (opMode == 1) {
                 if (widgetNet->nodeList[k]->originNode == widgetNet->src
                     && temp.nodeTo->type == 2){

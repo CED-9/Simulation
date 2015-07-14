@@ -37,15 +37,15 @@ struct PlayerInfo {
 };
 
 void readConfig (Config &config, string inPath) {
-	cout<<"trying to read"<<endl;
+	// cout<<"trying to read"<<endl;
     FILE* fp = fopen(inPath.c_str(), "r"); // non-Windows use "r"
-	cout<<"fopened"<<endl;
+	// cout<<"fopened"<<endl;
     char readBuffer[65536];
     FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     Document doc;
     doc.ParseStream(is);
     fclose(fp);
-	cout<<"fclosed"<<endl;
+	// cout<<"fclosed"<<endl;
 
     printf("\nModified JSON with reformatting:\n");
     StringBuffer sb;
@@ -88,8 +88,8 @@ void writePayoff (std::vector<PlayerInfo> &players, string outPath) {
         rapidjson::Value object(rapidjson::kObjectType);
         object.SetObject();
         object.AddMember("role", "All", allocator);
-		cout<<players[i].strategy<<endl;
-		cout<<players[i].strategy.c_str()<<endl;
+		// cout<<players[i].strategy<<endl;
+		// cout<<players[i].strategy.c_str()<<endl;
         object.AddMember("strategy", s, allocator);
         object.AddMember("payoff", players[i].payoff, allocator);
         playerArray.PushBack(object, allocator);
@@ -128,13 +128,13 @@ mutex lock_cout;
 int main(int argc, char* argv[]){
     
     std::string json_folder = argv[1];
-	cout<<json_folder<<endl;
+	// cout<<json_folder<<endl;
     int num_obs = atoi(argv[2]);
-	cout <<  num_obs << endl;
+	// cout <<  num_obs << endl;
     Config config;
-	cout << "configed" << endl;
+	// cout << "configed" << endl;
     readConfig(config, json_folder+"/simulation_spec.json");
-	cout << "spec read" << endl;
+	// cout << "spec read" << endl;
 	
     for (int i = 0; i < num_obs; ++i){
 
@@ -159,7 +159,9 @@ int main(int argc, char* argv[]){
          creditNet.genTest0Graph(threshold, numIR);
          
          creditNet.setRoutePreference(5, config.assignedStrategy);
-         
+         // for (int o = 0; o<finNum;++o){
+			 // creditNet.finAgent[o]->routePreference = config.assignedStrategy[o];
+		 // }
          // main loop
          int failRateTotal = 0;
 
@@ -168,17 +170,19 @@ int main(int argc, char* argv[]){
                temp = creditNet.genInterBankTrans();
                failRateTotal += temp;
            }
-           // cout << failRateTotal/(double) window_size << endl;
+           cout << window_size - failRateTotal << "   "<<endl;;
             for (int k = 0; k < finNum; ++k){
-               // cout << creditNet.finAgent[k]->transactionNum << "  " << creditNet.finAgent[k]->getCurrBanlance() << endl;
+               // cout << creditNet.finAgent[k]->transactionNum << "  " << creditNet.finAgent[k]->getCurrBanlance()<<"   ";
                payoffs[k] += (double) creditNet.finAgent[k]->transactionNum * (double)transVal + (double)creditNet.finAgent[k]->getCurrBanlance();
+			   // cout  << payoffs[k] << "   ";
 			}
+			// cout << endl;
 	   }
         vector<PlayerInfo> myList;
-        for (int i = 0; i < finNum; ++i) {
+        for (int k = 0; k < finNum; ++k) {
             PlayerInfo p;
-            p.strategy = config.assignedStrategy[i];
-            p.payoff = (double)payoffs[i]/(double)iter;
+            p.strategy = config.assignedStrategy[k];
+            p.payoff = (double)payoffs[k]/(double)iter;
             p.role = "All";
             myList.push_back(p);
         }

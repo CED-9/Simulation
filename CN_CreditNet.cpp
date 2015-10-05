@@ -200,6 +200,84 @@ int CreditNet::genInterBankTrans(){
     return 0;
 }
 
+int CreditNet::genCensoredTrans(double irCap){
+
+    FinNode* f1 = NULL;
+    FinNode* f2 = NULL;
+    
+    int fid1 = rand()%finNum;
+    f1 = finAgent[fid1];
+    int fid2 = rand()%finNum;
+    while (fid1 == fid2){
+        fid2 = rand()%finNum;
+    }
+    f2 = finAgent[fid2];
+    
+    double trueValue = 0;
+    
+    // this->print();
+    // cout << "fid1: " << fid1 << " fid2: " << fid2 << endl;
+    // cout << f1->routePreference<<endl;
+    if (f1->routePreference == "FF") {
+        // greedy
+        CreditNet* tempNet = new CreditNet(*this);
+        FinNode* f3 = tempNet->finAgent[fid1];
+        FinNode* f4 = tempNet->finAgent[fid2];
+        
+        payCase2(dynamic_cast<Node*>(f3), dynamic_cast<Node*>(f4), 1.0, trueValue);
+        delete tempNet;
+        // fail
+        if (trueValue < 1.0){
+            return 1;
+        }
+        payCase2(dynamic_cast<Node*>(f1), dynamic_cast<Node*>(f2), 1.0, trueValue);
+        f1->transactionNum += 1.0;
+        return 0;
+    } else {
+		WidgetGraph* widgetNet = new WidgetGraph;
+        widgetNet->constructWidget(this);
+        widgetNet->setUpSrcAndDest(this->finAgent[fid1], this->finAgent[fid2], 1.0);
+        // widgetNet->print();
+		int status;
+		// cout<<f1->routePreference<<endl;
+		if (f1->routePreference == "LP_SOURCE"){
+			status = widgetNet->lpSolver(1);
+		}
+		else if (f1->routePreference == "LP_MIN"){
+			status = widgetNet->lpSolver(2);
+		}
+		else if (f1->routePreference == "LP_MAX"){
+			status = widgetNet->lpSolver(3);
+		}
+		else if (f1->routePreference == "LP_SHORT"){
+			status = widgetNet->lpSolver(4);
+		}		
+		else {
+			status = widgetNet->lpSolver(5);
+		}
+        // int status = widgetNet->lpSolver(f1->routePreference == LP_SOURCE ? 1 : 2);
+        if (status != 0){
+            // cout << "no solution!" << status << endl;
+            delete widgetNet;
+            return 1;
+        }
+		else{
+			// if(f1->transactionNum + 1.0 > 2000){
+		// cout<<fid1<<endl;
+			// }
+        widgetNet->copyBack();
+		f1->transactionNum += 1.0;
+        delete widgetNet;
+        return 0;
+		}
+    }
+    
+    // error
+    cerr << "fail routing! " << endl;
+    return 0;
+}
+
+
 int CreditNet::genInterBankTransGreedy(){
 	FinNode* f1 = NULL;
 	FinNode* f2 = NULL;

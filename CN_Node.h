@@ -77,6 +77,7 @@ public:
     double getCurrBanlance();
     
     //////////////////////////////////////////////////////////////
+	void censorEdges(double maxIR);
     void setRoutePreference(RouteMechanism routeM);
 	bool isInOutEdge(Node* nodeT);
 

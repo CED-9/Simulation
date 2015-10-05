@@ -59,6 +59,19 @@ bool Node::isInOutEdge(Node* nodeT){
     return false;
 }
 
+void Node::censorEdges(double maxIR){
+	for(int i=0; i<this->edge_in.size(); i++){
+		if(this->edge_in[i].interest_rate>maxIR){
+			edge_in.erase(edge_in.begin() + i);
+		}
+	}
+	for(int i=0; i<this->edge_out.size(); i++){
+		if(this->edge_out[i].interest_rate>maxIR){
+			edge_out.erase(edge_out.begin() + i);
+		}
+	}
+}
+
 ///////////////////////////////////////////////////////////////
 /* double change 
  * public functions

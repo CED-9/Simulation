@@ -41,7 +41,7 @@ public:
     /* Set all route mechanism preference */
     /////////////////////////////////////////////////////////////////////////
     void setRoutePreference(int opMode, std::vector<string> & v);
-    
+    void irCap(double maxIR);
 
 	void setZero(FinNode* f);
 
@@ -85,6 +85,9 @@ public:
     Status payCase1(Node* src, Node* dest, double value);
     // Payment, case 2, interest rate blocking
 	Status payCase2(Node* src, Node* dest, double value, double& actualValue);
+	// Payment, no blocking, censored interest rate
+	Status payCase3(Node* src, Node* dest, double value, double maxIR, double& actualValue);
+	
 
 
 	/////////////////////////////////////////////////////////////////////////

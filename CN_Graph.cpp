@@ -770,6 +770,13 @@ void Graph::genTest2Graph(){
 // Case 1 no discretion,
 // keep finding the shortest path
 // until value is reached
+
+void Graph::irCap(double maxIR){
+	for (int i=0; i<finNum i++){
+		finAgent[i]->censorEdges(maxIR);
+	}
+}
+
 Status Graph::payCase1(Node* src, Node* dest, double value){
 	Status status;
 	double current = 0;
@@ -963,6 +970,45 @@ bool Graph::bfsMixed(Node* node1, Node* node2){
 
 Status Graph::payCase2(Node* src, Node* dest, double value, double &actualValue){
 	Status status;
+	double current = 0;
+	double tempCap = 0;
+
+	//cout<<"pay: "<<value<<endl;
+	try {
+		while (1){
+			tempCap = this->bfsIRBlocking(src, dest);
+			if (tempCap < 0.000001) {
+				break;
+			}
+			if (tempCap + current > value) {
+				// fill in part of current path
+				//cout << "value - currrent: " << value - current << endl;
+				this->pathFillIRBlocking(value - current);
+				current = value;
+				actualValue = value;
+				break;
+			}
+			else {
+				// fill in all
+				this->pathFillIRBlocking(tempCap);
+				current += tempCap;
+			}
+		}
+		if (current != value) {
+			actualValue = current;
+			throw INSUFFICIENT_FLOW;
+		}
+	}
+	catch (Status error) {
+		return error;
+	}
+
+	return GOOD;
+}
+
+Status Graph::payCase3(Node* src, Node* dest, double value, double(maxIR), double &actualValue){
+	Status status;
+	this->irCap(maxIR);
 	double current = 0;
 	double tempCap = 0;
 

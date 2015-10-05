@@ -21,6 +21,7 @@ public:
     int genInterBankTransWidget();
     int testInterBankTransWidget(int fid1, int fid2);
     int genInterBankTrans();
+	int genCensoredTrans(double irCap);
 
     // Main Loop
     void update();

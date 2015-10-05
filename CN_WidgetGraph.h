@@ -53,6 +53,8 @@ public:
 	double payment;
 	vector<WidgetNode*> nodeList;
 	void constructWidget(Graph* graphT);
+	//censored widget
+	void constructWidget1(Graph* graphT, double maxIR);
 	void copyBack();
 	WidgetGraph();
 	~WidgetGraph();

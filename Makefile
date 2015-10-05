@@ -1116,4 +1116,4 @@ testMechs:
 	g++ -g -c CN_CreditNet.cpp -std=c++0x
 	$(CCC) -c $(CCFLAGS) CN_WidgetGraph.cpp -std=c++0x
 	$(CCC) $(CCFLAGS) $(CCLNDIRS) -o test1 simTest1.cpp *.o $(CCLNFLAGS) -std=c++0x
-	time ./test1 6 1 
+	time ./test1 1 1 

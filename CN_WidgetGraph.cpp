@@ -358,6 +358,304 @@ void WidgetGraph::constructWidget(Graph* graphT){
 	}
 }
 
+void WidgetGraph::constructWidget1(Graph* graphT, double maxIR){
+	this->originGraph = graphT;
+	// cout << "constructWidget..." << endl;
+	// cout << "num of fin agents " << graphT->finAgent.size() << endl;
+	// WidgetNode* superSrc = new WidgetNode(1, nullptr, -1);
+	// WidgetNode* superDest = new WidgetNode(0, nullptr, -1);
+	// this->nodeList.push_back(superSrc);  
+	// this->nodeList.push_back(superDest);
+
+	// Okay letsconstruct Widget nodes
+	for (int k = 0; k < graphT->finAgent.size(); ++k){
+		Node* temp = graphT->finAgent[k];
+		// cout << "fin agent: " << k << " " << temp->edge_in.size() << " " 
+			// << temp->edge_out.size() << endl;
+		// cout << "construct node " << temp->getNodeID() << endl;
+
+		WidgetNode* superWidgetNodeSrc = new WidgetNode(2, temp, -1);
+		WidgetNode* superWidgetNodeDest = new WidgetNode(3, temp, -1);
+		this->nodeList.push_back(superWidgetNodeSrc);
+		this->nodeList.push_back(superWidgetNodeDest);
+
+		for (int i = 0; i < temp->edge_in.size(); ++i){
+			// cout << "construct widget node at port in " << i << endl;
+
+			WidgetNode* wNode1 = new WidgetNode(0, temp, i);  // In_In
+			WidgetNode* wNode2 = new WidgetNode(1, temp, i);  // In_Out
+			temp->widgetNode_In_In.push_back(wNode1);
+			temp->widgetNode_In_Out.push_back(wNode2);
+			this->nodeList.push_back(wNode1);
+			this->nodeList.push_back(wNode2);
+		}
+		for (int i = 0; i < temp->edge_out.size(); ++i){
+			// cout << "construct widget node at port out " << i << endl;
+			WidgetNode* wNode1 = new WidgetNode(0, temp, i);  // In_In
+			WidgetNode* wNode2 = new WidgetNode(1, temp, i);  // In_Out
+			temp->widgetNode_Out_In.push_back(wNode1);
+			temp->widgetNode_Out_Out.push_back(wNode2);
+			this->nodeList.push_back(wNode1);
+			this->nodeList.push_back(wNode2);
+		}
+
+		// cout << "begin super nodes" << endl;
+		// superSrc <- _In, superDest -> _Out
+		for (int i = 0; i < temp->widgetNode_In_In.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = superWidgetNodeSrc;
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = -temp->edge_in[i].interest_rate;
+			temp->widgetNode_In_In[i]->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = temp->widgetNode_In_In[i];
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = -temp->edge_in[i].interest_rate;
+			superWidgetNodeSrc->edge_in.push_back(wEdgeIn);
+		}
+		for (int i = 0; i < temp->widgetNode_Out_In.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = superWidgetNodeSrc;
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = -temp->edge_out[i].interest_rate;
+			temp->widgetNode_Out_In[i]->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = temp->widgetNode_Out_In[i];
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = -temp->edge_out[i].interest_rate;
+			superWidgetNodeSrc->edge_in.push_back(wEdgeIn);
+		}
+		// superDest -> _Out
+		for (int i = 0; i < temp->widgetNode_In_Out.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = temp->widgetNode_In_Out[i];
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = temp->edge_in[i].interest_rate;
+			superWidgetNodeDest->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = superWidgetNodeDest;
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = temp->edge_in[i].interest_rate;
+			temp->widgetNode_In_Out[i]->edge_in.push_back(wEdgeIn);
+		}
+		for (int i = 0; i < temp->widgetNode_Out_Out.size(); ++i){
+			WidgetOutEdge wEdgeOut;
+			wEdgeOut.nodeTo = temp->widgetNode_Out_Out[i];
+			wEdgeOut.cap = CREDIT_MAX;
+			wEdgeOut.curr = 0;
+			wEdgeOut.interest_diff = temp->edge_out[i].interest_rate;
+			superWidgetNodeDest->edge_out.push_back(wEdgeOut);
+
+			WidgetInEdge wEdgeIn;
+			wEdgeIn.nodeFrom = superWidgetNodeDest;
+			wEdgeIn.cap = wEdgeOut.cap;
+			wEdgeIn.curr = 0;
+			wEdgeIn.interest_diff = temp->edge_out[i].interest_rate;
+			temp->widgetNode_Out_Out[i]->edge_in.push_back(wEdgeIn);
+		}
+
+
+		// cout << "begin in_in to out_out" << endl;
+		// In_In -> Out_Out, Out_In -> In_Out
+		for (int i = 0; i < temp->edge_out.size(); ++i){
+			for (int j = 0; j < temp->edge_in.size(); ++j){
+				if (temp->edge_out[i].interest_rate >= temp->edge_in[j].interest_rate){
+					// cout << "pushing port " << j << " to port " << i << endl;
+					// In_In -> Out_Out, [j]->[i]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_Out_Out[i];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						temp->edge_out[i].interest_rate - temp->edge_in[j].interest_rate;
+					temp->widgetNode_In_In[j]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_In_In[j];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_Out_Out[i]->edge_in.push_back(wEdgeIn);
+				}
+				if (temp->edge_out[i].interest_rate <= temp->edge_in[j].interest_rate){
+					// Out_In -> In_Out, [i]->[j]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_In_Out[j];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						- temp->edge_out[i].interest_rate + temp->edge_in[j].interest_rate;
+					temp->widgetNode_Out_In[i]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_Out_In[i];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_In_Out[j]->edge_in.push_back(wEdgeIn);
+				}
+			}
+		}
+		// cout << "begin in_in to in_out" << endl;
+		// In_In -> In_Out
+		for (int i = 0; i < temp->edge_in.size(); ++i){
+			for (int j = i+1; j < temp->edge_in.size(); ++j){
+				// if (i == j){
+				//  continue;
+				// }
+				if (temp->edge_in[i].interest_rate >= temp->edge_in[j].interest_rate){
+					// [i].ir >= [j].ir, [j]->[i]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_In_Out[i];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						temp->edge_in[i].interest_rate - temp->edge_in[j].interest_rate;
+					temp->widgetNode_In_In[j]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_In_In[j];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_In_Out[i]->edge_in.push_back(wEdgeIn);
+				}
+				if (temp->edge_in[i].interest_rate <= temp->edge_in[j].interest_rate){
+					// [i].ir <= [j].ir, [i]->[j]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_In_Out[j];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						- temp->edge_in[i].interest_rate + temp->edge_in[j].interest_rate;
+					temp->widgetNode_In_In[i]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_In_In[i];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_In_Out[j]->edge_in.push_back(wEdgeIn);
+				}
+			}
+		}
+		// cout << "begin out_in to out_out" << endl;
+		// Out_In -> Out_Out 
+		for (int i = 0; i < temp->edge_out.size(); ++i){
+			for (int j = i+1; j < temp->edge_out.size(); ++j){
+				// if (i == j){
+				//  continue;
+				// }
+				if (temp->edge_out[i].interest_rate >= temp->edge_out[j].interest_rate){
+					// [i].ir >= [j].ir, [j]->[i]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_Out_Out[i];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						temp->edge_out[i].interest_rate - temp->edge_out[j].interest_rate;
+					temp->widgetNode_Out_In[j]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_Out_In[j];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_Out_Out[i]->edge_in.push_back(wEdgeIn);
+				}
+				if (temp->edge_out[i].interest_rate <= temp->edge_out[j].interest_rate){
+					// [i].ir <= [j].ir, [i]->[j]
+					WidgetOutEdge wEdgeOut;
+					wEdgeOut.nodeTo = temp->widgetNode_Out_Out[j];
+					wEdgeOut.cap = CREDIT_MAX;
+					wEdgeOut.curr = 0;
+					wEdgeOut.interest_diff = 
+						- temp->edge_out[i].interest_rate + temp->edge_out[j].interest_rate;
+					temp->widgetNode_Out_In[i]->edge_out.push_back(wEdgeOut);
+
+					WidgetInEdge wEdgeIn;
+					wEdgeIn.nodeFrom = temp->widgetNode_Out_In[i];
+					wEdgeIn.cap = wEdgeOut.cap;
+					wEdgeIn.curr = 0;
+					wEdgeIn.interest_diff = wEdgeOut.interest_diff;
+					temp->widgetNode_Out_Out[j]->edge_in.push_back(wEdgeIn);
+				}
+			}
+		}
+		// cout << "end" << endl;
+	}
+
+	// cout << "finishing inside widget edges" << endl;
+
+	for (int k = 0; k < graphT->finAgent.size(); ++k){
+		Node* temp = graphT->finAgent[k];
+		// cout << "from node: " << temp->getNodeID() << endl;
+		for (int i = 0; i < temp->edge_out.size(); ++i){
+			// find sender's port and receiver's port
+			WidgetInEdge wInEdge1;
+			WidgetInEdge wInEdge2;
+			WidgetOutEdge wOutEdge1;
+			WidgetOutEdge wOutEdge2;
+
+			wOutEdge1.type = 1;
+
+			// cout << "from port out: " << i << endl;
+			Node* tempTarget = temp->edge_out[i].nodeTo;
+			int j;
+			for (j = 0; j < tempTarget->edge_in.size(); ++j){
+				if (temp == tempTarget->edge_in[j].nodeFrom){
+					break;
+				}
+			}
+
+			// cout << "target node: " << tempTarget->getNodeID() << " port in: " << j << endl;
+			
+			wInEdge1.nodeFrom = temp->widgetNode_Out_Out[i];
+			wInEdge1.cap = temp->edge_out[i].c_out_max - temp->edge_out[i].d_in_current;
+			wInEdge1.interest_rate = temp->edge_out[i].interest_rate;
+
+			// cout << "1" << endl;
+
+			wInEdge2.nodeFrom = tempTarget->widgetNode_In_Out[j];
+			wInEdge2.cap = temp->edge_out[i].d_in_current;
+			wInEdge2.interest_rate = wInEdge1.interest_rate;
+
+			// cout << "2" << endl;
+
+			wOutEdge1.nodeTo = tempTarget->widgetNode_In_In[j];
+			wOutEdge1.cap = wInEdge1.cap;
+			wOutEdge1.interest_rate = wInEdge1.interest_rate;
+
+			// cout << "3" << endl;
+
+			wOutEdge2.nodeTo = temp->widgetNode_Out_In[i];
+			wOutEdge2.cap = wInEdge2.cap;
+			wOutEdge2.interest_rate = wInEdge2.interest_rate;
+
+			// cout << "4" << endl;
+
+			temp->widgetNode_Out_Out[i]->edge_out.push_back(wOutEdge1);
+			tempTarget->widgetNode_In_Out[j]->edge_out.push_back(wOutEdge2);
+			tempTarget->widgetNode_In_In[j]->edge_in.push_back(wInEdge1);
+			temp->widgetNode_Out_In[i]->edge_in.push_back(wInEdge2);
+		}
+	}
+	// cout << "finishing outside widget edges" << endl;
+	// set node ID
+	for (int i = 0; i < this->nodeList.size(); ++i){
+		nodeList[i]->nodeID = i;
+	}
+}
+
 void WidgetGraph::copyBack(){
 
 	for (int i = 0; i < originGraph->finNum; ++i){

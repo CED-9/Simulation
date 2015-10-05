@@ -106,21 +106,21 @@ void singleSimulation(
 // argv[1]: initialize mode
 // argv[2]: number of interest rates
 int main(int argc, char* argv[]){
-    int finNum = 2;
+    int finNum = 10;
     int conNum = 0;
     int proNum = 0;
     double threshold;
     int numIR = atoi(argv[2]);
     int mechanismGenMode = atoi(argv[1]);
-    int window_size = 1;
-    int iter = 10;
+    int window_size = 4500;
+    int iter = 1;
     int numTest = 10;
     int burn = 150;
 	const int numDeg = 1;
     // double degrees [numDeg] = {0.01,0.02,0.04,0.06,0.09,0.12,0.15,
 	// double degrees [numDeg] = {0.20,0.25,0.35, 0.45, 0.6};
     // double degrees[numDeg] = {0.025,0.035,0.05,0.075,0.09,0.1,0.115,0.125,0.175,0.225};
-	double degrees[numDeg] = {0.09};
+	double degrees[numDeg] = {2};
 
     // 10 rounds
     for (int i = 0; i < numDeg; ++i){
